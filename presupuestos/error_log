@@ -1,0 +1,134 @@
+[27-Mar-2015 09:25:37 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 09:25:43 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 09:25:46 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 3
+[27-Mar-2015 09:25:49 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 3
+[27-Mar-2015 09:25:50 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 3
+[27-Mar-2015 09:25:56 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 21:57:27 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 21:57:28 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 21:57:29 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 21:57:42 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 3
+[27-Mar-2015 21:57:43 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 3
+[27-Mar-2015 21:57:46 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 3
+[27-Mar-2015 21:58:35 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 3
+[27-Mar-2015 21:58:36 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 3
+[27-Mar-2015 21:58:38 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 3
+[27-Mar-2015 21:59:17 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 3
+[27-Mar-2015 21:59:18 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'localhost' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 3
+[27-Mar-2015 21:59:43 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'wo09.wiroos.com' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 21:59:44 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'wo09.wiroos.com' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 21:59:45 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'wo09.wiroos.com' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 21:59:46 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'wo09.wiroos.com' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 21:59:47 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Access denied for user 'gszingue_root'@'wo09.wiroos.com' (using password: YES) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:00:05 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:00:06 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:00:07 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:00:09 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:00:32 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:00:34 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:00:35 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:00:36 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:00:41 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:01:04 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:01:04 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:02:07 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:02:08 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:02:09 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:02:10 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:02:11 America/Argentina/Buenos_Aires] PHP Warning:  mysql_connect(): Unknown MySQL server host 'http' (2) in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 4
+[27-Mar-2015 22:02:31 America/Argentina/Buenos_Aires] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 33
+[27-Mar-2015 22:02:33 America/Argentina/Buenos_Aires] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 33
+[27-Mar-2015 22:02:34 America/Argentina/Buenos_Aires] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 33
+[27-Mar-2015 22:02:35 America/Argentina/Buenos_Aires] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 33
+[27-Mar-2015 22:03:04 America/Argentina/Buenos_Aires] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 33
+[27-Mar-2015 22:03:05 America/Argentina/Buenos_Aires] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 33
+[27-Mar-2015 22:03:06 America/Argentina/Buenos_Aires] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 33
+[27-Mar-2015 22:03:08 America/Argentina/Buenos_Aires] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gszingue/public_html/sarmiento/presupuestos/search_cliente.php on line 33
+[28-Mar-2015 11:04:44 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: codigos_art in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 9
+[28-Mar-2015 11:04:44 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: cantidades in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 10
+[28-Mar-2015 11:04:44 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: precios in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 11
+[29-Mar-2015 13:00:18 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[29-Mar-2015 13:00:26 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[29-Mar-2015 13:03:06 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[29-Mar-2015 13:03:07 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[29-Mar-2015 13:04:23 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[29-Mar-2015 13:04:23 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:21:37 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:35:55 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:35:56 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:35:59 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:36:01 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:36:02 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:36:04 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:37:12 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:39:50 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:40:04 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:40:06 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:40:09 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:40:14 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:40:33 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:40:36 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:40:38 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:40:58 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:41:04 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:41:07 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:41:08 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:41:11 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:41:38 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:42:02 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:42:35 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:42:36 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:42:40 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:43:00 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:47:37 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:47:38 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[30-Mar-2015 08:48:41 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[06-Apr-2015 09:39:27 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[07-Apr-2015 21:02:04 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[07-Apr-2015 21:02:07 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[07-Apr-2015 21:02:08 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[08-Apr-2015 09:08:30 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[08-Apr-2015 11:23:04 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: codigos_art in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 9
+[08-Apr-2015 11:23:04 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: cantidades in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 10
+[08-Apr-2015 11:23:04 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: precios in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 11
+[10-Apr-2015 10:05:54 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: codigos_art in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 9
+[10-Apr-2015 10:05:55 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: cantidades in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 10
+[10-Apr-2015 10:05:55 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: precios in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 11
+[10-Apr-2015 11:02:29 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: codigos_art in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 9
+[10-Apr-2015 11:02:29 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: cantidades in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 10
+[10-Apr-2015 11:02:29 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: precios in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 11
+[13-Apr-2015 20:17:03 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: codigos_art in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 9
+[13-Apr-2015 20:17:04 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: cantidades in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 10
+[13-Apr-2015 20:17:04 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: precios in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 11
+[13-Apr-2015 20:55:20 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 24
+[13-Apr-2015 21:01:35 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: codigos_art in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 9
+[13-Apr-2015 21:01:35 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: cantidades in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 10
+[13-Apr-2015 21:01:35 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: precios in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 11
+[13-Apr-2015 21:03:13 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: codigos_art in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 9
+[13-Apr-2015 21:03:13 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: cantidades in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 10
+[13-Apr-2015 21:03:13 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: precios in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 11
+[14-Apr-2015 00:57:08 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: codigos_art in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 9
+[14-Apr-2015 00:57:08 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: cantidades in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 10
+[14-Apr-2015 00:57:08 America/Argentina/Buenos_Aires] PHP Notice:  Undefined index: precios in /home/gszingue/public_html/sarmiento/presupuestos/carga_presupuesto.php on line 11
+[14-Apr-2015 01:22:24 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 01:22:25 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 01:22:28 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 01:22:28 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 01:22:40 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 01:37:18 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 02:47:20 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 02:47:34 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 02:48:22 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:44:02 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:44:02 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:44:13 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:45:01 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:45:02 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:45:02 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:45:06 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:45:07 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:45:10 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:45:11 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:45:12 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:45:13 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25
+[14-Apr-2015 03:45:14 America/Argentina/Buenos_Aires] PHP Notice:  Undefined variable: row_set in /home/gszingue/public_html/sarmiento/presupuestos/search_articulo.php on line 25

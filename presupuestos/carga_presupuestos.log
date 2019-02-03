@@ -1,0 +1,2 @@
+2017-06-20 15:21:44INSERT INTO presupuesto (fecha, monto, id_cliente,tipo,estado,descuento, id_vendedor, comentario, com_publico) VALUES('2017-06-20 15:21:44',10.79,0,1,2,0, , '', 0)
+2017-06-20 15:23:08INSERT INTO presupuesto (fecha, monto, id_cliente,tipo,estado,descuento, id_vendedor, comentario, com_publico) VALUES('2017-06-20 15:23:08',61.54,0,1,2,0, '', '', 0)

@@ -1,0 +1,30 @@
+<?php 
+
+$texto['clientes']				= 'Clientes';
+$texto['cliente']				= 'Cliente';
+$texto['presupuestos']			= 'Presupuestos';
+$texto['presupuesto']			= 'Presupuesto';
+$texto['fecha']					= 'Fecha';
+$texto['monto']					= 'Monto';
+$texto['articulo']				= 'Articulo';
+$texto['cantidad']				= 'Cantidad';
+$texto['total']					= 'Total';
+$texto['no_registros']			= 'No hay registros';
+$texto['empresa_titulo']		= 'Bulones sarmiento';
+$texto['buscar']				= 'Buscar';
+$texto['select_registro']		= 'Seleccione una opción';
+$texto['numero']				= 'Número';
+$texto['a_cuenta']				= 'A cuenta';
+$texto['pago']					= 'Pago';
+$texto['seleccionar']			= 'Seleccionar';
+$texto['apellido']				= 'Apellido';
+$texto['alias']					= 'Alias';
+$texto['inicio']				= 'Inicio';
+$texto['ingrese']				= 'Ingrese';
+$texto['final']					= 'Final';
+$texto['sumas']					= 'Sumas';
+$texto['si_devolucion']			= 'Este presupuesto tiene devoluciones asociadas';
+$texto['si_cliente_dev']		= 'Este cliente tiene devoluciones asociadas';
+$texto['periodo']				= 'Periodo';
+$texto['cantidad']				= 'Cantidad';
+$texto['transacciones']			= 'Transacciones';
