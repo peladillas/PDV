@@ -1694,3 +1694,36 @@ DEBUG - 2019-02-03 05:25:10 --> File loaded: application/views/calendarios/confi
 DEBUG - 2019-02-03 05:25:10 --> File loaded: application/views/footer.php
 DEBUG - 2019-02-03 05:25:10 --> Final output sent to browser
 DEBUG - 2019-02-03 05:25:10 --> Total execution time: 4.1478
+DEBUG - 2019-02-03 05:32:52 --> Config Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Hooks Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Utf8 Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> UTF-8 Support Enabled
+DEBUG - 2019-02-03 05:32:52 --> URI Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Router Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Output Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Security Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Input Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2019-02-03 05:32:52 --> Language Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Loader Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Helper loaded: menu_helper
+DEBUG - 2019-02-03 05:32:52 --> Database Driver Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Session Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Helper loaded: string_helper
+DEBUG - 2019-02-03 05:32:52 --> Session routines successfully run
+DEBUG - 2019-02-03 05:32:52 --> Model Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Model Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Controller Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Model Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Model Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Model Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Model Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> Helper loaded: url_helper
+DEBUG - 2019-02-03 05:32:52 --> Helper loaded: form_helper
+DEBUG - 2019-02-03 05:32:52 --> Form Validation Class Initialized
+DEBUG - 2019-02-03 05:32:52 --> File loaded: application/views/head.php
+DEBUG - 2019-02-03 05:32:52 --> File loaded: application/views/menu.php
+DEBUG - 2019-02-03 05:32:52 --> File loaded: application/views/presupuestos/presupuestos_salida.php
+DEBUG - 2019-02-03 05:32:52 --> File loaded: application/views/footer.php
+DEBUG - 2019-02-03 05:32:52 --> Final output sent to browser
+DEBUG - 2019-02-03 05:32:52 --> Total execution time: 0.4767
