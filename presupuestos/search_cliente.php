@@ -14,9 +14,9 @@ $qstring = "SELECT
 			FROM 
 				cliente 
 			WHERE 
-				id_estado = 1  AND 
+				
 				(alias LIKE '%".$term."%' OR 
-				cuil LIKE '%".$term."%') 
+				cuil LIKE '%".$term."%') AND id_estado = 1
 			LIMIT 20";
 $result = mysql_query($qstring) ;//query the database for entries containing the term
 
@@ -31,7 +31,7 @@ while ($row = mysql_fetch_array($result,MYSQL_ASSOC))//loop through the retrieve
 		$row['id']=(int)$row['id_cliente'];
 		$row['ape']=(float)$row['apellido'];
 		$row['cuil']=stripslashes(utf8_encode($row['num_cuil']));
-		$row['dom']=stripslashes(utf8_encode($row['dom_cli']));
+		$row['dom']=stripslashes(utf8_encode($row['direccion']));
 		$row_set[] = $row;//build an array
 
 	}
