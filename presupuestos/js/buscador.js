@@ -192,7 +192,7 @@ $(function() {
 	        este			= ui.item.id;
 			px_unitario		= ui.item.precio;
 			
-			$('#px_unitario_rapido').val(px_unitario * ((porc_iva_art/100) + 1 ));	
+			$('#px_unitario_rapido').val((px_unitario * ((porc_iva_art/100) + 1 )).toFixed(2));	
 			pos				= items_reglon.indexOf(este);
 	    	
 			$("#cantidad").removeAttr('disabled');
@@ -274,9 +274,9 @@ function carga(elem)
 
 function agrega_a_reglon(este,texto,cantidad, bandera,px_unitario_sin_iva,porc_iva)
 {
-	px_unitario	= px_unitario_sin_iva * ((porc_iva / 100) + 1);
+	px_unitario	= (px_unitario_sin_iva * ((porc_iva / 100) + 1)).toFixed(2);
 	px_reglon	= cantidad * px_unitario;
-    iva			= (px_unitario_sin_iva * (porc_iva / 100)) * cantidad;
+    iva			= ((px_unitario_sin_iva * (porc_iva / 100)) * cantidad).toFixed(2);
 		
 	if(bandera){
 		largo	= $('#reglon_factura').height();

@@ -272,3 +272,193 @@ DEBUG - 2019-02-03 03:48:03 --> File loaded: application/views/presupuestos/pres
 DEBUG - 2019-02-03 03:48:03 --> File loaded: application/views/footer.php
 DEBUG - 2019-02-03 03:48:03 --> Final output sent to browser
 DEBUG - 2019-02-03 03:48:03 --> Total execution time: 0.4007
+DEBUG - 2019-02-03 04:33:42 --> Config Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Hooks Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Utf8 Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> UTF-8 Support Enabled
+DEBUG - 2019-02-03 04:33:42 --> URI Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Router Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> No URI present. Default controller set.
+DEBUG - 2019-02-03 04:33:42 --> Output Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Security Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Input Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2019-02-03 04:33:42 --> Language Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Loader Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Helper loaded: menu_helper
+DEBUG - 2019-02-03 04:33:42 --> Database Driver Class Initialized
+ERROR - 2019-02-03 04:33:42 --> Severity: Notice  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: send of 5 bytes failed with errno=10053 An established connection was aborted by the software in your host machine.
+ C:\xampp\htdocs\sarmiento-nuevo\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2019-02-03 04:33:42 --> Session Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Helper loaded: string_helper
+DEBUG - 2019-02-03 04:33:42 --> Session routines successfully run
+DEBUG - 2019-02-03 04:33:42 --> Model Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Model Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Controller Class Initialized
+DEBUG - 2019-02-03 04:33:42 --> Helper loaded: url_helper
+DEBUG - 2019-02-03 04:33:42 --> Helper loaded: form_helper
+DEBUG - 2019-02-03 04:33:42 --> File loaded: application/views/head.php
+DEBUG - 2019-02-03 04:33:42 --> File loaded: application/views/login_view.php
+DEBUG - 2019-02-03 04:33:42 --> Final output sent to browser
+DEBUG - 2019-02-03 04:33:42 --> Total execution time: 0.2886
+DEBUG - 2019-02-03 04:33:45 --> Config Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Hooks Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Utf8 Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> UTF-8 Support Enabled
+DEBUG - 2019-02-03 04:33:45 --> URI Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Router Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Output Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Security Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Input Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Global POST and COOKIE data sanitized
+DEBUG - 2019-02-03 04:33:45 --> Language Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Loader Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Helper loaded: menu_helper
+DEBUG - 2019-02-03 04:33:45 --> Database Driver Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Session Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Helper loaded: string_helper
+DEBUG - 2019-02-03 04:33:45 --> Session routines successfully run
+DEBUG - 2019-02-03 04:33:45 --> Model Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Model Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Controller Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Helper loaded: url_helper
+DEBUG - 2019-02-03 04:33:45 --> Model Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Helper loaded: form_helper
+DEBUG - 2019-02-03 04:33:45 --> Form Validation Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Language file loaded: language/english/form_validation_lang.php
+DEBUG - 2019-02-03 04:33:45 --> XSS Filtering completed
+DEBUG - 2019-02-03 04:33:45 --> XSS Filtering completed
+DEBUG - 2019-02-03 04:33:45 --> Config Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Hooks Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Utf8 Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> UTF-8 Support Enabled
+DEBUG - 2019-02-03 04:33:45 --> URI Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Router Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Output Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Security Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Input Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Global POST and COOKIE data sanitized
+DEBUG - 2019-02-03 04:33:45 --> Language Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Loader Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Helper loaded: menu_helper
+DEBUG - 2019-02-03 04:33:45 --> Database Driver Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Session Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Helper loaded: string_helper
+DEBUG - 2019-02-03 04:33:45 --> Session routines successfully run
+DEBUG - 2019-02-03 04:33:45 --> Model Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Model Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Controller Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Model Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Helper loaded: form_helper
+DEBUG - 2019-02-03 04:33:45 --> Form Validation Class Initialized
+DEBUG - 2019-02-03 04:33:45 --> Helper loaded: url_helper
+DEBUG - 2019-02-03 04:33:48 --> File loaded: application/views/head.php
+DEBUG - 2019-02-03 04:33:48 --> File loaded: application/views/menu.php
+DEBUG - 2019-02-03 04:33:49 --> File loaded: application/views/home.php
+DEBUG - 2019-02-03 04:33:49 --> File loaded: application/views/calendarios/config.php
+DEBUG - 2019-02-03 04:33:49 --> File loaded: application/views/footer.php
+DEBUG - 2019-02-03 04:33:49 --> Final output sent to browser
+DEBUG - 2019-02-03 04:33:49 --> Total execution time: 4.2459
+DEBUG - 2019-02-03 04:34:13 --> Config Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Hooks Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Utf8 Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> UTF-8 Support Enabled
+DEBUG - 2019-02-03 04:34:13 --> URI Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Router Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Output Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Security Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Input Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Global POST and COOKIE data sanitized
+DEBUG - 2019-02-03 04:34:13 --> Language Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Loader Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Helper loaded: menu_helper
+DEBUG - 2019-02-03 04:34:13 --> Database Driver Class Initialized
+ERROR - 2019-02-03 04:34:13 --> Severity: Notice  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: send of 5 bytes failed with errno=10053 An established connection was aborted by the software in your host machine.
+ C:\xampp\htdocs\sarmiento-nuevo\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2019-02-03 04:34:13 --> Session Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Helper loaded: string_helper
+DEBUG - 2019-02-03 04:34:13 --> Session routines successfully run
+DEBUG - 2019-02-03 04:34:13 --> Model Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Model Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Controller Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Model Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Model Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Model Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Model Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> Helper loaded: url_helper
+DEBUG - 2019-02-03 04:34:13 --> Helper loaded: form_helper
+DEBUG - 2019-02-03 04:34:13 --> Form Validation Class Initialized
+DEBUG - 2019-02-03 04:34:13 --> File loaded: application/views/head.php
+DEBUG - 2019-02-03 04:34:13 --> File loaded: application/views/menu.php
+DEBUG - 2019-02-03 04:34:13 --> File loaded: application/views/presupuestos/presupuestos_salida.php
+DEBUG - 2019-02-03 04:34:13 --> File loaded: application/views/footer.php
+DEBUG - 2019-02-03 04:34:13 --> Final output sent to browser
+DEBUG - 2019-02-03 04:34:13 --> Total execution time: 0.4238
+DEBUG - 2019-02-03 04:39:54 --> Config Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Hooks Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Utf8 Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> UTF-8 Support Enabled
+DEBUG - 2019-02-03 04:39:54 --> URI Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Router Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Output Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Security Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Input Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Global POST and COOKIE data sanitized
+DEBUG - 2019-02-03 04:39:54 --> Language Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Loader Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Helper loaded: menu_helper
+DEBUG - 2019-02-03 04:39:54 --> Database Driver Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Session Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Helper loaded: string_helper
+DEBUG - 2019-02-03 04:39:54 --> Session routines successfully run
+DEBUG - 2019-02-03 04:39:54 --> Model Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Model Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Controller Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Model Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Model Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Model Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Model Class Initialized
+DEBUG - 2019-02-03 04:39:54 --> Helper loaded: url_helper
+DEBUG - 2019-02-03 04:39:54 --> Helper loaded: form_helper
+DEBUG - 2019-02-03 04:39:54 --> Form Validation Class Initialized
+DEBUG - 2019-02-03 04:39:55 --> File loaded: application/views/head.php
+DEBUG - 2019-02-03 04:39:55 --> File loaded: application/views/menu.php
+DEBUG - 2019-02-03 04:39:55 --> File loaded: application/views/presupuestos/presupuestos_salida.php
+DEBUG - 2019-02-03 04:39:55 --> File loaded: application/views/footer.php
+DEBUG - 2019-02-03 04:39:55 --> Final output sent to browser
+DEBUG - 2019-02-03 04:39:55 --> Total execution time: 0.3851
+DEBUG - 2019-02-03 04:41:41 --> Config Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Hooks Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Utf8 Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> UTF-8 Support Enabled
+DEBUG - 2019-02-03 04:41:41 --> URI Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Router Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Output Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Security Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Input Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Global POST and COOKIE data sanitized
+DEBUG - 2019-02-03 04:41:41 --> Language Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Loader Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Helper loaded: menu_helper
+DEBUG - 2019-02-03 04:41:41 --> Database Driver Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Session Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Helper loaded: string_helper
+DEBUG - 2019-02-03 04:41:41 --> Session routines successfully run
+DEBUG - 2019-02-03 04:41:41 --> Model Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Model Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Controller Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Model Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Model Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Model Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Model Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> Helper loaded: url_helper
+DEBUG - 2019-02-03 04:41:41 --> Helper loaded: form_helper
+DEBUG - 2019-02-03 04:41:41 --> Form Validation Class Initialized
+DEBUG - 2019-02-03 04:41:41 --> File loaded: application/views/head.php
+DEBUG - 2019-02-03 04:41:41 --> File loaded: application/views/menu.php
+DEBUG - 2019-02-03 04:41:41 --> File loaded: application/views/presupuestos/presupuestos_salida.php
+DEBUG - 2019-02-03 04:41:41 --> File loaded: application/views/footer.php
+DEBUG - 2019-02-03 04:41:41 --> Final output sent to browser
+DEBUG - 2019-02-03 04:41:41 --> Total execution time: 0.3876
+DEBUG - 2019-02-03 04:41:41 --> Final output sent to browser
+DEBUG - 2019-02-03 04:41:41 --> Total execution time: 0.3876
