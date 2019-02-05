@@ -23,10 +23,10 @@ class Stock extends MY_Controller {
 
 	public function movimiento(){
 		$registro = array(
-			'id_articulo' => 1,
+			//'id_articulo' => 1,
 			'id_comprobante' => 1,
 			'id_comprobante_tipo' => 1,
-			'cantidad_entrante' => 1,
+			'cantidad_saliente' => 5,
 		);
 		$this->stock_model->movimiento($registro);
 	}
