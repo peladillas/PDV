@@ -11,6 +11,10 @@ for ($i=1; $i <= $dias_mes; $i++)
 	$anulacion[$i]	= 0;
 }
 
+if(!isset($cant_presupuestos)) {
+	$cant_presupuestos = 0;
+}
+
 $cant_ctacte = 0;
 $cant_contado = 0;
 $cant_devoluciones = 0;
