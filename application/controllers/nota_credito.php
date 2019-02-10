@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Stock extends MY_Controller {
+class Nota_credito extends MY_Controller {
 
 	public function __construct()
 	{
@@ -8,27 +8,23 @@ class Stock extends MY_Controller {
 
 		$this->load->database();
 		$this->load->helper('url');
-		$this->load->model('stock_model');
+		$this->load->model('nota_credito_model');
+		$this->load->model('clientes_model');
 	}
 	
 	
 /**********************************************************************************
  **********************************************************************************
  * 
- * 
- * 				CRUD CLIENTE
+ * 				CRUD Nota Credito
  * 
  * ********************************************************************************
  **********************************************************************************/
 
 
-	public function movimiento(){
-		$registro = array(
-			'id_articulo' => 9,
-			'id_comprobante' => 1,
-			'id_comprobante_tipo' => 1,
-			'cantidad_saliente' => 5,
-		);
-		$this->stock_model->movimiento($registro);
+	public function index(){
+		$db['clientes'] = $this->clientes_model->getRegistros();
+		
+		$this->armarVista($db, 'nota_credito/generar.php');
 	}
 }

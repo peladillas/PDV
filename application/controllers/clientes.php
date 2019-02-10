@@ -183,4 +183,29 @@ class Clientes extends MY_Controller {
 			$this->_example_output($output);
 	}	
 
+/**********************************************************************************
+ **********************************************************************************
+ * 
+ * 				Trae todos los clientes y los formatea en json
+ * 
+ * ********************************************************************************
+ **********************************************************************************/
+
+	
+	public function getClientes()
+	{
+		$filtro = $this->input->get('term', TRUE);
+		
+		$db['clientes'] = $this->clientes_model->getClientes($filtro);
+		
+		$row_set = array();
+		foreach ($db['clientes'] as $cliente) {
+			$row['value']	= stripslashes(utf8_encode($cliente->apellido.' '.$cliente->nombre));
+			$row['id']		= (int)$cliente->id_cliente;
+			$row_set[]		= $row;
+		}
+
+		echo json_encode($row_set);
+	}
+
 }

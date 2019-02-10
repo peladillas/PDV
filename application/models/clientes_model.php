@@ -2,7 +2,6 @@
 class Clientes_model extends My_Model {
 		
 	public function __construct(){
-	
 		parent::construct(
 				'cliente',
 				'id_cliente',
@@ -11,6 +10,40 @@ class Clientes_model extends My_Model {
 		);
 	}
 	
+	
+	/**
+	 * Para buscar clients por nombre o alias
+	 * */
+	function getClientes($filtro) {
+		$sql = "
+		SELECT 
+				*
+		FROM 
+				cliente 
+		WHERE 
+		(
+			nombre LIKE '%".$filtro."%' OR 
+			apellido LIKE '%".$filtro."%' OR
+			alias LIKE '%".$filtro."%'
+		) AND id_estado = 1 
+		LIMIT 
+			20 ";
+				
+		$query = $this->db->query($sql);
+		
+		if ($query->num_rows() > 0) {
+			foreach ($query->result() as $row) {
+				$data[] = $row;
+			}
+			return $data;
+		} else {
+			return FALSE;
+		}
+	}
+	
+	
+				
+				
 	function getSumas($tipo)
 	{
 		if($tipo == 'tipos')
