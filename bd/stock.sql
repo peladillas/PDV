@@ -128,3 +128,41 @@ ALTER TABLE `parametro_tipo`
 --
 ALTER TABLE `parametro_tipo`
 MODIFY `id_parametro_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `nota_credito`
+--
+
+CREATE TABLE IF NOT EXISTS `nota_credito` (
+`id_nota_credito` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `monto` float NOT NULL,
+  `comentario` text NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `user_add` int(11) NOT NULL,
+  `user_upd` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `nota_credito`
+--
+ALTER TABLE `nota_credito`
+ ADD PRIMARY KEY (`id_nota_credito`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `nota_credito`
+--
+ALTER TABLE `nota_credito`
+MODIFY `id_nota_credito` int(11) NOT NULL AUTO_INCREMENT;

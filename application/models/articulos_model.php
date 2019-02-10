@@ -11,6 +11,34 @@ class Articulos_model extends MY_Model {
 		);
 	}
 	
+	/**
+	 * Para buscar artiuclos por descripcion o codigo proveedor
+	 * */
+	function getArticulos($filtro) {
+		$sql = "
+		SELECT 
+			*
+		FROM 
+			articulo 
+		WHERE 
+			(descripcion LIKE '%".$filtro."%' OR 
+			cod_proveedor LIKE '%".$filtro."%') AND
+			id_estado = 1 
+		LIMIT 
+			20";
+				
+		$query = $this->db->query($sql);
+		
+		if ($query->num_rows() > 0) {
+			foreach ($query->result() as $row) {
+				$data[] = $row;
+			}
+			return $data;
+		} else {
+			return FALSE;
+		}
+	}
+	
 	function update_Articulo($datos, $id){
 		$this->db->update('articulo', $datos, array('id_articulo' => $id));
 	}

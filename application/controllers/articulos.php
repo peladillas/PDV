@@ -337,6 +337,32 @@ class Articulos extends My_Controller {
 		}
 	}
 
+/**********************************************************************************
+ **********************************************************************************
+ * 
+ * 				Trae todos los ariculos y los formatea en json
+ * 
+ * ********************************************************************************
+ **********************************************************************************/
+
+	
+	public function getArticulos()
+	{
+		$filtro = $this->input->get('term', TRUE);
+		
+		$db['articulos'] = $this->articulos_model->getArticulos($filtro);
+		
+		$row_set = array();
+		foreach ($db['articulos'] as $articulo) {
+			$row['value']	= stripslashes(utf8_encode($articulo->descripcion));
+			$row['id']		= (int)$articulo->id_articulo;
+			$row['iva']		= (float)$articulo->iva;
+			$row['precio']	= (float)$articulo->precio_venta_sin_iva_con_imp;
+			$row_set[]		= $row;
+		}
+
+		echo json_encode($row_set);
+	}
 
 
 }

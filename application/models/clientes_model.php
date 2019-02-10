@@ -21,11 +21,10 @@ class Clientes_model extends My_Model {
 		FROM 
 				cliente 
 		WHERE 
-		(
-			nombre LIKE '%".$filtro."%' OR 
+			(nombre LIKE '%".$filtro."%' OR 
 			apellido LIKE '%".$filtro."%' OR
-			alias LIKE '%".$filtro."%'
-		) AND id_estado = 1 
+			alias LIKE '%".$filtro."%') AND
+			id_estado = 1 
 		LIMIT 
 			20 ";
 				

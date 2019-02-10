@@ -17,8 +17,8 @@ $lang['asunto_warning']     = "Asunto warning";
 $lang['asunto_danger']      = "Asunto danger";
 $lang['archivo']            = "Archivo";
 $lang['agua']               = "Agua";
-$lang['alumno']   			= "Alumno";
-$lang['alumnos']   			= "Alumnos";
+$lang['articulo']   		= "Articulo";
+$lang['articulos']   		= "Articulos";
 $lang['altura']             = "Altura";
 $lang['apellidos']          = "Apellidos";
 

@@ -200,7 +200,11 @@ class Clientes extends MY_Controller {
 		
 		$row_set = array();
 		foreach ($db['clientes'] as $cliente) {
-			$row['value']	= stripslashes(utf8_encode($cliente->apellido.' '.$cliente->nombre));
+			$nombre = ($cliente->apellido != '' ? $cliente->apellido.' ' : '');
+			$nombre .= ($cliente->nombre != '' ? $cliente->nombre.' ' : '');
+			$nombre .= ($cliente->alias != '' ? ','.$cliente->alias : '');
+			
+			$row['value']	= stripslashes(utf8_encode($nombre));
 			$row['id']		= (int)$cliente->id_cliente;
 			$row_set[]		= $row;
 		}
