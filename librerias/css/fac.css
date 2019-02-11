@@ -1,0 +1,180 @@
+#scroll-pane,.scroll-pane{position:relative}
+.scroll-content {position:absolute;top:0;left:0}
+.slider-wrap{position:absolute;right:0;top:0;background-color:lightgrey;width:20px;border-left:1px solid gray;}
+.slider-vertical{position:relative;height:100%}
+.ui-slider-handle{width:20px;height:10px;margin:0 auto;background-color:darkgray;display:block;position:absolute}
+.ui-slider-handle img{border:none}
+.scrollbar-top{position:absolute;top:0;}
+.scrollbar-bottom{position:absolute;bottom:0;}
+.scrollbar-grip{position:absolute;top:50%;margin-top:-6px;}
+.ui-slider-range{position:absolute;width:100%;background-color:lightgrey}
+body{
+margin-left: 1%;
+width:98%;
+
+}
+#cont_px_unitario_rapido{
+position: absolute;
+bottom: 0px;
+right: 0px;
+}
+#cont_busqueda_articulo{
+font-family: arial;
+font-size: 16px;
+background: lightgrey;
+}
+.cont_rotulo_cliente,.cont_rotulo_presupuesto{
+margin-top: 5px;
+position: relative;
+float: left;
+font-family: arial;
+font-size: 16px;
+width: 100%;
+}
+.span_rotulo_cliente,.span_rotulo_presupuesto{
+margin: 0px 5px 0px 5px;
+position: relative;
+float: left;
+font-family: arial;
+font-size: 16px;
+width: 25%;
+}
+.data_cliente,.data_presupuesto{
+margin: 0px 5px 0px 5px;
+position: relative;
+float: left;
+font-family: arial;
+font-size: 16px;
+width: 50%;
+}
+#cont_datos_cliente{
+position: relative;
+float: left;
+height: 100px;
+width: 50%;
+background: orange;
+}
+#cont_datos_presupuesto{
+position: relative;
+float: left;
+height: 100px;
+width: 50%;
+background: yellow;
+}
+#cont_cabecera{
+text-align: center;
+position: relative;
+float: left;
+height: 150px;
+width: 100%;
+background: red;
+}
+#cont_titulos{
+position: relative;
+float: left;
+height: 150px;
+width: 70%;
+background: blue;
+}
+#cont_info{
+position: relative;
+float: left;
+height: 150px;
+width: 30%;
+background: green;
+}
+.ico_datos_cliente{
+opacity: 0.5;
+width: 25px;
+height: 25px;
+cursor: pointer;
+}
+.cont_reglon_item_presup{
+width: 98%;
+position: relative;
+float: left;
+margin-left: 1%;
+background: orange; 
+}
+.ico_datos_cliente:hover{
+opacity: 1;
+}
+#cont_boton{
+position: relative;
+width: 300px;
+height: 25px;
+background: orange;
+}
+#quickfind{
+width:450px;
+}
+#menu_presupuesto{
+position:relative;
+float: left;
+width: 100%;
+height:30px;
+background: red;
+}
+#total_presupuesto{
+position: absolute;
+font-family: arial;
+font-size: 25px;
+bottom:-1px;
+right:-1px;
+}
+#reglon_factura{
+position: absolute;
+margin-top: 50px;
+width: 90%;
+margin-left: 5%;
+min-height: 100px;
+border: 1px solid black;
+}
+.ico_borra{
+position: relative;
+float: left;
+width: 20px;
+margin: 5px ;
+height: 20px;
+border: 1px solid black;
+background: lightgrey;
+}
+.item_reglon,.titulo_item_reglon{
+position: relative;
+float: left;
+width: 50%;
+margin: 5px ;
+height: auto;
+border: 1px solid black;
+background: lightgrey;
+}
+.titulo_cant_item_reglon,.cant_item_reglon{
+position: relative;
+float: left;
+width: 10%;
+margin: 5px ;
+height: auto;
+border: 1px solid black;
+background: lightgrey;
+}
+.px_item_reglon, .titulo_px_item_reglon{
+position: relative;
+float: left;
+width: 10%;
+margin: 5px ;
+height: auto;
+border: 1px solid black;
+background: lightgrey;
+}
+.px_reglon, .titulo_px_reglon{
+position: relative;
+float: left;
+width: 15%;
+margin: 5px ;
+height: auto;
+border: 1px solid black;
+background: lightgrey;
+}
+.container{
+width:80%;
+}
