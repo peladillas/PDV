@@ -3,6 +3,7 @@
 	<div class="panel panel-primary">
 		<div class="panel-heading"><?php echo lang('empresa') ?></div>
 		<div class="panel-body">
+			<form class="form-inline">
 			<div id="form-heading">
 				<div class="form-group">
     				<label for="nombre"><?php echo lang('nombre')?></label>
@@ -37,7 +38,7 @@
     			</div>
     			<button type="button" id="agregar" class="btn btn-default">Agregar</button>
 			</div>
-			
+			</form>
 			<div id="note-detail" class="hide">
 			</div>
 		</div>
@@ -115,7 +116,33 @@ $(function() {
 			alert("Seleccione articulo");
 			$("#articulo").val("").focus();
 		}else{
-			$("#note-detail").toggleClass('hide');
+			$("#note-detail").removeClass('hide');
+			var este = $("#id_articulo").val();
+			var largo	= $('#note-detail').height();
+			largo	= largo + 30;
+			var texto = $("#articulo").val();
+			var cantidad = $("#cantidad").val();
+			var precio = $("#precio").val();
+			var total = $("#total").val();
+			
+			
+			$('#note-detail').height(largo);
+			$('#note-detail').append('<div id="cont_borra'+este+'" class="cont_reglon_item_presup row" style="padding-left: 15px"></div>');
+			$('#cont_borra'+este).append('<span class="item_reglon col-md-5" id='+este+' >'+texto+'</span>');
+			$('#cont_borra'+este).append('<input  disabled class="cant_item_reglon col-md-1" id=detail_cantidad_'+este+' value='+cantidad+'>');
+			$('#cont_borra'+este).append('<input disabled  class="px_item_reglon col-md-1" id="detail_precio_'+este+'" value='+precio+'>');
+			
+			$('#cont_borra'+este).append('<input disabled  class="px_item_reglon_iva col-md-1" id="detail_total_'+este+'" value='+total+'>');
+			$('#cont_borra'+este).append('<div class="col-md-1" id=cont_botones'+este+'></div>');
+			$('#cont_botones'+este).append('<button title="Borrar linea" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_reglon('+este+')" id="ico_borra'+este+'"></button>');
+			$('#ico_borra'+este).append('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>');
+		
+		
+			$("#id_articulo").val("");
+			$("#articulo").val("");
+			$("#cantidad").val("");
+			$("#precio").val("");
+			$("#total").val("");
 			$("#articulo").focus();
 		}
 	});
