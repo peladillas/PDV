@@ -248,7 +248,7 @@ function calcula_total(iva) {
 function controlIds(id_articulo) {
 	var bandera_control = true;
 	
-	if(articulosCargados != []){
+	if(	 != []){
 		articulosCargados.each(function (id_articulo_cargado) {
 			if(id_articulo == id_articulo_cargado){
 				bandera_control = false;
