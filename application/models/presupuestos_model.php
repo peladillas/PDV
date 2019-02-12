@@ -1,7 +1,10 @@
 <?php 
 class Presupuestos_model extends MY_Model {
-	
-	public function __construct(){
+
+    /**
+     * Presupuestos_model constructor.
+     */
+    public function __construct(){
 		
 		parent::construct(
 				'presupuesto',
@@ -19,6 +22,7 @@ class Presupuestos_model extends MY_Model {
             $final          = date('Y-m', strtotime($final));
         
             $consulta = "
+            
             SELECT 
                 monto,
                 fecha, 
@@ -31,7 +35,10 @@ class Presupuestos_model extends MY_Model {
                 DATE_FORMAT(fecha, '%Y-%m') >= '$inicio' AND
                 DATE_FORMAT(fecha, '%Y-%m') < '$final' AND
                 id_vendedor = '$id_vendedor'";
+
+
 		}else  if($id_cliente === NULL) {
+
 			$inicio			= date('Y-m', strtotime($inicio));
 			$final			= date('Y-m', strtotime($final));
 		
