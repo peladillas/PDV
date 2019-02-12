@@ -15,25 +15,29 @@
     				<input type="text" class="form-control" name="fecha" id="fecha" value="<?php echo date('d/m/Y')?>" disabled>
   				</div>
   				<button type="button" id="seleccionar" class="btn btn-default">Selecionar</button>
+  				<div class="form-group">
+    				<label for="total_nota_credito"><?php echo lang('total').' '.lang('nota_credito')?></label>
+    				<input type="text" class="form-control" name="total_nota_credito" id="total_nota_credito" value="0" disabled>
+  				</div>
 			</div>
 			
 			<hr>
 			<div id="form-detail" class="hide">
 				<div class="form-group">
-    				<label for="nombre"><?php echo lang('articulo')?></label>
+    				<label for="id_articulo"><?php echo lang('articulo')?></label>
     				<input class="form-control" type='text' placeholder="Cod o Detalle" name='articulo' id='articulo' autocomplete="off"/>
     				<input type='hidden'  name='id_articulo' id='id_articulo'/>
     			</div>
     			<div class="form-group">
-    				<label for="nombre"><?php echo lang('cantidad')?></label>
+    				<label for="cantidad"><?php echo lang('cantidad')?></label>
     				<input class="form-control" type='number' placeholder="Cantidad" name='cantidad' id='cantidad'/>
     			</div>
     			<div class="form-group">
-    				<label for="nombre"><?php echo lang('precio')?></label>
+    				<label for="precio"><?php echo lang('precio')?></label>
     				<input class="form-control" type='text' placeholder="Precio" name='precio' id='precio'/>
     			</div>
     			<div class="form-group">
-    				<label for="nombre"><?php echo lang('total')?></label>
+    				<label for="total"><?php echo lang('total')?></label>
     				<input class="form-control" type='text' disabled name='total' id='total'/>
     			</div>
     			<button type="button" id="agregar" class="btn btn-default">Agregar</button>
@@ -48,9 +52,18 @@
 
 <script>
 	
-
+var articulosCargados = [];
 $(function() {
 	$("#nombre").focus();
+	
+/*---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------- 
+
+		Busqueda de cliente
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/	
+
 	$("#nombre").autocomplete({
 	    source: "<?php echo base_url()?>index.php/clientes/getClientes",
 	    minLength: 2,
@@ -64,6 +77,14 @@ $(function() {
 		}
 	});	
 	
+/*---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------- 
+
+		Cargar cliente
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/	
+	
 	$("#seleccionar").click(function(){
 		if($("#id_cliente").val() == ''){
 			alert("Seleccione cliente");
@@ -74,6 +95,14 @@ $(function() {
 		}
 		
 	});
+	
+/*---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------- 
+
+		Busqueda de articulo y cambio de foco cantidad
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/	
 	
 	$("#articulo").autocomplete({
 	    source: "<?php echo base_url()?>index.php/articulos/getArticulos",
@@ -99,6 +128,14 @@ $(function() {
 		}
 	});
 	
+/*---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------- 
+
+		Precio, calculo de total
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/	
+	
 	$("#precio").focus(function( event ) {
 		$('#total').val($('#cantidad').val() * $('#precio').val());	
 	});
@@ -111,13 +148,25 @@ $(function() {
 		}
 	});
 	
+/*---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------- 
+
+		Agregar renglon de la nota de credito
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/	
+	
 	$("#agregar").click(function(){
 		if($("#id_articulo").val() == ''){
 			alert("Seleccione articulo");
 			$("#articulo").val("").focus();
-		}else{
+		} else if($("#cantidad").val() == ''){
+			alert("Seleccione cantidad");
+			$("#cantidad").val("").focus();
+		} else{
 			$("#note-detail").removeClass('hide');
-			var este = $("#id_articulo").val();
+			var id_articulo = $("#id_articulo").val();
+			controlCargado = controlIds(id_articulo);
 			var largo	= $('#note-detail').height();
 			largo	= largo + 30;
 			var texto = $("#articulo").val();
@@ -127,26 +176,95 @@ $(function() {
 			
 			
 			$('#note-detail').height(largo);
-			$('#note-detail').append('<div id="cont_borra'+este+'" class="cont_reglon_item_presup row" style="padding-left: 15px"></div>');
-			$('#cont_borra'+este).append('<span class="item_reglon col-md-5" id='+este+' >'+texto+'</span>');
-			$('#cont_borra'+este).append('<input  disabled class="cant_item_reglon col-md-1" id=detail_cantidad_'+este+' value='+cantidad+'>');
-			$('#cont_borra'+este).append('<input disabled  class="px_item_reglon col-md-1" id="detail_precio_'+este+'" value='+precio+'>');
+			$('#note-detail').append('<div id="cont_borra'+id_articulo+'" class="cont_reglon_item_presup row" style="padding-left: 15px"></div>');
+			$('#cont_borra'+id_articulo).append('<span class="item_reglon col-md-5" id='+id_articulo+' >'+texto+'</span>');
+			$('#cont_borra'+id_articulo).append('<input  disabled class="cant_item_reglon col-md-1" id=detail_cantidad_'+id_articulo+' value='+cantidad+'>');
+			$('#cont_borra'+id_articulo).append('<input disabled  class="px_item_reglon col-md-1" id="detail_precio_'+id_articulo+'" value='+precio+'>');
 			
-			$('#cont_borra'+este).append('<input disabled  class="px_item_reglon_iva col-md-1" id="detail_total_'+este+'" value='+total+'>');
-			$('#cont_borra'+este).append('<div class="col-md-1" id=cont_botones'+este+'></div>');
-			$('#cont_botones'+este).append('<button title="Borrar linea" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_reglon('+este+')" id="ico_borra'+este+'"></button>');
-			$('#ico_borra'+este).append('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>');
-		
-		
+			$('#cont_borra'+id_articulo).append('<input disabled  class="detail_total col-md-1" id="detail_total_'+id_articulo+'" value='+total+'>');
+			$('#cont_borra'+id_articulo).append('<div class="col-md-1" id=cont_botones'+id_articulo+'>');
+			$('#cont_botones'+id_articulo).append('<button title="Borrar linea" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_reglon('+id_articulo+')" id="ico_borra'+id_articulo+'"></button>');
+			$('#ico_borra'+id_articulo).append('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>');
+			$('#cont_borra'+id_articulo).append('</div></div>');
+	
 			$("#id_articulo").val("");
 			$("#articulo").val("");
 			$("#cantidad").val("");
 			$("#precio").val("");
 			$("#total").val("");
 			$("#articulo").focus();
+			calcula_total();
 		}
 	});
 });
+
+/*---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------- 
+
+		Elimina renglon en el presupuesto
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/	
+
+function borra_reglon(a){	
+	$('#cont_borra'+a).empty();
+	$('#cont_borra'+a).remove();
+	var nuevo_largo=$('#reglon_factura').height();
+	nuevo_largo=nuevo_largo-30;
+	$('#reglon_factura').height(nuevo_largo);
+	calcula_total();
+}
+
+
+/*---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------- 
+
+		Calcula el total del presupuesto
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/	
+
+
+function calcula_total(iva) {
+	var total	= 0;
+	var temp	= 0;
+	
+	$(".detail_total").each(function (index) {
+		temp = $(this).val();
+		total=parseFloat(total)+parseFloat(temp);
+	});
+	
+	$('#total_nota_credito').val(total.toFixed(2));
+}
+
+/*---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------- 
+
+		Controla los articulos cargados
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/	
+
+function controlIds(id_articulo) {
+	var bandera_control = true;
+	
+	if(articulosCargados != []){
+		articulosCargados.each(function (id_articulo_cargado) {
+			if(id_articulo == id_articulo_cargado){
+				bandera_control = false;
+			}
+		});
+		
+		if(bandera_control) {
+			articulosCargados.push(id_articulo);
+		}
+	} else {
+		articulosCargados.push(id_articulo);			
+	}
+	
+	return bandera_control;
+	
+}
 </script>
 </body>
 </html>
