@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Presupuestos extends CI_Controller {
+class Presupuestos extends My_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -33,16 +33,9 @@ class Presupuestos extends CI_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-	public function salida()
-	{
-		if($this->session->userdata('logged_in')){
-			$this->load->view('head.php');
-			$this->load->view('menu.php');
-			$this->load->view('presupuestos/presupuestos_salida');
-			$this->load->view('footer.php');
-		}else{
-			redirect('/','refresh');
-		}
+	public function salida() {
+		$db = array(); 
+		$this->armarVista($db, 'presupuestos/presupuestos_salida.php');
 	}
 
 
