@@ -200,18 +200,19 @@ class Clientes extends MY_Controller {
 		
 		$row_set = array();
 		foreach ($db['clientes'] as $cliente) {
+			
+			$value = ($cliente->apellido != '' ? $cliente->apellido.' ' : '');
+			$value .= ($cliente->nombre != '' ? $cliente->nombre.' ' : '');
+			$value .= ($cliente->alias != '' ? ','.$cliente->alias : '');
 
             $row['apellido'] = stripslashes(utf8_encode($cliente->apellido));
             $row['nombre'] = stripslashes(utf8_encode($cliente->nombre));
-            $row['direccion']= stripslashes(utf8_encode($cliente->direccion));
-            $row['num_cuil']= stripslashes(utf8_encode($cliente->cuil));
-            $row['apellido'].=" - TEL: ";
-            $row['apellido'].=stripslashes(utf8_encode($cliente->celular));
-            $row['value']	= stripslashes(utf8_encode($row['nombre']));
-            $row['id_cliente'] = (int)$cliente->id_cliente;
+            $row['direccion'] = stripslashes(utf8_encode($cliente->direccion));
+            $row['cuil'] = stripslashes(utf8_encode($cliente->cuil));
+            $row['celular'] = stripslashes(utf8_encode($cliente->celular));
+			$row['value']	= stripslashes(utf8_encode($value));
+            $row['id'] = (int)$cliente->id_cliente;
             $row_set[]		= $row;
-
-
 		}
 
 		echo json_encode($row_set);

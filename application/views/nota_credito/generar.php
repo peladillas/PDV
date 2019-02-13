@@ -52,7 +52,6 @@
 
 <script>
 	
-var articulosCargados = [];
 $(function() {
 	$("#nombre").focus();
 	
@@ -166,9 +165,14 @@ $(function() {
 		} else{
 			$("#note-detail").removeClass('hide');
 			var id_articulo = $("#id_articulo").val();
-			controlCargado = controlIds(id_articulo);
-			var largo	= $('#note-detail').height();
-			largo	= largo + 30;
+			if($('#cont_borra'+id_articulo).length){
+				borra_reglon(id_articulo);
+			} else {
+				var largo	= $('#note-detail').height();
+				largo	= largo + 30;
+			}
+			
+			
 			var texto = $("#articulo").val();
 			var cantidad = $("#cantidad").val();
 			var precio = $("#precio").val();
@@ -209,12 +213,11 @@ $(function() {
 function borra_reglon(a){	
 	$('#cont_borra'+a).empty();
 	$('#cont_borra'+a).remove();
-	var nuevo_largo=$('#reglon_factura').height();
+	var nuevo_largo=$('#note-detail').height();
 	nuevo_largo=nuevo_largo-30;
-	$('#reglon_factura').height(nuevo_largo);
+	$('#note-detail').height(nuevo_largo);
 	calcula_total();
 }
-
 
 /*---------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------- 
@@ -223,7 +226,6 @@ function borra_reglon(a){
 
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/	
-
 
 function calcula_total(iva) {
 	var total	= 0;
@@ -237,34 +239,6 @@ function calcula_total(iva) {
 	$('#total_nota_credito').val(total.toFixed(2));
 }
 
-/*---------------------------------------------------------------------------------
------------------------------------------------------------------------------------ 
-
-		Controla los articulos cargados
-
------------------------------------------------------------------------------------
----------------------------------------------------------------------------------*/	
-
-function controlIds(id_articulo) {
-	var bandera_control = true;
-	
-	if(	 != []){
-		articulosCargados.each(function (id_articulo_cargado) {
-			if(id_articulo == id_articulo_cargado){
-				bandera_control = false;
-			}
-		});
-		
-		if(bandera_control) {
-			articulosCargados.push(id_articulo);
-		}
-	} else {
-		articulosCargados.push(id_articulo);			
-	}
-	
-	return bandera_control;
-	
-}
 </script>
 </body>
 </html>
