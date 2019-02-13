@@ -9,7 +9,6 @@ class Nota_credito extends MY_Controller {
 		$this->load->database();
 		$this->load->helper('url');
 		$this->load->model('nota_credito_model');
-		$this->load->model('clientes_model');
 	}
 	
 	
@@ -23,8 +22,26 @@ class Nota_credito extends MY_Controller {
 
 
 	public function index(){
-		$db['clientes'] = $this->clientes_model->getRegistros();
-		
+	    $db = [];
 		$this->armarVista($db, 'nota_credito/generar.php');
 	}
+
+    public function addRegistro(){
+	    $nota_credito = [
+            'id_cliente' => $this->input->post('id_cliente'),
+            'fecha' => $this->input->post('fecha'),
+            'monto' => $this->input->post('total_nota_credito'),
+        ];
+
+        $id_nota_credito = $this->nota_credito_model->insert($nota_credito);
+
+        $nota_credito_renglon = [
+            'id_nota_credito' => $id_nota_credito,
+            'id_articulo' => $this->input->post('id_cliente'),
+            'cantidad' => $this->input->post('id_cliente'),
+            'monto total' => $this->input->post('id_cliente'),
+        ];
+
+        $this->nota_credito_renglon_model->insert($nota_credito_renglon);
+    }
 }

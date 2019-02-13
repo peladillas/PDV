@@ -192,8 +192,7 @@ class Clientes extends MY_Controller {
  **********************************************************************************/
 
 	
-	public function getClientes()
-	{
+	public function getClientes() {
 		$filtro = $this->input->get('term', TRUE);
 		
 		$db['clientes'] = $this->clientes_model->getClientes($filtro);
@@ -210,9 +209,9 @@ class Clientes extends MY_Controller {
             $row['direccion'] = stripslashes(utf8_encode($cliente->direccion));
             $row['cuil'] = stripslashes(utf8_encode($cliente->cuil));
             $row['celular'] = stripslashes(utf8_encode($cliente->celular));
-			$row['value']	= stripslashes(utf8_encode($value));
+			$row['value'] = stripslashes(utf8_encode($value));
             $row['id'] = (int)$cliente->id_cliente;
-            $row_set[]		= $row;
+            $row_set[] = $row;
 		}
 
 		echo json_encode($row_set);
