@@ -2,12 +2,10 @@
 class Remitos_model extends MY_Model {
 	
 	public function __construct(){
-		
 		parent::construct(
-				'remito',
-				'id_remito',
-				'monto', //ver si esto esta bien
-				'id_remito'
+        'remito',
+        'id_remito',
+        'id_remito'
 		);
 	}
 	

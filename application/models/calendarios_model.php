@@ -2,12 +2,10 @@
 class Calendarios_model extends MY_Model {
 	
 	public function __construct(){
-		
 		parent::construct(
-				'calendario',
-				'id_calendario',
-				'id_calendario', //ver si esto esta bien
-				'id_calendario'
+		'calendario',
+		'id_calendario',
+		'id_calendario'
 		);
 	}
 	

@@ -3,17 +3,13 @@ class MY_Model extends CI_Model {
 	
 	protected $_table		= NULL;
 	protected $_id			= NULL;
-	protected $_name		= NULL;
 	protected $_order		= NULL;
-	protected $_data_table	= NULL;
-    protected $_limit		= 1000;
+	protected $_limit		= 1000;
 	
-	public function construct($table, $id, $name, $order, $data_table = NULL) {
+	public function construct($table, $id, $order) {
 		$this->_table 			= $table;
 		$this->_id				= $id;
-		$this->_name			= $name;
 		$this->_order			= $order;
-		$this->_data_table		= $data_table;
 	}
 
 /**********************************************************************************
@@ -24,7 +20,6 @@ class MY_Model extends CI_Model {
  * ********************************************************************************
  **********************************************************************************/
 
-
     function select($filtros = NULL) {
         $sql = "
 		SELECT 	
@@ -34,13 +29,13 @@ class MY_Model extends CI_Model {
 		WHERE ";
 
 
-    	if(!$this->db->field_exists('id_estado', $this->_table)){
+    	if (!$this->db->field_exists('id_estado', $this->_table)){
 			$sql .= $this->_table.".id_estado = 1";
 		}
 
-		if($filtros == NULL){
+		if ($filtros == NULL){
             $sql = " 1";
-		} else if(is_array($filtros)) {
+		} else if (is_array($filtros)) {
             foreach ($filtros as $key => $value) {
                 $sql .= $this->_table.".".$key."='".$value."' AND";
             }
@@ -74,7 +69,6 @@ class MY_Model extends CI_Model {
 					
 		return $id;
 	}
-	
 	 
  /**********************************************************************************
  **********************************************************************************
@@ -83,8 +77,7 @@ class MY_Model extends CI_Model {
  * 
  * ********************************************************************************
  **********************************************************************************/	
-	
-	
+
 	public function update($registro, $id){
 		$this->db->update(
 			$this->_table, 
@@ -93,19 +86,18 @@ class MY_Model extends CI_Model {
 		);
 	}
 
-
-/*---------------------------------------------------------------------------------
------------------------------------------------------------------------------------
-
-        Función para armar la query
-
------------------------------------------------------------------------------------
----------------------------------------------------------------------------------*/
+/**********************************************************************************
+ **********************************************************************************
+ *
+ * 				Función para armar la query
+ *
+ * ********************************************************************************
+ **********************************************************************************/
 
     function getQuery($sql, $type = NULL) {
         $query = $this->db->query($sql);
 
-        if($query->num_rows() > 0) {
+        if ($query->num_rows() > 0) {
             if($type === NULL || $type == 'objet') {
                 foreach ($query->result() as $fila) {
                     $data[] = $fila;

@@ -2,12 +2,10 @@
 class Anulaciones_model extends MY_Model {
 	
 	public function __construct(){
-		
 		parent::construct(
-				'anulacion',
-				'id_anulacion',
-				'id_anulacion', //ver si esto esta bien
-				'id_anulacion'
+		'anulacion',
+		'id_anulacion',
+		'id_anulacion'
 		);
 	}
 	

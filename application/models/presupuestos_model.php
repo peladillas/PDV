@@ -5,12 +5,10 @@ class Presupuestos_model extends MY_Model {
      * Presupuestos_model constructor.
      */
     public function __construct(){
-		
 		parent::construct(
-				'presupuesto',
-				'id_presupuesto',
-				'monto', //ver si esto esta bien
-				'id_presupuesto'
+		'presupuesto',
+		'id_presupuesto',
+		'monto'
 		);
 
 	}

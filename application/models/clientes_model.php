@@ -3,10 +3,9 @@ class Clientes_model extends My_Model {
 		
 	public function __construct(){
 		parent::construct(
-				'cliente',
-				'id_cliente',
-				'nombre',
-				'nombre'
+		'cliente',
+		'id_cliente',
+		'nombre'
 		);
 	}
 

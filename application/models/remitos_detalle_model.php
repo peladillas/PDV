@@ -2,14 +2,11 @@
 class Remitos_detalle_model extends MY_Model {
 	
 	public function __construct(){
-		
 		parent::construct(
-				'remito_detalle',
-				'id_remito_detalle',
-				'monto', //ver si esto esta bien
-				'id_remito_detalle'
+		'remito_detalle',
+		'id_remito_detalle',
+		'id_remito_detalle'
 		);
-
 	}
 	
 	function getRemitos($id , $dev = NULL) {

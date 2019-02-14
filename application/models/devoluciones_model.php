@@ -2,12 +2,10 @@
 class Devoluciones_model extends MY_Model {
 	
 	public function __construct(){
-		
 		parent::construct(
-				'devolucion',
-				'id_devolucion',
-				'id_devolucion', //ver si esto esta bien
-				'id_devolucion'
+		'devolucion',
+		'id_devolucion',
+		'id_devolucion'
 		);
 	}
 	
