@@ -2,7 +2,7 @@
 class Proveedores_model extends CI_Model {
 	
 	function getProveedor_precio($id){
-		$query = $this->db->query("SELECT 	
+        $sql = $this->db->query("SELECT 	
 				articulo.id_articulo,
 				articulo.cod_proveedor,
 				articulo.descripcion as descripcion,
@@ -20,34 +20,18 @@ class Proveedores_model extends CI_Model {
 		ON(articulo.id_proveedor=proveedor.id_proveedor)
 		WHERE
 		proveedor.id_proveedor = '$id'");
-		
-		if($query->num_rows() > 0){
-			foreach ($query->result() as $fila){
-				$data[] = $fila;
-			}
-			return $data;
-		}else{
-			return FALSE;
-		}
+
+        return $this->getQuery($sql);
 	}
 	
 	function getProveedores($id = NULL){
-		if($id != NULL)
-		{
-			$query = $this->db->query("SELECT * FROM proveedor WHERE proveedor.id_proveedor = $id");	
+		if($id != NULL) {
+            $sql = $this->db->query("SELECT * FROM proveedor WHERE proveedor.id_proveedor = $id");
+		} else {
+            $sql = $this->db->query("SELECT * FROM proveedor WHERE proveedor.id_estado=1 ORDER BY proveedor.descripcion");
 		}
-		else
-		{
-			$query = $this->db->query("SELECT * FROM proveedor WHERE proveedor.id_estado=1 ORDER BY proveedor.descripcion");
-		}
-		if($query->num_rows() > 0){
-			foreach ($query->result() as $row) {
-				$data[] = $row;
-			}
-			return $data;
-		}else{
-			return FALSE;
-		}
+
+        return $this->getQuery($sql);
 	}
 	
 	function getTotalArticulos(){
@@ -64,21 +48,9 @@ class Proveedores_model extends CI_Model {
 		ORDER BY
 			suma DESC
 		LIMIT 
-			0, 20";		
-			
-		$query = $this->db->query($sql);	
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			return $data;
-		}
-		else
-		{
-			return FALSE;
-		}
+			0, 20";
+
+        return $this->getQuery($sql);
 	}
 
 } 

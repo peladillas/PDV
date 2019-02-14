@@ -26,29 +26,18 @@ class MY_Model extends CI_Model {
  **********************************************************************************/
 	
 	
-	function getRegistros()
-	{
-		$sql = "SELECT 	*
-				FROM $this->_table 
-				WHERE
-				$this->_table.id_estado = 1
-				ORDER BY $this->_table.$this->_order";
-		
-		$query = $this->db->query($sql);
-		
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			
-			return $data;
-		}
-		else
-		{
-			return FALSE;
-		}
+	function getRegistros() {
+		$sql = "
+		SELECT 	
+			*
+		FROM 
+			$this->_table 
+		WHERE
+			$this->_table.id_estado = 1
+		ORDER BY 
+			$this->_table.$this->_order";
+
+        return $this->getQuery($sql);
 	}
 	
 	 
@@ -61,29 +50,16 @@ class MY_Model extends CI_Model {
  **********************************************************************************/
 	
 	
-	function getRegistro($id)
-	{
-		$sql = "SELECT 	*
-				FROM $this->_table 
-				WHERE
-				$this->_table.$this->_id = '$id'";
-			
-		$query = $this->db->query($sql);
-		
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			
-			return $data;
-		}
-		else
-		{
-			return FALSE;
-		}
-	
+	function getRegistro($id) {
+		$sql = "
+		SELECT 	
+			*
+		FROM 
+			$this->_table 
+		WHERE
+			$this->_table.$this->_id = '$id'";
+
+        return $this->getQuery($sql);
 	}
 	
 	 
@@ -96,45 +72,25 @@ class MY_Model extends CI_Model {
  **********************************************************************************/
 	
 	
-	function getBusqueda($datos, $condicion = NULL)
-	{
-		if($condicion == NULL || $condicion != 'AND')
-		{
+	function getBusqueda($datos, $condicion = NULL) {
+		if($condicion == NULL || $condicion != 'AND') {
 			$condicion = 'OR';
 		}
 		
-		if(is_array($datos))
-		{
+		if(is_array($datos)) {
 			$query = "SELECT * FROM $this->_table WHERE ";
 			
-			foreach ($datos as $key => $value) 
-			{
+			foreach ($datos as $key => $value) {
 				$query .= $this->_table.".".$key."='".$value."' ";
 				$query.= $condicion." ";
 			}
-		}
-		else
-		{
+		} else {
 			$query = "SELECT * FROM $this->_table WHERE 1";
 		}
 
 		$query = substr($query, 0, strlen($query)-(strlen($condicion)+1));
-		
-		$query = $this->db->query($query);
-		
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			return $data;
-		}
-		else
-		{
-			return FALSE;
-		}
-	
+
+        return $this->getQuery($query);
 	}
 	
 	 
@@ -146,10 +102,8 @@ class MY_Model extends CI_Model {
  * ********************************************************************************
  **********************************************************************************/	
 	
-	public function insert($datos)
-	{
-		if(is_array($datos))
-		{
+	public function insert($datos) {
+		if(is_array($datos)) {
 			$this->db->insert($this->_table , $datos);
 			$id	=	$this->db->insert_id();	
 		}
@@ -174,8 +128,33 @@ class MY_Model extends CI_Model {
 			array($this->_id => $id)
 		);
 	}
-	
-	
 
+
+    /*---------------------------------------------------------------------------------
+    -----------------------------------------------------------------------------------
+
+            Función para armar la query
+
+    -----------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------------*/
+
+    function getQuery($sql, $type = NULL) {
+        $query = $this->db->query($sql);
+
+        if($query->num_rows() > 0) {
+            if($type === NULL || $type == 'objet') {
+                foreach ($query->result() as $fila) {
+                    $data[] = $fila;
+                }
+            } else if($type == 'array') {
+                foreach ($query->result_array() as $row) {
+                    $data[] = $row;
+                }
+            }
+            return $data;
+        } else {
+            return FALSE;
+        }
+    }
 } 
 ?>

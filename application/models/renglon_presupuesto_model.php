@@ -11,8 +11,7 @@ class Renglon_presupuesto_model extends MY_Model {
 		);
 	}
 	
-	function Ultimos($cantidad)
-	{
+	function Ultimos($cantidad) {
 		$sql = "SELECT 
 					* 
 				FROM 
@@ -22,25 +21,10 @@ class Renglon_presupuesto_model extends MY_Model {
 				ORDER BY
 					id_renglon LIMIT 0 , $cantidad";
 
-		$query = $this->db->query($sql);
-		
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			
-			return $data;
-		}
-		else
-		{
-			return FALSE;
-		}
+        return $this->getQuery($sql);
 	}
 	
-	function getDetalle($id)
-	{
+	function getDetalle($id) {
 		$sql = "SELECT 
 					* 
 				FROM 
@@ -50,34 +34,17 @@ class Renglon_presupuesto_model extends MY_Model {
 				WHERE
 					reglon_presupuesto.id_presupuesto = '$id'";
 
-		$query = $this->db->query($sql);
-		
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			
-			return $data;
-		}
-		else
-		{
-			return FALSE;
-		}
+        return $this->getQuery($sql);
 	}
 	
 	
-	function getDetalle_where($datos, $condicion = NULL)
-	{
-		if($condicion == NULL || $condicion != 'AND')
-		{
+	function getDetalle_where($datos, $condicion = NULL) {
+		if($condicion == NULL || $condicion != 'AND') {
 			$condicion = 'OR';
 		}
 		
-		if(is_array($datos))
-		{
-			$query = "SELECT 
+		if(is_array($datos)) {
+            $sql = "SELECT 
 							* 
 						FROM 
 							`reglon_presupuesto`
@@ -86,26 +53,13 @@ class Renglon_presupuesto_model extends MY_Model {
 						WHERE ";
 			foreach ($datos as $key => $value) 
 			{
-				$query .= $this->_table.".".$key."='".$value."' ";
-				$query.= $condicion." ";
+                $sql .= $this->_table.".".$key."='".$value."' ";
+                $sql .= $condicion." ";
 			}
 		}
 
-		$query = substr($query, 0, strlen($query)-(strlen($condicion)+1));
-		
-		$query = $this->db->query($query);
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			
-			return $data;
-		}
-		else
-		{
-			return FALSE;
-		}
+        $sql = substr($sql, 0, strlen($sql)-(strlen($condicion)+1));
+
+        return $this->getQuery($sql);
 	}
 } 

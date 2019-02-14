@@ -27,26 +27,15 @@ class Clientes_model extends My_Model {
 			id_estado = 1 
 		LIMIT 
 			20 ";
-				
-		$query = $this->db->query($sql);
-		
-		if ($query->num_rows() > 0) {
-			foreach ($query->result() as $row) {
-				$data[] = $row;
-			}
-			return $data;
-		} else {
-			return FALSE;
-		}
+
+        return $this->getQuery($sql);
 	}
 	
 	
 				
 				
-	function getSumas($tipo)
-	{
-		if($tipo == 'tipos')
-		{
+	function getSumas($tipo) {
+		if($tipo == 'tipos') {
 			$sql = 
 			"SELECT 
 				count(*) as suma, 
@@ -57,9 +46,7 @@ class Clientes_model extends My_Model {
 				tipo_cliente ON(cliente.id_tipo = tipo_cliente.id_tipo)
 			GROUP BY 
 				tipo_cliente.id_tipo";
-		}
-		else
-		{
+		} else {
 				$sql = 
 			"SELECT 
 				count(*) as suma, 
@@ -70,22 +57,9 @@ class Clientes_model extends My_Model {
 				condicion_iva ON(cliente.id_condicion_iva = condicion_iva.id_condicion_iva)
 			GROUP BY 
 				condicion_iva.id_condicion_iva";
-		}	
-			
-		$query = $this->db->query($sql);
-		
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			return $data;
 		}
-		else
-		{
-			return FALSE;
-		}
+
+        return $this->getQuery($sql);
 	}
 } 
 ?>

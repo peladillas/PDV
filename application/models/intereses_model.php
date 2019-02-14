@@ -12,30 +12,16 @@ class Intereses_model extends MY_Model {
 	}
 	
 	
-	function getInteres($id)
-	{
-		$sql = "SELECT 
-					* 
-				FROM 
-					`interes`
-				WHERE
-					interes.id_presupuesto = '$id'";
+	function getInteres($id) {
+		$sql = "
+		SELECT 
+			* 
+		FROM 
+			`interes`
+		WHERE
+			interes.id_presupuesto = '$id'";
 
-		$query = $this->db->query($sql);
-		
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			
-			return $data;
-		}
-		else
-		{
-			return FALSE;
-		}
+        return $this->getQuery($sql);
 	}
 
 }
