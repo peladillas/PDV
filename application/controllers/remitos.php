@@ -88,7 +88,7 @@ class Remitos extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in')){
 			$db['texto']		= getTexto();
-			$db['clientes']		= $this->clientes_model->getRegistros();
+			$db['clientes']		= $this->clientes_model->select();
 			
 			if($this->input->post('buscar')==1)
 			{
@@ -112,7 +112,7 @@ class Remitos extends CI_Controller {
 						'estado'	=> 1	//Falta de pago
 					);
 					$db['id_cliente']		= $id_cliente;
-					$db['presupuestos']		= $this->presupuestos_model->getBusqueda($datos, 'AND');
+					$db['presupuestos']		= $this->presupuestos_model->select($datos);
 					$db['devoluciones']		= $this->devoluciones_model->getCliente($id_cliente);
 				}
 			}
@@ -151,7 +151,7 @@ class Remitos extends CI_Controller {
 				'estado'		=> 1
 			);
 			
-			$db['presupuestos']	= $this->presupuestos_model->getBusqueda($datos, 'AND');
+			$db['presupuestos']	= $this->presupuestos_model->select($datos);
 			$presupuestos 		= $db['presupuestos'];
 			
 			if($total_hidden == $total)//No se realizo el pago automatico
@@ -350,7 +350,7 @@ class Remitos extends CI_Controller {
 		$db['remitos']			= $this->remitos_model->getRemito($id);
 		$db['remitos_detalle']	= $this->remitos_detalle_model->getRemitos($id);
 		$db['remitos_dev']		= $this->remitos_detalle_model->getRemitos($id, 'dev');
-		$db['impresiones']		= $this->config_impresion_model->getRegistro(1);
+		$db['impresiones']		= $this->config_impresion_model->select(1);
 		
 		if($id_cliente === NULL)
 		{
@@ -368,7 +368,7 @@ class Remitos extends CI_Controller {
 			'estado'	=> 1
 		);
 			
-		$db['presupuestos']		= $this->presupuestos_model->getBusqueda($datos, 'AND');
+		$db['presupuestos']		= $this->presupuestos_model->select($datos);
 		
 		$this->load->view('head.php', $db);
 		$this->load->view('menu.php');
@@ -391,7 +391,7 @@ class Remitos extends CI_Controller {
 		$db['remitos']			= $this->remitos_model->getRemito($id);
 		$db['remitos_detalle']	= $this->remitos_detalle_model->getRemitos($id);
 		$db['remitos_dev']		= $this->remitos_detalle_model->getRemitos($id, 'dev');
-		$db['impresiones']		= $this->config_impresion_model->getRegistro(1);
+		$db['impresiones']		= $this->config_impresion_model->select(1);
 		
 		if($id_cliente === NULL)
 		{
@@ -409,7 +409,7 @@ class Remitos extends CI_Controller {
 			'estado'	=> 1
 		);
 			
-		$db['presupuestos']		= $this->presupuestos_model->getBusqueda($datos, 'AND');
+		$db['presupuestos']		= $this->presupuestos_model->select($datos);
 		
 		$this->load->view('head.php', $db);
 		$this->load->view('menu.php');
@@ -435,10 +435,10 @@ class Remitos extends CI_Controller {
 			);			
 			
 			$db['texto']				= getTexto();			
-			$db['presupuestos']			= $this->presupuestos_model->getRegistro($id);
+			$db['presupuestos']			= $this->presupuestos_model->select($id);
 			$db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
-			$db['impresiones']			= $this->config_impresion_model->getRegistro(2);
-			$db['devoluciones']			= $this->devoluciones_model->getBusqueda($condicion);
+			$db['impresiones']			= $this->config_impresion_model->select(2);
+			$db['devoluciones']			= $this->devoluciones_model->select($condicion);
 			
 			
 			$this->load->view('head.php',$db);

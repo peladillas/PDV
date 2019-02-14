@@ -86,7 +86,7 @@ class Devoluciones extends My_Controller {
 	{
 		if($this->session->userdata('logged_in')){
 			$db['texto']				= getTexto();			
-			$db['presupuestos']			= $this->presupuestos_model->getRegistro($id);
+			$db['presupuestos']			= $this->presupuestos_model->select($id);
 			
 			$condicion = array(
 				'id_presupuesto'	=> $id,

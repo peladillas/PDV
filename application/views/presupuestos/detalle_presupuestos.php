@@ -12,7 +12,7 @@
 </script>
 
 
-<div class="container"> 
+<div class="container">
 <div class="col-md-12">
 	<div class="panel panel-primary">
 		<div class="panel-heading"><?php echo $texto['empresa_titulo'] ?></div>
@@ -27,7 +27,7 @@
 				{
 					foreach ($impresiones as $impresion) 
 	  				{
-	  					$clientes	= $this->clientes_model->getRegistro($row->id_cliente);
+	  					$clientes	= $this->clientes_model->select($row->id_cliente);
                         if($clientes)
 						{
 							foreach ($clientes as $row_cliente)
@@ -37,7 +37,7 @@
 							}
 						}
                         
-                        $_vendedor   = $this->vendedores_model->getRegistro($row->id_vendedor);
+                        $_vendedor   = $this->vendedores_model->select($row->id_vendedor);
                         if($_vendedor)
                         {
                             foreach ($_vendedor as $row_vendedor)

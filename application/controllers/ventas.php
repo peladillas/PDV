@@ -210,7 +210,7 @@ class Ventas extends My_Controller {
 	{
 		if($this->session->userdata('logged_in'))
 		{
-			$_presupuesto = $this->presupuestos_model->getRegistro($id);
+			$_presupuesto = $this->presupuestos_model->select($id);
 			if($_presupuesto){
 				if($this->input->post('interes_tipo')){
 				
@@ -253,11 +253,11 @@ class Ventas extends My_Controller {
 				);			
 				
 				$db['texto']				= getTexto();			
-				$db['presupuestos']			= $this->presupuestos_model->getRegistro($id);
+				$db['presupuestos']			= $this->presupuestos_model->select($id);
 				$db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
 				$db['interes_presupuesto']	= $this->intereses_model->getInteres($id);
-				$db['impresiones']			= $this->config_impresion_model->getRegistro(2);
-				$db['devoluciones']			= $this->devoluciones_model->getBusqueda($condicion);
+				$db['impresiones']			= $this->config_impresion_model->select(2);
+				$db['devoluciones']			= $this->devoluciones_model->select($condicion);
 				$db['anulaciones']			= $this->anulaciones_model->getAnulaciones($id);
 				
 				if($llamada == NULL)

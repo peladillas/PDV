@@ -44,10 +44,10 @@ class Home extends CI_Controller {
 			$db['mes_actual']	= $mes;
 			$db['ano_actual']	= $ano;
 			$db['calendarios']	= $this->calendarios_model->getCalendarios();
-			$db['articulos']	= $this->articulos_model->getRegistros();
-			$db['clientes']		= $this->clientes_model->getRegistros();
-			$db['remitos']		= $this->remitos_model->getRegistros();
-			$db['presupuestos_cant']	= $this->presupuestos_model->getBusqueda('*');
+			$db['articulos']	= $this->articulos_model->select();
+			$db['clientes']		= $this->clientes_model->select();
+			$db['remitos']		= $this->remitos_model->select();
+			$db['presupuestos_cant']	= $this->presupuestos_model->select();
 			$db['presupuestos_detalle']	= $this->renglon_presupuesto_model->Ultimos(10);
 			$db['tipos']		= $this->clientes_model->getSumas('tipos');
 			$db['condiciones']	= $this->clientes_model->getSumas('condicion');

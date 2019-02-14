@@ -324,7 +324,7 @@ class Articulos extends My_Controller {
 				}
 			}else{
 				$db['class']		= "show";
-				$db['actualizaciones']=$this->actualizaciones_precion_model->getRegistros();
+				$db['actualizaciones']=$this->actualizaciones_precion_model->select();
 			}
 			
 			$this->load->view('head', $db);

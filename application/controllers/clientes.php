@@ -92,7 +92,7 @@ class Clientes extends MY_Controller {
 			'id_cliente'=> $id_cliente,
 		);
 		
-		$db['clientes']			= $this->clientes_model->getRegistro($id_cliente);
+		$db['clientes']			= $this->clientes_model->select($id_cliente);
 		$db['presupuestos']		= $this->presupuestos_model->getCliente($id_cliente);
 		$db['remitos']			= $this->remitos_model->getCliente($id_cliente);
 		$db['devoluciones']		= $this->devoluciones_model->getCliente($id_cliente, 'all');// Arreglar esta chamchada

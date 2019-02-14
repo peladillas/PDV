@@ -13,7 +13,7 @@
 					
 					foreach ($impresiones as $impresion) 
 	  				{
-	  					$clientes	= $this->clientes_model->getRegistro($row->id_cliente);
+	  					$clientes	= $this->clientes_model->select($row->id_cliente);
 		  				if($clientes)
 						{
 							foreach ($clientes as $row_cliente)

@@ -81,7 +81,7 @@ class Estadisticas extends CI_Controller
 			$db['devoluciones']	= $this->devoluciones_model->suma_devolucion($inicio, $final);
 			$db['anulaciones']	= $this->anulaciones_model->suma_anulacion($inicio, $final);
 			$db['articulos']	= $this->presupuestos_model->get_top($inicio, $final);
-            $db['vendedores']   = $this->vendedores_model->getRegistros();
+            $db['vendedores']   = $this->vendedores_model->select();
 			$this->load->view('head.php', $db);
 			$this->load->view('menu.php');
 			$this->load->view('estadisticas/anual.php');
@@ -136,7 +136,7 @@ class Estadisticas extends CI_Controller
 			$db['fin']			= $final;
             if($id_vendedor != NULL){
                 $db['id_vendedor']  = $id_vendedor;    
-                $db['vendedor']  = $this->vendedores_model->getRegistros();
+                $db['vendedor']  = $this->vendedores_model->select();
                 $db['presupuestos'] = $this->presupuestos_model->suma_presupuesto($inicio, $final, NULL, $id_vendedor);
             } else {
                 $db['id_vendedor']  = FALSE;  
