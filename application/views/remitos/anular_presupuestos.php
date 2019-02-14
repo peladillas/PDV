@@ -1,7 +1,7 @@
 <div class="container"> 
 <div class="col-md-12">
 	<div class="panel panel-primary">
-		<div class="panel-heading"><?php echo $texto['empresa_titulo'] ?></div>
+		<div class="panel-heading"><?php echo lang('empresa_titulo') ?></div>
 		<div class="panel-body">
 			<?php 
 			if($presupuestos)
@@ -39,11 +39,11 @@
 				
 				echo "<table class='table table-hover'>";
 				echo "<tr>";
-					echo "<th>".$texto['articulo']."</th>";
-					echo "<th>Descripción</th>";
-					echo "<th>".$texto['cantidad']."</th>";
-					echo "<th>".$texto['monto']."</th>";
-					echo "<th>".$texto['total']."</th>";
+					echo "<th>".lang('articulo')."</th>";
+					echo "<th>".lang('descripcion')."</th>";
+					echo "<th>".lang('cantidad')."</th>";
+					echo "<th>".lang('monto')."</th>";
+					echo "<th>".lang('total')."</th>";
 				echo "</tr>";
 				
 				if($detalle_presupuesto)
@@ -63,7 +63,7 @@
 				}
 				
 				echo "<tr class='success'>";	
-					echo "<td colspan='4'>".$texto['total']."</td>";
+					echo "<td colspan='4'>".lang('total')."</td>";
 					echo "<th>$ ".round($total,2)."</th>";
 				echo "</tr>";
 				
@@ -73,9 +73,8 @@
 				echo $pie;
 				}
 				
-				if($devoluciones)
-				{
-					$mensaje = $texto['si_devolucion']." <a class='btn btn-warning'>Ver devolución</a>";
+				if($devoluciones) {
+					$mensaje = lang('si_devolucion')." <a class='btn btn-warning'>Ver devolución</a>";
 					echo setMensaje($mensaje, 'warning');
 				}
 				
@@ -83,7 +82,7 @@
 			}
 			else
 			{
-				echo setMensaje($texto['no_registro'], 'success');
+				echo setMensaje(lang('no_registro'), 'success');
 			}
 			?>
 			<a href="<?php echo base_url().'index.php/presupuestos/anular/'.$id_presupuesto?>" class="btn btn-default"/>

@@ -4,7 +4,7 @@
 		<div class="panel-body">
 			<div class="form-group">
 				<form method="post" action="<?php echo base_url().'index.php/presupuestos/remito'?>">
-				<label for="clientes" class="col-sm-1 control-label"><?php echo $texto['alias']?></label>
+				<label for="clientes" class="col-sm-1 control-label"><?php echo lang('alias')?></label>
 				
 				<div class="col-sm-4">
 					<select name="cliente_alias" class="form-control chosen-select" style=" width: 100%">
@@ -24,7 +24,7 @@
 					</select>
 				</div>
 				
-				<label for="clientes" class="col-sm-1 control-label"><?php echo $texto['apellido']?></label>
+				<label for="clientes" class="col-sm-1 control-label"><?php echo lang('apellido')?></label>
 				<div class="col-sm-4">
 					<select name="cliente_apellido" class="form-control chosen-select" style=" width: 100%">
 						<option value="0"></option>
@@ -45,7 +45,7 @@
 				
 				<div class="col-sm-2">
 					<button type="submit" class="btn btn-default form-control" name="buscar" value="1">
-						<?php echo $texto['buscar']?>
+						<?php echo lang('buscar')?>
 					</button>
 				</div>
 				</form>
@@ -96,22 +96,20 @@
 				**********************************************************************************/
 				
 				echo "<div class='row' style='border-bottom: 1px solid #ccc;'>";	
-					echo "<label class='col-sm-2 control-label'>".$texto['numero']."</label>";
-					echo "<label class='col-sm-3 control-label'>".$texto['fecha']."</label>";
-					echo "<label class='col-sm-2 control-label'>".$texto['monto']."</label>";
-					echo "<label class='col-sm-2 control-label'>".$texto['a_cuenta']."</label>";
-					echo "<label class='col-sm-2 control-label'>".$texto['pago']."</label>";
-					echo "<label class='col-sm-1 control-label'>".$texto['seleccionar']."</label>";
+					echo "<label class='col-sm-2 control-label'>".lang('numero')."</label>";
+					echo "<label class='col-sm-3 control-label'>".lang('fecha')."</label>";
+					echo "<label class='col-sm-2 control-label'>".lang('monto')."</label>";
+					echo "<label class='col-sm-2 control-label'>".lang('a_cuenta')."</label>";
+					echo "<label class='col-sm-2 control-label'>".lang('pago')."</label>";
+					echo "<label class='col-sm-1 control-label'>".lang('seleccionar')."</label>";
 				echo "</div>";
 				
 				echo "<br>";
 				
 				$total_apagar = 0;
 								
-				if($presupuestos)
-				{
-					foreach ($presupuestos as $presupuesto) 
-					{
+				if($presupuestos) {
+					foreach ($presupuestos as $presupuesto) {
 						echo "<div class='row'>";	
 							echo "<div class='col-sm-2'>".$presupuesto->id_presupuesto."</div>";
 							echo "<div class='col-sm-3'>".date('d-m-Y', strtotime($presupuesto->fecha))."</div>";
@@ -130,7 +128,7 @@
 				}
 				else
 				{
-					echo setMensaje($texto['no_registros'], 'warning');
+					echo setMensaje(lang('no_registros'), 'warning');
 				}
 				?>
 				</div>
@@ -272,7 +270,7 @@
 			else
 			{
 				echo "</div>";
-				echo setMensaje($texto['select_registro']);
+				echo setMensaje(lang('select_registro'));
 			}
 			?>
 		</div>

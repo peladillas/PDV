@@ -1,4 +1,23 @@
 <?php
+$lang['no_registros']			= 'No hay registros';
+$lang['empresa_titulo']		= 'Bulones sarmiento';
+$lang['buscar']				= 'Buscar';
+$lang['select_registro']		= 'Seleccione una opción';
+$lang['numero']				= 'Número';
+$lang['a_cuenta']				= 'A cuenta';
+$lang['pago']					= 'Pago';
+$lang['seleccionar']			= 'Seleccionar';
+$lang['apellido']				= 'Apellido';
+$lang['alias']					= 'Alias';
+$lang['inicio']				= 'Inicio';
+$lang['ingrese']				= 'Ingrese';
+$lang['final']					= 'Final';
+$lang['sumas']					= 'Sumas';
+$lang['si_devolucion']			= 'Este presupuesto tiene devoluciones asociadas';
+$lang['si_cliente_dev']		= 'Este cliente tiene devoluciones asociadas';
+$lang['periodo']				= 'Periodo';
+$lang['transacciones']			= 'Transacciones';
+
 /*--------------------------------------------------------------------------------  
     A
  --------------------------------------------------------------------------------*/ 
@@ -51,6 +70,7 @@ $lang['cargando']           = "Cargando";
 $lang['calle']              = "Calle";
 $lang['calle_numero']       = "Calle nro";
 $lang['cliente']            = "Cliente";
+$lang['clientes']				= 'Clientes';
 $lang['condicion_pago']     = "Condición pago";
 $lang['contrato']           = "Contrato";
 $lang['cuotas']             = "Cuotas";
@@ -114,7 +134,7 @@ $lang['garaje']             = "Garaje";
 $lang['gas']                = "Gas";
  
  /*--------------------------------------------------------------------------------  
-   H
+    H
  --------------------------------------------------------------------------------*/ 
 
 $lang['height']             = "height";
@@ -217,6 +237,8 @@ $lang['plantilla']          = "Plantilla";
 $lang['permuta']            = "Permuta";
 $lang['plantas']            = "Plantas";
 $lang['permuta']            = "Permuta";
+$lang['presupuestos']			= 'Presupuestos';
+$lang['presupuesto']			= 'Presupuesto';
 
 /*--------------------------------------------------------------------------------  
     R
