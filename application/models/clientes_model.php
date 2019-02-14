@@ -9,8 +9,7 @@ class Clientes_model extends My_Model {
 				'nombre'
 		);
 	}
-	
-	
+
 	/**
 	 * Para buscar clients por nombre o alias
 	 * */
@@ -30,10 +29,8 @@ class Clientes_model extends My_Model {
 
         return $this->getQuery($sql);
 	}
-	
-	
-				
-				
+
+
 	function getSumas($tipo) {
 		if($tipo == 'tipos') {
 			$sql = 

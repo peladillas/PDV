@@ -9,8 +9,6 @@ class Config_impresion_model extends MY_Model {
 				'impresion',
 				'id_config'
 		);
-
 	}
-		
 } 
 ?>

@@ -9,19 +9,6 @@ class Anulaciones_model extends MY_Model {
 				'id_anulacion', //ver si esto esta bien
 				'id_anulacion'
 		);
-
-	}
-	
-	function getAnulaciones($id) {
-		$sql = "
-		SELECT 
-			* 
-		FROM 
-			`anulacion`
-		WHERE
-			id_presupuesto = '$id'";
-
-        return $this->getQuery($sql);
 	}
 	
 	function suma_anulacion($inicio, $final, $id_cliente = NULL) {

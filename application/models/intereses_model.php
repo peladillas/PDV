@@ -10,19 +10,5 @@ class Intereses_model extends MY_Model {
 				'id_interes'
 		);
 	}
-	
-	
-	function getInteres($id) {
-		$sql = "
-		SELECT 
-			* 
-		FROM 
-			`interes`
-		WHERE
-			interes.id_presupuesto = '$id'";
-
-        return $this->getQuery($sql);
-	}
-
 }
 ?>

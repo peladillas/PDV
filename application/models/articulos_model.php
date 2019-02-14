@@ -39,10 +39,6 @@ class Articulos_model extends MY_Model {
 		}
 	}
 	
-	function update_Articulo($datos, $id){
-		$this->db->update('articulo', $datos, array('id_articulo' => $id));
-	}
-	
 	function getArticulos_variacion($datos){
 		$query = $this->db->query("
 		SELECT 	articulo.id_articulo,

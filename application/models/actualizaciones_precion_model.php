@@ -9,7 +9,6 @@ class Actualizaciones_precion_model extends MY_Model {
 				'id_actualizacion', //ver si esto esta bien
 				'id_actualizacion'
 		);
-
 	}
 } 
 ?>

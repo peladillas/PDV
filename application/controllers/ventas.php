@@ -255,10 +255,10 @@ class Ventas extends My_Controller {
 				$db['texto']				= getTexto();			
 				$db['presupuestos']			= $this->presupuestos_model->select($id);
 				$db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
-				$db['interes_presupuesto']	= $this->intereses_model->getInteres($id);
+				$db['interes_presupuesto']	= $this->intereses_model->select($condicion);
 				$db['impresiones']			= $this->config_impresion_model->select(2);
 				$db['devoluciones']			= $this->devoluciones_model->select($condicion);
-				$db['anulaciones']			= $this->anulaciones_model->getAnulaciones($id);
+				$db['anulaciones']			= $this->anulaciones_model->select($condicion);
 				
 				if($llamada == NULL)
 				{

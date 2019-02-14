@@ -269,7 +269,7 @@ class Articulos extends My_Controller {
 						'margen'				=> $margen,
 						'impuesto'				=> $impuesto
 						);
-			$this->articulos_model->update_Articulo($datos, $id);
+			$this->articulos_model->update($datos, $id);
 			
 		}
 					
@@ -292,10 +292,10 @@ class Articulos extends My_Controller {
  	public function actualizar_precios_lote()
  	{
 		if($this->session->userdata('logged_in')){
-			$db['proveedores']	= $this->proveedores_model->getProveedores();
-			$db['grupos']		= $this->grupos_model->getGrupos();
-			$db['categorias']	= $this->categorias_model->getCategorias();
-			$db['subcategorias']= $this->subcategorias_model->getSubcategorias();
+			$db['proveedores']	= $this->proveedores_model->select();
+			$db['grupos']		= $this->grupos_model->select();
+			$db['categorias']	= $this->categorias_model->select();
+			$db['subcategorias']= $this->subcategorias_model->select();
 			
 			if($this->input->post('buscar'))
 			{
