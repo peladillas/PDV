@@ -1,200 +1,73 @@
 <?php
-$mes = array(
-	'ene' => 0,
-	'feb' => 0,
-	'mar' => 0,
-	'abr' => 0,
-	'may' => 0,
-	'jun' => 0,
-	'jul' => 0,
-	'ago' => 0,
-	'sep' => 0,
-	'oct' => 0,
-	'nov' => 0,
-	'dic' => 0
+$meses = array(
+    1 => 'ene',
+    2 => 'feb',
+    3 => 'mar',
+    4 => 'abr',
+    5 => 'may',
+    6 => 'jun',
+    7 => 'jul',
+    8 => 'ago',
+    9 => 'sep',
+    10 => 'oct',
+    11 => 'nov',
+    12 => 'dic',
 );
 
-$contado = array(
-	'ene' => 0,
-	'feb' => 0,
-	'mar' => 0,
-	'abr' => 0,
-	'may' => 0,
-	'jun' => 0,
-	'jul' => 0,
-	'ago' => 0,
-	'sep' => 0,
-	'oct' => 0,
-	'nov' => 0,
-	'dic' => 0
-);
-
-$ctacte = array(
-	'ene' => 0,
-	'feb' => 0,
-	'mar' => 0,
-	'abr' => 0,
-	'may' => 0,
-	'jun' => 0,
-	'jul' => 0,
-	'ago' => 0,
-	'sep' => 0,
-	'oct' => 0,
-	'nov' => 0,
-	'dic' => 0
-);
-
-$remito = array(
-	'ene' => 0,
-	'feb' => 0,
-	'mar' => 0,
-	'abr' => 0,
-	'may' => 0,
-	'jun' => 0,
-	'jul' => 0,
-	'ago' => 0,
-	'sep' => 0,
-	'oct' => 0,
-	'nov' => 0,
-	'dic' => 0
-);
-
-$anulacion = array(
-	'ene' => 0,
-	'feb' => 0,
-	'mar' => 0,
-	'abr' => 0,
-	'may' => 0,
-	'jun' => 0,
-	'jul' => 0,
-	'ago' => 0,
-	'sep' => 0,
-	'oct' => 0,
-	'nov' => 0,
-	'dic' => 0
-);
-
-$devolucion = array(
-	'ene' => 0,
-	'feb' => 0,
-	'mar' => 0,
-	'abr' => 0,
-	'may' => 0,
-	'jun' => 0,
-	'jul' => 0,
-	'ago' => 0,
-	'sep' => 0,
-	'oct' => 0,
-	'nov' => 0,
-	'dic' => 0
-);
-
-
+foreach ($meses as $_mes){
+    $mes[$_mes] = 0;
+    $contado[$_mes] = 0;
+    $ctacte[$_mes] = 0;
+    $remito[$_mes] = 0;
+    $anulacion[$_mes] = 0;
+    $devolucion[$_mes] = 0;
+}
 
 $cant_ctacte = 0;
 $cant_contado = 0;
 $cant_anulacion = 0;
 
-if($presupuestos)
-{
-	foreach ($presupuestos as $row)
-	{
+if($presupuestos) {
+	foreach ($presupuestos as $row) {
 		$mes_fecha = date('m', strtotime($row->fecha));
-		
-		if($mes_fecha == 1){ $texto = 'ene'; }
-		else if($mes_fecha == 2) { $texto = 'feb' ; }
-		else if($mes_fecha == 3) { $texto = 'mar' ; }
-		else if($mes_fecha == 4) { $texto = 'abr' ; }
-		else if($mes_fecha == 5) { $texto = 'may' ; }
-		else if($mes_fecha == 6) { $texto = 'jun' ; }
-		else if($mes_fecha == 7) { $texto = 'jul' ; }
-		else if($mes_fecha == 8) { $texto = 'ago' ; }
-		else if($mes_fecha == 9) { $texto = 'sep' ; }
-		else if($mes_fecha == 10) { $texto = 'oct' ; }
-		else if($mes_fecha == 11) { $texto = 'nov' ; }
-		else if($mes_fecha == 12) { $texto = 'dic' ; }	
-		
+        $texto = $meses[$mes_fecha];
+
 		$mes[$texto] = $mes[$texto] + $row->monto;
-			if($row->tipo == 2)
-			{
-				$ctacte[$texto] = $ctacte[$texto] + $row->monto;
-				$cant_ctacte = $cant_ctacte + 1; 
-			} 
-			else
-			{
-				$contado[$texto] = $contado[$texto] + $row->monto;
-				$cant_contado = $cant_contado + 1;
-			}
+        if($row->tipo == 2) {
+            $ctacte[$texto] = $ctacte[$texto] + $row->monto;
+            $cant_ctacte = $cant_ctacte + 1;
+        } else {
+            $contado[$texto] = $contado[$texto] + $row->monto;
+            $cant_contado = $cant_contado + 1;
+        }
 	}
 }
 
 
-if($remitos)
-{
-	foreach ($remitos as $row)
-	{
+if($remitos) {
+	foreach ($remitos as $row) {
 		$mes_fecha = date('m', strtotime($row->fecha));
-		
-		if($mes_fecha == 1){ $texto = 'ene'; }
-		else if($mes_fecha == 2) { $texto = 'feb' ; }
-		else if($mes_fecha == 3) { $texto = 'mar' ; }
-		else if($mes_fecha == 4) { $texto = 'abr' ; }
-		else if($mes_fecha == 5) { $texto = 'may' ; }
-		else if($mes_fecha == 6) { $texto = 'jun' ; }
-		else if($mes_fecha == 7) { $texto = 'jul' ; }
-		else if($mes_fecha == 8) { $texto = 'ago' ; }
-		else if($mes_fecha == 9) { $texto = 'sep' ; }
-		else if($mes_fecha == 10) { $texto = 'oct' ; }
-		else if($mes_fecha == 11) { $texto = 'nov' ; }
-		else if($mes_fecha == 12) { $texto = 'dic' ; }	
+        $texto = $meses[$mes_fecha];
 		
 		$remito[$texto] = $remito[$texto] + $row->monto;
 	}		
 }
 
 
-if($devoluciones)
-{
-	foreach ($devoluciones as $row)
-	{
+if($devoluciones) {
+	foreach ($devoluciones as $row) {
 		$mes_fecha = date('m', strtotime($row->fecha));
-		
-		if($mes_fecha == 1){ $texto = 'ene'; }
-		else if($mes_fecha == 2) { $texto = 'feb' ; }
-		else if($mes_fecha == 3) { $texto = 'mar' ; }
-		else if($mes_fecha == 4) { $texto = 'abr' ; }
-		else if($mes_fecha == 5) { $texto = 'may' ; }
-		else if($mes_fecha == 6) { $texto = 'jun' ; }
-		else if($mes_fecha == 7) { $texto = 'jul' ; }
-		else if($mes_fecha == 8) { $texto = 'ago' ; }
-		else if($mes_fecha == 9) { $texto = 'sep' ; }
-		else if($mes_fecha == 10) { $texto = 'oct' ; }
-		else if($mes_fecha == 11) { $texto = 'nov' ; }
-		else if($mes_fecha == 12) { $texto = 'dic' ; }	
+        $texto = $meses[$mes_fecha];
 		
 		$devolucion[$texto] = $devolucion[$texto] + $row->monto;
 	}		
 }
 
 
-if($anulaciones)
-{
-	foreach ($anulaciones as $row)
-	{
+if($anulaciones) {
+	foreach ($anulaciones as $row) {
 		$mes_fecha = date('m', strtotime($row->fecha));
-		
-		if($mes_fecha == 1){ $texto = 'ene'; }
-		else if($mes_fecha == 2) { $texto = 'feb' ; }
-		else if($mes_fecha == 3) { $texto = 'mar' ; }
-		else if($mes_fecha == 4) { $texto = 'abr' ; }
-		else if($mes_fecha == 5) { $texto = 'may' ; }
-		else if($mes_fecha == 6) { $texto = 'jun' ; }
-		else if($mes_fecha == 7) { $texto = 'jul' ; }
-		else if($mes_fecha == 8) { $texto = 'ago' ; }
-		else if($mes_fecha == 9) { $texto = 'sep' ; }
-		else if($mes_fecha == 10) { $texto = 'oct' ; }
-		else if($mes_fecha == 11) { $texto = 'nov' ; }
-		else if($mes_fecha == 12) { $texto = 'dic' ; }	
+        $texto = $meses[$mes_fecha];
 		
 		$anulacion[$texto] = $anulacion[$texto] + $row->monto;
 		
@@ -246,19 +119,17 @@ if($anulaciones)
 							</tr>
 						</thead>
 						<tbody>
-					<?php
-					if($articulos)
-					{
-						foreach ($articulos as $row)
-						{
-							echo "<tr>";
-							echo "<td>".$row->cantidad."</td>";
-							echo "<td><a title='Ver detalle' href='".base_url()."index.php/articulos/articulo_abm/read/".$row->id_articulo."'>";
-							echo $row->descripcion."</a></td>";
-							echo "</tr>";
-						} 
-					}
-					?>
+                        <?php
+                        if($articulos) {
+                            foreach ($articulos as $row) {
+                                echo "<tr>";
+                                echo "<td>".$row->cantidad."</td>";
+                                echo "<td><a title='Ver detalle' href='".base_url()."index.php/articulos/articulo_abm/read/".$row->id_articulo."'>";
+                                echo $row->descripcion."</a></td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
 						</tbody>
 					</table>
 				</div>

@@ -1,24 +1,5 @@
 <?php
-$lang['no_registros']			= 'No hay registros';
-$lang['empresa_titulo']		= 'Bulones sarmiento';
-$lang['buscar']				= 'Buscar';
-$lang['select_registro']		= 'Seleccione una opción';
-$lang['numero']				= 'Número';
-$lang['a_cuenta']				= 'A cuenta';
-$lang['pago']					= 'Pago';
-$lang['seleccionar']			= 'Seleccionar';
-$lang['apellido']				= 'Apellido';
-$lang['alias']					= 'Alias';
-$lang['inicio']				= 'Inicio';
-$lang['ingrese']				= 'Ingrese';
-$lang['final']					= 'Final';
-$lang['sumas']					= 'Sumas';
-$lang['si_devolucion']			= 'Este presupuesto tiene devoluciones asociadas';
-$lang['si_cliente_dev']		= 'Este cliente tiene devoluciones asociadas';
-$lang['periodo']				= 'Periodo';
-$lang['transacciones']			= 'Transacciones';
-
-/*--------------------------------------------------------------------------------  
+/*--------------------------------------------------------------------------------
     A
  --------------------------------------------------------------------------------*/ 
 
@@ -30,16 +11,17 @@ $lang['adicionales']        = "Adicionales";
 $lang['agregar']            = "Agregar";
 $lang['agregar_per']        = "Agregar y permanecer";
 $lang['anterior']           = "Anterior";
-$lang['apellido']           = "Apellido";
 $lang['advertencia']        = "Advertencia";
 $lang['asunto_warning']     = "Asunto warning";
 $lang['asunto_danger']      = "Asunto danger";
 $lang['archivo']            = "Archivo";
-$lang['agua']               = "Agua";
+$lang['alias']				= 'Alias';
 $lang['articulo']   		= "Articulo";
 $lang['articulos']   		= "Articulos";
 $lang['altura']             = "Altura";
+$lang['apellido']           = "Apellido";
 $lang['apellidos']          = "Apellidos";
+$lang['a_cuenta']			= 'A cuenta';
 
 /*--------------------------------------------------------------------------------  
     B
@@ -86,7 +68,7 @@ $lang['domicilio']          = "Domicilio";
 $lang['date_add']           = "Fecha alta";
 $lang['dia']                = "Día";
 $lang['dias']               = "Días";
-$lang['dimension']          = "Dimensión";
+$lang['descripcion']        = "Descripción";
 $lang['direccion']          = "Dirección";
 
 /*--------------------------------------------------------------------------------  
@@ -106,6 +88,7 @@ $lang['expensas']           = "Expensas";
 $lang['egreso']             = "Egreso";
 $lang['empleado']           = "Empleado";
 $lang['envio']              = "Envio";
+$lang['empresa_titulo']		= 'Bulones sarmiento';
 
 /*--------------------------------------------------------------------------------  
     F
@@ -180,7 +163,7 @@ $lang['monto']              = "Monto";
 $lang['monto_cuota']        = "Monto cuota";
 $lang['monto_anticipo']     = "Monto anticipo";
 $lang['monto_interes']      = "Monto interés";
-$lang['monto_pago']        = "Monto pago";
+$lang['monto_pago']         = "Monto pago";
 $lang['menu']               = "Menu";
 $lang['marcacion']          = "Marcación";
 
@@ -197,8 +180,8 @@ $lang['no_encontrada']      = "no encontrada";
 $lang['nro_proveedor']      = "Nro pedido proveedor";
 $lang['nro_factura']        = "Nro factura proveedor";
 $lang['nro_referencia']     = "Nro referencia";
-
-
+$lang['no_registros']		= 'No hay registros';
+$lang['numero']				= 'Número';
 
 /*--------------------------------------------------------------------------------  
     O
@@ -235,10 +218,10 @@ $lang['proyectos']          = "Proyectos";
 $lang['precio']          	= "Precio";
 $lang['plantilla']          = "Plantilla";
 $lang['permuta']            = "Permuta";
-$lang['plantas']            = "Plantas";
+$lang['pago']				= 'Pago';
 $lang['permuta']            = "Permuta";
-$lang['presupuestos']			= 'Presupuestos';
-$lang['presupuesto']			= 'Presupuesto';
+$lang['presupuestos']		= 'Presupuestos';
+$lang['presupuesto']		= 'Presupuesto';
 
 /*--------------------------------------------------------------------------------  
     R
@@ -257,15 +240,18 @@ $lang['registro']           = "Registro";
 $lang['salir']              = "Salir";
 $lang['siguiente']          = "Siguiente";
 $lang['sector']             = "Sector";
-$lang['superficie_cubierta']= "Superficie cubierta";
-
+$lang['seleccionar']		= 'Seleccionar';
+$lang['sumas']				= 'Sumas';
+$lang['si_devolucion']		= 'Este presupuesto tiene devoluciones asociadas';
+$lang['si_cliente_dev']		= 'Este cliente tiene devoluciones asociadas';
+$lang['select_registro']	= 'Seleccione una opción';
 
 /*--------------------------------------------------------------------------------  
     T
  --------------------------------------------------------------------------------*/ 
 
 $lang['tablas']             = "Tablas";
-$lang['tambo']              = "Tambo";
+$lang['transacciones']		= 'Transacciones';
 $lang['telefono']           = "Telefono";
 $lang['telefono_alternativo'] = "Telefono alternativo";
 $lang['turno']              = "Turno";
