@@ -1,16 +1,12 @@
 <?php 
 class Presupuestos_model extends MY_Model {
 
-    /**
-     * Presupuestos_model constructor.
-     */
     public function __construct(){
 		parent::construct(
-		'presupuesto',
-		'id_presupuesto',
-		'monto'
+			'presupuesto',
+			'id_presupuesto',
+			'monto'
 		);
-
 	}
 	
 	function suma_presupuesto($inicio, $final, $id_cliente = NULL, $id_vendedor = NULL)

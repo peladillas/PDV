@@ -3,9 +3,9 @@ class Proveedores_model extends My_Model {
 
     public function __construct(){
         parent::construct(
-        'proveedor',
-        'id_proveedor',
-        'descripcion'
+            'proveedor',
+            'id_proveedor',
+            'descripcion'
         );
     }
 	

@@ -3,9 +3,9 @@ class Renglon_presupuesto_model extends MY_Model {
 	
 	public function __construct(){
 		parent::construct(
-        'reglon_presupuesto',
-        'id_renglon',
-        'id_renglon'
+            'reglon_presupuesto',
+            'id_renglon',
+            'id_renglon'
 		);
 	}
 	

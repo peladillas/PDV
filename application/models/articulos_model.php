@@ -3,9 +3,9 @@ class Articulos_model extends MY_Model {
 	
 	public function __construct(){
 		parent::construct(
-				'articulo',
-				'id_articulo',
-				'id_articulo'
+			'articulo',
+			'id_articulo',
+			'id_articulo'
 		);
 	}
 	
