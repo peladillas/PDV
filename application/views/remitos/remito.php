@@ -1,6 +1,6 @@
 <div class="container"> 
 	<div class="panel panel-default">
-	<div class="panel-heading">BULONES SARMIENTO</div>
+	<div class="panel-heading"><?php echo $texto['empresa'] ?></div>
 		<div class="panel-body">
 			<div class="form-group">
 				<form method="post" action="<?php echo base_url().'index.php/presupuestos/remito'?>">

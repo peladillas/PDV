@@ -5,7 +5,7 @@
 </div>
 <script src="<?php echo base_url().'librerias/chosen/chosen.jquery.js'?>" type="text/javascript" charset="utf-8"></script>
 	 
-  <script type="text/javascript">
+<script type="text/javascript">
     var config = {
       '.chosen-select'           : {},
       '.chosen-select-deselect'  : {allow_single_deselect:true},
@@ -16,4 +16,4 @@
     for (var selector in config) {
       $(selector).chosen(config[selector]);
     }
-  </script>
+</script>

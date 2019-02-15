@@ -1,6 +1,6 @@
 <div class="container"> 
 	<div class="panel panel-default">
-	<div class="panel-heading">BULONES SARMIENTO <button class="btn btn-default btn-xs show_hide">Cabecera</button></div>
+	<div class="panel-heading"><?php echo $texto['empresa']; ?> <button class="btn btn-default btn-xs show_hide">Cabecera</button></div>
 	<div class="panel-body slidingDiv">
 	<div class="row" id="cont_datos_cliente">
 			<div class="cont_rotulo_cliente col-md-4">

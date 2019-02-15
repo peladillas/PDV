@@ -2,8 +2,7 @@
 
 class Nota_credito extends MY_Controller {
 
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 
 		$this->load->database();
@@ -23,7 +22,7 @@ class Nota_credito extends MY_Controller {
 
 	public function index(){
 	    $db = [];
-		$this->armarVista($db, 'nota_credito/generar.php');
+		$this->view($db, 'nota_credito/generar.php');
 	}
 
     public function addRegistro(){

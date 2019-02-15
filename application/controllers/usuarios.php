@@ -37,7 +37,7 @@ class Usuarios extends MY_Controller {
 		$crud->set_relation('id_rol','rol','descripcion', 'rol.id_estado = 1');
 		$crud->set_relation('id_estado','estado','estado');
 			
-		$_COOKIE['tabla']='usuario';
+		$_COOKIE['tabla']= 'usuario';
 		$_COOKIE['id']='id_usuario';	
 			
 		$crud->callback_after_insert(array($this, 'insert_log'));

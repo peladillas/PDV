@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Presupuestos extends CI_Controller {
+class Presupuestos extends My_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -33,29 +33,21 @@ class Presupuestos extends CI_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-	public function salida()
-	{
-		if($this->session->userdata('logged_in')){
-			$this->load->view('head.php');
-			$this->load->view('menu.php');
-			$this->load->view('presupuestos/presupuestos_salida');
-			$this->load->view('footer.php');
-		}else{
-			redirect('/','refresh');
-		}
-	}
+	public function salida() {
+	    $db = [];
+	    $this->view($db, 'presupuestos/presupuestos_salida');
 
+	}
 
 /**********************************************************************************
  **********************************************************************************
  * 
- * 				Presupuesto de Salida
+ * 				Presupuesto de Salida, sacar consulta de aca
  * 
  * ********************************************************************************
  **********************************************************************************/
 
-	public function search_articulo($id)
-	{
+	public function search_articulo($id) {
 		$query = $this->db->query("
 				SELECT descripcion as value,id_articulo,precio_venta_iva FROM articulo WHERE descripcion LIKE '%".$id."%' or cod_proveedor LIKE '%".$id."%' limit 20
 			");
@@ -77,54 +69,45 @@ class Presupuestos extends CI_Controller {
 /**********************************************************************************
  **********************************************************************************
  * 
- * 				Remito Form
+ * 				Remito Form, remito en presupuesto, mal
  * 
  * ********************************************************************************
  **********************************************************************************/
 
  
-	public function remito()
-	{
-		if($this->session->userdata('logged_in')){
-			$db['texto']		= getTexto();
-			$db['clientes']		= $this->clientes_model->select();
-			
-			if($this->input->post('buscar')==1)
-			{
-				$id_cliente = 0;
-				
-				if($this->input->post('cliente_alias') != 0)
-				{
-					$id_cliente = $this->input->post('cliente_alias');	
-				}
-				else
-				if($this->input->post('cliente_apellido') != 0)
-				{
-					$id_cliente = $this->input->post('cliente_apellido');
-				}
-				
-				if($id_cliente != 0)
-				{
-					$datos = array(
-						'id_cliente'=> $id_cliente,
-						'tipo'		=> 2,	//Cuenta corriente
-						'estado'	=> 1	//Falta de pago
-					);
-					$db['id_cliente']		= $id_cliente;
-					$db['presupuestos']		= $this->presupuestos_model->select($datos);
-					$db['devoluciones']		= $this->devoluciones_model->getCliente($id_cliente);
-				}
-			}
-			
-			$this->load->view('head.php', $db);
-			$this->load->view('menu.php');
-			$this->load->view('presupuestos/remito.php');
-			$this->load->view('footer.php');
-		}else{
-			redirect('/','refresh');
-		}
-	}
+	public function remito() {
+        $db['texto']		= getTexto();
+        $db['clientes']		= $this->clientes_model->select();
 
+        if($this->input->post('buscar')==1)
+        {
+            $id_cliente = 0;
+
+            if($this->input->post('cliente_alias') != 0)
+            {
+                $id_cliente = $this->input->post('cliente_alias');
+            }
+            else
+            if($this->input->post('cliente_apellido') != 0)
+            {
+                $id_cliente = $this->input->post('cliente_apellido');
+            }
+
+            if($id_cliente != 0)
+            {
+                $datos = array(
+                    'id_cliente'=> $id_cliente,
+                    'tipo'		=> 2,	//Cuenta corriente
+                    'estado'	=> 1	//Falta de pago
+                );
+                $db['id_cliente']		= $id_cliente;
+                $db['presupuestos']		= $this->presupuestos_model->select($datos);
+                $db['devoluciones']		= $this->devoluciones_model->getCliente($id_cliente);
+            }
+        }
+
+        $this->view($db, 'presupuestos/remito.php');
+	}
 
 /**********************************************************************************
  **********************************************************************************
@@ -133,146 +116,139 @@ class Presupuestos extends CI_Controller {
  * 
  * ********************************************************************************
  **********************************************************************************/
- 
-	
-	public function remito_insert()
-	{
-		if($this->session->userdata('logged_in'))
-		{
-			$id_cliente 	= $this->input->post('cliente');
-			$total			= $this->input->post('total');
-			$total_hidden	= $this->input->post('total_hidden');
-			$total_dev		= $this->input->post('total_dev');
-			
-			$datos = array(
-				'id_cliente'	=> $id_cliente,
-				'tipo'			=> 2,
-				'estado'		=> 1
-			);
-			
-			$db['presupuestos']	= $this->presupuestos_model->select($datos);
-			$presupuestos 		= $db['presupuestos'];
-			
-			if($total_hidden == $total)//No se realizo el pago automatico
-			{
-				$remito = array(
-					"fecha"			=> date('Y-m-d H:i:s'),
-					"monto"			=> $total,
-					"id_cliente"	=> $id_cliente,
-					"id_estado"		=> 1
-	        	);
-				
-				$id_remito = $this->remitos_model->insert($remito);
-				
-				foreach ($presupuestos as $row)	
-				{
-					if($this->input->post($row->id_presupuesto) != 0)
-					{
-						$remito_detalle = array(
-							'id_remito'			=> $id_remito,
-							'id_presupuesto'	=> $row->id_presupuesto,
-							'monto'				=> $this->input->post($row->id_presupuesto),
-							'a_cuenta'			=> $row->a_cuenta,
-							'id_estado_presupuesto'	=> 1,
-							'estado'			=> 1
-						);
-						
-						$id_detalle = $this->remitos_detalle_model->insert($remito_detalle);//Insert detalle remito
-						
-						//Update del remito
-						$a_cuenta	= $row->a_cuenta + $this->input->post($row->id_presupuesto);
-						
-						if($a_cuenta == $row->monto)//se completo el pago del presupuesto
-						{
-							$update_pres = array(
-									'a_cuenta'	=> $a_cuenta,
-									'estado'	=> 2
-							);
-							
-							$this->presupuestos_model->update($update_pres, $row->id_presupuesto);
-							
-							$update_rem = array(
-									'id_estado_presupuesto'	=> 2
-							);
-							
-							$this->remitos_detalle_model->update($update_rem, $id_detalle);
-						}
-						else
-						if($row->monto > $a_cuenta)//el monto sigue siendo mayor al pago
-						{
-							$update_pres = array(
-								'a_cuenta'	=> $a_cuenta
-							);
-							
-							$this->presupuestos_model->update($update_pres, $row->id_presupuesto);
-						}
-					}
-				}	
-			}
-			else
-			{
-				$remito = array(
-					"fecha"			=> date('Y-m-d H:i:s'),
-					"monto"			=> $total,
-					"id_cliente"	=> $id_cliente,
-					"id_estado"		=> 1
-	        	);
-				$id_remito = $this->remitos_model->insert($remito);
-				
-				foreach ($presupuestos as $row)	
-				{
-					if($total > 0)//Verificamos que aun hay monto para pagar
-					{
-						$resto_apagar	= $row->monto - $row->a_cuenta;
-						
-						if($resto_apagar < $total)//Si el monto a pagar del presupuesto no supera el del pago 
-						{
-							$pago		= $resto_apagar;
-							$total		= $total - $resto_apagar;
-							$a_cuenta	= $row->monto;
-							$estado		= 2;
-						}
-						else //Si lo supera
-						{
-							$pago		= $total;
-							$a_cuenta	= $row->a_cuenta + $total;
-							$total		= 0;
-							$estado		= 1;
-						}
-						
-						$remito_detalle = array(
-							'id_remito'			=> $id_remito,
-							'id_presupuesto'	=> $row->id_presupuesto,
-							'monto'				=> $pago,
-							'a_cuenta'			=> $row->a_cuenta,
-							'id_estado_presupuesto'	=> $estado,
-							'estado'			=> 1
-						);
-						
-						$this->remitos_detalle_model->insert($remito_detalle);//Insert detalle remito
-						
-						$update_pres = array(
-							'a_cuenta'	=> $a_cuenta,
-							'estado'	=> $estado
-						);
-							
-						$this->presupuestos_model->update($update_pres, $row->id_presupuesto);
-						
-					}	
-				}
-			}
-			
-			// Hacer los insert de devoluciones
-			if ($total_dev > 0)
-			{
-				$this->insert_devoluciones($id_remito);
-			}
 
-			redirect('/presupuestos/remito_vista/'.$id_remito.'/'.$id_cliente,'refresh');//Redireccionamos para evitar problemas con la recarga de la pagina f5
-			
-		}else{
-			//redirect('/','refresh');
-		}
+	public function remito_insert() {
+        $id_cliente 	= $this->input->post('cliente');
+        $total			= $this->input->post('total');
+        $total_hidden	= $this->input->post('total_hidden');
+        $total_dev		= $this->input->post('total_dev');
+
+        $datos = array(
+            'id_cliente'	=> $id_cliente,
+            'tipo'			=> 2,
+            'estado'		=> 1
+        );
+
+        $db['presupuestos']	= $this->presupuestos_model->select($datos);
+        $presupuestos 		= $db['presupuestos'];
+
+        if($total_hidden == $total)//No se realizo el pago automatico
+        {
+            $remito = array(
+                "fecha"			=> date('Y-m-d H:i:s'),
+                "monto"			=> $total,
+                "id_cliente"	=> $id_cliente,
+                "id_estado"		=> 1
+            );
+
+            $id_remito = $this->remitos_model->insert($remito);
+
+            foreach ($presupuestos as $row)
+            {
+                if($this->input->post($row->id_presupuesto) != 0)
+                {
+                    $remito_detalle = array(
+                        'id_remito'			=> $id_remito,
+                        'id_presupuesto'	=> $row->id_presupuesto,
+                        'monto'				=> $this->input->post($row->id_presupuesto),
+                        'a_cuenta'			=> $row->a_cuenta,
+                        'id_estado_presupuesto'	=> 1,
+                        'estado'			=> 1
+                    );
+
+                    $id_detalle = $this->remitos_detalle_model->insert($remito_detalle);//Insert detalle remito
+
+                    //Update del remito
+                    $a_cuenta	= $row->a_cuenta + $this->input->post($row->id_presupuesto);
+
+                    if($a_cuenta == $row->monto)//se completo el pago del presupuesto
+                    {
+                        $update_pres = array(
+                                'a_cuenta'	=> $a_cuenta,
+                                'estado'	=> 2
+                        );
+
+                        $this->presupuestos_model->update($update_pres, $row->id_presupuesto);
+
+                        $update_rem = array(
+                                'id_estado_presupuesto'	=> 2
+                        );
+
+                        $this->remitos_detalle_model->update($update_rem, $id_detalle);
+                    }
+                    else
+                    if($row->monto > $a_cuenta)//el monto sigue siendo mayor al pago
+                    {
+                        $update_pres = array(
+                            'a_cuenta'	=> $a_cuenta
+                        );
+
+                        $this->presupuestos_model->update($update_pres, $row->id_presupuesto);
+                    }
+                }
+            }
+        }
+        else
+        {
+            $remito = array(
+                "fecha"			=> date('Y-m-d H:i:s'),
+                "monto"			=> $total,
+                "id_cliente"	=> $id_cliente,
+                "id_estado"		=> 1
+            );
+            $id_remito = $this->remitos_model->insert($remito);
+
+            foreach ($presupuestos as $row)
+            {
+                if($total > 0)//Verificamos que aun hay monto para pagar
+                {
+                    $resto_apagar	= $row->monto - $row->a_cuenta;
+
+                    if($resto_apagar < $total)//Si el monto a pagar del presupuesto no supera el del pago
+                    {
+                        $pago		= $resto_apagar;
+                        $total		= $total - $resto_apagar;
+                        $a_cuenta	= $row->monto;
+                        $estado		= 2;
+                    }
+                    else //Si lo supera
+                    {
+                        $pago		= $total;
+                        $a_cuenta	= $row->a_cuenta + $total;
+                        $total		= 0;
+                        $estado		= 1;
+                    }
+
+                    $remito_detalle = array(
+                        'id_remito'			=> $id_remito,
+                        'id_presupuesto'	=> $row->id_presupuesto,
+                        'monto'				=> $pago,
+                        'a_cuenta'			=> $row->a_cuenta,
+                        'id_estado_presupuesto'	=> $estado,
+                        'estado'			=> 1
+                    );
+
+                    $this->remitos_detalle_model->insert($remito_detalle);//Insert detalle remito
+
+                    $update_pres = array(
+                        'a_cuenta'	=> $a_cuenta,
+                        'estado'	=> $estado
+                    );
+
+                    $this->presupuestos_model->update($update_pres, $row->id_presupuesto);
+
+                }
+            }
+        }
+
+        // Hacer los insert de devoluciones
+        if ($total_dev > 0)
+        {
+            $this->insert_devoluciones($id_remito);
+        }
+
+        redirect('/presupuestos/remito_vista/'.$id_remito.'/'.$id_cliente,'refresh');//Redireccionamos para evitar problemas con la recarga de la pagina f5
+
 	}
 
 
@@ -355,19 +331,16 @@ class Presupuestos extends CI_Controller {
  **********************************************************************************/	
 
 
-	function remito_vista($id, $id_cliente = NULL)
-	{
+	function remito_vista($id, $id_cliente = NULL) {
 		$db['remitos']			= $this->remitos_model->getRemito($id);
 		$db['remitos_detalle']	= $this->remitos_detalle_model->getRemitos($id);
 		$db['remitos_dev']		= $this->remitos_detalle_model->getRemitos($id, 'dev');
 		$db['impresiones']		= $this->config_impresion_model->select(1);
 		
-		if($id_cliente === NULL)
-		{
+		if($id_cliente === NULL) {
 			$remitos = $db['remitos'];
 			
-			foreach ($remitos as $row)
-			{
+			foreach ($remitos as $row) {
 				$id_cliente = $row->id_cliente;	
 			}
 		}
@@ -379,11 +352,8 @@ class Presupuestos extends CI_Controller {
 		);
 			
 		$db['presupuestos']		= $this->presupuestos_model->select($datos);
-		
-		$this->load->view('head.php', $db);
-		$this->load->view('menu.php');
-		$this->load->view('presupuestos/remito_insert.php');
-		$this->load->view('footer.php');
+
+		$this->view($db, 'presupuestos/remito_insert.php')
 	}
 	
 	
@@ -395,49 +365,39 @@ class Presupuestos extends CI_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-	function anular($id = NULL)
-	{
-		if($this->session->userdata('logged_in'))
-		{
-			if($this->input->post('nota'))
-			{
-				$registro = array(
-					'id_presupuesto'	=> $this->input->post('id_presupuesto'),
-					'fecha'				=> date('Y-m-d H:i:s'),
-					'monto'				=> $this->input->post('monto'),
-					'nota'				=> $this->input->post('nota'),
-				);	
-				
-				$this->anulaciones_model->insert($registro);
-				
-				$presupuesto = array(
-					'estado' => 3
-				);
-				
-				$this->presupuestos_model->update($presupuesto, $registro['id_presupuesto']);
-				
-				redirect('ventas/presupuesto_abm/success/','refresh');
-				
-			}
-			
-			$condicion = array(
-				'id_presupuesto' => $id
-			);			
-			
-			$db['texto']				= getTexto();			
-			$db['presupuestos']			= $this->presupuestos_model->select($id);
-			$db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
-			$db['impresiones']			= $this->config_impresion_model->select(2);
-			$db['devoluciones']			= $this->devoluciones_model->select($condicion);
-			
-			
-			$this->load->view('head.php',$db);
-			$this->load->view('menu.php');
-			$this->load->view('presupuestos/anular_presupuestos.php');
-			$this->load->view('footer.php');
-		}else{
-			redirect('/','refresh');
-		}
+	function anular($id = NULL) {
+        if($this->input->post('nota'))
+        {
+            $registro = array(
+                'id_presupuesto'	=> $this->input->post('id_presupuesto'),
+                'fecha'				=> date('Y-m-d H:i:s'),
+                'monto'				=> $this->input->post('monto'),
+                'nota'				=> $this->input->post('nota'),
+            );
+
+            $this->anulaciones_model->insert($registro);
+
+            $presupuesto = array(
+                'estado' => 3
+            );
+
+            $this->presupuestos_model->update($presupuesto, $registro['id_presupuesto']);
+
+            redirect('ventas/presupuesto_abm/success/','refresh');
+
+        }
+
+        $condicion = array(
+            'id_presupuesto' => $id
+        );
+
+        $db['texto']				= getTexto();
+        $db['presupuestos']			= $this->presupuestos_model->select($id);
+        $db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
+        $db['impresiones']			= $this->config_impresion_model->select(2);
+        $db['devoluciones']			= $this->devoluciones_model->select($condicion);
+
+        $this->view($db, 'presupuestos/anular_presupuestos.php');
 	}
 
     /**

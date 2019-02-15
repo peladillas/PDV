@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Type:application/json; charset=UTF-8" />
-    <title>Bulones Sarmiento</title>
+    <title><?php echo $texto['empresa'] ?></title>
     <link rel="stylesheet" href="<?php echo base_url().'librerias/css/jquery-ui.css'?>" type="text/css" />
     <link rel="stylesheet" href="<?php echo base_url().'librerias/bootstrap/css/bootstrap.css'?>" type="text/css" />
 </head>
@@ -25,7 +25,7 @@
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
-            BULONES SARMIENTO
+            <?php echo $texto['empresa'] ?>
             <button class="btn btn-default btn-xs show_hide">
                 Cabecera
             </button>

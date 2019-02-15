@@ -52,12 +52,14 @@ class Devoluciones_model extends MY_Model {
         $inicio	= date('Y-m', strtotime($inicio));
         $final	= date('Y-m', strtotime($final));
 
-        $sql = "SELECT 
-						* 
-						FROM `devolucion` 
-						WHERE
-						DATE_FORMAT(fecha, '%Y-%m') >= '$inicio' AND
-						DATE_FORMAT(fecha, '%Y-%m') <= '$final'";
+        $sql = "
+		SELECT 
+			* 
+		FROM 
+			`devolucion` 
+		WHERE
+			DATE_FORMAT(fecha, '%Y-%m') >= '$inicio' AND
+			DATE_FORMAT(fecha, '%Y-%m') <= '$final'";
 		if($id_cliente === NULL) {
             $sql .= ' AND id_cliente = '.$id_cliente;
 		}

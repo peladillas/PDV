@@ -10,11 +10,15 @@ class Remitos_model extends MY_Model {
 	}
 	
 	function getRemito($id) {
-		$sql = "SELECT 	*
-				FROM remito 
-				INNER JOIN cliente ON(cliente.id_cliente = remito.id_cliente)
-				WHERE
-				remito.id_remito = '$id'";
+		$sql = "
+          SELECT 	
+            *
+          FROM 
+            remito 
+          INNER JOIN 
+            cliente ON(cliente.id_cliente = remito.id_cliente)
+          WHERE
+		    remito.id_remito = '$id'";
 
         return $this->getQuery($sql);
 	}
@@ -55,22 +59,5 @@ class Remitos_model extends MY_Model {
 
         return $this->getQuery($sql);
 	}
-
-
-
-    function getCliente($id) {
-		$sql = 
-			"SELECT 
-				* 
-			FROM 
-				$this->_table
-			WHERE 
-				id_cliente = $id
-			ORDER BY
-				id_remito DESC";
-
-        return $this->getQuery($sql);
-	}
-
 } 
 ?>
