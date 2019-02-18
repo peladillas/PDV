@@ -206,6 +206,6 @@ class Configs extends MY_Controller {
             $db['output'] = setMensaje("Por favor cree el directorio $directorio", 'danger');
         }
 
-        $this->view($db, 'cuerpo.php');
+        $this->view($db, 'body.php');
     }
 }

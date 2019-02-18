@@ -44,7 +44,7 @@ class MY_Controller extends CI_Controller
 		if($this->session->userdata('logged_in')){
 			$this->load->view('head.php',$output);
 			$this->load->view('menu.php');
-			$this->load->view('cuerpo.php');
+			$this->load->view('body.php');
 			$this->load->view('footer.php');
 		}else{
 			redirect('/','refresh');

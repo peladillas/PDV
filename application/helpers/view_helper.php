@@ -1,4 +1,6 @@
 <?php
+
+// Mensaje de alerta
 function setMensaje($mensaje, $tipo=NULL) {
     if($tipo==NULL) {
         $tipo='info';
@@ -14,6 +16,28 @@ function setMensaje($mensaje, $tipo=NULL) {
 					</div>";
 
     return $return;
+}
+
+// start del body
+function startContent($title, $size = NULL) {
+    if($size == NULL){
+		$size = 12;
+	}
+
+	$html = '<div class="container">';
+    $html .= '<div class="col-md-12">';
+    $html .= '<div class="panel panel-primary">';
+	$html .= '<div class="panel-heading">'.$title.'</div>';
+    $html .= '<div class="panel-body">';
+
+    return $html;
+}
+
+// end del body
+function endContent(){
+    $html = '</div></div></div></div>';
+
+    return $html;
 }
 
 ?>
