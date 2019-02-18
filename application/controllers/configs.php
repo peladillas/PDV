@@ -109,23 +109,23 @@ class Configs extends MY_Controller {
                 $i				= 0;
 
                 foreach ($fields as $field) {
+                    $insert_campos_cadena = '';
+                    $create_table_fields = '';
+
                     if($i==0) {
-                        $insert_campos_cadena	= "`".$field->name."`";
+                        $insert_campos_cadena	.= "`".$field->name."`";
 
                         if($field->type != 'float' && $field->type != 'text') {
-                            $create_table_fields = "`$field->name` $field->type($field->max_length)";
+                            $create_table_fields .= "`$field->name` $field->type($field->max_length)";
                         } else {
-                            $create_table_fields = "`$field->name` $field->type";
+                            $create_table_fields .= "`$field->name` $field->type";
                         }
                     } else {
                         $insert_campos_cadena .= ", `".$field->name."`";
 
-                        if($field->type != 'float' && $field->type != 'text' && $field->type != 'datetime')
-                        {
+                        if($field->type != 'float' && $field->type != 'text' && $field->type != 'datetime') {
                             $create_table_fields	.= ", `$field->name` $field->type($field->max_length)";
-                        }
-                        else
-                        {
+                        } else {
                             $create_table_fields	.= ", `$field->name` $field->type";
                         }
                     }
@@ -201,11 +201,11 @@ class Configs extends MY_Controller {
 
             fclose($file);
 
-            $db['mensaje'] = setMensaje("Backup generado el backup en $directorio", 'success');
+            $db['output'] = setMensaje("Backup generado el backup en $directorio", 'success');
         } else {
-            $db['mensaje'] = setMensaje("Por favor cree el directorio $directorio", 'danger');
+            $db['output'] = setMensaje("Por favor cree el directorio $directorio", 'danger');
         }
 
-        $this->view($db, 'backup.php')
+        $this->view($db, 'cuerpo.php');
     }
 }

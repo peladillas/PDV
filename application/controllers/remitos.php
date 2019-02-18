@@ -21,21 +21,64 @@ class Remitos extends MY_Controller{
 		$this->load->model('renglon_presupuesto_model');
 
 		$this->load->helper('url');
+
+		$this->path = 'remitos';
 		$this->load->library('grocery_CRUD');
 	}
 
 /**********************************************************************************
  **********************************************************************************
- * 
- * 				Presupuesto de Salida
- * 
+ *
+ * 				CRUD Remitos
+ *
  * ********************************************************************************
  **********************************************************************************/
 
-	public function salida() {
-	    $db = [];
-	    $this->view($db, 'presupuestos/presupuestos_salida.php');
-	}
+    public function remitos_abm() {
+        $crud = new grocery_CRUD();
+
+        $crud->set_table('remito');
+
+        $crud->order_by('id_remito','desc');
+
+        $crud->columns('id_remito','fecha', 'monto','id_cliente');
+
+        $crud->display_as('id_cliente','Descripción')
+            ->display_as('id_remito','Número')
+            ->display_as('id_estado','Estado');
+
+        $crud->set_subject('remiro');
+        /*
+        $crud->required_fields('descripcion','id_estado');
+         */
+        $crud->set_relation('id_cliente','cliente','{alias} - {nombre} {apellido}');
+        $crud->set_relation('id_estado','estado','estado');
+
+        $_COOKIE['tabla']='remito';
+        $_COOKIE['id']='id_remito';
+
+        $crud->unset_add();
+        $crud->unset_edit();
+        $crud->unset_read();
+        $crud->unset_delete();
+
+        $crud->callback_after_insert(array($this, 'insert_log'));
+
+        $crud->callback_after_insert(array($this, 'insert_log'));
+        $crud->callback_after_update(array($this, 'update_log'));
+        $crud->callback_delete(array($this,'delete_log'));
+        $crud->add_action('Detalle', '', '','icon-exit', array($this, 'buscar_articulos'));
+
+        $output = $crud->render();
+
+        $this->viewCrud($output);
+    }
+
+    function buscar_articulos($id) {
+        return site_url($this->path.'/remito_vista').'/'.$id;
+    }
+
+
 
 /**********************************************************************************
  **********************************************************************************
@@ -96,7 +139,7 @@ class Remitos extends MY_Controller{
             }
         }
 
-        $this->view($db, 'presupuestos/remito.php');
+        $this->view($db, $this->path.'/remito.php');
 	}
 
 /**********************************************************************************
@@ -211,7 +254,7 @@ class Remitos extends MY_Controller{
             $this->insert_devoluciones($id_remito);
         }
 
-        redirect('/remitos/remito_vista/'.$id_remito.'/'.$id_cliente,'refresh');//Redireccionamos para evitar problemas con la recarga de la pagina f5
+        redirect($this->path.'/remito_vista/'.$id_remito.'/'.$id_cliente,'refresh');//Redireccionamos para evitar problemas con la recarga de la pagina f5
 	}
 
 
@@ -308,7 +351,7 @@ class Remitos extends MY_Controller{
 			
 		$db['presupuestos']		= $this->presupuestos_model->select($datos);
 
-		$this->view($db, 'presupuestos/remito_insert.php');
+		$this->view($db, $this->path.'/remito_insert.php');
 	}
 
  /**********************************************************************************
@@ -341,13 +384,14 @@ class Remitos extends MY_Controller{
 			
 		$db['presupuestos']		= $this->presupuestos_model->select($datos);
 
-		$this->view($db, 'remitos/remito_vista.php');
+		$this->view($db, $this->path.'/remito_vista.php');
 	}
+
 
  /**********************************************************************************
  **********************************************************************************
  * 
- * 				Generar las devoluciones
+ * 				Generar las devoluciones sacar de aca, es de presupuesto
  * 
  * ********************************************************************************
  **********************************************************************************/
@@ -365,4 +409,17 @@ class Remitos extends MY_Controller{
 
         $this->view($db, 'presupuestos/anular_presupuestos.php');
 	}
+
+/**********************************************************************************
+ **********************************************************************************
+ *
+ * 				Presupuesto de Salida
+ *
+ * ********************************************************************************
+ **********************************************************************************/
+
+    public function salida() {
+        $db = [];
+        $this->view($db, $this->path.'/presupuestos_salida.php');
+    }
 }

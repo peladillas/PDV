@@ -21,79 +21,12 @@ class Ventas extends My_Controller {
 		$this->load->model('config_impresion_model');
 		$this->load->model('anulaciones_model');
 		$this->load->model('intereses_model');
-        $this->load->model('vendedores_model');
-		
-		
+
 		$this->load->helper('url');
 		$this->load->library('grocery_CRUD');
 	}
 
- /**********************************************************************************
- **********************************************************************************
- * 
- * 				CRUD Remitos
- * 
- * ********************************************************************************
- **********************************************************************************/
 
-	public function remitos_abm() {
-		$crud = new grocery_CRUD();
-
-		$crud->set_table('remito');
-			
-		$crud->order_by('id_remito','desc');
-			 
-		$crud->columns('id_remito','fecha', 'monto','id_cliente');
-			
-		$crud->display_as('id_cliente','Descripción')
-			 ->display_as('id_remito','Número')
-			 ->display_as('id_estado','Estado');
-			 
-		$crud->set_subject('remiro');
-		/*
-		$crud->required_fields('descripcion','id_estado');
-		 */ 
-		$crud->set_relation('id_cliente','cliente','{alias} - {nombre} {apellido}');
-		$crud->set_relation('id_estado','estado','estado');
-			
-		$_COOKIE['tabla']='remito';
-		$_COOKIE['id']='id_remito';	
-			
-		$crud->unset_add();
-		$crud->unset_edit();
-		$crud->unset_read();
-		$crud->unset_delete();
-		
-		$crud->callback_after_insert(array($this, 'insert_log'));
-		
-		$crud->callback_after_insert(array($this, 'insert_log'));
-		$crud->callback_after_update(array($this, 'update_log'));
-		$crud->callback_delete(array($this,'delete_log'));	
-		$crud->add_action('Detalle', '', '','icon-exit', array($this, 'buscar_articulos'));
-			
-		$output = $crud->render();
-
-		$this->viewCrud($output);
-	}
-
-	function buscar_articulos($id) {
-		return site_url('/presupuestos/remito_vista').'/'.$id;	
-	}
-
- /**********************************************************************************
- **********************************************************************************
- * 
- * 				VER Remitos
- * 
- * ********************************************************************************
- **********************************************************************************/
-	
-	function ver_remito($id) {
-		$db['remitos'] = $this->remitos_detalle_model->getRemitos($id);
-
-		$this->view($db, 'presupuestos/detalle_remito.php');
-	}
-	
  /**********************************************************************************
  **********************************************************************************
  * 
@@ -250,45 +183,4 @@ class Ventas extends My_Controller {
             redirect('/','refresh');
         }
     }
-
- /**********************************************************************************
- **********************************************************************************
- * 
- *              CRUD Vendedores
- * 
- * ********************************************************************************
- **********************************************************************************/
-
-    public function vendedores_abm() {
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('vendedor');
-             
-        $crud->columns('id_vendedor','vendedor', 'id_estado');
-            
-        $crud->display_as('id_vendedor','ID')
-             ->display_as('vendedor','Vendedor')
-             ->display_as('id_estado','Estado');
-             
-        $crud->set_subject('vendedor');
-        
-        $crud->fields('vendedor');
-        
-        $crud->required_fields('vendedor','vendedor');
-         
-        $crud->set_relation('id_estado','estado','estado');
-        $crud->add_action('Estadistica', '', '','icon-awstats', array($this, 'detalle_vendedor'));
-            
-        $_COOKIE['tabla']='vendedor';
-        $_COOKIE['id']='id_vendedor'; 
-            
-        $output = $crud->render();
-
-        $this->viewCrud($output);
-    }
-    
-    function detalle_vendedor($id) {
-        return site_url('/estadisticas/mensual').'/'.$id; 
-    }
-
 }
