@@ -75,129 +75,113 @@ if($anulaciones) {
 	}		
 }
 
+echo startContent('Sumas totales de los montos de los presupuestos');
 ?>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					Sumas totales de los montos de los presupuestos
-				</div>
-				
-				<div class="panel-body">
-					<div id="grafico" style="min-width: 310px; height: 400px; margin-bottom: 35px;"></div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="grafico" style="min-width: 310px; height: 400px; margin-bottom: 35px;"></div>
+</div>	</div>	</div>	</div>
 
-	<div class="row">
-		<div class="col-md-6">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					Cantidad de ventas
-				</div>
-				
-				<div class="panel-body">
-					<div id="torta" style="min-width: 310px; height: 405px; max-width: 600px; margin: 0 auto"></div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-md-6">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					Top 10 de los artículos más vendidos
-				</div>
-				
-				<div class="panel-body">
-					<table class="table table-hover" style="font-size: 13px">
-						<thead>
-							<tr>
-								<th>Cant</th>
-								<th>Descripción</th>
-							</tr>
-						</thead>
-						<tbody>
-                        <?php
-                        if($articulos) {
-                            foreach ($articulos as $row) {
-                                echo "<tr>";
-                                echo "<td>".$row->cantidad."</td>";
-                                echo "<td><a title='Ver detalle' href='".base_url()."index.php/articulos/articulo_abm/read/".$row->id_articulo."'>";
-                                echo $row->descripcion."</a></td>";
-                                echo "</tr>";
-                            }
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Cantidad de ventas
+            </div>
+
+            <div class="panel-body">
+                <div id="torta" style="min-width: 310px; height: 405px; max-width: 600px; margin: 0 auto"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Top 10 de los artículos más vendidos
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-hover" style="font-size: 13px">
+                    <thead>
+                        <tr>
+                            <th>Cant</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    if($articulos) {
+                        foreach ($articulos as $row) {
+                            echo "<tr>";
+                            echo "<td>".$row->cantidad."</td>";
+                            echo "<td><a title='Ver detalle' href='".base_url()."index.php/articulos/articulo_abm/read/".$row->id_articulo."'>";
+                            echo $row->descripcion."</a></td>";
+                            echo "</tr>";
                         }
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Sumas totales de los montos de los presupuestos por tipo
+            </div>
+
+            <div class="panel-body">
+                <div id="grafico2" style="min-width: 310px; height: 400px; margin-bottom: 35px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                Sumas totales de las anulaciones y devoluciones
+            </div>
+
+            <div class="panel-body">
+                <div id="grafico3" style="min-width: 310px; height: 400px; margin-bottom: 35px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <form method="post">
+                    <div class="col-md-4">
+                        <label>Cambiar de periodo de tiempo</label>
+                    </div>
+                    <div class="col-md-2">
+                    <select class="form-control" name="ano"/>
+                        <?php
+                        $comienzo = 2014;
+                        for ($i=0; $i < 10 ; $i++) {
+                        $comienzo = $comienzo + 1;
                         ?>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>		
-				
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					Sumas totales de los montos de los presupuestos por tipo
-				</div>
-				
-				<div class="panel-body">
-					<div id="grafico2" style="min-width: 310px; height: 400px; margin-bottom: 35px;"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-danger">
-				<div class="panel-heading">
-					Sumas totales de las anulaciones y devoluciones
-				</div>
-				
-				<div class="panel-body">
-					<div id="grafico3" style="min-width: 310px; height: 400px; margin-bottom: 35px;"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-primary">
-				<div class="panel-body">
-					<form method="post">
-						<div class="col-md-4">
-							<label>Cambiar de periodo de tiempo</label>
-						</div>
-						<div class="col-md-2">
-						<select class="form-control" name="ano"/>
-							<?php 
-							$comienzo = 2014;
-							for ($i=0; $i < 10 ; $i++) { 
-							$comienzo = $comienzo + 1;
-							?> 
-								<option value="<?php echo $comienzo?>"/><?php echo $comienzo?></option>
-							<?php } ?>
-						</select>
-						</div>
-						<div class="col-md-4">
-							<button class="btn btn-default form-control" name="buscar">
-								Cambiar
-							</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+                            <option value="<?php echo $comienzo?>"/><?php echo $comienzo?></option>
+                        <?php } ?>
+                    </select>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-default form-control" name="buscar">
+                            Cambiar
+                        </button>
+                    </div>
+                </form>
+            </div>
+<?php echo endContent(); ?>
 
-
-	</div>
 
 
 <script type="text/javascript">

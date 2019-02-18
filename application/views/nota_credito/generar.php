@@ -1,54 +1,47 @@
-<div class="container"> 
-<div class="col-md-12">
-	<div class="panel panel-primary">
-		<div class="panel-heading"><?php echo lang('empresa') ?></div>
-		<div class="panel-body">
-			<form class="form-inline">
-			<div id="form-heading">
-				<div class="form-group">
-    				<label for="nombre"><?php echo lang('nombre')?></label>
-    				<input class="form-control" type='text' placeholder="Nombre, apellido o alias" name='nombre' id='nombre' autocomplete="off"/>
-    				<input type='hidden'  name='id_cliente' id='id_cliente'/>
-				</div>
-  				<div class="form-group">
-    				<label for="fecha"><?php echo lang('fecha')?></label>
-    				<input type="text" class="form-control" name="fecha" id="fecha" value="<?php echo date('d/m/Y')?>" disabled>
-  				</div>
-  				<button type="button" id="seleccionar" class="btn btn-default">Selecionar</button>
-  				<div class="form-group">
-    				<label for="total_nota_credito"><?php echo lang('total').' '.lang('nota_credito')?></label>
-    				<input type="text" class="form-control" name="total_nota_credito" id="total_nota_credito" value="0" disabled>
-  				</div>
-			</div>
-			
-			<hr>
-			<div id="form-detail" class="hide">
-				<div class="form-group">
-    				<label for="id_articulo"><?php echo lang('articulo')?></label>
-    				<input class="form-control" type='text' placeholder="Cod o Detalle" name='articulo' id='articulo' autocomplete="off"/>
-    				<input type='hidden'  name='id_articulo' id='id_articulo'/>
-    			</div>
-    			<div class="form-group">
-    				<label for="cantidad"><?php echo lang('cantidad')?></label>
-    				<input class="form-control" type='number' placeholder="Cantidad" name='cantidad' id='cantidad'/>
-    			</div>
-    			<div class="form-group">
-    				<label for="precio"><?php echo lang('precio')?></label>
-    				<input class="form-control" type='text' placeholder="Precio" name='precio' id='precio'/>
-    			</div>
-    			<div class="form-group">
-    				<label for="total"><?php echo lang('total')?></label>
-    				<input class="form-control" type='text' disabled name='total' id='total'/>
-    			</div>
-    			<button type="button" id="agregar" class="btn btn-default">Agregar</button>
-			</div>
-			</form>
-			<div id="note-detail" class="hide">
-			</div>
-		</div>
-	</div>
+<?php echo startContent(lang('empresa') ) ?>
+<form class="form-inline">
+<div id="form-heading">
+    <div class="form-group">
+        <label for="nombre"><?php echo lang('nombre')?></label>
+        <input class="form-control" type='text' placeholder="Nombre, apellido o alias" name='nombre' id='nombre' autocomplete="off"/>
+        <input type='hidden'  name='id_cliente' id='id_cliente'/>
+    </div>
+    <div class="form-group">
+        <label for="fecha"><?php echo lang('fecha')?></label>
+        <input type="text" class="form-control" name="fecha" id="fecha" value="<?php echo date('d/m/Y')?>" disabled>
+    </div>
+    <button type="button" id="seleccionar" class="btn btn-default">Selecionar</button>
+    <div class="form-group">
+        <label for="total_nota_credito"><?php echo lang('total').' '.lang('nota_credito')?></label>
+        <input type="text" class="form-control" name="total_nota_credito" id="total_nota_credito" value="0" disabled>
+    </div>
 </div>
+
+<hr>
+<div id="form-detail" class="hide">
+    <div class="form-group">
+        <label for="id_articulo"><?php echo lang('articulo')?></label>
+        <input class="form-control" type='text' placeholder="Cod o Detalle" name='articulo' id='articulo' autocomplete="off"/>
+        <input type='hidden'  name='id_articulo' id='id_articulo'/>
+    </div>
+    <div class="form-group">
+        <label for="cantidad"><?php echo lang('cantidad')?></label>
+        <input class="form-control" type='number' placeholder="Cantidad" name='cantidad' id='cantidad'/>
+    </div>
+    <div class="form-group">
+        <label for="precio"><?php echo lang('precio')?></label>
+        <input class="form-control" type='text' placeholder="Precio" name='precio' id='precio'/>
+    </div>
+    <div class="form-group">
+        <label for="total"><?php echo lang('total')?></label>
+        <input class="form-control" type='text' disabled name='total' id='total'/>
+    </div>
+    <button type="button" id="agregar" class="btn btn-default">Agregar</button>
 </div>
+</form>
+<div id="note-detail" class="hide">
+</div>
+<?php echo endContent(); ?>
 
 <script>
 	
