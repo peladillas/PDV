@@ -12,7 +12,6 @@ class Proveedores extends MY_Controller {
 		$this->load->library('grocery_CRUD');
 	}
 
-
 /**********************************************************************************
  **********************************************************************************
  * 
@@ -21,7 +20,6 @@ class Proveedores extends MY_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-	
 	public function proveedor_abm() {
         $crud = new grocery_CRUD();
 
@@ -51,7 +49,6 @@ class Proveedores extends MY_Controller {
         $this->viewCrud($output);
 	}
 
-
 /**********************************************************************************
  **********************************************************************************
  * 
@@ -59,7 +56,6 @@ class Proveedores extends MY_Controller {
  * 
  * ********************************************************************************
  **********************************************************************************/
-
 
     public function actualizar_precios($datos, $id){
 		$proveedor	= $this->proveedores_model->getProveedor_precio($id);
@@ -104,8 +100,7 @@ class Proveedores extends MY_Controller {
 			$this->articulos_model->update($datos, $id_articulo);
 			
 		}
-					
-	 
+
 	    return true;
 	}
 }

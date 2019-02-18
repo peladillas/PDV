@@ -2,8 +2,7 @@
 
 class Ventas extends My_Controller {
 
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 		$this->load->database();
 		
@@ -27,10 +26,8 @@ class Ventas extends My_Controller {
 		
 		$this->load->helper('url');
 		$this->load->library('grocery_CRUD');
-		
 	}
 
- 
  /**********************************************************************************
  **********************************************************************************
  * 
@@ -39,9 +36,7 @@ class Ventas extends My_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-	
-	public function remitos_abm()
-	{
+	public function remitos_abm() {
 		$crud = new grocery_CRUD();
 
 		$crud->set_table('remito');
@@ -78,14 +73,12 @@ class Ventas extends My_Controller {
 			
 		$output = $crud->render();
 
-		$this->_example_output($output);
+		$this->viewCrud($output);
 	}
 
-	function buscar_articulos($id)
-	{
+	function buscar_articulos($id) {
 		return site_url('/presupuestos/remito_vista').'/'.$id;	
 	}
-
 
  /**********************************************************************************
  **********************************************************************************
@@ -95,16 +88,12 @@ class Ventas extends My_Controller {
  * ********************************************************************************
  **********************************************************************************/
 	
-	function ver_remito($id){
+	function ver_remito($id) {
 		$db['remitos'] = $this->remitos_detalle_model->getRemitos($id);
-		
-		$this->load->view('head.php', $db);
-		$this->load->view('menu.php');
-		$this->load->view('presupuestos/detalle_remito.php');
-		$this->load->view('footer.php');
+
+		$this->view($db, 'presupuestos/detalle_remito.php');
 	}
 	
-
  /**********************************************************************************
  **********************************************************************************
  * 
@@ -113,9 +102,7 @@ class Ventas extends My_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-	
-	public function presupuesto_abm()
-	{
+	public function presupuesto_abm() {
 		$crud = new grocery_CRUD();
 
 		$crud->set_table('presupuesto');
@@ -154,12 +141,10 @@ class Ventas extends My_Controller {
 			
 		$output = $crud->render();
 
-		$this->_example_output($output);
+		$this->viewCrud($output);
 	}
 
-
-	function _calcularatraso($value, $row)
-	{
+	function _calcularatraso($value, $row) {
 		$query = $this->db->query("SELECT dias_pago FROM config WHERE id_config = 1 ");
 		
 		if($query->num_rows() > 0)
@@ -175,28 +160,21 @@ class Ventas extends My_Controller {
 		$nuevafecha = date ( 'Y-m-d' , $nuevafecha );
 		
 		
-		if($nuevafecha < date('Y-m-d') && $row->estado == 1)
-		{
+		if($nuevafecha < date('Y-m-d') && $row->estado == 1) {
 			$datetime1 = date_create($fecha);
 			$datetime2 = date_create(date('Y-m-d'));
 			$interval = date_diff($datetime1, $datetime2);
 			
 			return '<label class="label label-danger">'.date('d-m-Y', strtotime($row->fecha)).'</label> <span class="badge">'.$interval->format('%R%a días').'</span>';
-		}
-		else
-		{
+		} else {
 			return date('d-m-Y', strtotime($row->fecha));
 		}
 	}
 
-
-	function buscar_presupuestos($id)
-	{
+	function buscar_presupuestos($id) {
 		return site_url('/ventas/detalle_presupuesto').'/'.$id;	
 	}
 
-
- 
  /**********************************************************************************
  **********************************************************************************
  * 
@@ -205,84 +183,73 @@ class Ventas extends My_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
+	function detalle_presupuesto($id, $llamada = NULL) {
+        $_presupuesto = $this->presupuestos_model->select($id);
+        if($_presupuesto){
+            if($this->input->post('interes_tipo')){
 
-	function detalle_presupuesto($id, $llamada = NULL)
-	{
-		if($this->session->userdata('logged_in'))
-		{
-			$_presupuesto = $this->presupuestos_model->select($id);
-			if($_presupuesto){
-				if($this->input->post('interes_tipo')){
-				
-					foreach ($_presupuesto as $_row) {
-						$presupuesto_monto = $_row->monto;
-					}
-					
-					if($this->input->post('interes_tipo') == 'porcentaje'){
-						$interes_monto = $presupuesto_monto * $this->input->post('interse_monto') / 100 ;
-					}else{
-						$interes_monto = $this->input->post('interse_monto');
-					}
-					
-					if($this->input->post('descripcion_monto') == ""){
-						$descripcion = date('d-m-Y').' Intereses generados por atraso';
-					}else{
-						$descripcion = date('d-m-Y').' '.$this->input->post('descripcion_monto');
-					}
-					
-					$interes = array(
-						'id_presupuesto'	=> $id,
-						'id_tipo'			=> 1,
-						'monto'				=> $interes_monto,
-						'descripcion'		=> $descripcion,
-						'fecha'				=> date('Y-m-d H:i:s'),
-						'id_usuario'		=> 1, //agregar nombre de usuario
-					);
-						
-					$this->intereses_model->insert($interes);
-						
-					$_presupuesto = array(
-						'monto'				=> $presupuesto_monto + $interes_monto,
-					);
-						
-					$this->presupuestos_model->update($_presupuesto, $id);
-				}
-			
-				$condicion = array(
-					'id_presupuesto' => $id
-				);			
-				
-				$db['texto']				= getTexto();			
-				$db['presupuestos']			= $this->presupuestos_model->select($id);
-				$db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
-				$db['interes_presupuesto']	= $this->intereses_model->select($condicion);
-				$db['impresiones']			= $this->config_impresion_model->select(2);
-				$db['devoluciones']			= $this->devoluciones_model->select($condicion);
-				$db['anulaciones']			= $this->anulaciones_model->select($condicion);
-				
-				if($llamada == NULL)
-				{
-					$db['llamada'] = FALSE;
-					$this->load->view('head.php',$db);
-					$this->load->view('menu.php');
-					$this->load->view('presupuestos/detalle_presupuestos.php');
-					$this->load->view('footer.php');
-				}else
-				{
-					$db['llamada'] = TRUE;
-					$this->load->view('head.php',$db);
-					$this->load->view('presupuestos/detalle_presupuestos.php');
-				}
-				
-			}else{
-				redirect('/','refresh');
-			}
-		}else{
-			redirect('/','refresh');
-		}
-	}
+                foreach ($_presupuesto as $_row) {
+                    $presupuesto_monto = $_row->monto;
+                }
 
+                if($this->input->post('interes_tipo') == 'porcentaje'){
+                    $interes_monto = $presupuesto_monto * $this->input->post('interse_monto') / 100 ;
+                }else{
+                    $interes_monto = $this->input->post('interse_monto');
+                }
 
+                if($this->input->post('descripcion_monto') == ""){
+                    $descripcion = date('d-m-Y').' Intereses generados por atraso';
+                }else{
+                    $descripcion = date('d-m-Y').' '.$this->input->post('descripcion_monto');
+                }
+
+                $interes = array(
+                    'id_presupuesto'	=> $id,
+                    'id_tipo'			=> 1,
+                    'monto'				=> $interes_monto,
+                    'descripcion'		=> $descripcion,
+                    'fecha'				=> date('Y-m-d H:i:s'),
+                    'id_usuario'		=> 1, //agregar nombre de usuario
+                );
+
+                $this->intereses_model->insert($interes);
+
+                $_presupuesto = array(
+                    'monto'				=> $presupuesto_monto + $interes_monto,
+                );
+
+                $this->presupuestos_model->update($_presupuesto, $id);
+            }
+
+            $condicion = array(
+                'id_presupuesto' => $id
+            );
+
+            $db['texto']				= getTexto();
+            $db['presupuestos']			= $this->presupuestos_model->select($id);
+            $db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
+            $db['interes_presupuesto']	= $this->intereses_model->select($condicion);
+            $db['impresiones']			= $this->config_impresion_model->select(2);
+            $db['devoluciones']			= $this->devoluciones_model->select($condicion);
+            $db['anulaciones']			= $this->anulaciones_model->select($condicion);
+
+            if($llamada == NULL)
+            {
+                $db['llamada'] = FALSE;
+
+            }else
+            {
+                $db['llamada'] = TRUE;
+                $this->load->view('head.php',$db);
+                $this->load->view('presupuestos/detalle_presupuestos.php');
+            }
+
+            $this->view($db, 'presupuestos/detalle_presupuestos.php');
+        } else {
+            redirect('/','refresh');
+        }
+    }
 
  /**********************************************************************************
  **********************************************************************************
@@ -292,9 +259,7 @@ class Ventas extends My_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-    
-    public function vendedores_abm()
-    {
+    public function vendedores_abm() {
         $crud = new grocery_CRUD();
 
         $crud->set_table('vendedor');
@@ -319,10 +284,10 @@ class Ventas extends My_Controller {
             
         $output = $crud->render();
 
-        $this->_example_output($output);
+        $this->viewCrud($output);
     }
     
-    function detalle_vendedor($id){
+    function detalle_vendedor($id) {
         return site_url('/estadisticas/mensual').'/'.$id; 
     }
 

@@ -2,7 +2,7 @@
 
 class Usuarios extends MY_Controller {
 
-	public function __construct(){
+	public function __construct() {
 		parent::__construct();
 
 		$this->load->database();
@@ -11,7 +11,6 @@ class Usuarios extends MY_Controller {
 		$this->load->library('grocery_CRUD');
 	}
 
-	
 /**********************************************************************************
  **********************************************************************************
  * 
@@ -20,9 +19,7 @@ class Usuarios extends MY_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-
-	public function usuario_abm()
-	{
+	public function usuario_abm() {
 		$crud = new grocery_CRUD();
 
 		$crud->where('usuario.id_estado = 1');
@@ -49,29 +46,24 @@ class Usuarios extends MY_Controller {
 			
 		$output = $crud->render();
 
-		$this->_example_output($output);
+		$this->viewCrud($output);
 	}
 	
-	function encrypt_password_insert($post_array) 
-	{
+	function encrypt_password_insert($post_array) {
   		$post_array['pass'] = md5($post_array['pass']);
  
 		return $post_array;
 	}
 
-	function encrypt_password_update($post_array, $primary_key) 
-	{
+	function encrypt_password_update($post_array, $primary_key) {
 		$post_array['pass'] = md5($post_array['pass']);
  
 		return $post_array;
 	}
 
-	function edit_field_callback_1($value, $primary_key)
-	{
+	function edit_field_callback_1($value, $primary_key) {
 	    return '<input id="field-pass" name="pass" type="text" value="" maxlength="128" class="form-control">';
 	}
-
-	
 
 /**********************************************************************************
  **********************************************************************************
@@ -81,9 +73,7 @@ class Usuarios extends MY_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-
-	public function roles_abm()
-	{
+	public function roles_abm() {
 		$crud = new grocery_CRUD();
 			
 		$crud->where('rol.id_estado = 1');
@@ -110,7 +100,7 @@ class Usuarios extends MY_Controller {
 						
 		$output = $crud->render();
 
-		$this->_example_output($output);
+		$this->viewCrud($output);
 	}
 
 }
