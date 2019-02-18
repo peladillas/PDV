@@ -211,8 +211,7 @@ class Articulos extends My_Controller {
 
 	public function actualizar_precios($datos, $id) {
         $articulo = getArticulosWhitDetail($id);
-        $newDatos['variacion'] = $variacion;
-        $this->articulo_model->updatePrecios($articulo, $datos);
+        $this->articulo_model->updatePrecios($articulo);
 
 	    return true;
 	}

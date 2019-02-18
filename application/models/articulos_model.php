@@ -76,11 +76,20 @@ class Articulos_model extends MY_Model {
 
 		$this->getQuery($sql);
 	}
-	
-	function updatePrecios($articulos, $datos) {
+
+    /**
+     * Actualizacion de precios de los articulos
+     * */
+	function updatePrecios($articulos, $datos = NULL) {
+		if ($datos == NULL) {
+            $variacion = 0;
+		} else {
+            $variacion = $datos['variacion'];
+		}
+
 		foreach ($articulos as $articulo) {
 			$precio_viejo		= $articulo->precio_costo;// solo para depurar
-			$precio_costo		= $precio_viejo + ($precio_viejo * ($datos['variacion'] / 100));// FUNCIONA PARA AUMENTOS Y DECREMENTOS POR LA MULTIP(+ * + = +     Y    + * -  = - )
+			$precio_costo		= $precio_viejo + ($precio_viejo * ($variacion / 100));// FUNCIONA PARA AUMENTOS Y DECREMENTOS POR LA MULTIP(+ * + = +     Y    + * -  = - )
 			$costo_descuento1	= $precio_costo - ($precio_costo * ($articulo->descuento / 100));
 			$costo_descuento	= $costo_descuento1 - ($costo_descuento1 * ($articulo->descuento2 / 100)); // APLICACION DE 2DO DESC ESCALONADO
 			

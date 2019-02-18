@@ -56,8 +56,7 @@ class Proveedores extends MY_Controller {
 
     public function actualizar_precios($datos, $id){
         $articulos	= $this->proveedores_model->getProveedorArticulos($id);
-        $newDatos['variacion'] = $variacion;
-        $this->articulos_model->updatePrecios($articulos, $newDatos);
+        $this->articulos_model->updatePrecios($articulos);
 
 	    return true;
 	}
