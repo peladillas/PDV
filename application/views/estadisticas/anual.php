@@ -100,27 +100,29 @@ echo startContent('Sumas totales de los montos de los presupuestos');
             </div>
 
             <div class="panel-body">
-                <table class="table table-hover" style="font-size: 13px">
-                    <thead>
-                        <tr>
-                            <th>Cant</th>
-                            <th>Descripción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    if($articulos) {
-                        foreach ($articulos as $row) {
-                            echo "<tr>";
-                            echo "<td>".$row->cantidad."</td>";
-                            echo "<td><a title='Ver detalle' href='".base_url()."index.php/articulos/articulo_abm/read/".$row->id_articulo."'>";
-                            echo $row->descripcion."</a></td>";
-                            echo "</tr>";
-                        }
+                <?php
+                if($articulos) {
+                    $cabecera = [
+                        lang('cant'),
+                        lang('descripcion'),
+                    ];
+
+                    $html = startTable();
+
+                    foreach ($articulos as $row) {
+                        $registro = [
+                            $row->cantidad,
+                            "<a title='Ver detalle' href='".base_url()."index.php/articulos/articulo_abm/read/".$row->id_articulo."'>".$row->descripcion."</a>",
+                        ];
+
+                        $html .= setTableContent($registro);
                     }
-                    ?>
-                    </tbody>
-                </table>
+
+                    $html .= endTable();
+
+                    echo $html;
+                }
+                ?>
             </div>
         </div>
     </div>

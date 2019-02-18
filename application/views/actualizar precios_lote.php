@@ -75,112 +75,79 @@ $(document).ready(function() {
 </div>
 </div>
 
-<?php if($this->input->post('buscar')){?>
-<div class="panel">
-<div class="panel-body">
+<?php if($this->input->post('buscar')){ ?>
+    <div class="panel">
+        <div class="panel-body">
 
-    <!--------------------------------------------------------------------
-    ----------------------------------------------------------------------
-                Tabla de articulos
-    ----------------------------------------------------------------------
-    --------------------------------------------------------------------->
+            <!--------------------------------------------------------------------
+            ----------------------------------------------------------------------
+                        Tabla de articulos
+            ----------------------------------------------------------------------
+            --------------------------------------------------------------------->
 
-    <?php if($this->input->post('confirmar')){?>
-        <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <?php echo $mensaje ?>
-        </div>
-    <?php }else{ ?>
-         <?php echo form_open('articulos/actualizar_precios_lote');?>
-             <input type="hidden" name="proveedor" value="<?php echo $this->input->post('proveedor');?>">
-             <input type="hidden" name="grupo" value="<?php echo $this->input->post('grupo');?>">
-             <input type="hidden" name="categoria" value="<?php echo $this->input->post('categoria');?>">
-             <input type="hidden" name="subcategoria" value="<?php echo $this->input->post('subcategoria');?>">
-             <input type="hidden" name="variacion" value="<?php echo $this->input->post('variacion');?>">
-             <input type="hidden" name="buscar" value="1">
-             <center>
-             <button type="submit" name="confirmar" value="1" title="Cambiara los precios que aparecen en esta lista" class="btn btn-info btn-lg">
-                Confirmar
-             </button>
-             <?php echo $mensaje ?>
-             </center>
-        <?php echo form_close();?>
-    <?php } ?>
-    <table class="table table-hover" id="table_actualizacion" style="font-size: 12px">
-        <thead>
-            <tr class="success">
-                <td>Codigo</td>
-                <td>Descripcion</td>
-                <td>Venta</td>
-                <td>s/iva</td>
-                <td>Costo</td>
-                <td>Proveedor</td>
-                <td>Grupo</td>
-                <td>Categoria</td>
-                <td>SubCate</td>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+            <?php if($this->input->post('confirmar')){?>
+                <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <?php echo $mensaje ?>
+                </div>
+            <?php }else{ ?>
+                 <?php echo form_open('articulos/actualizar_precios_lote');?>
+                     <input type="hidden" name="proveedor" value="<?php echo $this->input->post('proveedor');?>">
+                     <input type="hidden" name="grupo" value="<?php echo $this->input->post('grupo');?>">
+                     <input type="hidden" name="categoria" value="<?php echo $this->input->post('categoria');?>">
+                     <input type="hidden" name="subcategoria" value="<?php echo $this->input->post('subcategoria');?>">
+                     <input type="hidden" name="variacion" value="<?php echo $this->input->post('variacion');?>">
+                     <input type="hidden" name="buscar" value="1">
+                     <center>
+                     <button type="submit" name="confirmar" value="1" title="Cambiara los precios que aparecen en esta lista" class="btn btn-info btn-lg">
+                        Confirmar
+                     </button>
+                     <?php echo $mensaje ?>
+                     </center>
+                <?php echo form_close();?>
+            <?php }
             if($articulos){
-            foreach ($articulos as $articulo) { ?>
-                <tr>
-                    <td><?php echo $articulo->cod_proveedor?></td>
-                    <td title="<?php echo $articulo->descripcion?>">
-                        <?php
-                        if(strlen($articulo->descripcion)>18){
-                            echo substr($articulo->descripcion,0,15)."...";
-                        }else{
-                            echo $articulo->descripcion;
-                        }?>
-                    </td>
-                    <td><?php echo number_format($articulo->precio_venta_iva, 2, ",", ".")?></td>
-                    <td><?php echo number_format($articulo->precio_venta_sin_iva, 2, ",", ".") ?></td>
-                    <td><?php echo number_format($articulo->precio_costo, 2, ",", ".") ?></td>
-                    <td title="<?php echo $articulo->proveedor?>">
-                        <?php
-                        if(strlen($articulo->proveedor)>8){
-                            echo substr($articulo->proveedor,0,5)."...";
-                        }else{
-                            echo $articulo->proveedor;
-                        }?>
-                    </td>
-                    <td title="<?php echo $articulo->grupo?>">
-                        <?php
-                        if(strlen($articulo->grupo)>8){
-                            echo substr($articulo->grupo,0,5)."...";
-                        }else{
-                            echo $articulo->grupo;
-                        }?>
-                    </td>
-                    <td title="<?php echo $articulo->categoria?>">
-                        <?php
-                        if(strlen($articulo->categoria)>8){
-                            echo substr($articulo->categoria,0,5)."...";
-                        }else{
-                            echo $articulo->categoria;
-                        }?>
-                    </td>
-                    <td title="<?php echo $articulo->subcategoria?>">
-                        <?php
-                        if(strlen($articulo->subcategoria)>8){
-                            echo substr($articulo->subcategoria,0,5)."...";
-                        }else{
-                            echo $articulo->subcategoria;
-                        }?>
-                    </td>
-                </tr>
-            <?php
+                $cabecera = [
+                    lang('codigo'),
+                    lang('descripcion'),
+                    lang('venta'),
+                    lang('sin_iva'),
+                    lang('costo'),
+                    lang('proveedor'),
+                    lang('grupo'),
+                    lang('categoria'),
+                    lang('sub_categoria'),
+                ];
+
+                $html = startTable($cabecera, 'table_actualizacion');
+
+                foreach ($articulos as $articulo) {
+                    $registro = [
+                        $articulo->cod_proveedor,
+                        $articulo->descripcion,
+                        (strlen($articulo->descripcion)>18 ? substr($articulo->descripcion,0,15)."..." : $articulo->descripcion),
+                        number_format($articulo->precio_venta_iva, 2, ",", "."),
+                        number_format($articulo->precio_venta_sin_iva, 2, ",", "."),
+                        number_format($articulo->precio_costo, 2, ",", "."),
+                        (strlen($articulo->proveedor)>8 ? substr($articulo->proveedor,0,5)."..." : $articulo->proveedor),
+                        (strlen($articulo->grupo)>8 ? substr($articulo->grupo,0,5)."..." : $articulo->proveedor),
+                        (strlen($articulo->categoria)>8 ? substr($articulo->categoria,0,5)."..." : $articulo->proveedor),
+                        (strlen($articulo->subcategoria)>8 ? substr($articulo->subcategoria,0,5)."..." : $articulo->proveedor),
+                    ];
+
+                    $html .= $registro;
+                }
+
+                $html .= endTable();
+
+                echo $html;
             }
-            } ?>
-        </tbody>
-    </table>
-</div>
-</div>
+
+            ?>
+        </div>
+    </div>
 <?php
-}
-else
-{
+} else {
     if($actualizaciones)
     {
         echo '<div class="row">';
