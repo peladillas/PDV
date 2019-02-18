@@ -1,18 +1,12 @@
 <?php 
 class Presupuestos_model extends MY_Model {
 
-    /**
-     * Presupuestos_model constructor.
-     */
     public function __construct(){
-		
 		parent::construct(
-				'presupuesto',
-				'id_presupuesto',
-				'monto', //ver si esto esta bien
-				'id_presupuesto'
+			'presupuesto',
+			'id_presupuesto',
+			'monto'
 		);
-
 	}
 	
 	function suma_presupuesto($inicio, $final, $id_cliente = NULL, $id_vendedor = NULL)
@@ -41,8 +35,8 @@ class Presupuestos_model extends MY_Model {
 
 			$inicio			= date('Y-m', strtotime($inicio));
 			$final			= date('Y-m', strtotime($final));
-		
-			$consulta = "
+
+            $sql = "
 			SELECT 
 				monto,
 				fecha, 
@@ -57,8 +51,8 @@ class Presupuestos_model extends MY_Model {
 		}else if($id_cliente == '0') {
 			$inicio			= date('Y-m-d', strtotime($inicio));
 			$final			= date('Y-m-d', strtotime($final));
-		
-			$consulta = "
+
+            $sql = "
 			SELECT 
                 id_presupuesto,
 				monto,
@@ -85,8 +79,8 @@ class Presupuestos_model extends MY_Model {
 		}else {
 			$inicio			= date('Y-m-d', strtotime($inicio));
 			$final			= date('Y-m-d', strtotime($final));
-		
-			$consulta = "
+
+            $sql = "
 			SELECT 
                 id_presupuesto,
 				monto,
@@ -113,30 +107,19 @@ class Presupuestos_model extends MY_Model {
             ORDER BY 
                 fecha";
 		}
-		
-		$query = $this->db->query($consulta);
-		
-		if($query->num_rows() > 0){
-			foreach ($query->result() as $row) {
-				$data[] = $row;
-			}
-			return $data;
-		}else{
-			return FALSE;
-		}
+
+        return $this->getQuery($sql);
 	}
 	
-	function get_top($inicio, $final,$cantidad = NULL)
-	{
+	function get_top($inicio, $final,$cantidad = NULL) {
 		if($cantidad == NULL){
 			$cantidad = 10;
-		}	
-			
+		}
 		
 		$inicio			= date('Y-m', strtotime($inicio));
 		$final			= date('Y-m', strtotime($final));
-		
-		$consulta = "SELECT 
+
+        $sql = "SELECT 
 					fecha, 
 					sum(cantidad) as cantidad, 
 					descripcion, 
@@ -151,23 +134,13 @@ class Presupuestos_model extends MY_Model {
 					GROUP BY articulo.id_articulo
 					ORDER BY cantidad DESC
 					LIMIT 0,$cantidad";
-					
-		$query = $this->db->query($consulta);
-		
-		if($query->num_rows() > 0){
-			foreach ($query->result() as $row) {
-				$data[] = $row;
-			}
-			return $data;
-		}else{
-			return FALSE;
-		}
+
+        return $this->getQuery($sql);
 	}
 	
 	
 	
-	function getCliente($id)
-	{
+	function getCliente($id) {
 		$sql = 
 			"SELECT 
 				* 
@@ -181,21 +154,8 @@ class Presupuestos_model extends MY_Model {
 				id_cliente = $id
 			ORDER BY
 				id_presupuesto DESC";
-				
-		$query = $this->db->query($sql);
-		
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			return $data;
-		}
-		else
-		{
-			return FALSE;
-		}
+
+        return $this->getQuery($sql);
 	}
 
 		

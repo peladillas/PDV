@@ -1,37 +1,37 @@
+<script>
+	function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+
 <?php
-echo startContent(lang('empresa_titulo'));
+echo startContent('');
+echo '<div id="printableArea">';
 
 if($presupuestos) {
     echo "<table class='table table-hover'>";
     foreach ($presupuestos as $row) {
         foreach ($impresiones as $impresion) {
             $clientes	= $this->clientes_model->select($row->id_cliente);
-
-            if($clientes) {
-                foreach ($clientes as $row_cliente) {
-                    $nombre = $row_cliente->nombre;
-                    $apellido = $row_cliente->apellido;
-                }
+            foreach ($clientes as $row_cliente)
+            {
+                $nombre = $row_cliente->nombre;
+                $apellido = $row_cliente->apellido;
             }
             $cabecera = $impresion->cabecera;
             $cabecera = str_replace("#presupuesto_nro#", $row->id_presupuesto, $cabecera);
             $cabecera = str_replace("#presupuesto_descuento#", $row->descuento, $cabecera);
             $cabecera = str_replace("#presupuesto_fecha#", date('d-m-Y', strtotime($row->fecha)), $cabecera);
             $cabecera = str_replace("#presupuesto_monto#", $row->monto, $cabecera);
-
-            if(isset($nombre)) {
-                $cabecera = str_replace("#cliente_nombre#", $nombre, $cabecera);
-            } else {
-                $cabecera = str_replace("#cliente_nombre#", '', $cabecera);
-            }
-
-            if(isset($apellido)) {
-                $cabecera = str_replace("#cliente_apellido#", $apellido, $cabecera);
-            } else {
-                $cabecera = str_replace("#cliente_apellido#", '', $cabecera);
-            }
-
-            $monto_presupuesto = $row->monto;
+            $cabecera = str_replace("#cliente_nombre#", $nombre, $cabecera);
+            $cabecera = str_replace("#cliente_apellido#", $apellido, $cabecera);
 
             $pie = $impresion->pie;
             echo $cabecera;
@@ -82,22 +82,22 @@ if($presupuestos) {
         $mensaje = lang('si_devolucion')." <a class='btn btn-warning'>Ver devolución</a>";
         echo setMensaje($mensaje, 'warning');
     }
-
-
 } else {
     echo setMensaje(lang('no_registro'), 'success');
 }
+
+echo '</div>';
 ?>
-			
-<form method="post" action="<?php echo base_url().'index.php/presupuestos/anular/'?>">
-    <label>Nota</label>
-    <textarea name="nota" class="form-control" rows="6" required></textarea>
-    <input name="id_presupuesto" value="<?php echo $id_presupuesto?>" type="hidden"/>
-    <input name="monto" value="<?php echo $monto_presupuesto?>" type="hidden"/>
-    <a href='<?php echo base_url()."/index.php/ventas/presupuesto_abm/"?>' class='btn btn-default'>Volver a la lista</a>
-    <button class="btn btn-default"/>
-        <i class="fa fa-trash-o"></i> Anular
-    </button>
-</form>
+
+<input type='button' class='btn btn-default' value='Volver a la lista' onclick='window.history.back()'>
+<button class="btn btn-default" type="button" onclick="printDiv('printableArea')"/>
+    <i class="fa fa-print"></i> Imprimir
+</button>
+<a href="<?php echo base_url().'index.php/devoluciones/generar/'.$id_presupuesto?>" class="btn btn-default"/>
+    <i class="fa fa-thumbs-down"></i> Devolución
+</a>
+<a href="<?php echo base_url().'index.php/presupuestos/anular/'.$id_presupuesto?>" class="btn btn-default"/>
+    <i class="fa fa-trash-o"></i> Anular
+</a>
 
 <?php echo endContent(); ?>

@@ -48,45 +48,35 @@ $acuenta_total	= 0;
      document.body.innerHTML = originalContents;
 }
 </script>
-
-
-<div class="container">
-
-<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<form method="post">
-						<div class="col-md-3">
-							<label>Cambiar de periodo de tiempo</label>
-						</div>
-						<div class="col-md-2">
-							<div class="input-group">
-								<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-								<input type="text" class="form-control" id="inicio_fecha" name="inicio" placeholder="ingrese inicio" required>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="input-group">
-								<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-								<input type="text" class="form-control" id="final_fecha" name="final" placeholder="ingrese final" required>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<button class="btn btn-default form-control" name="buscar">
-								Cambiar
-							</button>
-						</div>
-						<div class="col-md-2">
-							<button class="btn btn-default" type="button" onclick="printDiv('printableArea')"/>
-	  							<i class="fa fa-print"></i> Imprimir
-	  						</button>
-	  					</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+<?php echo startContent(lang('resumen')) ?>
+<form method="post">
+    <div class="col-md-3">
+        <label>Cambiar de periodo de tiempo</label>
+    </div>
+    <div class="col-md-2">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            <input type="text" class="form-control" id="inicio_fecha" name="inicio" placeholder="ingrese inicio" required>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            <input type="text" class="form-control" id="final_fecha" name="final" placeholder="ingrese final" required>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <button class="btn btn-default form-control" name="buscar">
+            Cambiar
+        </button>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-default" type="button" onclick="printDiv('printableArea')"/>
+            <i class="fa fa-print"></i> Imprimir
+        </button>
+    </div>
+</form>
+<?php echo endContent(); ?>
 
 <div id="printableArea">
 	<div class="row">
@@ -467,10 +457,4 @@ $acuenta_total	= 0;
 				</div>
 				
 				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<tr>	
-							
+<?php echo endContent(); ?>

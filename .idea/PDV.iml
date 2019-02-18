@@ -4,5 +4,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="sitrack-site5" />
+    <orderEntry type="module" module-name="sitrack-framework" />
   </component>
 </module>

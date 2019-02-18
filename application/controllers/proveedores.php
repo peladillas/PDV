@@ -12,7 +12,6 @@ class Proveedores extends MY_Controller {
 		$this->load->library('grocery_CRUD');
 	}
 
-
 /**********************************************************************************
  **********************************************************************************
  * 
@@ -21,48 +20,44 @@ class Proveedores extends MY_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-	
-	public function proveedor_abm()
-	{
-			$crud = new grocery_CRUD();
+	public function proveedor_abm() {
+        $crud = new grocery_CRUD();
 
-			$crud->where('proveedor	.id_estado = 1');
-			$crud->set_table('proveedor');
-			$crud->columns('descripcion','margen','impuesto', 'descuento');
-			$crud->display_as('descripcion','Descripción')
-				 ->display_as('descuento','Descuento %')
-				 ->display_as('id_estado','Estado');
-			$crud->set_subject('proveedor');
-			$crud->required_fields('descripcion','impuesto', 'margen','id_estado');
-			$crud->fields('descripcion','margen', 'impuesto', 'descuento', 'descuento2');
-			$crud->set_relation('id_estado','estado','estado');
-			
-			$_COOKIE['tabla'] ='proveedor';
-			$_COOKIE['id'] ='id_proveedor';	
-			
-			$crud->callback_after_insert(array($this, 'insert_log'));
-			$crud->callback_after_update(array($this, 'actualizar_precios'));
-			//$crud->callback_after_update(array($this, 'update_log'));
-			$crud->callback_delete(array($this,'delete_log'));	
+        $crud->where('proveedor	.id_estado = 1');
+        $crud->set_table('proveedor');
+        $crud->columns('descripcion','margen','impuesto', 'descuento');
+        $crud->display_as('descripcion','Descripción')
+             ->display_as('descuento','Descuento %')
+             ->display_as('id_estado','Estado');
+        $crud->set_subject('proveedor');
+        $crud->required_fields('descripcion','impuesto', 'margen','id_estado');
+        $crud->fields('descripcion','margen', 'impuesto', 'descuento', 'descuento2');
+        $crud->set_relation('id_estado','estado','estado');
 
-			$this->permisos_model->getPermisos_CRUD('permiso_proveedor', $crud);
-			
-			$output = $crud->render();
+        $_COOKIE['tabla'] ='proveedor';
+        $_COOKIE['id'] ='id_proveedor';
 
-			$this->_example_output($output);
+        $crud->callback_after_insert(array($this, 'insert_log'));
+        $crud->callback_after_update(array($this, 'actualizar_precios'));
+        //$crud->callback_after_update(array($this, 'update_log'));
+        $crud->callback_delete(array($this,'delete_log'));
+
+        $this->permisos_model->getPermisos_CRUD('permiso_proveedor', $crud);
+
+        $output = $crud->render();
+
+        $this->viewCrud($output);
 	}
-
 
 /**********************************************************************************
  **********************************************************************************
  * 
- * 				Actualizaciones de precios
+ * 				Actualizaciones de precios, otra funcion de actualizacion de precios?
  * 
  * ********************************************************************************
  **********************************************************************************/
 
-
-public function actualizar_precios($datos, $id){
+    public function actualizar_precios($datos, $id){
 		$proveedor	= $this->proveedores_model->getProveedor_precio($id);
 
 		foreach ($proveedor as $row) {
@@ -102,11 +97,10 @@ public function actualizar_precios($datos, $id){
 						'margen'				=> $margen,
 						'impuesto'				=> $impuesto
 						);
-			$this->articulos_model->update_Articulo($datos, $id_articulo);
+			$this->articulos_model->update($datos, $id_articulo);
 			
 		}
-					
-	 
+
 	    return true;
 	}
 }

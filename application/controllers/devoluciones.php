@@ -2,8 +2,7 @@
 
 class Devoluciones extends My_Controller {
 
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 		$this->load->database();
 		
@@ -23,7 +22,6 @@ class Devoluciones extends My_Controller {
 		
 		$this->load->helper('url');
 		$this->load->library('grocery_CRUD');
-		
 	}
 
  /**********************************************************************************
@@ -34,14 +32,11 @@ class Devoluciones extends My_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-	function devoluciones_abm()
-	{
+	function devoluciones_abm() {
 		$crud = new grocery_CRUD();
 
 		$crud->set_table('devolucion');
-			
 		$crud->order_by('id_devolucion','desc');
-			
 		$crud->columns('id_devolucion', 'fecha', 'monto', 'id_presupuesto', 'nota','id_estado');
 			
 		$crud->display_as('id_devolucion','ID')
@@ -49,13 +44,8 @@ class Devoluciones extends My_Controller {
 			 ->display_as('id_estado','Estado');
 			 
 		$crud->set_subject('devolución');
-		/*
-		$crud->required_fields('descripcion','id_estado');
-		 */ 
-		//$crud->set_relation('id_cliente','presupuesto','{nombre} {apellido}');
 		$crud->set_relation('id_estado','estado_devolucion','estado');
-		//$crud->set_relation('tipo','tipo','tipo');
-			
+
 		$_COOKIE['tabla']='devolucion';
 		$_COOKIE['id']='id_devolucion';	
 			
@@ -66,12 +56,10 @@ class Devoluciones extends My_Controller {
 		$crud->callback_after_insert(array($this, 'insert_log'));
 		$crud->callback_after_update(array($this, 'update_log'));
 		$crud->callback_delete(array($this,'delete_log'));	
-		//$crud->add_action('Detalle', '', '','icon-exit', array($this, 'buscar_presupuestos'));
-			
-			
+
 		$output = $crud->render();
 
-		$this->_example_output($output);
+		$this->viewCrud($output);
 	}
  
  /**********************************************************************************
@@ -82,25 +70,18 @@ class Devoluciones extends My_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-	function generar($id)
-	{
-		if($this->session->userdata('logged_in')){
-			$db['texto']				= getTexto();			
-			$db['presupuestos']			= $this->presupuestos_model->getRegistro($id);
+	function generar($id) {
+        $db['texto']				= getTexto();
+		$db['presupuestos']			= $this->presupuestos_model->select($id);
 			
-			$condicion = array(
-				'id_presupuesto'	=> $id,
-				'estado'			=> 1
-			);
-			$db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle_where($condicion, 'AND');
-			
-			$this->load->view('head.php',$db);
-			$this->load->view('menu.php');
-			$this->load->view('devoluciones/generar.php');
-			$this->load->view('footer.php');
-		}else{
-			redirect('/','refresh');
-		}
+		$condicion = array(
+		    'id_presupuesto'	=> $id,
+			'estado'			=> 1
+        );
+
+		$db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($condicion);
+
+		$this->view($db, 'devoluciones/generar.php');
 	}
 
  
@@ -112,8 +93,7 @@ class Devoluciones extends My_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-	function insert()
-	{
+	function insert() {
 		$id_presupuesto = $this->input->post('presupuesto');
 				
 		$detalle_presupuesto = $this->renglon_presupuesto_model->getDetalle($id_presupuesto);
@@ -164,7 +144,5 @@ class Devoluciones extends My_Controller {
 		$this->devoluciones_model->update($registro, $id_devolucion);
 		
 		redirect('/devoluciones/devoluciones_abm/','refresh');
-		
 	}
-
 }

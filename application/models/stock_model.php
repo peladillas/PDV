@@ -5,7 +5,6 @@ class Stock_model extends My_Model {
 		parent::construct(
 			'stock',
 			'id_stock',
-			'id_articulo',
 			'id_articulo'
 		);
 	}
