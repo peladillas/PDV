@@ -24,137 +24,123 @@ echo startContent($title);
             $total_p_ctacte = 0;
             $total_p_cuenta = 0;
 
-            if($presupuestos)
-            {
+            if($presupuestos) {
+                $cabecera = [
+                    lang('nro');
+                    lang('fecha');
+                    lang('monto');
+                    lang('a_cuenta');
+                    lang('tipo');
+                    lang('estado');
+                ];
 
-                echo '<table class="table table-hover" id="table_presupuestos">';
-                echo '<thead>';
-                echo '<tr>';
-                    echo '<th>Nro</th>';
-                    echo '<th>Fecha</th>';
-                    echo '<th>Monto</th>';
-                    echo '<th>A Cuenta</th>';
-                    echo '<th>Tipo</th>';
-                    echo '<th>Estado</th>';
-                echo '</tr>';
-                echo '</thead>';
-                echo '<tbody>';
+                $html = startTable($cabecera, 'table_presupuestos');
 
-                foreach ($presupuestos as $row)
-                {
-                    if($row->id_tipo == 1)
-                    {
+                foreach ($presupuestos as $row) {
+                    if($row->id_tipo == 1) {
                         $row->a_cuenta = $row->monto;
                         $total_p_contado = $total_p_contado + $row->monto;
-                    }
-                    else
-                    if($row->id_tipo == 2)
-                    {
+                    } else if($row->id_tipo == 2) {
                         $total_p_ctacte = $total_p_ctacte + $row->monto;
                         $total_p_cuenta = $total_p_cuenta + $row->a_cuenta;
-                    }
-                    else
-                    {
+                    } else {
                         $total_p_tarjeta = $total_p_tarjeta + $row->monto;
                     }
 
-                    echo '<tr>';
-                    echo '<td>'.$row->id_presupuesto.'</td>';
-                    echo '<td>'.date('d-m-Y', strtotime($row->fecha)).'</td>';
-                    echo '<td class="success">$ '.round($row->monto, 2).'</td>';
-                    echo '<td>$ '.round($row->a_cuenta,2).'</td>';
-                    echo '<td>'.$row->tipo.'</td>';
-                    echo '<td>'.$row->estado.'</td>';
-                    echo '</tr>';
+                    $registro = [
+                        $row->id_presupuesto,
+                        date('d-m-Y', strtotime($row->fecha)),
+                        '$ '.round($row->monto, 2),
+                        '$ '.round($row->a_cuenta,2),
+                        $row->tipo,
+                        $row->estado,
+                    ];
+
+                    $html .= setTableContent($registro);
                 }
 
-                echo '<tbody>';
-                echo '</table>';
+                $html .= endTable();
 
+                echo $html;
             }
             ?>
         </div>
         <div class="tab-pane" id="tab3">
             <?php
-            if($remitos)
-            {
+            if($remitos) {
                 $total_r_resta = 0;
                 $total_r_monto = 0;
                 $total_r_cuenta = 0;
 
-                echo '<table class="table table-hover" id="table_remitos">';
-                echo '<thead>';
-                echo '<tr>';
-                    echo '<th>Nro</th>';
-                    echo '<th>Fecha</th>';
-                    echo '<th>Monto</th>';
-                    echo '<th>Devolución</th>';
-                echo '</tr>';
-                echo '</thead>';
-                echo '<tbody>';
+                $cabecera = [
+                    lang('nro');
+                    lang('fecha');
+                    lang('monto');
+                    lang('devolucion');
+                ];
 
-                foreach ($remitos as $row)
-                {
-                    echo '<tr>';
-                        echo '<td>'.$row->id_remito.'</td>';
-                        echo '<td>'.date('d-m-Y', strtotime($row->fecha)).'</td>';
-                        echo '<td class="success">$ '.round($row->monto, 2).'</td>';
-                        echo '<td>$ '.round($row->devolucion, 2).'</td>';
-                    echo '</tr>';
+                $html = startTable($cabecera, 'table_remitos');
+
+                foreach ($remitos as $row) {
+                    $registro = [
+                        $row->id_remito,
+                        date('d-m-Y', strtotime($row->fecha)),
+                        '$ '.round($row->monto, 2),
+                        '$ '.round($row->devolucion, 2),
+                    ];
 
                     $resta = $row->monto - $row->devolucion;
 
                     $total_r_resta = $total_r_resta + $resta;
                     $total_r_monto = $total_r_monto + $row->monto;
                     $total_r_cuenta = $total_r_cuenta + $row->devolucion;
+
+                    $html .= setTableContent($registro);
                 }
 
-                echo '<tbody>';
-                echo '</table>';
+                $html .= endTable();
             }
             ?>
         </div>
         <div class="tab-pane" id="tab4">
             <?php
-            if($devoluciones)
-            {
+            if($devoluciones) {
                 $total_d_resta = 0;
                 $total_d_monto = 0;
                 $total_d_cuenta = 0;
 
-                echo '<table class="table table-hover" id="table_devoluciones">';
-                echo '<thead>';
-                echo '<tr>';
-                    echo '<th>Nro</th>';
-                    echo '<th>Pre.</th>';
-                    echo '<th>Fecha</th>';
-                    echo '<th>Monto</th>';
-                    echo '<th>A cuenta</th>';
-                    echo '<th>Nota</th>';
-                echo '</tr>';
-                echo '</thead>';
-                echo '<tbody>';
+                $cabecera = [
+                    lang('nro');
+                    lang('pre');
+                    lang('fecha');
+                    lang('monto');
+                    lang('a_cuenta');
+                    lang('nota');
+                    lang('estado');
+                ];
 
-                foreach ($devoluciones as $row)
-                {
-                    echo '<tr>';
-                        echo '<td>'.$row->id_devolucion.'</td>';
-                        echo '<td>'.$row->id_presupuesto.'</td>';
-                        echo '<td>'.date('d-m-Y', strtotime($row->fecha)).'</td>';
-                        echo '<td class="success">$ '.round($row->monto, 2).'</td>';
-                        echo '<td>$ '.round($row->a_cuenta, 2).'</td>';
-                        echo '<td>'.$row->nota.'</td>';
-                    echo '</tr>';
+                $html = startTable($cabecera, 'table_presupuestos');
+
+                foreach ($devoluciones as $row) {
+                    $registro = [
+                        $row->id_devolucion,
+                        $row->id_presupuesto,
+                        date('d-m-Y', strtotime($row->fecha)),
+                        '$ '.round($row->monto, 2),
+                        '$ '.round($row->a_cuenta, 2),
+                        $row->nota,
+                    ];
 
                     $resta = $row->monto - $row->a_cuenta;
 
                     $total_d_resta = $total_d_resta + $resta;
                     $total_d_monto = $total_d_monto + $row->monto;
                     $total_d_cuenta = $total_d_cuenta + $row->a_cuenta;
+
+                    $html .= setTableContent($registro);
                 }
 
-                echo '<tbody>';
-                echo '</table>';
+                $html .= endTable();
             }
             ?>
         </div>
