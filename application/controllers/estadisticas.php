@@ -9,10 +9,9 @@ class Estadisticas extends My_Controller {
 		$this->load->model('devoluciones_model');
         $this->load->model('anulaciones_model');
         $this->load->model('vendedores_model');
-			
-        $this->load->database();
-		$this->load->library('grocery_CRUD');  
-		$this->load->helper('url');
+        $this->load->model('config_model');
+
+		$this->load->library('grocery_CRUD');
 	}
 
 
@@ -26,10 +25,10 @@ class Estadisticas extends My_Controller {
 
     
 	function verMas() {
-		$query = $this->db->query("SELECT cantidad FROM config WHERE id_config = 1 ");
-    		
-    	if($query->num_rows() > 0) {
-    		foreach ($query->result() as $fila) {
+		$config = $this->config_model->select(1);
+
+    	if($config) {
+    		foreach ($config as $fila) {
     			$cantidad = $fila->cantidad;
 			}
 		}

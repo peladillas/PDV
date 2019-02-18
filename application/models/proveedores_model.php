@@ -9,7 +9,7 @@ class Proveedores_model extends My_Model {
         );
     }
 	
-	function getProveedor_precio($id){
+	function getProveedorArticulos($id){
         $sql = $this->db->query("
 		SELECT 	
 			articulo.id_articulo,

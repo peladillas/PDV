@@ -5,24 +5,24 @@ class Ventas extends My_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->database();
-		
+
+        $this->load->model('anulaciones_model');
 		$this->load->model('articulos_model');
+        $this->load->model('categorias_model');
+        $this->load->model('clientes_model');
+        $this->load->model('config_model');
+        $this->load->model('config_impresion_model');
 		$this->load->model('devoluciones_model');
 		$this->load->model('devoluciones_detalle_model');
-		$this->load->model('clientes_model');
+        $this->load->model('grupos_model');
+		$this->load->model('intereses_model');
 		$this->load->model('proveedores_model');
-		$this->load->model('grupos_model');
-		$this->load->model('categorias_model');
-		$this->load->model('subcategorias_model');
-		$this->load->model('presupuestos_model');
+        $this->load->model('presupuestos_model');
+        $this->load->model('subcategorias_model');
 		$this->load->model('remitos_model');
 		$this->load->model('remitos_detalle_model');
 		$this->load->model('renglon_presupuesto_model');
-		$this->load->model('config_impresion_model');
-		$this->load->model('anulaciones_model');
-		$this->load->model('intereses_model');
 
-		$this->load->helper('url');
 		$this->load->library('grocery_CRUD');
 	}
 
@@ -50,9 +50,7 @@ class Ventas extends My_Controller {
              ->display_as('id_vendedor','Vendedor');
 			 
 		$crud->set_subject('remiro');
-		/*
-		$crud->required_fields('descripcion','id_estado');
-		 */ 
+
 		$crud->set_relation('id_cliente','cliente','{alias} - {nombre} {apellido}');
 		$crud->set_relation('estado','estado_presupuesto','estado');
 		$crud->set_relation('tipo','tipo','tipo');
@@ -78,12 +76,10 @@ class Ventas extends My_Controller {
 	}
 
 	function _calcularatraso($value, $row) {
-		$query = $this->db->query("SELECT dias_pago FROM config WHERE id_config = 1 ");
-		
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $fila)
-			{
+
+	    $config = $this->config_model->select(1);
+		if($config > 0) {
+			foreach ($config as $fila) {
 				$dias_pago = $fila->dias_pago;
 			}
 		}
@@ -91,9 +87,8 @@ class Ventas extends My_Controller {
 		$fecha = date('Y-m-d', strtotime($row->fecha));
 		$nuevafecha = strtotime ( '+'.$dias_pago.' day' , strtotime ( $fecha ) ) ;
 		$nuevafecha = date ( 'Y-m-d' , $nuevafecha );
-		
-		
-		if($nuevafecha < date('Y-m-d') && $row->estado == 1) {
+
+		if ($nuevafecha < date('Y-m-d') && $row->estado == 1) {
 			$datetime1 = date_create($fecha);
 			$datetime2 = date_create(date('Y-m-d'));
 			$interval = date_diff($datetime1, $datetime2);
@@ -125,15 +120,15 @@ class Ventas extends My_Controller {
                     $presupuesto_monto = $_row->monto;
                 }
 
-                if($this->input->post('interes_tipo') == 'porcentaje'){
+                if ($this->input->post('interes_tipo') == 'porcentaje') {
                     $interes_monto = $presupuesto_monto * $this->input->post('interse_monto') / 100 ;
-                }else{
+                } else {
                     $interes_monto = $this->input->post('interse_monto');
                 }
 
-                if($this->input->post('descripcion_monto') == ""){
+                if ($this->input->post('descripcion_monto') == "") {
                     $descripcion = date('d-m-Y').' Intereses generados por atraso';
-                }else{
+                } else {
                     $descripcion = date('d-m-Y').' '.$this->input->post('descripcion_monto');
                 }
 
@@ -167,12 +162,9 @@ class Ventas extends My_Controller {
             $db['devoluciones']			= $this->devoluciones_model->select($condicion);
             $db['anulaciones']			= $this->anulaciones_model->select($condicion);
 
-            if($llamada == NULL)
-            {
+            if($llamada == NULL) {
                 $db['llamada'] = FALSE;
-
-            }else
-            {
+            }else {
                 $db['llamada'] = TRUE;
                 $this->load->view('head.php',$db);
                 $this->load->view('presupuestos/detalle_presupuestos.php');

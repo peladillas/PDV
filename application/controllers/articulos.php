@@ -204,72 +204,16 @@ class Articulos extends My_Controller {
 /**********************************************************************************
  **********************************************************************************
  *
- * 				Actualizar precios, esto hay que sacarlo de aca
+ * 				Actualizar precios, ver como sacar variacion
  *
  * ********************************************************************************
  **********************************************************************************/
 
 	public function actualizar_precios($datos, $id) {
-		$query	= $this->db->query("SELECT 	
-				articulo.id_articulo,
-				articulo.cod_proveedor,
-				articulo.descripcion as descripcion,
-				articulo.precio_costo,
-				articulo.precio_venta_iva,
-				articulo.precio_venta_sin_iva,
-				articulo.iva as iva,
-				proveedor.descripcion as proveedor,
-				proveedor.descuento as descuento,
-				proveedor.descuento2 as descuento2,
-				proveedor.margen as margen,
-				proveedor.impuesto as impuesto	
-		FROM `articulo` 
-		INNER JOIN proveedor
-		ON(articulo.id_proveedor=proveedor.id_proveedor)
-		WHERE articulo.id_articulo = $id");
+        $articulo = getArticulosWhitDetail($id);
+        $newDatos['variacion'] = $variacion;
+        $this->articulo_model->updatePrecios($articulo, $datos);
 
-		foreach ($query->result() as $row) {
-			
-			$precio_viejo		= $row->precio_costo ;// solo para depurar
-			
-			$precio_costo		= $row->precio_costo + ($row->precio_costo * ($variacion/100));// FUNCIONA PARA AUMENTOS Y DECREMENTOS POR LA MULTIP(+ * + = +     Y    + * -  = - )
-			
-			$costo_descuento1	= $precio_costo - ($precio_costo * ($row->descuento /100));
-			
-			$costo_descuento	= $costo_descuento1-($costo_descuento1*($row->descuento2 /100)); // APLICACION DE 2DO DESC ESCALONADO
-			
-			//02 - Precio con ganancia
-			$precio_venta_sin_iva = $costo_descuento+($costo_descuento*($row->margen /100));
-			
-			//2.5 - Precio con IMPUESTO 6%
-			
-			$precio_venta_sin_iva_con_imp = $precio_venta_sin_iva + ( $precio_venta_sin_iva * ( $row->impuesto /100));
-			
-			//03 - Precio con iva
-			$iva		= $row->iva ;
-			$margen		= $row->margen ;
-			$impuesto	= $row->impuesto ;
-			
-			$precio_venta_sin_iva_sin_imp=$precio_venta_sin_iva;
-			
-			$precio_venta_con_iva_con_imp=$precio_venta_sin_iva_con_imp+($precio_venta_sin_iva_sin_imp*($iva/100));// precio c/dto1 c/dto2 s/iva s/imp c/margen +  %iva + %imp(p) 
-			
-			$id_articulo= $row->id_articulo ;	
-			
-			$datos = array(
-						'precio_costo'			=> $precio_costo,
-						'costo_descuento'		=> $costo_descuento,
-						'precio_venta_sin_iva'	=> $precio_venta_sin_iva,
-						'precio_venta_sin_iva_con_imp'=> $precio_venta_sin_iva_con_imp,
-						'precio_venta_iva'		=> $precio_venta_con_iva_con_imp,
-						'margen'				=> $margen,
-						'impuesto'				=> $impuesto
-						);
-			$this->articulos_model->update($datos, $id);
-			
-		}
-					
-	 
 	    return true;
 	}
 
@@ -290,13 +234,13 @@ class Articulos extends My_Controller {
 
         if($this->input->post('buscar')) {
             $datos = array(
-                    'proveedor'		=> $this->input->post('proveedor'),
-                    'grupo'			=> $this->input->post('grupo'),
-                    'categoria'		=> $this->input->post('categoria'),
-                    'subcategoria'	=> $this->input->post('subcategoria'),
-                    'variacion'		=> $this->input->post('variacion'),
-                    'id_estado'		=> 1,
-                    'date_upd'		=> date('Y:m:d H:i:s')
+                'proveedor'		=> $this->input->post('proveedor'),
+                'grupo'			=> $this->input->post('grupo'),
+                'categoria'		=> $this->input->post('categoria'),
+                'subcategoria'	=> $this->input->post('subcategoria'),
+                'variacion'		=> $this->input->post('variacion'),
+                'id_estado'		=> 1,
+                'date_upd'		=> date('Y:m:d H:i:s')
             );
 
             $db['articulos']	= $this->articulos_model->getArticulosWhitDetail($datos);
@@ -347,6 +291,4 @@ class Articulos extends My_Controller {
 
 		echo json_encode($row_set);
 	}
-
-
 }

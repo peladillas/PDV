@@ -4,10 +4,8 @@ class Configs extends MY_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->database();
-		
-		$this->load->helper('url');
-		$this->load->helper('menu_helper');
+		$this->load->model('config_backup');
+
 		$this->load->library('grocery_CRUD');
 	}
 
@@ -92,9 +90,9 @@ class Configs extends MY_Controller {
 
         $tables = $this->db->list_tables();
 
-        $query = $this->db->query("SELECT * FROM `config_backup`");
+        $config = $this->config_backup_model-select(1);
 
-        foreach ($query->result() as $row) {
+        foreach ($config as $row) {
             $directorio		= $row->directorio;
             $formato_fecha	= $row->formato_fecha;
         }

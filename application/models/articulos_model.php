@@ -59,12 +59,18 @@ class Articulos_model extends MY_Model {
 			categoria ON(articulo.id_categoria=categoria.id_categoria)
 		INNER JOIN 
 			subcategoria ON(articulo.id_subcategoria=subcategoria.id_subcategoria)
-		WHERE
-			proveedor.descripcion like '%$datos[proveedor]%' AND
+		WHERE ";
+		if(is_array($datos)){
+			$sql .= "
+        	proveedor.descripcion like '%$datos[proveedor]%' AND
 			grupo.descripcion like '%$datos[grupo]%' AND
 			categoria.descripcion like '%$datos[categoria]%' AND
 			subcategoria.descripcion like '%$datos[subcategoria]%' AND
-			articulo.id_estado=1
+			articulo.id_estado=1";
+		} else {
+            $sql .= " articulo.id_articulo = $datos";
+		}
+        $sql .= "
 		ORDER BY 
 			articulo.descripcion ";
 
