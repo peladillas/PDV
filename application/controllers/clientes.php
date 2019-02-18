@@ -105,12 +105,13 @@ class Clientes extends MY_Controller {
 
 
 	function control_insert_cliente($post_array) {
-		$cuil = $post_array['cuil'];
-		
-		$query = "SELECT * FROM cliente WHERE 'cuil' = $cuil";	
-		$query = $this->db->query($query);
-		
-		if($query->num_rows() > 0) {
+		$registro = array(
+            'cuil' => $post_array['cuil'],
+        );
+
+		$cliente = $this->clientes_model->select($registro);
+
+		if($cliente > 0) {
 			return FALSE;	
 		} else {
 			return $post_array;	

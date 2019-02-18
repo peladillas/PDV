@@ -23,8 +23,6 @@ class Presupuestos extends My_Controller {
 		$this->load->library('grocery_CRUD');
 	}
 
-
-
 /**********************************************************************************
  **********************************************************************************
  * 
@@ -38,33 +36,6 @@ class Presupuestos extends My_Controller {
 	    $this->view($db, 'presupuestos/presupuestos_salida');
 
 	}
-
-/**********************************************************************************
- **********************************************************************************
- * 
- * 				Presupuesto de Salida, sacar consulta de aca
- * 
- * ********************************************************************************
- **********************************************************************************/
-
-	public function search_articulo($id) {
-		$query = $this->db->query("
-				SELECT descripcion as value,id_articulo,precio_venta_iva FROM articulo WHERE descripcion LIKE '%".$id."%' or cod_proveedor LIKE '%".$id."%' limit 20
-			");
-		
-		if($query->num_rows() > 0){
-			foreach ($query->result() as $row) {
-				$row['value']	= htmlentities(stripslashes($row['value']));
-				$row['id']		= (int)$row['id_articulo'];
-				$row['precio']	= (float)$row['precio_venta_iva'];
-				$row_set[]		= $row;//build an array
-			}
-			echo json_encode($row_set);
-		}else{
-			return FALSE;
-		}
-	}
-	
 	
 /**********************************************************************************
  **********************************************************************************
