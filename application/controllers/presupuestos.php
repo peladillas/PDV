@@ -438,15 +438,15 @@ class Presupuestos extends My_Controller {
      */
     function cargaPresupuesto() {
 
-        $fecha		= date('Y-m-d H:i:s');
-        $monto		= $_POST['total'];
-        $id_cliente	= $_POST['cliente'];
-        $tipo		= $_POST['tipo'];
-        $estado		= $_POST['estado'];
-        $dto		= $_POST['desc'];
-        $id_vendedor   = $_POST['vendedor'];
-        $comentario	= $_POST['comentario'];
-        $com_publico  = $_POST['com_publico'];
+        $presupuesto['fecha']= date('Y-m-d H:i:s');
+        $presupuesto['monto	']	= $_POST['total'];
+        $presupuesto['id_cliente']	= $_POST['cliente'];
+        $presupuesto['tipo']= $_POST['tipo'];
+        $presupuesto['estado']	= $_POST['estado'];
+        $presupuesto['dto']	= $_POST['desc'];
+        $presupuesto['id_vendedor']   = $_POST['vendedor'];
+        $presupuesto['comentario']	= $_POST['comentario'];
+        $presupuesto['com_publico']  = $_POST['com_publico'];
 
         $codigos_a_cargar	= $_POST['codigos_art'];
         $cant_a_cargar		= $_POST['cantidades'];

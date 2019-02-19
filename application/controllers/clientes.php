@@ -211,7 +211,7 @@ class Clientes extends MY_Controller {
             $row['cuil'] = stripslashes(utf8_encode($cliente->cuil));
             $row['celular'] = stripslashes(utf8_encode($cliente->celular));
 			$row['value']	= stripslashes(utf8_encode($value));
-            $row['id'] = (int)$cliente->id_cliente;
+            $row['id_cliente'] = (int)$cliente->id_cliente;
             $row_set[]		= $row;
 		}
 

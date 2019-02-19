@@ -1,12 +1,12 @@
 var codigo_r		= [];
 var cantidad_r		= [];
 var precio_r		= [];
-
 var item_elegido;
 var items_reglon	= [];
 var px_unitario;
 var porc_iva_art;
 var nuevo			= true;
+
 $("#cantidad").attr('disabled','disabled');
 $("#vendedor").focus();
 $('#carga_presupuesto').hide();
@@ -155,7 +155,7 @@ $(function()
         source:  source_cli,
 	    minLength: 2,//search after two characters
 	    select: function(event,ui){
-
+			console.log(ui);
 			nombre_cli	= ui.item.nombre;
 	        apellido_cli= ui.item.apellido;
 			id_cliente	= ui.item.id_cliente;
@@ -169,6 +169,7 @@ $(function()
 			$('#cuit_cliente').val(num_cuil);
 			$('#id_cliente').val(id_cliente);
 			$('#tipo_presupuesto_ctacte').click();
+            console.log(id_cliente);
 		},
 	    
 		close: function( event, ui ) {
