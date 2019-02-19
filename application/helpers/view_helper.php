@@ -10,6 +10,7 @@ INDICE
 - endTable              Finaliza las tablas
 - setTableContent       Para agregar lineas en la tabla
 - setDatatables			Carga las opciones del datatables, traduccion.
+- setFormGroup          Carga los elementos del formulario
 
   -------------------------------------------------------------------------------*/
 
@@ -216,6 +217,29 @@ function setDatatables($id_table = NULL, $order = NULL, $url = NULL)
 
     $data .= '</script>';
     return $data;
+}
+
+function setFormGroup($name, $value = NULL, $tags = NULL){
+    if ($value == NULL) {
+       $value = '';
+    }
+
+
+    if(is_array($tags)) {
+        $htmlTags = '';
+        foreach ($tags as $tag) {
+            $htmlTags .= ' '.$tag;
+        }
+    } else {
+        $htmlTags = $tags;
+    }
+
+    $html = '<div class="form-group">';
+    $html .= '<label for="'.$name.'">'.lang($name).'</label>';
+    $html .= '<input type="text" class="form-control" name="'.$name.'" id="'.$name.'" value="'.$value.'" '.$htmlTags.'>';
+    $html .= '</div>';
+
+    return $html;
 }
 
 ?>
