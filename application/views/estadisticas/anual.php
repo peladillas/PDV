@@ -420,5 +420,5 @@ $(function () {
 });
 </script>
 
-<script src="<?php echo base_url().'librerias/Highcharts-4.1.4/js/highcharts.js'?>"></script>
-<script src="<?php echo base_url().'librerias/Highcharts-4.1.4/js/modules/exporting.js'?>"></script>
+<script src="<?php echo base_url().'librerias/highcharts/js/highcharts.js'?>"></script>
+<script src="<?php echo base_url().'librerias/highcharts/js/modules/exporting.js'?>"></script>

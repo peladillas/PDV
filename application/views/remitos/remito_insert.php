@@ -1,4 +1,3 @@
-
 <script>
 	function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;
@@ -33,7 +32,6 @@
             'nombre'		=> $row->nombre,
             'apellido'		=> $row->apellido
         );
-
     }
 
     $total = 0;
