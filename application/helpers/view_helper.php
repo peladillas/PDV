@@ -15,30 +15,26 @@ INDICE
   -------------------------------------------------------------------------------*/
 
 function setMensaje($mensaje, $tipo=NULL) {
-    if($tipo==NULL) {
-        $tipo='info';
-    }
+    $tipo = ($tipo == NULL ? 'info' : $tipo);
 
-    $return =	"<div class='alert alert-$tipo alert-dismissible' role='alert'>
-				 		<button type='button' class='close' data-dismiss='alert'>
-					 		<span aria-hidden='true'>&times;</span><span class='sr-only'>
-					 			Cerrar
-					 		</span>
-					 	</button>
-				  		$mensaje
-					</div>";
+    $return = "<div class='alert alert-$tipo alert-dismissible' role='alert'>";
+    $return .= "<button type='button' class='close' data-dismiss='alert'>";
+    $return .= "<span aria-hidden='true'>&times;</span><span class='sr-only'>";
+    $return .= lang('cerrar');
+    $return .= "</span>";
+    $return .= "</button>";
+    $return .= $mensaje;
+    $return .= "</div>";
 
     return $return;
 }
 
 
 function startContent($title, $size = NULL) {
-    if($size == NULL){
-		$size = 12;
-	}
+    $size = ($size == NULL ? 12 : $size);
 
 	$html = '<div class="container">';
-    $html .= '<div class="col-md-12">';
+    $html .= '<div class="col-md-'.$size.'">';
     $html .= '<div class="panel panel-primary">';
 	$html .= '<div class="panel-heading">'.$title.'</div>';
     $html .= '<div class="panel-body">';
@@ -55,18 +51,15 @@ function endContent(){
 
 
 function startTable($cabeceras = NULL, $id_table = NULL, $class = NULL) {
-    if ($id_table == NULL) {
-        $id_table = 'table_registros';
-    }
+    $id_table = ($id_table == NULL ? 'table_registros' : $id_table) ;
 
-    $table =
-        '<table class="table table-hover table-responsive dataTable '.$class.'" id="'.$id_table.'">';
+    $table = '<table class="table table-hover table-responsive dataTable '.$class.'" id="'.$id_table.'">';
 
     if($cabeceras !== NULL) {
         $table .=
             '<thead> <tr class="success">';
         foreach ($cabeceras as $cabecera) {
-            if(is_array($cabecera)){
+            if (is_array($cabecera)) {
                 foreach ($cabecera as $key => $value) {
                     $table .= '<th title="'.$key.'">'.$value.'</th>';
                 }
@@ -107,18 +100,14 @@ function endTable($cabeceras = NULL) {
 
 
 function setTableContent($registros, $class = NULL) {
-    if($class != NULL) {
-        $content = '<tr class="'.$class.'">';
-    } else {
-        $content = '<tr>';
-    }
+    $content = ($class != NULL ? '<tr class="'.$class.'">' : '<tr>');
 
     foreach ($registros as $registro) {
         if (is_array($registro)) {
             foreach ($registro as $key => $value) {
                 $content .= '<td title="'.$key.'">'.$value.'</td>';
             }
-        }else{
+        } else {
             $content .= '<td>'.$registro.'</td>';
         }
     }
@@ -129,11 +118,8 @@ function setTableContent($registros, $class = NULL) {
 }
 
 
-function setDatatables($id_table = NULL, $order = NULL, $url = NULL)
-{
-    if($id_table == NULL){
-        $id_table = 'table_registros';
-    }
+function setDatatables($id_table = NULL, $order = NULL, $url = NULL) {
+    $id_table = ($id_table == NULL ? 'table_registros' : $id_table);
 
     $cor = '"';
 
@@ -220,10 +206,7 @@ function setDatatables($id_table = NULL, $order = NULL, $url = NULL)
 }
 
 function setFormGroup($name, $value = NULL, $tags = NULL){
-    if ($value == NULL) {
-       $value = '';
-    }
-
+    $value = ($value == NULL ? '' : $value);
 
     if(is_array($tags)) {
         $htmlTags = '';
