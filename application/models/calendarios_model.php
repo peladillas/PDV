@@ -2,18 +2,15 @@
 class Calendarios_model extends MY_Model {
 	
 	public function __construct(){
-		
 		parent::construct(
-				'calendario',
-				'id_calendario',
-				'id_calendario', //ver si esto esta bien
-				'id_calendario'
+			'calendario',
+			'id_calendario',
+			'id_calendario'
 		);
 	}
 	
 	
-	function getCalendarios()
-	{
+	function getCalendarios() {
 		$sql = 
 			"SELECT
 			 	*
@@ -23,22 +20,8 @@ class Calendarios_model extends MY_Model {
 				color ON($this->_table.id_color =  color.id_color) 
 			ORDER BY
 				$this->_table.start";
-		
-		$query = $this->db->query($sql);
-		
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			
-			return $data;
-		}
-		else
-		{
-			return FALSE;
-		}
+
+        return $this->getQuery($sql);
 	}
 }
 ?>

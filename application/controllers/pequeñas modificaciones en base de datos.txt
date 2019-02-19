@@ -1,7 +1,0 @@
-ALTER TABLE `articulo` CHANGE `id_estado` `id_estado` INT(11) NOT NULL DEFAULT '1';
-ALTER TABLE `categoria` CHANGE `id_estado` `id_estado` INT(11) NOT NULL DEFAULT '1';
-ALTER TABLE `cliente` CHANGE `id_estado` `id_estado` INT(11) NOT NULL DEFAULT '1';
-ALTER TABLE `grupo` CHANGE `id_estado` `id_estado` INT(11) NOT NULL DEFAULT '1';
-ALTER TABLE `proveedor` CHANGE `id_estado` `id_estado` INT(11) NOT NULL DEFAULT '1';
-ALTER TABLE `subcategoria` CHANGE `id_estado` `id_estado` INT(11) NOT NULL DEFAULT '1';
-ALTER TABLE `usuario` CHANGE `id_estado` `id_estado` INT(11) NOT NULL DEFAULT '1';

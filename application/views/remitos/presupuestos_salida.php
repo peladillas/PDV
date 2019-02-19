@@ -1,1 +1,0 @@
-<iframe src="<?php echo base_url().'/presupuestos/'?>" width="100%" height="800px"></iframe>

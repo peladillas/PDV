@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Bulones Sarmiento</title>
+  <title><?php echo $texto['empresa'] ?></title>
   <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" /> 
   <!--
   <link rel="stylesheet" href="css/fac.css" type="text/css" />
@@ -15,7 +15,7 @@
 <body>
 <div class="container"> 
 	<div class="panel panel-default">
-	<div class="panel-heading">BULONES SARMIENTO <button class="btn btn-default btn-xs show_hide">Cabecera</button></div>
+	<div class="panel-heading"><?php echo $texto['empresa'] ?><button class="btn btn-default btn-xs show_hide">Cabecera</button></div>
 	<div class="panel-body slidingDiv">
 	<div class="row" id="cont_datos_cliente">
 			<div class="cont_rotulo_cliente col-md-4">

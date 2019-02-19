@@ -2,20 +2,15 @@
 class Remitos_detalle_model extends MY_Model {
 	
 	public function __construct(){
-		
 		parent::construct(
-				'remito_detalle',
-				'id_remito_detalle',
-				'monto', //ver si esto esta bien
-				'id_remito_detalle'
+			'remito_detalle',
+			'id_remito_detalle',
+			'id_remito_detalle'
 		);
-
 	}
 	
-	function getRemitos($id , $dev = NULL)
-	{
-		if($dev == NULL)
-		{
+	function getRemitos($id , $dev = NULL) {
+		if($dev == NULL) {
 			$sql = "SELECT 	
 						presupuesto.id_presupuesto AS nro,
 						presupuesto.fecha AS prefecha,
@@ -36,9 +31,7 @@ class Remitos_detalle_model extends MY_Model {
 						remito_detalle.id_remito = '$id'
 					ORDER BY 
 						presupuesto.id_presupuesto";
-		}
-		else
-		{
+		} else {
 			$sql = "SELECT 	
 						devolucion.fecha as fecha,
 						devolucion.monto as monto_dev,
@@ -54,23 +47,8 @@ class Remitos_detalle_model extends MY_Model {
 					ORDER BY 
 						devolucion.id_devolucion";
 		}
-		
-		$query = $this->db->query($sql);
-		
-		if($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row) 
-			{
-				$data[] = $row;
-			}
-			
-			return $data;
-		}
-		else
-		{
-			return FALSE;
-		}
-	
+
+        return $this->getQuery($sql);
 	}
 } 
 ?>
