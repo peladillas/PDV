@@ -2,12 +2,9 @@
 
 class Clientes extends MY_Controller {
 
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 
-		$this->load->database();
-		$this->load->helper('url');
 		$this->load->model('clientes_model');
 		$this->load->model('presupuestos_model');
 		$this->load->model('devoluciones_model');
@@ -111,11 +108,9 @@ class Clientes extends MY_Controller {
 
 		$cliente = $this->clientes_model->select($registro);
 
-		if($cliente > 0) {
-			return FALSE;	
-		} else {
-			return $post_array;	
-		}
+		$return = ($cliente > 0 ? FALSE : $post_array);
+
+		return $return;
 	}
 
 /**********************************************************************************

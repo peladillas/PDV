@@ -32,6 +32,7 @@
             'nombre'		=> $row->nombre,
             'apellido'		=> $row->apellido
         );
+
     }
 
     $total = 0;
@@ -46,7 +47,7 @@
         $monto = $datos['monto'] - $datos['devolucion'];
         $cabecera = $impresion->cabecera;
         $cabecera = str_replace("#remito_nro#", $datos['id_remito'], $cabecera);
-        $cabecera = str_replace("#remito_fecha#", date('d-m-Y', strtotime($datos['fecha'])), $cabecera);
+        $cabecera = str_replace("#remito_fecha#", dateFormat($datos['fecha']), $cabecera);
         $cabecera = str_replace("#remito_monto#", $monto, $cabecera);
         $cabecera = str_replace("#cliente_nombre#", $datos['nombre'], $cabecera);
         $cabecera = str_replace("#cliente_apellido#", $datos['apellido'], $cabecera);
@@ -75,12 +76,12 @@
                 echo "<tr>";
                     echo "<td width='15%'><center>".$row->nro."</center></td>";
                     //echo "<td width='20%'><center>".$row->prefecha."</center></td>";
-                    echo "<td width='15%'><center>$ ".$row->premonto."</center></td>";
-                    echo "<td class='success'width='15%'><b><center>$ ".$row->monto."</center></b></td>";
-                    echo "<td width='15%'><center>$ ".$row->prea_cuenta."</center></td>";
+                    echo "<td width='15%'><center>".moneyFormat($row->premonto)."</center></td>";
+                    echo "<td class='success'width='15%'><b><center>".moneyFormat($row->monto)."</center></b></td>";
+                    echo "<td width='15%'><center>".moneyFormat($row->prea_cuenta)."</center></td>";
                     echo "<td width='20%'><center>".$row->estado."</center></td>";
                     $subtotal = round($row->premonto, 2) - round($row->prea_cuenta, 2) -round( $row->monto, 2);
-                    echo "<td width='20%'><center>".round($subtotal, 2)."</center></td>";
+                    echo "<td width='20%'><center>".moneyFormat($subtotal)."</center></td>";
                 echo "</tr>";
             }
         }
@@ -88,8 +89,8 @@
         if ($remitos_dev) {
             foreach ($remitos_dev as $row) {
                 echo "<tr>";
-                    echo "<td colspan='2' width='45%'><center>Devolución del día ".date('d-m-Y', strtotime($row->fecha))."</center></td>";
-                    echo "<td width='15%'><center>$ ".$row->monto."</center></td>";
+                    echo "<td colspan='2' width='45%'><center>Devolución del día ".dateFormat($row->fecha)."</center></td>";
+                    echo "<td width='15%'><center>".moneyFormat($row->monto)."</center></td>";
                     echo "<td colspan='2'><center>".$row->nota."</center></td>";
                     echo "<td width='20%'></td>";
                 echo "</tr>";
@@ -109,8 +110,8 @@
     <hr>
     <div class='row'>
         <div class="col-md-1"></div>
-        <div class="col-md-5"><h4>DEBE a la fecha <?php echo date('d/m/Y');?></h4></div>
-        <div class="col-md-5"><h4>$ <?php echo $total ?></h4></div>
+        <div class="col-md-5"><h4>DEBE a la fecha <?php echo dateFormat();?></h4></div>
+        <div class="col-md-5"><h4><?php echo moneyFormat($total) ?></h4></div>
     </div>
     <?php
     }

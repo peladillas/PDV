@@ -4,7 +4,6 @@ class Ventas extends My_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->database();
 
         $this->load->model('anulaciones_model');
 		$this->load->model('articulos_model');

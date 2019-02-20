@@ -4,8 +4,7 @@ class Devoluciones extends My_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->database();
-		
+
 		$this->load->model('articulos_model');
 		$this->load->model('devoluciones_model');
 		$this->load->model('devoluciones_detalle_model');
@@ -20,7 +19,6 @@ class Devoluciones extends My_Controller {
 		$this->load->model('renglon_presupuesto_model');
 		$this->load->model('config_impresion_model');
 		
-		$this->load->helper('url');
 		$this->load->library('grocery_CRUD');
 	}
 
@@ -137,6 +135,7 @@ class Devoluciones extends My_Controller {
 				$this->renglon_presupuesto_model->update($registro, $row->id_renglon);
 			}	
 		}
+
 		$registro = array(
 			'monto'		=> $monto_devolucion
 		);

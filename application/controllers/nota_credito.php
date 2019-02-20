@@ -5,8 +5,6 @@ class Nota_credito extends MY_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->load->database();
-		$this->load->helper('url');
 		$this->load->model('nota_credito_model');
 	}
 	

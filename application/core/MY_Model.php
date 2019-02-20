@@ -48,7 +48,7 @@ class MY_Model extends CI_Model {
 		ORDER BY 
 			$this->_table.$this->_order
 		LIMIT 
-			$this->_table.$this->_limit";
+			$this->_limit";
 
         return $this->getQuery($sql);
     }

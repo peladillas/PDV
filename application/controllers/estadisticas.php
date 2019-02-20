@@ -33,7 +33,7 @@ class Estadisticas extends My_Controller {
 			}
 		}
 
-    	$db['articulos']	= $this->presupuestos_model->get_top($this->input->post('inicio'), $this->input->post('fin'), $cantidad);
+    	$db['articulos'] = $this->presupuestos_model->get_top($this->input->post('inicio'), $this->input->post('fin'), $cantidad);
 
 		$this->view($db, 'get_top_cien.php');
 	}
@@ -47,18 +47,13 @@ class Estadisticas extends My_Controller {
 ---------------------------------------------------------------------------------*/
 
 	function anual() {
-		if($this->input->post('ano')) {
-			$ano	= $this->input->post('ano');
-		} else {
-			$ano	= date('Y');
-		}
-            
-		$db['ano_actual']	= $ano;
-			
+		$ano = ($this->input->post('ano') ? $this->input->post('ano') : date('Y'));
+
+        $db['ano_actual']	= $ano;
 		$inicio	= date('01-01-'.$ano);
 		$ano = $ano + 1;
 		$final	= date('01-01-'.$ano);
-			
+
 		$db['presupuestos']	= $this->presupuestos_model->suma_presupuesto($inicio, $final);
 		$db['remitos']		= $this->remitos_model->suma_remito($inicio, $final);
 		$db['devoluciones']	= $this->devoluciones_model->suma_devolucion($inicio, $final);
@@ -78,16 +73,10 @@ class Estadisticas extends My_Controller {
 ---------------------------------------------------------------------------------*/
 
 	function mensual($id_vendedor = NULL) {
-		if($this->input->post('mes')) {
-			$ano	= $this->input->post('ano');
-			$mes	= $this->input->post('mes');
-		} else {
-			$ano	= date('Y');
-			$mes	= date('m');
-		}
+		$ano = ($this->input->post('ano') ? $this->input->post('ano') : date('Y'));
+        $mes = ($this->input->post('mes') ? $this->input->post('mes') : date('m'));
 
 		$inicio	= date('01-'.$mes.'-'.$ano);
-
 		$db['mes_actual']	= $mes;
 		$db['ano_actual']	= $ano;
 
@@ -107,7 +96,7 @@ class Estadisticas extends My_Controller {
 		$db['fin']			= $final;
 		if($id_vendedor != NULL){
 			$db['id_vendedor']  = $id_vendedor;
-			$db['vendedor']  = $this->vendedores_model->select();
+			$db['vendedor']  	= $this->vendedores_model->select();
 			$db['presupuestos'] = $this->presupuestos_model->suma_presupuesto($inicio, $final, NULL, $id_vendedor);
 		} else {
 			$db['id_vendedor']  = FALSE;

@@ -30,6 +30,7 @@ if($presupuestos) {
             }
 
             $_vendedor   = $this->vendedores_model->select($row->id_vendedor);
+
             if($_vendedor) {
                 foreach ($_vendedor as $row_vendedor) {
                     $vendedor = $row_vendedor->vendedor;
@@ -42,9 +43,10 @@ if($presupuestos) {
             $cabecera = $impresion->cabecera;
             $cabecera = str_replace("#presupuesto_nro#", $row->id_presupuesto, $cabecera);
             $cabecera = str_replace("#presupuesto_descuento#", $row->descuento, $cabecera);
-            $cabecera = str_replace("#presupuesto_fecha#", date('d-m-Y', strtotime($row->fecha)), $cabecera);
+            $cabecera = str_replace("#presupuesto_fecha#", dateFormat($row->fecha), $cabecera);
             $cabecera = str_replace("#presupuesto_monto#", $row->monto, $cabecera);
             $cabecera = str_replace("#vendedor#", $vendedor, $cabecera);
+
             if(isset($nombre)) {
                 $cabecera = str_replace("#cliente_nombre#", $nombre, $cabecera);
             } else {
@@ -65,56 +67,64 @@ if($presupuestos) {
 
         echo "<hr>";
 
-        $total=0;
+        $total = 0;
 
-        echo "<table class='table table-hover'>";
-        echo "<tr>";
-            echo "<th>".lang('articulo')."</th>";
-            echo "<th>".lang('descripcion')."</th>";
-            echo "<th>".lang('cantidad')."</th>";
-            echo "<th>".lang('monto')."</th>";
-            echo "<th>".lang('total')."</th>";
-        echo "</tr>";
+        $thead = [
+            lang('articulo'),
+            lang('descripcion'),
+            lang('cantidad'),
+            lang('monto'),
+            lang('total'),
+        ];
+
+        $html = startTable($thead);
 
         if($detalle_presupuesto) {
             foreach ($detalle_presupuesto as $row_detalle) {
-                echo "<tr>";
-                    echo "<td><a title='ver Articulo' class='btn btn-default btn-xs' href='".base_url()."index.php/articulos/articulo_abm/read/".$row_detalle->id_articulo."'>".$row_detalle->cod_proveedor."</a></td>";
-                    echo "<td>".$row_detalle->descripcion."</td>";
-                    echo "<td>".$row_detalle->cantidad."</td>";
-                    if($row_detalle->cantidad > 0){
-                        $precio = $row_detalle->precio/$row_detalle->cantidad;
-                    } else {
-                        $precio = 0;
-                    }
-                    echo "<td>$ ".round($precio, 2)."</td>";
-                    $sub_total = $row_detalle->cantidad * $precio;
-                    $total = $total + $sub_total;
-                    echo "<td>$ ".round($sub_total,2)."</td>";
-                echo "</tr>";
+                $precio = ($row_detalle->cantidad > 0 ? $row_detalle->precio/$row_detalle->cantidad : 0);
+                $sub_total = $row_detalle->cantidad * $precio;
+                $total = $total + $sub_total;
+
+                $registro = [
+                    "<a title='ver Articulo' class='btn btn-default btn-xs' href='".base_url()."index.php/articulos/articulo_abm/read/".$row_detalle->id_articulo."'>".$row_detalle->cod_proveedor."</a>",
+                    $row_detalle->descripcion,
+                    $row_detalle->cantidad,
+                    moneyFormat($precio),
+                    moneyFormat($sub_total),
+                ];
+
+                $html .= setTableContent($registro);
             }
         }
 
         if($interes_presupuesto) {
             foreach ($interes_presupuesto as $row_interes) {
-                echo "<tr>";
-                    echo "<td>-</td>";
-                    echo "<td>".$row_interes->descripcion."</td>";
-                    echo "<td>-</td>";
-                    echo "<td>-</td>";
-                    $total = $total + $row_interes->monto;
-                    echo "<td>".$row_interes->monto."</td>";
-                echo "</tr>";
+                $total = $total + $row_interes->monto;
+
+                $registro = [
+                    "-",
+                    $row_interes->descripcion,
+                    "-",
+                    "-",
+                    moneyFormat($row_interes->monto),
+                ];
+
+                $html .= setTableContent($registro);
             }
         }
 
-        echo "<tr class='success'>";
-            echo "<td colspan='4'>".lang('total')."</td>";
-            echo "<th>$ ".round($total,2)."</th>";
-        echo "</tr>";
+        $registro = [
+            "",
+            "",
+            "",
+            lang('total'),
+            moneyFormat($total),
+        ];
 
-        echo "</table>";
+        $html .= setTableContent($registro);
+        $html .= endTable();
 
+        echo $html;
         echo "<hr>";
         echo $pie;
     }
@@ -174,10 +184,10 @@ if($row->estado != 3) {
         }
     }
 } else {
-    if($anulaciones){
-        foreach ($anulaciones as $row_a){
+    if ($anulaciones) {
+        foreach ($anulaciones as $row_a) {
             $mensaje  = "Nota de la anulación: ".$row_a->nota."<br>";
-            $mensaje .= "Fecha de la anulación: ".date('d-m-Y', strtotime($row_a->fecha))."<br>";
+            $mensaje .= "Fecha de la anulación: ".dateFormat($row_a->fecha)."<br>";
         }
 
         echo setMensaje($mensaje, 'danger');

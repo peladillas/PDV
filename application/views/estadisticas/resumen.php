@@ -9,7 +9,6 @@ $acuenta_total	= 0;
 	$('#presupuestos').DataTable();
 	$('#remitos').DataTable();
 	$('#anulaciones').DataTable();
-	
 } );
 
 	$(function() {
@@ -104,288 +103,279 @@ $acuenta_total	= 0;
 				
 				<div class="panel-body">
 					<div class="tab-content">
-					<div class="tab-pane" id="tab1">
-			
-					<table id="presupuestos" class="table table-responsive table-hover">
-					<thead>
-						<tr>	
-							<th>Apellido y Nombre</th>
-							<th>Alias</th>
-							<th>Fecha</th>
-							<th>Monto</th>
-							<th>A Cuenta</th>
-							<th>Tipo</th>
-							<th>Tipo</th>
-							<th>Opc.</th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php 
-					if($presupuestos){
-					foreach ($presupuestos as $row)
-					{
-						echo "<tr>";	
-						echo "<td>".$row->apellido." ".$row->nombre."</td>";
-						echo "<td>".$row->alias."</td>";
-						echo "<td>".date('d-m-Y', strtotime($row->fecha))."</td>";
-						echo "<td>$ ".round($row->monto, 2)."</td>";
-						if($row->tipo == 'Contado')
-						{
-							$acuenta		= $row->monto;
-						}
-						else
-						{
-							$acuenta		= $row->a_cuenta;
-						}
-						$monto_total	= $monto_total + $row->monto;
-						$acuenta_total	= $acuenta_total + $acuenta;
-						
-						echo "<td>".round($acuenta,2)."</td>";
-						echo "<td>".$row->tipo."</td>";
-						echo "<td>".$row->estado."</td>";
-						echo "<td><a title='ver cliente' href='".base_url()."index.php/clientes/cliente_abm/read/".$row->id_cliente."' class='btn btn-info btn-xs'>
-							<span class='icon-user'></span>
-							</a> 
-							<a title='ver presupuesto' href='".base_url()."index.php/ventas/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
-							<span class='icon-edit'></span>
-							</a> 
-							</td>";
-						echo "</tr>";
-					}}
-					?>
-					</tbody>
-					</table>
-				</div>
+					    <div class="tab-pane" id="tab1">
+			                <?php
+                            if($presupuestos){
+                                $cabecera = [
+                                    lang('nombre'),
+                                    lang('alias'),
+                                    lang('fecha'),
+                                    lang('monto'),
+                                    lang('a_cuenta'),
+                                    lang('tipo'),
+                                    lang('tipo'),
+                                    lang('opciones'),
+                                ];
+
+                                $html = startTable($cabecera, 'presupuestos')
+                                foreach ($presupuestos as $row) {
+                                    $acuenta = ($row->tipo == 'Contado' ? $row->monto : $row->a_cuenta);
+                                    $monto_total	= $monto_total + $row->monto;
+                                    $acuenta_total	= $acuenta_total + $acuenta;
+                                    $opciones = "<a title='ver cliente' href='".base_url()."index.php/clientes/cliente_abm/read/".$row->id_cliente."' class='btn btn-info btn-xs'>
+                                            <span class='icon-user'></span>
+                                            </a> 
+                                            <a title='ver presupuesto' href='".base_url()."index.php/ventas/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
+                                            <span class='icon-edit'></span>
+                                            </a>";
+
+                                    $registro = [
+                                        $row->apellido." ".$row->nombre,
+                                        $row->alias,
+                                        dateFormat($row->fecha),
+                                        moneyFormat($row->monto),
+                                        moneyFormat($acuenta),
+                                        $row->tipo,
+                                        $row->estado,
+                                        $opciones,
+                                    ];
+
+                                    $html .= setTableContent($registro);
+                                }
+
+                                $html .= endTable();
+
+                                echo $html;
+                            }
+                            ?>
+				        </div>
+                        <div class="tab-pane" id="tab2">
+                            <table id="remitos" class="table table-responsive table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Apellido y Nombre</th>
+                                        <th>Alias</th>
+                                        <th>Fecha</th>
+                                        <th>Monto</th>
+                                        <th>Devolución</th>
+                                        <th>Opc.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                if($remitos){
+                                $remito_total = 0;
+                                $devolucion_total = 0;
+                                foreach ($remitos as $row)
+                                {
+                                    echo "<tr>";
+                                    echo "<td>".$row->apellido." ".$row->nombre."</td>";
+                                    echo "<td>".$row->alias."</td>";
+                                    echo "<td>".dateFormat($row->fecha)."</td>";
+                                    echo "<td>".moneyFormat($row->monto)."</td>";
+                                    echo "<td>".moneyFormat($row->devolucion)."</td>";
+
+                                    $remito_total	= $remito_total + $row->monto;
+                                    $devolucion_total	= $devolucion_total + $row->devolucion;
+
+                                    echo "<td><a title='ver cliente' href='".base_url()."index.php/clientes/cliente_abm/read/".$row->id_cliente."' class='btn btn-info btn-xs'>
+                                        <span class='icon-user'></span>
+                                        </a> 
+                                        <a title='ver remito' href='".base_url()."index.php/presupuestos/remito_vista/".$row->id_remito."' class='btn btn-primary btn-xs'>
+                                        <span class='icon-edit'></span>
+                                        </a> 
+                                        </td>";
+                                    echo "</tr>";
+                                }}
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
 				
 				
 				
-				<div class="tab-pane" id="tab2">
-				<table id="remitos" class="table table-responsive table-hover">
-					<thead>
-						<tr>	
-							<th>Apellido y Nombre</th>
-							<th>Alias</th>
-							<th>Fecha</th>
-							<th>Monto</th>
-							<th>Devolución</th>
-							<th>Opc.</th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php 
-					if($remitos){
-					$remito_total = 0;	
-					$devolucion_total = 0;	
-					foreach ($remitos as $row)
-					{
-						echo "<tr>";	
-						echo "<td>".$row->apellido." ".$row->nombre."</td>";
-						echo "<td>".$row->alias."</td>";
-						echo "<td>".date('d-m-Y', strtotime($row->fecha))."</td>";
-						echo "<td>$ ".round($row->monto, 2)."</td>";
-						echo "<td>$ ".round($row->devolucion, 2)."</td>";
-						
-						$remito_total	= $remito_total + $row->monto;
-						$devolucion_total	= $devolucion_total + $row->devolucion;
-						
-						echo "<td><a title='ver cliente' href='".base_url()."index.php/clientes/cliente_abm/read/".$row->id_cliente."' class='btn btn-info btn-xs'>
-							<span class='icon-user'></span>
-							</a> 
-							<a title='ver remito' href='".base_url()."index.php/presupuestos/remito_vista/".$row->id_remito."' class='btn btn-primary btn-xs'>
-							<span class='icon-edit'></span>
-							</a> 
-							</td>";
-						echo "</tr>";
-					}}
-					?>
-					</tbody>
-					</table>
-				</div>
+				    <div class="tab-pane" id="tab3">
+                        <table id="devoluciones" class="table table-responsive table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Presupuesto</th>
+                                    <th>Devolución</th>
+                                    <th>Nota</th>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                    <th>A Cuenta</th>
+                                    <th>Opc.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            if($devoluciones){
+                            $devolucion_total = 0;
+                            $devolucion_a_cuenta = 0;
+                            foreach ($devoluciones as $row)
+                            {
+                                echo "<tr>";
+                                echo "<td>".$row->id_presupuesto."</td>";
+                                echo "<td>".$row->id_devolucion."</td>";
+                                echo "<td>".$row->nota."</td>";
+                                echo "<td>".dateFormat($row->fecha)."</td>";
+                                echo "<td>".moneyFormat($row->monto)."</td>";
+                                echo "<td>".moneyFormat($row->a_cuenta)."</td>";
+
+                                $devolucion_total	= $devolucion_total + $row->monto;
+                                $devolucion_a_cuenta= $devolucion_a_cuenta + $row->a_cuenta;
+
+                                echo "<td>
+                                    <a title='ver devolución' href='".base_url()."index.php/devoluciones/devoluciones_abm/".$row->id_devolucion."' class='btn btn-primary btn-xs'>
+                                    <span class='icon-edit'></span>
+                                    </a> 
+                                    </td>";
+                                echo "</tr>";
+                            }}
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
 				
 				
 				
-				<div class="tab-pane" id="tab3">
-				<table id="devoluciones" class="table table-responsive table-hover">
-					<thead>
-						<tr>	
-							<th>Presupuesto</th>
-							<th>Devolución</th>
-							<th>Nota</th>
-							<th>Fecha</th>
-							<th>Monto</th>
-							<th>A Cuenta</th>
-							<th>Opc.</th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php 
-					if($devoluciones){
-					$devolucion_total = 0;
-					$devolucion_a_cuenta = 0;	
-					foreach ($devoluciones as $row)
-					{
-						echo "<tr>";	
-						echo "<td>".$row->id_presupuesto."</td>";
-						echo "<td>".$row->id_devolucion."</td>";
-						echo "<td>".$row->nota."</td>";
-						echo "<td>".date('d-m-Y', strtotime($row->fecha))."</td>";
-						echo "<td>$ ".round($row->monto, 2)."</td>";
-						echo "<td>$ ".round($row->a_cuenta, 2)."</td>";
-						
-						$devolucion_total	= $devolucion_total + $row->monto;
-						$devolucion_a_cuenta= $devolucion_a_cuenta + $row->a_cuenta;
-						
-						echo "<td>
-							<a title='ver devolución' href='".base_url()."index.php/devoluciones/devoluciones_abm/".$row->id_devolucion."' class='btn btn-primary btn-xs'>
-							<span class='icon-edit'></span>
-							</a> 
-							</td>";
-						echo "</tr>";
-					}}
-					?>
-					</tbody>
-					</table>
-				</div>
-				
-				
-				
-				<div class="tab-pane" id="tab4">
-				<table id="anulaciones" class="table table-responsive table-hover">
-					<thead>
-						<tr>	
-							<th>Presupuesto</th>
-							<th>Nota</th>
-							<th>Fecha</th>
-							<th>Monto</th>
-							<th>Opc.</th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php 
-					if($anulaciones){
-					$anulacion_total = 0;
-					
-					foreach ($anulaciones as $row)
-					{
-						echo "<tr>";	
-						echo "<td>".$row->id_presupuesto."</td>";
-						echo "<td>".$row->nota."</td>";
-						echo "<td>".date('d-m-Y', strtotime($row->fecha))."</td>";
-						echo "<td>$ ".round($row->monto, 2)."</td>";
-						
-						$anulacion_total	= $anulacion_total + $row->monto;
-						
-						echo "<td>
-							<a title='ver anulación' href='".base_url()."index.php/ventas/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
-							<span class='icon-edit'></span>
-							</a> 
-							</td>";
-						echo "</tr>";
-					}}
-					?>
-					</tbody>
-					</table>
-				</div>
-				
+                    <div class="tab-pane" id="tab4">
+                        <table id="anulaciones" class="table table-responsive table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Presupuesto</th>
+                                    <th>Nota</th>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                    <th>Opc.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            if($anulaciones){
+                            $anulacion_total = 0;
+
+                            foreach ($anulaciones as $row)
+                            {
+                                echo "<tr>";
+                                echo "<td>".$row->id_presupuesto."</td>";
+                                echo "<td>".$row->nota."</td>";
+                                echo "<td>".dateFormat($row->fecha)."</td>";
+                                echo "<td>".moneyFormat($row->monto)."</td>";
+
+                                $anulacion_total	= $anulacion_total + $row->monto;
+
+                                echo "<td>
+                                    <a title='ver anulación' href='".base_url()."index.php/ventas/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
+                                    <span class='icon-edit'></span>
+                                    </a> 
+                                    </td>";
+                                echo "</tr>";
+                            }}
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+
 				
 				
 				
 				<div class="tab-pane active" id="tab5">
-				<h4>
-					<div class="pull-left">
-						Fecha Inicio : <?php echo $inicio?>
-					</div>
-					<div class="pull-right">
-						Fecha Final : <?php echo $final?>
-					</div>
-				</h4>
+                    <h4>
+                        <div class="pull-left">
+                            Fecha Inicio : <?php echo $inicio?>
+                        </div>
+                        <div class="pull-right">
+                            Fecha Final : <?php echo $final?>
+                        </div>
+                    </h4>
 				
-				<br>
-				<hr>
+                    <br>
+                    <hr>
 				
 					
-				<div class="col-xs-12 divider text-center">
-                	<div class="col-xs-12 col-sm-4 emphasis">
-						<div class="small-box bg-blue">
-							<div class="inner">
-								<h4>
-									<?php echo "$ ".round($monto_total,2)?>
-								</h4>
-							</div>
-							<a href="#" class="small-box-footer">
-								PRESUPUESTO 
-							</a>
-						</div>
-					</div>
-					
-					<div class="col-xs-12 col-sm-4 emphasis">
-						<div class="small-box bg-green">
-							<div class="inner">
-								<h4>
-				                   <?php echo "$ ".round($acuenta_total,2)?>
-                    			</h4>
-							</div>
-							<a href="#" class="small-box-footer">
-			                   A CUENTA DE PRESUPUESTO 
-                			</a>
-						</div>
-					</div>
-					
-					
-					<div class="col-xs-12 col-sm-4 emphasis">
-						<div class="small-box bg-red">
-							<div class="inner">
-								<h4>
-									<?php echo "$ ".round($monto_total-$acuenta_total,2)?>
-                          		</h4>
-							</div>
-							<a href="#" class="small-box-footer">
-			                   PRESUPUESTOS - A CUENTA =	
-                			</a>
-						</div>
-					</div>			
-				</div>
-					
-				<div class="col-xs-12 divider text-center">
-							<div class="col-xs-12 col-sm-4 emphasis">
-								<div class="small-box bg-blue">
+                    <div class="col-xs-12 divider text-center">
+                        <div class="col-xs-12 col-sm-4 emphasis">
+                            <div class="small-box bg-blue">
                                 <div class="inner">
                                     <h4>
-                                       <?php echo "$ ".round($remito_total,2)?>
+                                        <?php echo moneyFormat($monto_total)?>
                                     </h4>
                                 </div>
                                 <a href="#" class="small-box-footer">
-                                   REMITOS
+                                    PRESUPUESTO
                                 </a>
-                            	</div>
-							</div>
-							
-							<div class="col-xs-12 col-sm-4 emphasis">
-								<div class="small-box bg-yellow">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 emphasis">
+                            <div class="small-box bg-green">
                                 <div class="inner">
                                     <h4>
-                                       <?php echo "$ ".round($devolucion_total,2)?>
+                                       <?php echo moneyFormat(($acuenta_total)?>
                                     </h4>
                                 </div>
                                 <a href="#" class="small-box-footer">
-                                   DEVOLUCIONES
+                                   A CUENTA DE PRESUPUESTO
                                 </a>
-                            	</div>
-							</div>
-							
-							<div class="col-xs-12 col-sm-4 emphasis">
-								<div class="small-box bg-green">
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-4 emphasis">
+                            <div class="small-box bg-red">
                                 <div class="inner">
                                     <h4>
-                                       <?php echo "$ ".round($remito_total-$devolucion_total,2)?>
+                                        <?php echo ($monto_total-$acuenta_total)?>
                                     </h4>
                                 </div>
                                 <a href="#" class="small-box-footer">
-                                   REMITOS - DEVOLUCIONES =
+                                   PRESUPUESTOS - A CUENTA =
                                 </a>
-                            	</div>
-							</div>
-				</div>
+                            </div>
+                        </div>
+                    </div>
+					
+                    <div class="col-xs-12 divider text-center">
+                                <div class="col-xs-12 col-sm-4 emphasis">
+                                    <div class="small-box bg-blue">
+                                    <div class="inner">
+                                        <h4>
+                                           <?php echo moneyFormat($remito_total)?>
+                                        </h4>
+                                    </div>
+                                    <a href="#" class="small-box-footer">
+                                       REMITOS
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 emphasis">
+                                    <div class="small-box bg-yellow">
+                                    <div class="inner">
+                                        <h4>
+                                           <?php echo moneyFormat($devolucion_total)?>
+                                        </h4>
+                                    </div>
+                                    <a href="#" class="small-box-footer">
+                                       DEVOLUCIONES
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 emphasis">
+                                    <div class="small-box bg-green">
+                                    <div class="inner">
+                                        <h4>
+                                           <?php echo moneyFormat($remito_total-$devolucion_total)?>
+                                        </h4>
+                                    </div>
+                                    <a href="#" class="small-box-footer">
+                                       REMITOS - DEVOLUCIONES =
+                                    </a>
+                                    </div>
+                                </div>
+                    </div>
 				
 				
 				
@@ -394,13 +384,9 @@ $acuenta_total	= 0;
 								<div class="small-box bg-light-blue">
                                 <div class="inner">
                                     <h4>
-                                       <?php 
-                                       if(isset($devolucion_a_cuenta)){
-                                            echo "$ ".round($devolucion_a_cuenta,2);    
-                                       } else {
-                                            echo "$ 0";
-                                       }
-                                       ?>
+                                    <?php
+                                        echo (isset($devolucion_a_cuenta) ? moneyFormat($devolucion_a_cuenta) : moneyFormat(0);
+                                    ?>
                                     </h4>
                                 </div>
                                 <a href="#" class="small-box-footer">
@@ -413,13 +399,9 @@ $acuenta_total	= 0;
 								<div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h4>
-                                       <?php 
-                                       if(isset($devolucion_total) && isset($devolucion_a_cuenta)){
-                                            echo "$ ".round($devolucion_total-$devolucion_a_cuenta,2);    
-                                       } else {
-                                            echo "$ 0";
-                                       }
-                                       ?>
+                                    <?php
+                                        echo (isset($devolucion_total) ? moneyFormat($devolucion_total) : moneyFormat(0);
+                                    ?>
                                     </h4>
                                 </div>
                                 <a href="#" class="small-box-footer">
@@ -433,13 +415,9 @@ $acuenta_total	= 0;
 								<div class="small-box bg-red">
                                 <div class="inner">
                                     <h4>
-                                       <?php
-                                       if(isset($anulacion_total)){
-                                            echo "$ ".round($anulacion_total,2);    
-                                       } else {
-                                            echo "$ 0";
-                                       }
-                                       ?>
+                                    <?php
+                                        echo (isset($anulacion_total) ? moneyFormat($anulacion_total) : moneyFormat(0);
+                                    ?>
                                     </h4>
                                 </div>
                                 <a href="#" class="small-box-footer">

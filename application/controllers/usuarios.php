@@ -5,11 +5,85 @@ class Usuarios extends MY_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->load->database();
-		$this->load->helper('url');
+        $this->load->model('usuarios_model');
 
 		$this->load->library('grocery_CRUD');
 	}
+
+/**********************************************************************************
+ **********************************************************************************
+ *
+ * 				Login usuarios
+ *
+ * ********************************************************************************
+ **********************************************************************************/
+
+    function index() {
+        $this->load->helper(array('form'));
+        $this->load->view('head');
+        $this->load->view('usuarios/login');
+    }
+
+/**********************************************************************************
+ **********************************************************************************
+ *
+ * 				Verifica que el login este ok
+ *
+ * ********************************************************************************
+ **********************************************************************************/
+
+    function verifyLogin(){
+        //This method will have the credentials validation
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_database');
+
+        if($this->form_validation->run() == FALSE){
+            //Field validation failed.  User redirected to login page
+            $this->load->view('head.php');
+            $this->load->view('usuarios/login');
+        }else{
+            //Go to private area
+            redirect('/home/','refresh');
+        }
+    }
+
+/**********************************************************************************
+ **********************************************************************************
+ *
+ * 				Verifica que el login este ok
+ *
+ * ********************************************************************************
+ **********************************************************************************/
+
+
+    function check_database($password){
+        //Field validation succeeded.  Validate against database
+        $username = $this->input->post('username');
+        //query the database
+        $result = $this->usuarios_model->login($username, $password);
+
+        if($result) {
+            $sess_array = array();
+            $ci = & get_instance();
+            foreach($result as $row)
+            {
+                $sess_array = array(
+                    'id_usuario' => $row->id_usuario,
+                    'usuario' => $row->descripcion
+                );
+            }
+
+            $this->session->unset_userdata('logged_in');
+            $this->session->set_userdata('logged_in', $sess_array);
+
+            return TRUE;
+        }else{
+            $this->form_validation->set_message('check_database', 'Invalid username or password');
+            return false;
+        }
+    }
 
 /**********************************************************************************
  **********************************************************************************

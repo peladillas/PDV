@@ -1,8 +1,7 @@
 <?php
 $dias_mes = 31;
 
-for ($i=1; $i <= $dias_mes; $i++) 
-{ 
+for ($i=1; $i <= $dias_mes; $i++) {
 	$mes[$i]		= 0;
 	$contado[$i]	= 0;
 	$ctacte[$i]		= 0;
@@ -11,43 +10,20 @@ for ($i=1; $i <= $dias_mes; $i++)
 	$anulacion[$i]	= 0;
 }
 
-if(!isset($cant_presupuestos)) {
-	$cant_presupuestos = 0;
-}
 
-$cant_ctacte = 0;
 $cant_contado = 0;
+$cant_ctacte = 0;
 $cant_devoluciones = 0;
 $cant_anulaciones = 0;
-$cant_articulos = 0;
-$cant_clientes = 0;
-$cant_remitos = 0;
 
-if($remitos)
-{
-	$cant_remitos = count($remitos);
-}
+$cant_remitos = ($remitos ? count($remitos) : 0);
+$cant_articulos = ($articulos ? count($articulos) : 0);
+$cant_clientes = ($clientes ? count($clientes) : 0);
+$cant_presupuestos = ($cant_presupuestos ? $cant_presupuestos : 0);
 
-if($articulos)
-{
-	$cant_articulos = count($articulos);
-}
-
-if($clientes)
-{
-	$cant_clientes = count($clientes);
-}
-
-
-if($presupuestos_cant)
-{
-	$cant_presupuestos = count($presupuestos_cant);
-}
 	
-if($presupuestos)
-{
-	foreach ($presupuestos as $row)
-	{
+if($presupuestos) {
+	foreach ($presupuestos as $row) {
 		$mes_fecha = date('d', strtotime($row->fecha));
 		
 		if($mes_fecha == '01'){ $mes_fecha = 1; }
@@ -61,16 +37,13 @@ if($presupuestos)
 		if($mes_fecha == '09'){ $mes_fecha = 9; }
 		
 		$mes[$mes_fecha] = $mes[$mes_fecha] + $row->monto;
-			if($row->tipo == 2)
-			{
-				$ctacte[$mes_fecha] = $ctacte[$mes_fecha] + $row->monto;
-				$cant_ctacte = $cant_ctacte + 1; 
-			} 
-			else
-			{
-				$contado[$mes_fecha] = $contado[$mes_fecha] + $row->monto;
-				$cant_contado = $cant_contado + 1;
-			}
+        if($row->tipo == 2) {
+            $ctacte[$mes_fecha] = $ctacte[$mes_fecha] + $row->monto;
+            $cant_ctacte = $cant_ctacte + 1;
+        } else {
+            $contado[$mes_fecha] = $contado[$mes_fecha] + $row->monto;
+            $cant_contado = $cant_contado + 1;
+        }
 	}	
 }
 
@@ -159,26 +132,29 @@ if($presupuestos)
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<p class="pull-right">Últimos 10 artículos vendidos</p>
-					
 					<?php
-					if($presupuestos_detalle)
-					{
-						echo "<table class='table table-hover' style='font-size:12px'>";
-							echo "<tr class='success'>";
-							echo "<td>Cantidad</td>";
-							echo "<td>Descripción</td>";
-							echo "<td>Precio</td>";
-							echo "<tr>";
-							
-						foreach ($presupuestos_detalle as $row)
-						{
-							echo "<tr>";
-							echo "<td>".$row->cantidad."</td>";
-							echo "<td>".$row->descripcion."</td>";
-							echo "<td>".$row->precio."</td>";
-							echo "<tr>";
+					if($presupuestos_detalle) {
+					    $cabecera = [
+					        lang('cantidad'),
+							lang('descripcion'),
+							lang('precio'),
+                        ];
+
+					    $html = startTable($cabecera);
+
+						foreach ($presupuestos_detalle as $row) {
+							$registro = [
+							    $row->cantidad,
+							    $row->descripcion,
+							    $row->precio,
+                            ];
+
+							$html .= setTableContent($registro);
 						}
-						echo "</table>";
+
+						$html .= endTable();
+
+						echo $html;
 					}
 					?>
 				</div>
@@ -224,32 +200,35 @@ if($presupuestos)
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<p class="pull-right">Cantidad de articulos por proveedor</p>
-					
 					<?php
-					if($proveedores)
-					{
-						echo "<table class='table table-hover' style='font-size:14px'>";
-					
-						echo "<tr class='success'>";
-						echo "<td>Cantidad</td>";
-						echo "<td></td>";
-						echo "<td>Porcentaje</td>";
-						echo "<td>Proveedor</td>";
-						echo "</tr>";	
-					
-						foreach ($proveedores as $row) 
-						{
-							$porcentaje = $row->suma * 100 / $cant_articulos;
-							echo "<tr>";
-							echo "<td><span class='badge bg-green'>".$row->suma."</span></td>";
-							echo "<td><span class='badge bg-blue'>".round($porcentaje,2)." %</span></td>";
-							echo '<td><div class="progress xs progress-striped active">
-	                                  <div class="progress-bar progress-bar-primary" style="width: '.round($porcentaje).'%"></div>
-	                              </div></td>';
-							echo "<td>".$row->descripcion."</td>";
-							echo "</tr>";	
+					if($proveedores) {
+                        $cabecera = [
+                            lang('cantidad'),
+                            lang(''),
+                            lang('porcentaje'),
+                            lang('proveedor'),
+                        ];
+
+                        $html = startTable($cabecera);
+
+						foreach ($proveedores as $row) {
+							$porcentaje = ($cant_articulos > 0 ? $row->suma * 100 / $cant_articulos : 0);
+
+							$registro = [
+							    "<span class='badge bg-green'>".$row->suma."</span>",
+							    "<span class='badge bg-blue'>".round($porcentaje,2)." %</span>",
+							    '<div class="progress xs progress-striped active">
+                                    <div class="progress-bar progress-bar-primary" style="width: '.round($porcentaje).'%"></div>
+                                </div>',
+							    $row->descripcion,
+                            ];
+
+							$html .= setTableContent($registro);
 						}
-						echo "</table>";
+
+						$html .= endTable();
+
+						echo $html;
 					}
 					?>	
 				</div>
@@ -378,11 +357,9 @@ $(function () {
             name: 'Cantidad de ventas',
             data: [
             	<?php 
-            	if($tipos)
-            	{
-            		foreach ($tipos as $row) 
-	            	{
-	            	?>	
+            	if($tipos) {
+            		foreach ($tipos as $row) {
+	            	?>
 						['<?php echo $row->descripcion ?>',   <?php echo $row->suma ?>],
 	                <?php	
 					}	
@@ -424,9 +401,8 @@ $(function () {
             name: 'Cantidad de ventas',
             data: [
             	<?php 
-            	if($condiciones){
-	            	foreach ($condiciones as $row) 
-	            	{
+            	if($condiciones) {
+	            	foreach ($condiciones as $row) {
 	            	?>	
 						['<?php echo $row->descripcion ?>',   <?php echo $row->suma ?>],
 	                <?php	

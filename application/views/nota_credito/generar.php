@@ -5,7 +5,7 @@
     <div id="form-heading">
         <?php
             echo setFormGroup('cliente', '', 'autocomplete="off"');
-            echo setFormGroup('fecha', date('d/m/Y'), 'disabled');
+            echo setFormGroup('fecha', dateFormat(), 'disabled');
             echo '<button type="button" id="seleccionar" class="btn btn-default">Selecionar</button>';
             echo '<input type=\'hidden\' name=\'id_cliente\' id=\'id_cliente\'/>';
             echo setFormGroup('total_nota_credito', 0, 'disabled');

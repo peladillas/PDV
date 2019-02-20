@@ -34,7 +34,7 @@
 			<div class="cont_rotulo_presupuesto col-md-4">
 				<div class="form-group">
 					<label for="email" class="control-label">Fecha</label>
-					<input class="data_presupuesto form-control input-cien" type="text" id="fecha_presupuesto" value="<?php echo date("d/m/Y"); ?>"/>
+					<input class="data_presupuesto form-control input-cien" type="text" id="fecha_presupuesto" value="<?php echo dateFormat(); ?>"/>
 				</div>
 			</div>
 			<div class="cont_rotulo_presupuesto col-md-4">

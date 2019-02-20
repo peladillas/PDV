@@ -7,6 +7,7 @@ class Proveedores extends MY_Controller {
 
 		$this->load->model('proveedores_model');
 		$this->load->model('articulos_model');
+
 		$this->load->library('grocery_CRUD');
 	}
 
