@@ -4,8 +4,7 @@ class Remitos extends MY_Controller{
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->database();
-		
+
 		$this->load->model('articulos_model');
 		$this->load->model('clientes_model');
 		$this->load->model('proveedores_model');
@@ -19,8 +18,6 @@ class Remitos extends MY_Controller{
 		$this->load->model('devoluciones_model');
 		$this->load->model('devoluciones_detalle_model');
 		$this->load->model('renglon_presupuesto_model');
-
-		$this->load->helper('url');
 
 		$this->path = 'remitos';
 		$this->load->library('grocery_CRUD');

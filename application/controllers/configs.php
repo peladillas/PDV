@@ -4,6 +4,7 @@ class Configs extends MY_Controller {
 
 	public function __construct() {
 		parent::__construct();
+
 		$this->load->model('config_backup');
 
 		$this->load->library('grocery_CRUD');

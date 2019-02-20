@@ -4,16 +4,14 @@ class Articulos extends My_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->database();
-		
+
 		$this->load->model('articulos_model');
 		$this->load->model('proveedores_model');
 		$this->load->model('grupos_model');
 		$this->load->model('categorias_model');
 		$this->load->model('subcategorias_model');
 		$this->load->model('actualizaciones_precion_model');
-		
-		$this->load->helper('url');
+
 		$this->load->library('grocery_CRUD');
 	}
 

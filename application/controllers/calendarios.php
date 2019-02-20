@@ -4,11 +4,9 @@ class Calendarios extends My_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->database();
-		
+
 		$this->load->model('calendarios_model');
-		
-		$this->load->helper('url');
+
 		$this->load->library('grocery_CRUD');
 	}
 

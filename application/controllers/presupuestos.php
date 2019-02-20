@@ -1,8 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Presupuestos extends CI_Controller {
+
     public function __construct(){
         parent::__construct();
-        $this->load->database();
+
         $this->load->model('articulos_model');
         $this->load->model('clientes_model');
         $this->load->model('proveedores_model');
@@ -17,7 +18,7 @@ class Presupuestos extends CI_Controller {
         $this->load->model('devoluciones_detalle_model');
         $this->load->model('renglon_presupuesto_model');
         $this->load->model('anulaciones_model');
-        $this->load->helper('url');
+
         $this->load->library('grocery_CRUD');
     }
     /**********************************************************************************

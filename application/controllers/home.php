@@ -13,14 +13,11 @@ class Home extends My_Controller {
 		$this->load->model('renglon_presupuesto_model');
 		$this->load->model('proveedores_model');
 		
-		$this->load->library('grocery_CRUD');  
-		$this->load->helper('url');
-	
+		$this->load->library('grocery_CRUD');
 	}
 	
 	
 	function index() {
-
 		$ano	= date('Y');
 		$mes	= date('m');
 
