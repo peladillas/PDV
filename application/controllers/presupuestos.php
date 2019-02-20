@@ -463,6 +463,7 @@ class Presupuestos extends CI_Controller {
 				precio,
 				estado
 			) 
+			
 		VALUES(
 			$id_presupuesto,
 			$codigos_a_cargar[$i],
