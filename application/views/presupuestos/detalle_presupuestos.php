@@ -65,56 +65,64 @@ if($presupuestos) {
 
         echo "<hr>";
 
-        $total=0;
+        $total = 0;
 
-        echo "<table class='table table-hover'>";
-        echo "<tr>";
-            echo "<th>".lang('articulo')."</th>";
-            echo "<th>".lang('descripcion')."</th>";
-            echo "<th>".lang('cantidad')."</th>";
-            echo "<th>".lang('monto')."</th>";
-            echo "<th>".lang('total')."</th>";
-        echo "</tr>";
+        $thead = [
+            lang('articulo'),
+            lang('descripcion'),
+            lang('cantidad'),
+            lang('monto'),
+            lang('total'),
+        ];
+
+        $html = startTable($thead);
 
         if($detalle_presupuesto) {
             foreach ($detalle_presupuesto as $row_detalle) {
-                echo "<tr>";
-                    echo "<td><a title='ver Articulo' class='btn btn-default btn-xs' href='".base_url()."index.php/articulos/articulo_abm/read/".$row_detalle->id_articulo."'>".$row_detalle->cod_proveedor."</a></td>";
-                    echo "<td>".$row_detalle->descripcion."</td>";
-                    echo "<td>".$row_detalle->cantidad."</td>";
-                    if($row_detalle->cantidad > 0){
-                        $precio = $row_detalle->precio/$row_detalle->cantidad;
-                    } else {
-                        $precio = 0;
-                    }
-                    echo "<td>$ ".round($precio, 2)."</td>";
-                    $sub_total = $row_detalle->cantidad * $precio;
-                    $total = $total + $sub_total;
-                    echo "<td>$ ".round($sub_total,2)."</td>";
-                echo "</tr>";
+                $precio = ($row_detalle->cantidad > 0 ? $row_detalle->precio/$row_detalle->cantidad : 0);
+                $sub_total = $row_detalle->cantidad * $precio;
+                $total = $total + $sub_total;
+
+                $registro = [
+                    "<a title='ver Articulo' class='btn btn-default btn-xs' href='".base_url()."index.php/articulos/articulo_abm/read/".$row_detalle->id_articulo."'>".$row_detalle->cod_proveedor."</a>",
+                    $row_detalle->descripcion,
+                    $row_detalle->cantidad,
+                    "$ ".round($precio, 2),
+                    "$ ".round($sub_total,2),
+                ];
+
+                $html .= setTableContent($registro);
             }
         }
 
         if($interes_presupuesto) {
             foreach ($interes_presupuesto as $row_interes) {
-                echo "<tr>";
-                    echo "<td>-</td>";
-                    echo "<td>".$row_interes->descripcion."</td>";
-                    echo "<td>-</td>";
-                    echo "<td>-</td>";
-                    $total = $total + $row_interes->monto;
-                    echo "<td>".$row_interes->monto."</td>";
-                echo "</tr>";
+                $total = $total + $row_interes->monto;
+
+                $registro = [
+                    "-",
+                    $row_interes->descripcion,
+                    "-",
+                    "-",
+                    "$ ".round($row_interes->monto,2),
+                ];
+
+                $html .= setTableContent($registro);
             }
         }
 
-        echo "<tr class='success'>";
-            echo "<td colspan='4'>".lang('total')."</td>";
-            echo "<th>$ ".round($total,2)."</th>";
-        echo "</tr>";
+        $registro = [
+            "",
+            "",
+            "",
+            lang('total'),
+            "$ ".round($total,2),
+        ];
 
-        echo "</table>";
+        $html .= setTableContent($registro);
+        $html .= endTable();
 
+        echo $html;
         echo "<hr>";
         echo $pie;
     }
@@ -174,8 +182,8 @@ if($row->estado != 3) {
         }
     }
 } else {
-    if($anulaciones){
-        foreach ($anulaciones as $row_a){
+    if ($anulaciones) {
+        foreach ($anulaciones as $row_a) {
             $mensaje  = "Nota de la anulación: ".$row_a->nota."<br>";
             $mensaje .= "Fecha de la anulación: ".date('d-m-Y', strtotime($row_a->fecha))."<br>";
         }

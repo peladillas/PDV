@@ -17,8 +17,7 @@
     </a>
 
     <?php
-    foreach ($remitos as $row)
-    {
+    foreach ($remitos as $row) {
         $datos =  array(
             'id_remito'		=> $row->id_remito,
             'fecha'			=> $row->fecha,
@@ -27,84 +26,81 @@
             'nombre'		=> $row->nombre,
             'apellido'		=> $row->apellido
         );
-
     }
 
     $total = 0;
 
-    if($presupuestos)
-    {
-        foreach ($presupuestos as $row)
-        {
+    if($presupuestos) {
+        foreach ($presupuestos as $row) {
             $total =  $total + ( $row->monto - $row->a_cuenta );
         }
     }
 
 
-        $monto = $datos['monto'] - $datos['devolucion'];
+    $monto = $datos['monto'] - $datos['devolucion'];
 
-        $datos['id_remito'];
-        echo date('d-m-Y', strtotime($datos['fecha']));
-        echo  $datos['nombre'];
-        echo $datos['apellido'];
+    $datos['id_remito'];
+    echo date('d-m-Y', strtotime($datos['fecha']));
+    echo  $datos['nombre'];
+    echo $datos['apellido'];
 
+    echo '<hr>';
+    echo "<div class='row'>";
 
-    ?>
-    <hr>
-    <div class='row'>
-    <table class='table'>
-        <thead>
-            <tr>
-            <th class='col-sm-2'><center>Nro</center></th>
-            <!--<th class='col-sm-2'><center>Fecha</center></th>-->
-            <th class='col-sm-2'><center>Monto</center></th>
-            <th class='col-sm-2'><center>A cuenta</center></th>
-            <th class='col-sm-2'><center>Pago</center></th>
-            <th class='col-sm-2'><center>Estado</center></th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-        if($remitos_detalle)
-        {
-            foreach ($remitos_detalle as $row)
-            {
-                echo "<tr>";
-                    echo "<td width='15%'><center>".$row->nro."</center></td>";
-                    //echo "<td width='20%'><center>".$row->prefecha."</center></td>";
-                    echo "<td width='15%'><center>$ ".$row->premonto."</center></td>";
-                    echo "<td width='15%'><center>$ ".$row->prea_cuenta."</center></td>";
-                    echo "<td width='15%'><center>$ ".$row->monto."</center></td>";
-                    echo "<td width='20%'><center>".$row->estado."</center></td>";
-                echo "</tr>";
-            }
+    $cabecera = [
+        lang('nro'),
+        lang('monto'),
+        lang('a_cuenta'),
+        lang('pago'),
+        lang('estado'),
+    ];
+
+    $html = startTable($cabecera);
+    if ($remitos_detalle) {
+        foreach ($remitos_detalle as $row) {
+            $registro = [
+                $row->nro,
+                "$ ".$row->premonto,
+                "$ ".$row->prea_cuenta,
+                "$ ".$row->monto,
+                $row->estado,
+            ];
+
+            $html .= setTableContent($registro);
         }
+    }
 
-        if($remitos_dev)
-        {
-            foreach ($remitos_dev as $row)
-            {
-                echo "<tr>";
-                    echo "<td colspan='3' width='45%'><center>Devolución del día ".date('d-m-Y', strtotime($row->fecha))."</center></td>";
-                    echo "<td width='15%'><center>$ ".$row->monto."</center></td>";
-                    echo "<td width='20%'><center>".$row->nota."</center></td>";
-                echo "</tr>";
-            }
+    if ($remitos_dev) {
+        foreach ($remitos_dev as $row) {
+            $registro = [
+                "",
+                "",
+                "Devolución del día " . date('d-m-Y', strtotime($row->fecha)),
+                "$ " . $row->monto,
+                $row->nota,
+            ];
+
+            $html .= setTableContent($registro);
         }
+    }
 
-        if($total > 0)
-        { ?>
-        <tr>
-            <td colspan="2"></td>
-            <th>DEBE a la fecha <?php echo date('d/m/Y');?></th>
-            <th><center>$ <?php echo $total ?></center></th>
-        </tr>
-        <?php
-        }
-        ?>
+    if($total > 0) {
+        $registro = [
+            "",
+            "",
+            "DEBE a la fecha ".date('d/m/Y'),
+            $total,
+            "",
+        ];
 
-        </tbody>
-    </table>
-    <hr>
-</div>
-<?php echo endContent(); ?>
+        $html .= setTableContent($registro);
+    }
+
+    $html .= endTable();
+
+    echo $html
+
+    echo '<hr>';
+    echo '<div>';
+    echo endContent();
+?>

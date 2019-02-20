@@ -5,18 +5,21 @@
         <div class="form-box">
             <?php
             $mensaje = validation_errors();
-            if( $mensaje != "" ){
-                echo '<div class="alert alert-danger animated fadeInUp">'.lang('login_incorrecto').'</div>';
-            } else {
-                echo '<div class="alert alert-danger animated fadeInUp">'.lang('ingrese_usuario').'</div>';
-            }
+            if($mensaje!=""){ ?>
+                <div class="animated fadeInUp alert alert-danger">
+                    Login incorrecto
+                </div>
+            <?php }else{ ?>
+                <div class="animated fadeInUp alert alert-success">
+                    Ingrese usuario y pass
+                </div>
+            <?php } ?>
 
-            echo form_open('usuarios/verifylogin');
-                echo '<input type="text"     id="username" name="username" placeholder="Usuario" autofocus>';
-                echo '<input type="password" id="password" name="password" placeholder="Pass" autocomplete="off">';
-                echo '<button class="btn btn-info btn-block login" type="submit">Login</button>';
-            echo form_close();
-            ?>
+            <?php echo form_open('verifylogin'); ?>
+                <input type="text"     id="username" name="username" placeholder="Usuario" autofocus>
+                <input type="password" id="password" name="password" placeholder="Pass" autocomplete="off">
+                <button class="btn btn-info btn-block login" type="submit">Login</button>
+            </form>
         </div>
     </div>
 </div>
