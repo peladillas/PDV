@@ -30,6 +30,7 @@ if($presupuestos) {
             }
 
             $_vendedor   = $this->vendedores_model->select($row->id_vendedor);
+
             if($_vendedor) {
                 foreach ($_vendedor as $row_vendedor) {
                     $vendedor = $row_vendedor->vendedor;
@@ -42,9 +43,10 @@ if($presupuestos) {
             $cabecera = $impresion->cabecera;
             $cabecera = str_replace("#presupuesto_nro#", $row->id_presupuesto, $cabecera);
             $cabecera = str_replace("#presupuesto_descuento#", $row->descuento, $cabecera);
-            $cabecera = str_replace("#presupuesto_fecha#", date('d-m-Y', strtotime($row->fecha)), $cabecera);
+            $cabecera = str_replace("#presupuesto_fecha#", dateFormat($row->fecha), $cabecera);
             $cabecera = str_replace("#presupuesto_monto#", $row->monto, $cabecera);
             $cabecera = str_replace("#vendedor#", $vendedor, $cabecera);
+
             if(isset($nombre)) {
                 $cabecera = str_replace("#cliente_nombre#", $nombre, $cabecera);
             } else {
@@ -87,8 +89,8 @@ if($presupuestos) {
                     "<a title='ver Articulo' class='btn btn-default btn-xs' href='".base_url()."index.php/articulos/articulo_abm/read/".$row_detalle->id_articulo."'>".$row_detalle->cod_proveedor."</a>",
                     $row_detalle->descripcion,
                     $row_detalle->cantidad,
-                    "$ ".round($precio, 2),
-                    "$ ".round($sub_total,2),
+                    moneyFormat($precio),
+                    moneyFormat($sub_total),
                 ];
 
                 $html .= setTableContent($registro);
@@ -104,7 +106,7 @@ if($presupuestos) {
                     $row_interes->descripcion,
                     "-",
                     "-",
-                    "$ ".round($row_interes->monto,2),
+                    moneyFormat($row_interes->monto),
                 ];
 
                 $html .= setTableContent($registro);
@@ -116,7 +118,7 @@ if($presupuestos) {
             "",
             "",
             lang('total'),
-            "$ ".round($total,2),
+            moneyFormat($total),
         ];
 
         $html .= setTableContent($registro);
@@ -185,7 +187,7 @@ if($row->estado != 3) {
     if ($anulaciones) {
         foreach ($anulaciones as $row_a) {
             $mensaje  = "Nota de la anulación: ".$row_a->nota."<br>";
-            $mensaje .= "Fecha de la anulación: ".date('d-m-Y', strtotime($row_a->fecha))."<br>";
+            $mensaje .= "Fecha de la anulación: ".dateFormat($row_a->fecha)."<br>";
         }
 
         echo setMensaje($mensaje, 'danger');

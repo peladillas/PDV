@@ -40,8 +40,8 @@
     $monto = $datos['monto'] - $datos['devolucion'];
 
     $datos['id_remito'];
-    echo date('d-m-Y', strtotime($datos['fecha']));
-    echo  $datos['nombre'];
+    echo dateFormat($datos['fecha']);
+    echo $datos['nombre'];
     echo $datos['apellido'];
 
     echo '<hr>';
@@ -60,9 +60,9 @@
         foreach ($remitos_detalle as $row) {
             $registro = [
                 $row->nro,
-                "$ ".$row->premonto,
-                "$ ".$row->prea_cuenta,
-                "$ ".$row->monto,
+                moneyFormat($row->premonto),
+                moneyFormat($row->prea_cuenta),
+                moneyFormat($row->monto),
                 $row->estado,
             ];
 
@@ -75,8 +75,8 @@
             $registro = [
                 "",
                 "",
-                "Devolución del día " . date('d-m-Y', strtotime($row->fecha)),
-                "$ " . $row->monto,
+                "Devolución del día " . dateFormat($row->fecha),
+                moneyFormat($row->monto),
                 $row->nota,
             ];
 
@@ -88,8 +88,8 @@
         $registro = [
             "",
             "",
-            "DEBE a la fecha ".date('d/m/Y'),
-            $total,
+            "DEBE a la fecha ".dateFormat(),
+            moneyFormat($total),
             "",
         ];
 

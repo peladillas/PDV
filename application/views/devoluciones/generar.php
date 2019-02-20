@@ -25,7 +25,7 @@ if ($presupuestos) {
                 $registro = [
                     $row->cod_proveedor;
                     $row->descripcion;
-                    "$ ".round($precio, 2);
+                    moneyFormat(($precio);
                     $row->cantidad;
                     "<input name='".$row->id_renglon."' class='form-control' type='number' value='0' max='".$row->cantidad."' min='0' required>";
                 ];

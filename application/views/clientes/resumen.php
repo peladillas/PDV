@@ -49,9 +49,9 @@ echo startContent($title);
 
                     $registro = [
                         $row->id_presupuesto,
-                        date('d-m-Y', strtotime($row->fecha)),
-                        '$ '.round($row->monto, 2),
-                        '$ '.round($row->a_cuenta,2),
+                        dateFormat($row->fecha),
+                        moneyFormat($row->monto),
+                        moneyFormat($row->a_cuenta),
                         $row->tipo,
                         $row->estado,
                     ];
@@ -84,9 +84,9 @@ echo startContent($title);
                 foreach ($remitos as $row) {
                     $registro = [
                         $row->id_remito,
-                        date('d-m-Y', strtotime($row->fecha)),
-                        '$ '.round($row->monto, 2),
-                        '$ '.round($row->devolucion, 2),
+                        dateFormat($row->fecha),
+                        moneyFormat($row->monto),
+                        moneyFormat($row->devolucion),
                     ];
 
                     $resta = $row->monto - $row->devolucion;
@@ -125,9 +125,9 @@ echo startContent($title);
                     $registro = [
                         $row->id_devolucion,
                         $row->id_presupuesto,
-                        date('d-m-Y', strtotime($row->fecha)),
-                        '$ '.round($row->monto, 2),
-                        '$ '.round($row->a_cuenta, 2),
+                        dateFormat($row->fecha),
+                        moneyFormat($row->monto),
+                        moneyFormat($row->a_cuenta),
                         $row->nota,
                     ];
 
@@ -146,14 +146,12 @@ echo startContent($title);
         </div>
         <div class="tab-pane active" id="tab1">
             <?php
-            if($clientes)
-            {
+            if($clientes) {
                 $total_vendido = $total_p_contado + $total_p_tarjeta + $total_p_ctacte;
                 $total_cobrado = $total_p_contado + $total_p_tarjeta + $total_p_cuenta;
                 $deuda = $total_vendido - $total_cobrado;
 
-                foreach ($clientes as $row)
-                {
+                foreach ($clientes as $row) {
 
             ?>
             <div class="col-md-12 well">
@@ -180,7 +178,7 @@ echo startContent($title);
                     <div class="small-box bg-aqua">
                     <div class="inner">
                         <h3>
-                            $ <?php echo $total_vendido ?>
+                            <?php echo moneyFormat($total_vendido) ?>
                         </h3>
                     </div>
                     <a href="#" class="small-box-footer">
@@ -193,7 +191,7 @@ echo startContent($title);
                     <div class="small-box bg-green">
                     <div class="inner">
                         <h3>
-                            $ <?php echo $total_cobrado ?>
+                            <?php echo moneyFormat($total_cobrado) ?>
                         </h3>
                     </div>
                     <a href="#" class="small-box-footer">
@@ -206,7 +204,7 @@ echo startContent($title);
                     <div class="small-box bg-red">
                     <div class="inner">
                         <h3>
-                            $ <?php echo $deuda ?>
+                            <?php echo moneyFormat($deuda) ?>
                         </h3>
                     </div>
                     <a href="#" class="small-box-footer">
@@ -221,7 +219,7 @@ echo startContent($title);
                     <div class="small-box bg-blue">
                     <div class="inner">
                         <h4>
-                            $ <?php echo $total_p_contado ?>
+                            <?php echo moneyFormat($total_p_contado) ?>
                         </h4>
                     </div>
                     <a href="#" class="small-box-footer">
@@ -234,7 +232,7 @@ echo startContent($title);
                     <div class="small-box bg-maroon">
                     <div class="inner">
                         <h4>
-                            $ <?php echo $total_p_tarjeta ?>
+                            <?php echo moneyFormat($total_p_tarjeta) ?>
                         </h4>
                     </div>
                     <a href="#" class="small-box-footer">
@@ -247,7 +245,7 @@ echo startContent($title);
                     <div class="small-box bg-olive">
                     <div class="inner">
                         <h4>
-                            $ <?php echo $total_p_ctacte ?>
+                            <?php echo moneyFormat($total_p_ctacte) ?>
                         </h4>
                     </div>
                     <a href="#" class="small-box-footer">
@@ -260,7 +258,7 @@ echo startContent($title);
                     <div class="small-box bg-orange">
                     <div class="inner">
                         <h4>
-                            $ <?php echo $total_p_ctacte ?>
+                            <?php echo moneyFormat($total_p_ctacte) ?>
                         </h4>
                     </div>
                     <a href="#" class="small-box-footer">

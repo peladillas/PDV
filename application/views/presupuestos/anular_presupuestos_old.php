@@ -14,7 +14,7 @@ if($presupuestos) {
             $cabecera = $impresion->cabecera;
             $cabecera = str_replace("#presupuesto_nro#", $row->id_presupuesto, $cabecera);
             $cabecera = str_replace("#presupuesto_descuento#", $row->descuento, $cabecera);
-            $cabecera = str_replace("#presupuesto_fecha#", date('d-m-Y', strtotime($row->fecha)), $cabecera);
+            $cabecera = str_replace("#presupuesto_fecha#", dateFormat($row->fecha), $cabecera);
             $cabecera = str_replace("#presupuesto_monto#", $row->monto, $cabecera);
             $cabecera = str_replace("#cliente_nombre#", $nombre, $cabecera);
             $cabecera = str_replace("#cliente_apellido#", $apellido, $cabecera);
@@ -48,14 +48,14 @@ if($presupuestos) {
                     echo "<td>".$precio."</td>";
                     $sub_total = $row->cantidad * $precio;
                     $total = $total + $sub_total;
-                    echo "<td>$ ".round($sub_total,2)."</td>";
+                    echo "<td>".moneyFormat($sub_total)."</td>";
                 echo "</tr>";
             }
         }
 
         echo "<tr class='success'>";
             echo "<td colspan='4'>".lang('total')."</td>";
-            echo "<th>$ ".round($total,2)."</th>";
+            echo "<th>".moneyFormat($total)."</th>";
         echo "</tr>";
 
         echo "</table>";

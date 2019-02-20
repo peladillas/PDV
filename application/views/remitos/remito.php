@@ -116,7 +116,7 @@
 							}
 							echo "<div class='row'>";	
 							echo $link_presupuesto;
-							echo "<div class='col-sm-3'>".date('d-m-Y', strtotime($presupuesto->fecha))."</div>";
+							echo "<div class='col-sm-3'>".dateFormat($presupuesto->fecha)."</div>";
 							echo "<div class='col-sm-2'>".$presupuesto->monto."</div>";
 							echo "<div class='col-sm-2'>".$presupuesto->a_cuenta."</div>";
 							$total_apagar = $total_apagar + $presupuesto->monto - $presupuesto->a_cuenta;
@@ -169,7 +169,7 @@
 						echo "<div class='row'>";	
 							echo "<div class='col-sm-1'>".$dev->id_devolucion."</div>";
 							echo "<div class='col-sm-1'>".$dev->id_presupuesto."</div>";
-							echo "<div class='col-sm-1'>".date('d-m-Y', strtotime($dev->fecha))."</div>";
+							echo "<div class='col-sm-1'>".dateFormat($dev->fecha)."</div>";
 							echo "<div class='col-sm-5'>".$dev->nota."</div>";
 							echo "<div class='col-sm-1'>".$dev->monto."</div>";
 							echo "<div class='col-sm-1'>".$dev->a_cuenta."</div>";
