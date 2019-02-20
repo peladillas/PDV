@@ -1,27 +1,22 @@
 <div class="container">
     <div class="login-container">
         <div id="output"></div>
-            <div class="avatar"></div>
-            <div class="form-box">
-            	<?php $mensaje=validation_errors(); ?>
-            	<?php if($mensaje!=""){ ?>
-            		<div class="alert alert-danger animated fadeInUp">
-            			Login incorrecto
-            		</div>	
-            	<?php }else{ ?>
-            		<div class="alert alert-success animated fadeInUp">
-            			Ingrese usuario y pass
-            		</div>
-            	<?php } ?>
-                
-				<?php echo form_open('usuarios/verifylogin'); ?>
-                    <input type="text"     id="username" name="username" placeholder="Usuario" autofocus>
-                    <input type="password" id="password" name="password" placeholder="Pass" autocomplete="off">
-                    <button class="btn btn-info btn-block login" type="submit">Login</button>
-                </form>
-            </div>
+        <div class="avatar"></div>
+        <div class="form-box">
+            <?php
+            $mensaje = validation_errors();
+            if( $mensaje != "" ){
+                echo '<div class="alert alert-danger animated fadeInUp">'.lang('login_incorrecto').'</div>';
+            } else {
+                echo '<div class="alert alert-danger animated fadeInUp">'.lang('ingrese_usuario').'</div>';
+            }
+
+            echo form_open('usuarios/verifylogin');
+                echo '<input type="text"     id="username" name="username" placeholder="Usuario" autofocus>';
+                echo '<input type="password" id="password" name="password" placeholder="Pass" autocomplete="off">';
+                echo '<button class="btn btn-info btn-block login" type="submit">Login</button>';
+            echo form_close();
+            ?>
         </div>
-        
+    </div>
 </div>
- </body>
-</html>
