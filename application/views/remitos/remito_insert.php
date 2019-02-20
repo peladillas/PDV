@@ -32,6 +32,7 @@
             'nombre'		=> $row->nombre,
             'apellido'		=> $row->apellido
         );
+
     }
 
     $total = 0;
