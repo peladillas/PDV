@@ -107,12 +107,12 @@
 					foreach ($presupuestos as $presupuesto) {
 							if($presupuesto->comentario != '') {
 								if($presupuesto->com_publico == 1) {
-									$link_presupuesto = "<div class='col-sm-2'><a href='".base_url()."index.php/ventas/detalle_presupuesto/".$presupuesto->id_presupuesto."/1' class='btn btn-default btn-xs' title='Ver presupuesto - Comentario Publico' target='_blank'>".$presupuesto->id_presupuesto." <i class='fa fa-comment-o'></i> </a></div>";
+									$link_presupuesto = "<div class='col-sm-2'><a href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$presupuesto->id_presupuesto."/1' class='btn btn-default btn-xs' title='Ver presupuesto - Comentario Publico' target='_blank'>".$presupuesto->id_presupuesto." <i class='fa fa-comment-o'></i> </a></div>";
 								} else {
-									$link_presupuesto = "<div class='col-sm-2'><a href='".base_url()."index.php/ventas/detalle_presupuesto/".$presupuesto->id_presupuesto."/1' class='btn btn-default btn-xs' title='Ver presupuesto - Comentario Privado' target='_blank'>".$presupuesto->id_presupuesto." <i class='fa fa-comment'></i></a></div>";
+									$link_presupuesto = "<div class='col-sm-2'><a href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$presupuesto->id_presupuesto."/1' class='btn btn-default btn-xs' title='Ver presupuesto - Comentario Privado' target='_blank'>".$presupuesto->id_presupuesto." <i class='fa fa-comment'></i></a></div>";
 								}
 							} else {
-								$link_presupuesto = "<div class='col-sm-2'><a href='".base_url()."index.php/ventas/detalle_presupuesto/".$presupuesto->id_presupuesto."/1' class='btn btn-default btn-xs' title='ver presupuesto' target='_blank'>".$presupuesto->id_presupuesto."</a></div>";
+								$link_presupuesto = "<div class='col-sm-2'><a href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$presupuesto->id_presupuesto."/1' class='btn btn-default btn-xs' title='ver presupuesto' target='_blank'>".$presupuesto->id_presupuesto."</a></div>";
 							}
 							echo "<div class='row'>";	
 							echo $link_presupuesto;
@@ -166,15 +166,16 @@
 					echo "<br>";	
 					
 					foreach ($devoluciones as $dev) {
-						echo "<div class='row'>";	
-							echo "<div class='col-sm-1'>".$dev->id_devolucion."</div>";
+						echo "<div class='row'>";
+                            $sub_dev = $dev->monto - $dev->a_cuenta;
+                            $total_dev = $total_dev + $sub_dev;
+
+                            echo "<div class='col-sm-1'>".$dev->id_devolucion."</div>";
 							echo "<div class='col-sm-1'>".$dev->id_presupuesto."</div>";
 							echo "<div class='col-sm-1'>".dateFormat($dev->fecha)."</div>";
 							echo "<div class='col-sm-5'>".$dev->nota."</div>";
 							echo "<div class='col-sm-1'>".$dev->monto."</div>";
 							echo "<div class='col-sm-1'>".$dev->a_cuenta."</div>";
-							$sub_dev = $dev->monto - $dev->a_cuenta;
-							$total_dev = $total_dev + $sub_dev;
 							echo "<div class='col-sm-2'>$sub_dev</div>";
 							echo "<input name='dev_$dev->id_devolucion' value='$sub_dev' type='hidden' >";
 						echo "</div>";

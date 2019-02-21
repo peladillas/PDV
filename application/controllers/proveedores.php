@@ -2,6 +2,8 @@
 
 class Proveedores extends MY_Controller {
 
+    protected $path = 'proveedores/';
+
 	public function __construct(){
 		parent::__construct();
 

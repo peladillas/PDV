@@ -94,7 +94,7 @@ if($presupuestos) {
     <textarea name="nota" class="form-control" rows="6" required></textarea>
     <input name="id_presupuesto" value="<?php echo $id_presupuesto?>" type="hidden"/>
     <input name="monto" value="<?php echo $monto_presupuesto?>" type="hidden"/>
-    <a href='<?php echo base_url()."/index.php/ventas/presupuesto_abm/"?>' class='btn btn-default'>Volver a la lista</a>
+    <a href='<?php echo base_url()."/index.php/presupuestos/presupuesto_abm/"?>' class='btn btn-default'>Volver a la lista</a>
     <button class="btn btn-default"/>
         <i class="fa fa-trash-o"></i> Anular
     </button>

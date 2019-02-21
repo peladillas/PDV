@@ -2,6 +2,8 @@
 
 class Articulos extends My_Controller {
 
+    protected $path = 'articulos/';
+
 	public function __construct() {
 		parent::__construct();
 

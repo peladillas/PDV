@@ -2,6 +2,8 @@
 
 class Clientes extends MY_Controller {
 
+    protected $path = 'clientes/';
+
 	public function __construct() {
 		parent::__construct();
 
@@ -88,7 +90,7 @@ class Clientes extends MY_Controller {
 		$db['remitos']			= $this->remitos_model->select($datos);
 		$db['devoluciones']		= $this->devoluciones_model->getCliente($id_cliente, 'all');// Arreglar esta chamchada
 
-        $this->view($db, 'clientes/resumen.php');
+        $this->view($db, $this->path.'resumen');
 
 	}
 

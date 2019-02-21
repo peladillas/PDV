@@ -11,7 +11,7 @@
 }
 </script>
 <?php echo startContent(lang('remito')) ?>
-    <a class="btn btn-default" href="<?php echo base_url().'index.php/ventas/remitos_abm/'?>"/>
+    <a class="btn btn-default" href="<?php echo base_url().'index.php/remitos/remitos_abm/'?>"/>
         <i class="fa fa-arrow-left"></i> Remitos
     </a>
     <a class="btn btn-default" href="<?php echo base_url().'index.php/presupuestos/remito/'?>"/>

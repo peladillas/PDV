@@ -125,7 +125,7 @@ $acuenta_total	= 0;
                                     $opciones = "<a title='ver cliente' href='".base_url()."index.php/clientes/cliente_abm/read/".$row->id_cliente."' class='btn btn-info btn-xs'>
                                             <span class='icon-user'></span>
                                             </a> 
-                                            <a title='ver presupuesto' href='".base_url()."index.php/ventas/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
+                                            <a title='ver presupuesto' href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
                                             <span class='icon-edit'></span>
                                             </a>";
 
@@ -266,7 +266,7 @@ $acuenta_total	= 0;
                                 $anulacion_total	= $anulacion_total + $row->monto;
 
                                 echo "<td>
-                                    <a title='ver anulación' href='".base_url()."index.php/ventas/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
+                                    <a title='ver anulación' href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
                                     <span class='icon-edit'></span>
                                     </a> 
                                     </td>";

@@ -2,6 +2,8 @@
 
 class Nota_credito extends MY_Controller {
 
+    protected $path = 'nota_credito/';
+
 	public function __construct() {
 		parent::__construct();
 
@@ -20,7 +22,7 @@ class Nota_credito extends MY_Controller {
 
 	public function index(){
 	    $db = [];
-		$this->view($db, 'nota_credito/generar.php');
+		$this->view($db, $this->path.'generar');
 	}
 
     public function addRegistro(){

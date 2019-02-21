@@ -2,6 +2,8 @@
 
 class Remitos extends MY_Controller{
 
+    protected $path = 'remitos';
+
 	public function __construct() {
 		parent::__construct();
 
@@ -19,7 +21,6 @@ class Remitos extends MY_Controller{
 		$this->load->model('devoluciones_detalle_model');
 		$this->load->model('renglon_presupuesto_model');
 
-		$this->path = 'remitos';
 		$this->load->library('grocery_CRUD');
 	}
 
@@ -355,7 +356,6 @@ class Remitos extends MY_Controller{
 
 		$this->view($db, $this->path.'/remito_vista.php');
 	}
-
 
  /**********************************************************************************
  **********************************************************************************
