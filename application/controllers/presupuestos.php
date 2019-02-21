@@ -1,21 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Presupuestos extends CI_Controller {
+class Presupuestos extends MY_Controller {
+
+    protected $path = 'presupuestos/';
 
     public function __construct(){
         parent::__construct();
 
-        $this->load->model('articulos_model');
-        $this->load->model('clientes_model');
-        $this->load->model('proveedores_model');
-        $this->load->model('grupos_model');
         $this->load->model('presupuestos_model');
-        $this->load->model('remitos_model');
-        $this->load->model('remitos_detalle_model');
-        $this->load->model('categorias_model');
-        $this->load->model('subcategorias_model');
         $this->load->model('config_impresion_model');
         $this->load->model('devoluciones_model');
-        $this->load->model('devoluciones_detalle_model');
         $this->load->model('renglon_presupuesto_model');
         $this->load->model('anulaciones_model');
 
@@ -30,16 +23,9 @@ class Presupuestos extends CI_Controller {
  * ********************************************************************************
  **********************************************************************************/
 
-    public function salida()
-    {
-        if($this->session->userdata('logged_in')){
-            $this->load->view('head.php');
-            $this->load->view('menu.php');
-            $this->load->view('presupuestos/presupuestos_salida');
-            $this->load->view('footer.php');
-        }else{
-            redirect('/','refresh');
-        }
+    public function salida() {
+        $db = [];
+        $this->view($db, $this->path.'/presupuestos_salida.php');
     }
 
 /**********************************************************************************
@@ -104,18 +90,6 @@ class Presupuestos extends CI_Controller {
         }
         //CARGO REGLON PRESUPUESTO //
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**********************************************************************************
  **********************************************************************************
@@ -190,16 +164,16 @@ class Presupuestos extends CI_Controller {
     }
 
     function buscar_presupuestos($id) {
-        return site_url('/presupuestos/detalle_presupuesto').'/'.$id;
+        return site_url($this->path.'detalle_presupuesto').'/'.$id;
     }
 
-    /**********************************************************************************
-     **********************************************************************************
-     *
-     * 				Muestra el detalle del presupuesto
-     *
-     * ********************************************************************************
-     **********************************************************************************/
+/**********************************************************************************
+ **********************************************************************************
+ *
+ * 				Muestra el detalle del presupuesto
+ *
+ * ********************************************************************************
+ **********************************************************************************/
 
     function detalle_presupuesto($id, $llamada = NULL) {
         $_presupuesto = $this->presupuestos_model->select($id);
@@ -257,13 +231,53 @@ class Presupuestos extends CI_Controller {
             }else {
                 $db['llamada'] = TRUE;
                 $this->load->view('head.php',$db);
-                $this->load->view('presupuestos/detalle_presupuestos.php');
+                $this->load->view($this->path.'detalle_presupuestos');
             }
 
-            $this->view($db, 'presupuestos/detalle_presupuestos.php');
+            $this->view($db, $this->path.'detalle_presupuestos');
         } else {
             redirect('/','refresh');
         }
     }
 
+/**********************************************************************************
+ **********************************************************************************
+ *
+ * 				Generar las devoluciones
+ *
+ * ********************************************************************************
+ **********************************************************************************/
+
+    function anular($id = NULL) {
+        if($this->input->post('nota')) {
+            $registro = array(
+                'id_presupuesto'	=> $this->input->post('id_presupuesto'),
+                'fecha'				=> date('Y-m-d H:i:s'),
+                'monto'				=> $this->input->post('monto'),
+                'nota'				=> $this->input->post('nota'),
+            );
+
+            $this->anulaciones_model->insert($registro);
+
+            $presupuesto = array(
+                'estado' => 3
+            );
+
+            $this->presupuestos_model->update($presupuesto, $registro['id_presupuesto']);
+
+            redirect($this->path.'/presupuesto_abm/success/','refresh');
+        }
+
+        $condicion = array(
+            'id_presupuesto' => $id
+        );
+
+        $db['texto']				= getTexto();
+        $db['presupuestos']			= $this->presupuestos_model->getRegistro($id);
+        $db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
+        $db['impresiones']			= $this->config_impresion_model->getRegistro(2);
+        $db['devoluciones']			= $this->devoluciones_model->getBusqueda($condicion);
+
+        $this->view($db, $this->path.'anular_presupuestos');
+    }
 }

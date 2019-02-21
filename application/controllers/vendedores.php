@@ -7,6 +7,8 @@ class Vendedores extends My_Controller {
 	public function __construct() {
 		parent::__construct();
 
+        $this->load->model('vendedores_model');
+
 		$this->load->library('grocery_CRUD');
 	}
 

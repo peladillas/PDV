@@ -7,18 +7,13 @@ class Remitos extends MY_Controller{
 	public function __construct() {
 		parent::__construct();
 
-		$this->load->model('articulos_model');
 		$this->load->model('clientes_model');
-		$this->load->model('proveedores_model');
-		$this->load->model('grupos_model');
-		$this->load->model('presupuestos_model');
+
 		$this->load->model('remitos_model');
 		$this->load->model('remitos_detalle_model');
-		$this->load->model('categorias_model');
-		$this->load->model('subcategorias_model');
 		$this->load->model('config_impresion_model');
 		$this->load->model('devoluciones_model');
-		$this->load->model('devoluciones_detalle_model');
+
 		$this->load->model('renglon_presupuesto_model');
 
 		$this->load->library('grocery_CRUD');
@@ -227,103 +222,6 @@ class Remitos extends MY_Controller{
         redirect($this->path.'/remito_vista/'.$id_remito.'/'.$id_cliente,'refresh');//Redireccionamos para evitar problemas con la recarga de la pagina f5
 	}
 
-
- /**********************************************************************************
- **********************************************************************************
- * 
- * 				Insert de devoluciones
- * 
- * ********************************************************************************
- **********************************************************************************/	
-	
-	
-	function insert_devoluciones($id_remito) {
-		$remitos		= $this->remitos_model->getRemito($id_remito);
-		
-		foreach ($remitos as $row) {
-			$total		= $row->monto;
-			$devoluciones	= $this->devoluciones_model->getCliente($row->id_cliente);
-		}
-		
-		$total_dev = 0;
-		
-		foreach ($devoluciones as $row) {
-			if($total >0) {
-				$resto_apagar	= $row->monto - $row->a_cuenta;
-							
-				if($resto_apagar < $total) {//Si el monto a pagar del presupuesto no supera el del pago
-					$pago		= $resto_apagar;
-					$total		= $total - $resto_apagar;
-					$a_cuenta	= $row->monto;
-					$estado		= 2;
-				} else {//Si lo supera
-				    $pago		= $total;
-					$a_cuenta	= $row->a_cuenta + $total;
-					$total		= 0;
-					$estado		= 1;
-				}
-						
-				$remito_detalle = array(
-					'id_remito'			=> $id_remito,
-					'id_devolucion'		=> $row->id_devolucion,
-					'monto'				=> -$pago,
-					'estado'			=> 1
-				);
-							
-				$this->remitos_detalle_model->insert($remito_detalle);//Insert detalle remito
-							
-				$update_dev = array(
-					'a_cuenta'	=> $a_cuenta,
-					'id_estado'	=> $estado
-				);
-								
-				$this->devoluciones_model->update($update_dev, $row->id_devolucion);
-				
-				$total_dev =  $total_dev + $pago;	
-			}	
-			
-            $update_remito = array(
-                'devolucion'	=> $total_dev
-            );
-
-            $this->remitos_model->update($update_remito, $id_remito);
-		}
-	}
-
- /**********************************************************************************
- **********************************************************************************
- * 
- * 				Vista detalle
- * 
- * ********************************************************************************
- **********************************************************************************/	
-
-
-	function remito_vista2($id, $id_cliente = NULL) {
-		$db['remitos']			= $this->remitos_model->getRemito($id);
-		$db['remitos_detalle']	= $this->remitos_detalle_model->getRemitos($id);
-		$db['remitos_dev']		= $this->remitos_detalle_model->getRemitos($id, 'dev');
-		$db['impresiones']		= $this->config_impresion_model->select(1);
-		
-		if($id_cliente === NULL) {
-			$remitos = $db['remitos'];
-			
-			foreach ($remitos as $row) {
-				$id_cliente = $row->id_cliente;	
-			}
-		}
-		
-		$datos = array(
-			'id_cliente'=> $id_cliente,
-			'tipo'		=> 2,
-			'estado'	=> 1
-		);
-			
-		$db['presupuestos']		= $this->presupuestos_model->select($datos);
-
-		$this->view($db, $this->path.'/remito_insert.php');
-	}
-
  /**********************************************************************************
  **********************************************************************************
  * 
@@ -357,38 +255,66 @@ class Remitos extends MY_Controller{
 		$this->view($db, $this->path.'/remito_vista.php');
 	}
 
- /**********************************************************************************
- **********************************************************************************
- * 
- * 				Generar las devoluciones sacar de aca, es de presupuesto
- * 
- * ********************************************************************************
- **********************************************************************************/
-
-	function anular($id) {
-        $condicion = array(
-            'id_presupuesto' => $id
-        );
-
-        $db['texto']				= getTexto();
-        $db['presupuestos']			= $this->presupuestos_model->select($id);
-        $db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
-        $db['impresiones']			= $this->config_impresion_model->select(2);
-        $db['devoluciones']			= $this->devoluciones_model->select($condicion);
-
-        $this->view($db, 'presupuestos/anular_presupuestos.php');
-	}
-
 /**********************************************************************************
  **********************************************************************************
  *
- * 				Presupuesto de Salida
+ * 				Insert de devoluciones
  *
  * ********************************************************************************
  **********************************************************************************/
 
-    public function salida() {
-        $db = [];
-        $this->view($db, $this->path.'/presupuestos_salida.php');
+    function insert_devoluciones($id_remito) {
+        $remitos		= $this->remitos_model->getRemito($id_remito);
+
+        foreach ($remitos as $row) {
+            $total		= $row->monto;
+            $devoluciones	= $this->devoluciones_model->getCliente($row->id_cliente);
+        }
+
+        $total_dev = 0;
+
+        foreach ($devoluciones as $row) {
+            if($total >0) {
+                $resto_apagar	= $row->monto - $row->a_cuenta;
+
+                if($resto_apagar < $total) {//Si el monto a pagar del presupuesto no supera el del pago
+                    $pago		= $resto_apagar;
+                    $total		= $total - $resto_apagar;
+                    $a_cuenta	= $row->monto;
+                    $estado		= 2;
+                } else {//Si lo supera
+                    $pago		= $total;
+                    $a_cuenta	= $row->a_cuenta + $total;
+                    $total		= 0;
+                    $estado		= 1;
+                }
+
+                $remito_detalle = array(
+                    'id_remito'			=> $id_remito,
+                    'id_devolucion'		=> $row->id_devolucion,
+                    'monto'				=> -$pago,
+                    'estado'			=> 1
+                );
+
+                $this->remitos_detalle_model->insert($remito_detalle);//Insert detalle remito
+
+                $update_dev = array(
+                    'a_cuenta'	=> $a_cuenta,
+                    'id_estado'	=> $estado
+                );
+
+                $this->devoluciones_model->update($update_dev, $row->id_devolucion);
+
+                $total_dev =  $total_dev + $pago;
+            }
+
+            $update_remito = array(
+                'devolucion'	=> $total_dev
+            );
+
+            $this->remitos_model->update($update_remito, $id_remito);
+        }
     }
+
+
 }
