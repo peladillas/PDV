@@ -52,7 +52,7 @@ class Articulos extends My_Controller {
         $crud->callback_after_update(array($this, 'update_log'));
         $crud->callback_delete(array($this,'delete_log'));
 
-        $this->permisos_model->getPermisos_CRUD('permiso_articulo', $crud);
+        $this->permisos_model->getPermisosCRUD('permiso_articulo', $crud);
 
         $output = $crud->render();
 
@@ -91,7 +91,7 @@ class Articulos extends My_Controller {
         $crud->callback_after_update(array($this, 'update_log'));
         $crud->callback_delete(array($this,'delete_log'));
 
-        $this->permisos_model->getPermisos_CRUD('permiso_articulo', $crud);
+        $this->permisos_model->getPermisosCRUD('permiso_articulo', $crud);
 
         $output = $crud->render();
 
@@ -128,7 +128,7 @@ class Articulos extends My_Controller {
         $crud->callback_after_update(array($this, 'update_log'));
         $crud->callback_delete(array($this,'delete_log'));
 
-        $this->permisos_model->getPermisos_CRUD('permiso_articulo', $crud);
+        $this->permisos_model->getPermisosCRUD('permiso_articulo', $crud);
 
         $output = $crud->render();
 
@@ -194,7 +194,7 @@ class Articulos extends My_Controller {
         $crud->callback_after_update(array($this, 'actualizar_precios'));
         $crud->callback_delete(array($this,'delete_log'));
 
-        $this->permisos_model->getPermisos_CRUD('permiso_articulo', $crud);
+        $this->permisos_model->getPermisosCRUD('permiso_articulo', $crud);
 
         $output = $crud->render();
 

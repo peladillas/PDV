@@ -42,7 +42,7 @@ class Proveedores extends MY_Controller {
         $crud->callback_after_update(array($this, 'actualizar_precios'));
         $crud->callback_delete(array($this,'delete_log'));
 
-        $this->permisos_model->getPermisos_CRUD('permiso_proveedor', $crud);
+        $this->permisos_model->getPermisosCRUD('permiso_proveedor', $crud);
 
         $output = $crud->render();
 

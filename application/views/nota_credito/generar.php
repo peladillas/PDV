@@ -1,5 +1,8 @@
 <?php echo startContent(lang('empresa') ) ?>
-<script src="<?php echo base_url().'librerias/main/js/nota_credito.js'?>"></script>
+<script>
+    var BASE_URL = '<?php echo base_url().'index.php/'?>';
+</script>
+<?php echo setJs('main/js/nota_credito.js') ?>
 
 <form class="form-inline">
     <div id="form-heading">
@@ -7,7 +10,7 @@
             echo setFormGroup('cliente', '', 'autocomplete="off"');
             echo setFormGroup('fecha', dateFormat(), 'disabled');
             echo '<button type="button" id="seleccionar" class="btn btn-default">Selecionar</button>';
-            echo '<input type=\'hidden\' name=\'id_cliente\' id=\'id_cliente\'/>';
+            echo '<input type="hidden" name="id_cliente" id="id_cliente"/>';
             echo setFormGroup('total_nota_credito', 0, 'disabled');
         ?>
     </div>
@@ -19,7 +22,7 @@
             echo setFormGroup('precio');
             echo setFormGroup('total');
             echo '<button type="button" id="agregar" class="btn btn-default">Agregar</button>';
-            echo '<input type=\'hidden\'  name=\'id_articulo\' id=\'id_articulo\'/>';
+            echo '<input type="hidden"  name="id_articulo" id="id_articulo" />';
         ?>
     </div>
 </form>

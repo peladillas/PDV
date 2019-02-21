@@ -62,7 +62,7 @@ class MY_Controller extends CI_Controller
     function logout() {
         $this->session->unset_userdata('logged_in');
         session_destroy();
-        // $this->load->helper(array('form'));
+
         $this->load->view('head');
         $this->load->view('login_view');
     }

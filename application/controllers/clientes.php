@@ -69,7 +69,7 @@ class Clientes extends MY_Controller {
 		$crud->callback_after_update(array($this, 'update_log'));
 		$crud->callback_delete(array($this,'delete_log'));	
 
-		$this->permisos_model->getPermisos_CRUD('permiso_cliente', $crud);
+		$this->permisos_model->getPermisosCRUD('permiso_cliente', $crud);
 			
 		$output = $crud->render();
 
@@ -77,7 +77,7 @@ class Clientes extends MY_Controller {
 	}
 
 	function detalle($id) {
-		return site_url('/clientes/resumen').'/'.$id;	
+		return site_url($this->path.'resumen/').$id;
 	}
 
 	function resumen($id_cliente) {
@@ -140,7 +140,7 @@ class Clientes extends MY_Controller {
         $crud->callback_after_update(array($this, 'update_log'));
         $crud->callback_delete(array($this,'delete_log'));
 
-        $this->permisos_model->getPermisos_CRUD('permiso_cliente', $crud);
+        $this->permisos_model->getPermisosCRUD('permiso_cliente', $crud);
 
         $output = $crud->render();
 
