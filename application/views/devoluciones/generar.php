@@ -10,11 +10,11 @@ if ($presupuestos) {
             echo "<input type='hidden' name='presupuesto' value='".$row->id_presupuesto."' >";
 
             $cabecera = [
-                lang('articulo');
-                lang('descripcion');
-                lang('monto');
-                lang('cantidad');
-                lang('devolucion');
+                lang('articulo'),
+                lang('descripcion'),
+                lang('monto'),
+                lang('cantidad'),
+                lang('devolucion'),
             ];
 
             $html = startTable($cabecera, 'table_presupuestos');
@@ -23,11 +23,11 @@ if ($presupuestos) {
                 $precio = $row->precio/$row->cantidad;
 
                 $registro = [
-                    $row->cod_proveedor;
-                    $row->descripcion;
-                    moneyFormat(($precio);
-                    $row->cantidad;
-                    "<input name='".$row->id_renglon."' class='form-control' type='number' value='0' max='".$row->cantidad."' min='0' required>";
+                    $row->cod_proveedor,
+                    $row->descripcion,
+                    moneyFormat(($precio)),
+                    $row->cantidad,
+                    "<input name='".$row->id_renglon."' class='form-control' type='number' value='0' max='".$row->cantidad."' min='0' required>",
                 ];
 
                 $html .= setTableContent($registro);
