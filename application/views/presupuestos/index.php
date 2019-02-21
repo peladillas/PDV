@@ -7,11 +7,6 @@
   <!--
   <link rel="stylesheet" href="css/fac.css" type="text/css" />
   -->
-  
-  <link rel="stylesheet" href="librerias/bootstrap/css/bootstrap.css" type="text/css" />
-  <!--<script src="librerias/bootstrap/js/bootstrap.js"></script>-->
-
-</head>
 <body>
 <div class="container"> 
 	<div class="panel panel-default">

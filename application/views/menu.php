@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a title="Administración" class="navbar-brand" href='<?php echo site_url('home')?>'>Admin.</a>
+                <a title="Administración" class="navbar-brand" href='<?php echo site_url('home')?>'><?php echo lang('admin')?></a>
             </div>
 
 
@@ -83,7 +83,7 @@
                     echo dropdownMenu(lang('config'), $dropdownMenuConfig);
                     ?>
                     <li>
-                        <a href="<?php echo site_url('home/logout')?>"><span class="icon-off"></span> Salir</a>
+                        <a href="<?php echo site_url('home/logout')?>"><span class="icon-off"></span> <?php echo lang('salir')?></a>
                     </li>
                 </ul>
 

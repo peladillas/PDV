@@ -17,13 +17,13 @@ INDICE
   -------------------------------------------------------------------------------*/
 
 function setJs($js) {
-    $src = base_url().'librerias/'.$js;
+    $src = base_url().'libraries/'.$js;
 
-    return '<script src="'.$src.'"></script>';
+    return '<script src="'.$src.'" charset="utf-8" type="text/javascript"></script>';
 }
 
 function setCss($css){
-    $href = base_url().'librerias/'.$css;
+    $href = base_url().'libraries/'.$css;
 
     return '<link href="'.$href.'" rel="stylesheet">';
 }
