@@ -3,6 +3,8 @@
 /* -------------------------------------------------------------------------------
 INDICE
 
+- setJs	       	        Arma el html para las js
+- setCss                Arma el html para las css
 - setMensaje	       	Mensaje de alerta
 - startContent     		Start del body
 - endContent 			End del body
@@ -13,6 +15,18 @@ INDICE
 - setFormGroup          Carga los elementos del formulario
 
   -------------------------------------------------------------------------------*/
+
+function setJs($js) {
+    $src = base_url().'libraries/'.$js;
+
+    return '<script src="'.$src.'" charset="utf-8" type="text/javascript"></script>';
+}
+
+function setCss($css){
+    $href = base_url().'libraries/'.$css;
+
+    return '<link href="'.$href.'" rel="stylesheet">';
+}
 
 function setMensaje($mensaje, $tipo=NULL) {
     $tipo = ($tipo == NULL ? 'info' : $tipo);
@@ -221,6 +235,27 @@ function setFormGroup($name, $value = NULL, $tags = NULL){
     $html .= '<label for="'.$name.'">'.lang($name).'</label>';
     $html .= '<input type="text" class="form-control" name="'.$name.'" id="'.$name.'" value="'.$value.'" '.$htmlTags.'>';
     $html .= '</div>';
+
+    return $html;
+}
+
+function setLinkMenu($link, $menu){
+    return '<li><a  href="'.site_url($link).'" >'.$menu.'</a></li>';
+}
+
+function dividerMenu(){
+    return '<li class="divider"></li>';
+}
+
+function dropdownMenu($menu, $dropdownMenu){
+    $html = '<li class="dropdown">';
+    $html .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-clipboardalt"></i> '.$menu.'<b class="caret"></b></a>';
+    $html .= '<ul class="dropdown-menu">';
+    foreach ($dropdownMenu as $linkMenu){
+        $html .= $linkMenu;
+    }
+    $html .= '</ul>';
+    $html .= '</li>';
 
     return $html;
 }

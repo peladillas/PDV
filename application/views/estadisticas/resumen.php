@@ -117,7 +117,7 @@ $acuenta_total	= 0;
                                     lang('opciones'),
                                 ];
 
-                                $html = startTable($cabecera, 'presupuestos')
+                                $html = startTable($cabecera, 'presupuestos');
                                 foreach ($presupuestos as $row) {
                                     $acuenta = ($row->tipo == 'Contado' ? $row->monto : $row->a_cuenta);
                                     $monto_total	= $monto_total + $row->monto;
@@ -125,7 +125,7 @@ $acuenta_total	= 0;
                                     $opciones = "<a title='ver cliente' href='".base_url()."index.php/clientes/cliente_abm/read/".$row->id_cliente."' class='btn btn-info btn-xs'>
                                             <span class='icon-user'></span>
                                             </a> 
-                                            <a title='ver presupuesto' href='".base_url()."index.php/ventas/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
+                                            <a title='ver presupuesto' href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
                                             <span class='icon-edit'></span>
                                             </a>";
 
@@ -266,7 +266,7 @@ $acuenta_total	= 0;
                                 $anulacion_total	= $anulacion_total + $row->monto;
 
                                 echo "<td>
-                                    <a title='ver anulación' href='".base_url()."index.php/ventas/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
+                                    <a title='ver anulación' href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
                                     <span class='icon-edit'></span>
                                     </a> 
                                     </td>";
@@ -299,7 +299,7 @@ $acuenta_total	= 0;
                             <div class="small-box bg-blue">
                                 <div class="inner">
                                     <h4>
-                                        <?php echo moneyFormat($monto_total)?>
+                                        <?php echo moneyFormat($monto_total); ?>
                                     </h4>
                                 </div>
                                 <a href="#" class="small-box-footer">
@@ -312,7 +312,7 @@ $acuenta_total	= 0;
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h4>
-                                       <?php echo moneyFormat(($acuenta_total)?>
+                                       <?php echo moneyFormat($acuenta_total);?>
                                     </h4>
                                 </div>
                                 <a href="#" class="small-box-footer">
@@ -385,7 +385,7 @@ $acuenta_total	= 0;
                                 <div class="inner">
                                     <h4>
                                     <?php
-                                        echo (isset($devolucion_a_cuenta) ? moneyFormat($devolucion_a_cuenta) : moneyFormat(0);
+                                        echo (isset($devolucion_a_cuenta) ? moneyFormat($devolucion_a_cuenta) : moneyFormat(0));
                                     ?>
                                     </h4>
                                 </div>
@@ -400,7 +400,7 @@ $acuenta_total	= 0;
                                 <div class="inner">
                                     <h4>
                                     <?php
-                                        echo (isset($devolucion_total) ? moneyFormat($devolucion_total) : moneyFormat(0);
+                                        echo (isset($devolucion_total) ? moneyFormat($devolucion_total) : moneyFormat(0));
                                     ?>
                                     </h4>
                                 </div>
@@ -416,7 +416,7 @@ $acuenta_total	= 0;
                                 <div class="inner">
                                     <h4>
                                     <?php
-                                        echo (isset($anulacion_total) ? moneyFormat($anulacion_total) : moneyFormat(0);
+                                        echo (isset($anulacion_total) ? moneyFormat($anulacion_total) : moneyFormat(0));
                                     ?>
                                     </h4>
                                 </div>

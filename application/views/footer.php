@@ -3,8 +3,10 @@
 	<span class="icon-arrow-up"></span>
 </a>
 </div>
-<script src="<?php echo base_url().'librerias/chosen/chosen.jquery.js'?>" type="text/javascript" charset="utf-8"></script>
-	 
+<?php
+    echo setJs('chosen/chosen.jquery.js');
+?>
+
 <script type="text/javascript">
     var config = {
       '.chosen-select'           : {},

@@ -2,6 +2,8 @@
 
 class Configs extends MY_Controller {
 
+    protected $path = 'configs/';
+
 	public function __construct() {
 		parent::__construct();
 

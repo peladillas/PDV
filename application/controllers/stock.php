@@ -2,6 +2,8 @@
 
 class Stock extends MY_Controller {
 
+    protected $path = 'stock/';
+
 	public function __construct() {
 		parent::__construct();
 

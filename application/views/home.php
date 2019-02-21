@@ -63,7 +63,7 @@ if($presupuestos) {
 					</div>
 				</div>
 				
-				<a href="<?php echo base_url()?>index.php/ventas/presupuesto_abm" class="small-box-footer">
+				<a href="<?php echo base_url()?>index.php/presupuestos/presupuesto_abm" class="small-box-footer">
 					Ver más <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>
@@ -120,7 +120,7 @@ if($presupuestos) {
 					</div>
 				</div>
 				
-				<a href="<?php echo base_url()?>index.php/ventas/remitos_abm" class="small-box-footer">
+				<a href="<?php echo base_url()?>index.php/remitos/remitos_abm" class="small-box-footer">
 					Ver más <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>
@@ -415,5 +415,7 @@ $(function () {
 });
 </script>
 
-<script src="<?php echo base_url().'librerias/highcharts/js/highcharts.js'?>"></script>
-<script src="<?php echo base_url().'librerias/highcharts/js/modules/exporting.js'?>"></script>
+<?php
+    echo setJs('highcharts/js/highcharts.js');
+    echo setJs('highcharts/js/modules/exporting.js');
+?>

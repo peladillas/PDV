@@ -1,38 +1,58 @@
-<script type="text/javascript" src="<?php echo base_url().'librerias/jquery.js'?>"></script>
-<link href="<?php echo base_url().'librerias/bootstrap/css/bootstrap_back.css'?>" rel="stylesheet" media="screen">
-<link href="<?php echo base_url().'librerias/font/css/font-awesome.css'?>" rel="stylesheet">
-<link href="<?php echo base_url().'librerias/font2/css/whhg.css'?>" rel="stylesheet">
+<?php
 
-<script src="<?php echo base_url().'librerias/bootstrap/js/bootstrap.js'?>"></script>
-<script src="<?php echo base_url().'librerias/main/js/main.js'?>"></script>
-<link h.ref="<?php echo base_url().'librerias/main/css/main.css'?>" rel="stylesheet">
+$html = '';
+$html .= setJs('jquery.js');
 
-<!--------------------------------------------------------------------
-----------------------------------------------------------------------
-						Chosen
-----------------------------------------------------------------------
---------------------------------------------------------------------->
-<link href="<?php echo base_url().'librerias/chosen/chosen.css'?>" rel="stylesheet">
-  <style type="text/css" media="all">
-    /* fix rtl for demo */
-    .chosen-rtl .chosen-drop { left: -9000px; }
-  </style>
-  
-  <!----------------------------------------------------------------------------
-------------------------------------------------------------------------------
-								Jquery UI
-------------------------------------------------------------------------------
------------------------------------------------------------------------------>
+/*--------------------------------------------------------------------------------
+    Bootstrap
+--------------------------------------------------------------------------------*/
 
+$html .= setJs('bootstrap/js/bootstrap.js');
+$html .= setCss('bootstrap/css/bootstrap_back.css');
 
-<script src="<?php echo base_url().'librerias/ui/jquery-ui.js'?>"></script>
-<link href="<?php echo base_url().'librerias/ui/jquery-ui.css'?>" rel="stylesheet"/>
+/*--------------------------------------------------------------------------------
+    Icons
+--------------------------------------------------------------------------------*/
 
+$html .= setCss('font/css/font-awesome.css');
+$html .= setCss('font2/css/whhg.css');
 
-<link href="<?php echo base_url().'librerias/bootstrap/css/bootstrap-switch.css'?>" rel="stylesheet"/>
-<script src="<?php echo base_url().'librerias/bootstrap/js/bootstrap-switch.js'?>"></script>
-<script src="<?php echo base_url().'librerias/bootstrap/js/index.js'?>"></script>
+/*--------------------------------------------------------------------------------
+    Main
+--------------------------------------------------------------------------------*/
 
+$html .= setJs('main/js/main.js');
+$html .= setCss('main/css/main.css');
 
-<script src="<?php echo base_url().'librerias/datatables/media/js/jquery.dataTables.min.js'?>"></script>
-<link href="<?php echo base_url().'librerias/datatables/media/css/jquery.dataTables.css'?>" rel="stylesheet"/>
+/*--------------------------------------------------------------------------------
+    Jquery UI
+--------------------------------------------------------------------------------*/
+
+$html .= setJs('ui/jquery-ui.js');
+$html .= setCss('main/ui/jquery-ui.css');
+
+/*--------------------------------------------------------------------------------
+    Bootstrap-switch
+--------------------------------------------------------------------------------*/
+
+$html .= setJs('bootstrap/js/bootstrap-switch.js');
+$html .= setJs('bootstrap/bootstrap/js/index.js');
+$html .= setCss('bootstrap/css/bootstrap-switch.css');
+
+/*--------------------------------------------------------------------------------
+    DataTables
+--------------------------------------------------------------------------------*/
+
+$html .= setJs('datatables/media/js/jquery.dataTables.min.js');
+$html .= setCss('datatables/media/css/jquery.dataTables.css');
+
+/*--------------------------------------------------------------------------------
+    Chosen
+--------------------------------------------------------------------------------*/
+
+$html .= setCss('chosen/chosen.css');
+$html .= '<style type="text/css" media="all">.chosen-rtl .chosen-drop { left: -9000px; }</style>';
+
+echo $html;
+
+?>

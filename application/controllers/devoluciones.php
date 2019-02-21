@@ -2,6 +2,8 @@
 
 class Devoluciones extends My_Controller {
 
+    protected $path = 'devoluciones/';
+
 	public function __construct() {
 		parent::__construct();
 
@@ -79,7 +81,7 @@ class Devoluciones extends My_Controller {
 
 		$db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($condicion);
 
-		$this->view($db, 'devoluciones/generar.php');
+		$this->view($db, $this->path.'generar');
 	}
 
  
@@ -110,10 +112,8 @@ class Devoluciones extends My_Controller {
 		$id_devolucion = $this->devoluciones_model->insert($registro);
 		
 		$monto_devolucion = 0;	
-		foreach ($detalle_presupuesto as $row)
-		{
-			if($this->input->post($row->id_renglon) > 0)
-			{
+		foreach ($detalle_presupuesto as $row) {
+			if($this->input->post($row->id_renglon) > 0) {
 				$precio = $row->precio / $row->cantidad;
 				$monto = $this->input->post($row->id_renglon) * $precio;
 				
@@ -142,6 +142,7 @@ class Devoluciones extends My_Controller {
 		
 		$this->devoluciones_model->update($registro, $id_devolucion);
 		
-		redirect('/devoluciones/devoluciones_abm/','refresh');
+		redirect($this->path.'devoluciones_abm/','refresh');
 	}
+
 }

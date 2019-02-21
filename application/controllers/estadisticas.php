@@ -1,6 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Estadisticas extends My_Controller {
+
+    protected $path = 'estadisticas/';
+
 	function __construct() {
 		parent::__construct();
 	   	
@@ -35,7 +38,7 @@ class Estadisticas extends My_Controller {
 
     	$db['articulos'] = $this->presupuestos_model->get_top($this->input->post('inicio'), $this->input->post('fin'), $cantidad);
 
-		$this->view($db, 'get_top_cien.php');
+		$this->view($db, $this->path.'get_top_cien');
 	}
 
 /*---------------------------------------------------------------------------------
@@ -61,7 +64,7 @@ class Estadisticas extends My_Controller {
 		$db['articulos']	= $this->presupuestos_model->get_top($inicio, $final);
 		$db['vendedores']   = $this->vendedores_model->select();
 
-		$this->view($db, 'estadisticas/anual.php');
+		$this->view($db, $this->path.'anual');
 	}
 
 /*---------------------------------------------------------------------------------
@@ -94,6 +97,7 @@ class Estadisticas extends My_Controller {
 		$db['articulos']	= $this->presupuestos_model->get_top($inicio, $final);
 		$db['inicio']		= $inicio;
 		$db['fin']			= $final;
+
 		if($id_vendedor != NULL){
 			$db['id_vendedor']  = $id_vendedor;
 			$db['vendedor']  	= $this->vendedores_model->select();
@@ -104,7 +108,7 @@ class Estadisticas extends My_Controller {
 			$db['presupuestos'] = $this->presupuestos_model->suma_presupuesto($inicio, $final);
 		}
 
-		$this->view($db, 'estadisticas/mensual.php');
+		$this->view($db, $this->path.'mensual');
 	}
 
 /*---------------------------------------------------------------------------------
@@ -149,7 +153,7 @@ class Estadisticas extends My_Controller {
 		$db['devoluciones']	= $this->devoluciones_model->suma_devolucion($inicio, $final, $id_cliente);
 		$db['anulaciones']	= $this->anulaciones_model->suma_anulacion($inicio, $final, $id_cliente);
 
-		$this->view($db, 'estadisticas/resumen.php');
+		$this->view($db, $this->path.'resumen');
 	}
 }
 ?>

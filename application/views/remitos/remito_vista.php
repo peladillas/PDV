@@ -12,7 +12,7 @@
 </script>
 
 <?php echo startContent(lang('remito')); ?>
-    <a class="btn btn-default" href="<?php echo base_url().'index.php/ventas/remitos_abm/'?>"/>
+    <a class="btn btn-default" href="<?php echo base_url().'index.php/remitos/remitos_abm/'?>"/>
         <i class="fa fa-arrow-left"></i> Remitos
     </a>
 
@@ -58,7 +58,8 @@
     $html = startTable($cabecera);
     if ($remitos_detalle) {
         foreach ($remitos_detalle as $row) {
-            $registro = [
+
+            $_registro = [
                 $row->nro,
                 moneyFormat($row->premonto),
                 moneyFormat($row->prea_cuenta),
@@ -66,7 +67,7 @@
                 $row->estado,
             ];
 
-            $html .= setTableContent($registro);
+            $html .= setTableContent($_registro);
         }
     }
 
@@ -98,7 +99,7 @@
 
     $html .= endTable();
 
-    echo $html
+    echo $html;
 
     echo '<hr>';
     echo '<div>';

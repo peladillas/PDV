@@ -2,6 +2,8 @@
 
 class Calendarios extends My_Controller {
 
+    protected $path = 'calendarios/';
+
 	public function __construct() {
 		parent::__construct();
 
@@ -43,8 +45,8 @@ class Calendarios extends My_Controller {
         $db['calendarios'] = $this->calendarios_model->getCalendarios();
 
         $views = array(
-            'calendarios/view',
-            'calendarios/config',
+            $this->path.'view',
+            $this->path.'config',
         );
 
         $this->view($db, $views);

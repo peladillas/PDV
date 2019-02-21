@@ -168,7 +168,7 @@ if($row->estado != 3) {
             <i class="fa fa-thumbs-down"></i> Devolución
         </a>
 
-        <a href="<?php echo base_url().'index.php/ventas/interes/'.$id_presupuesto?>" class="btn btn-default" data-toggle="modal" data-target="#interesModal"/>
+        <a href="<?php echo base_url().'index.php/presupuestos/interes/'.$id_presupuesto?>" class="btn btn-default" data-toggle="modal" data-target="#interesModal"/>
             <i class="fa fa-angle-up"></i> Interes
         </a>
         <?php
@@ -206,7 +206,7 @@ echo endContent();
 <div class="modal fade" id="interesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<form class="form-horizontal" method="post" action="<?php echo base_url()?>index.php/ventas/detalle_presupuesto/<?php echo $id_presupuesto?>">
+			<form class="form-horizontal" method="post" action="<?php echo base_url()?>index.php/presupuestos/detalle_presupuesto/<?php echo $id_presupuesto?>">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         			<h4 class="modal-title" id="myModalLabel">Interes</h4>

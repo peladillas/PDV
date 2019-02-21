@@ -2,6 +2,8 @@
 
 class Usuarios extends MY_Controller {
 
+    protected $path = 'usuarios/';
+
 	public function __construct() {
 		parent::__construct();
 
@@ -21,7 +23,7 @@ class Usuarios extends MY_Controller {
     function index() {
         $this->load->helper(array('form'));
         $this->load->view('head');
-        $this->load->view('usuarios/login');
+        $this->load->view($this->path.'login');
     }
 
 /**********************************************************************************
@@ -42,7 +44,7 @@ class Usuarios extends MY_Controller {
         if($this->form_validation->run() == FALSE){
             //Field validation failed.  User redirected to login page
             $this->load->view('head.php');
-            $this->load->view('usuarios/login');
+            $this->load->view($this->path.'login');
         }else{
             //Go to private area
             redirect('/home/','refresh');

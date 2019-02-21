@@ -1,6 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-session_start();
+
 class Home extends My_Controller {
+
+    protected $path = 'home/';
 
 	function __construct() {
 		parent::__construct();
@@ -47,5 +49,4 @@ class Home extends My_Controller {
 		$this->view($db, 'calendarios/config');
 	}
 }
-
 ?>

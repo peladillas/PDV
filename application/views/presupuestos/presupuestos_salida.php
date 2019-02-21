@@ -1,12 +1,9 @@
-
-
 <html lang="es">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Type:application/json; charset=UTF-8" />
     <title>Bulones Sarmiento</title>
-    <link rel="stylesheet" href="<?php echo base_url().'librerias/css/jquery-ui.css'?>" type="text/css" />
-    <link rel="stylesheet" href="<?php echo base_url().'librerias/bootstrap/css/bootstrap.css'?>" type="text/css" />
+
 </head>
 <body onload="inicializa()">
 <script>
@@ -272,19 +269,13 @@
 
 <!--------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
-        Carga de librerias
+        Carga de js
 ----------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------->
 
-
-<script type="text/javascript" src="<?php echo base_url().'librerias/js/jquery-1.9.1.min.js'?>"></script>
-<script type="text/javascript" src="<?php echo base_url().'librerias/js/jquery-ui.min.js'?>"></script>
-
-<script type="text/javascript" src="<?php echo base_url().'librerias/js/buscador.js'?>"></script>
-<script type="text/javascript" src="<?php echo base_url().'librerias/bootstrap/js/bootstrap.js'?>"></script>
-
-
-
+<?php
+    setJs('main/js/buscador.js');
+?>
 
 <!--------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------

@@ -10,7 +10,7 @@ $(function() {
     ---------------------------------------------------------------------------------*/
 
     $("#cliente").autocomplete({
-        source: "<?php echo base_url()?>index.php/clientes/getClientes",
+        source: BASE_URL+"clientes/getClientes",
         minLength: 2,
         select: function(event,ui){
             id_cliente	= ui.item.id;
@@ -50,7 +50,7 @@ $(function() {
     ---------------------------------------------------------------------------------*/
 
     $("#articulo").autocomplete({
-        source: "<?php echo base_url()?>index.php/articulos/getArticulos",
+        source: BASE_URL+"articulos/getArticulos",
         minLength: 2,
         select: function(event,ui){
             id_articulo	= ui.item.id;

@@ -8,10 +8,10 @@ $(document).ready(function() {
 </script>
 <?php
 
-$title = '<ul class="nav nav-tabs"><li class="active"><a href="#tab1" data-toggle="tab">'.lang('clientes).'</a></li>';
-$title .= '<li class="active"><a href="#tab1" data-toggle="tab">'.lang('presupuestos).'</a></li>';
-$title .= '<li class="active"><a href="#tab1" data-toggle="tab">'.lang('remitos).'</a></li>';
-$title .= '<li class="active"><a href="#tab1" data-toggle="tab">'.lang('devoluciones).'</a></li></ul>';
+$title = '<ul class="nav nav-tabs"><li class="active"><a href="#tab1" data-toggle="tab">'.lang('clientes').'</a></li>';
+$title .= '<li class="active"><a href="#tab1" data-toggle="tab">'.lang('presupuestos').'</a></li>';
+$title .= '<li class="active"><a href="#tab1" data-toggle="tab">'.lang('remitos').'</a></li>';
+$title .= '<li class="active"><a href="#tab1" data-toggle="tab">'.lang('devoluciones').'</a></li></ul>';
 
 echo startContent($title);
 ?>
@@ -26,12 +26,12 @@ echo startContent($title);
 
             if($presupuestos) {
                 $cabecera = [
-                    lang('nro');
-                    lang('fecha');
-                    lang('monto');
-                    lang('a_cuenta');
-                    lang('tipo');
-                    lang('estado');
+                    lang('nro'),
+                    lang('fecha'),
+                    lang('monto'),
+                    lang('a_cuenta'),
+                    lang('tipo'),
+                    lang('estado'),
                 ];
 
                 $html = startTable($cabecera, 'table_presupuestos');
@@ -73,10 +73,10 @@ echo startContent($title);
                 $total_r_cuenta = 0;
 
                 $cabecera = [
-                    lang('nro');
-                    lang('fecha');
-                    lang('monto');
-                    lang('devolucion');
+                    lang('nro'),
+                    lang('fecha'),
+                    lang('monto'),
+                    lang('devolucion'),
                 ];
 
                 $html = startTable($cabecera, 'table_remitos');
@@ -110,13 +110,13 @@ echo startContent($title);
                 $total_d_cuenta = 0;
 
                 $cabecera = [
-                    lang('nro');
-                    lang('pre');
-                    lang('fecha');
-                    lang('monto');
-                    lang('a_cuenta');
-                    lang('nota');
-                    lang('estado');
+                    lang('nro'),
+                    lang('pre'),
+                    lang('fecha'),
+                    lang('monto'),
+                    lang('a_cuenta'),
+                    lang('nota'),
+                    lang('estado'),
                 ];
 
                 $html = startTable($cabecera, 'table_presupuestos');
