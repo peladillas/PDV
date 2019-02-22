@@ -52,9 +52,9 @@ class Estadisticas extends My_Controller {
 	function anual() {
 		$ano = ($this->input->post('ano') ? $this->input->post('ano') : date('Y'));
 
-        $db['ano_actual']	= $ano;
+        $db['ano_actual'] = $ano;
 		$inicio	= date('01-01-'.$ano);
-		$ano = $ano + 1;
+		$ano += 1;
 		$final	= date('01-01-'.$ano);
 
 		$db['presupuestos']	= $this->presupuestos_model->suma_presupuesto($inicio, $final);
@@ -85,9 +85,9 @@ class Estadisticas extends My_Controller {
 
 		if($mes == 12) {
 			$mes = 1;
-			$ano = $ano + 1;
+			$ano += 1;
 		} else {
-			$mes = $mes + 1;
+			$mes += 1;
 		}
 		$final	= date('01-'.$mes.'-'.$ano);
 
@@ -124,9 +124,6 @@ class Estadisticas extends My_Controller {
 			$inicio		= date('d-m-Y', strtotime($this->input->post('inicio')));
 			$final		= date('d-m-Y', strtotime($this->input->post('final')));
 			$id_cliente	= $this->input->post('id_cliente');
-
-			$db['inicio']		= date('d-m-Y', strtotime($inicio));
-			$db['final']		= date('d-m-Y', strtotime($final));
 		} else {
 			$ano		= date('Y');
 			$mes		= date('m');
@@ -137,17 +134,17 @@ class Estadisticas extends My_Controller {
 
 			if($mes == 12) {
 				$mes = 1;
-				$ano = $ano + 1;
+				$ano += 1;
 			} else {
-				$mes = $mes + 1;
+				$mes += 1;
 			}
 
 			$final	= date('01-'.$mes.'-'.$ano);
-
-			$db['inicio']		= date('m-Y', strtotime($inicio));
-			$db['final']		= date('m-Y', strtotime($final));
 		}
 
+
+        $db['inicio']		= date('d-m-Y', strtotime($inicio));
+        $db['final']		= date('d-m-Y', strtotime($final));
 		$db['presupuestos']	= $this->presupuestos_model->suma_presupuesto($inicio, $final, $id_cliente);
 		$db['remitos']		= $this->remitos_model->suma_remito($inicio, $final, $id_cliente);
 		$db['devoluciones']	= $this->devoluciones_model->suma_devolucion($inicio, $final, $id_cliente);

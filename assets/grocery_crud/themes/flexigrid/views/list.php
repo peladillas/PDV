@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 	$column_width = (int)(80/count($columns));
 	
 	if(!empty($list)){

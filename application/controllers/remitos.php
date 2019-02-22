@@ -41,9 +41,6 @@ class Remitos extends MY_Controller{
             ->display_as('id_estado','Estado');
 
         $crud->set_subject('remiro');
-        /*
-        $crud->required_fields('descripcion','id_estado');
-         */
         $crud->set_relation('id_cliente','cliente','{alias} - {nombre} {apellido}');
         $crud->set_relation('id_estado','estado','estado');
 
@@ -54,8 +51,6 @@ class Remitos extends MY_Controller{
         $crud->unset_edit();
         $crud->unset_read();
         $crud->unset_delete();
-
-        $crud->callback_after_insert(array($this, 'insert_log'));
 
         $crud->callback_after_insert(array($this, 'insert_log'));
         $crud->callback_after_update(array($this, 'update_log'));

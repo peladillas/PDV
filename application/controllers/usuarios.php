@@ -69,8 +69,7 @@ class Usuarios extends MY_Controller {
         if($result) {
             $sess_array = array();
             $ci = & get_instance();
-            foreach($result as $row)
-            {
+            foreach($result as $row) {
                 $sess_array = array(
                     'id_usuario' => $row->id_usuario,
                     'usuario' => $row->descripcion
