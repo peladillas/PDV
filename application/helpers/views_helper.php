@@ -264,4 +264,15 @@ function setIcon($icon){
     return '<i class="fa fa-'.$icon.'"></i>';
 }
 
+function setEmphasis($class, $value, $title){
+
+    $html = '<div class="col-xs-12 col-sm-4 emphasis">';
+    $html .= '<div class="small-box bg-'.$class.'">';
+    $html .= '<div class="inner"><h4>'.$value.'</h4></div>';
+    $html .= '<a href="#" class="small-box-footer">'.$title.'</a>';
+    $html .= '</div></div>';
+
+    return $html;
+}
+
 ?>

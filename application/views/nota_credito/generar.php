@@ -1,7 +1,4 @@
 <?php echo startContent(lang('empresa') ) ?>
-<script>
-    var BASE_URL = '<?php echo base_url().'index.php/'?>';
-</script>
 <?php echo setJs('main/js/nota_credito.js') ?>
 
 <form class="form-inline">
@@ -26,5 +23,5 @@
         ?>
     </div>
 </form>
-<div id="note-detail" class="hide"> </div>
+<div id="note-detail" class="hide"></div>
 <?php echo endContent(); ?>

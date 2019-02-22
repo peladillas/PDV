@@ -53,6 +53,7 @@ $html .= setCss('datatables/media/css/jquery.dataTables.css');
 $html .= setCss('chosen/chosen.css');
 $html .= '<style type="text/css" media="all">.chosen-rtl .chosen-drop { left: -9000px; }</style>';
 
-echo $html;
+$html .= "<script>var BASE_URL = '".base_url()."index.php'';</script>";
 
+echo $html;
 ?>
