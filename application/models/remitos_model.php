@@ -29,32 +29,36 @@ class Remitos_model extends MY_Model {
 			$inicio	= date('Y-m', strtotime($inicio));
 			$final	= date('Y-m', strtotime($final));
 
-            $sql = "SELECT 
-						monto,
-						fecha 
-						FROM `remito` 
-						WHERE
-						DATE_FORMAT(fecha, '%Y-%m') >= '$inicio' AND
-						DATE_FORMAT(fecha, '%Y-%m') <= '$final'";
+            $sql = "
+            SELECT 
+			    monto,
+			    fecha 
+			FROM 
+			    `remito` 
+			WHERE
+			    DATE_FORMAT(fecha, '%Y-%m') >= '$inicio' AND
+			    DATE_FORMAT(fecha, '%Y-%m') <= '$final'";
 		} else {
 			$inicio	= date('Y-m-d', strtotime($inicio));
 			$final	= date('Y-m-d', strtotime($final));
 
-            $sql = "SELECT 
-						id_remito,
-						monto,
-						devolucion,
-						fecha,
-						cliente.id_cliente as id_cliente,
-						nombre,
-						apellido,
-						alias 
-						FROM `remito` 
-						INNER JOIN 
-						cliente ON(remito.id_cliente=cliente.id_cliente)
-						WHERE
-						DATE_FORMAT(fecha, '%Y-%m-%d') >= '$inicio' AND
-						DATE_FORMAT(fecha, '%Y-%m-%d') <= '$final'";
+            $sql = "
+            SELECT 
+                id_remito,
+                monto,
+                devolucion,
+                fecha,
+                cliente.id_cliente as id_cliente,
+                nombre,
+                apellido,
+                alias 
+            FROM 
+                `remito` 
+            INNER JOIN 
+                cliente ON(remito.id_cliente=cliente.id_cliente)
+            WHERE
+			    DATE_FORMAT(fecha, '%Y-%m-%d') >= '$inicio' AND
+				DATE_FORMAT(fecha, '%Y-%m-%d') <= '$final'";
 		}
 
         return $this->getQuery($sql);

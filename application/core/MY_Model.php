@@ -28,12 +28,11 @@ class MY_Model extends CI_Model {
 			$this->_table 
 		WHERE ";
 
-
     	if (!$this->db->field_exists('id_estado', $this->_table)){
 			$sql .= $this->_table.".id_estado = 1";
 		}
 
-		if ($filtros == NULL){
+		if ($filtros == NULL) {
             $sql = " 1";
 		} else if (is_array($filtros)) {
             foreach ($filtros as $key => $value) {
@@ -78,7 +77,7 @@ class MY_Model extends CI_Model {
  * ********************************************************************************
  **********************************************************************************/	
 
-	public function update($registro, $id){
+	public function update($registro, $id) {
 		$this->db->update(
 			$this->_table, 
 			$registro, 

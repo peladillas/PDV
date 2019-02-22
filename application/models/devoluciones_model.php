@@ -13,35 +13,35 @@ class Devoluciones_model extends MY_Model {
 		if($all == NULL) {
             $sql =
 			"SELECT 
-					`devolucion`.`id_devolucion`,
-					`devolucion`.`id_presupuesto`,
-					`devolucion`.`fecha`,
-					`devolucion`.`monto`,
-					`devolucion`.`a_cuenta`,
-					`devolucion`.`nota`			
-				FROM 
-					`devolucion` 
-				INNER JOIN 
-					`presupuesto` ON(devolucion.id_presupuesto = presupuesto.id_presupuesto)
-				WHERE
-					`presupuesto`.`id_cliente` = $id_cliente
+				`devolucion`.`id_devolucion`,
+				`devolucion`.`id_presupuesto`,
+				`devolucion`.`fecha`,
+				`devolucion`.`monto`,
+				`devolucion`.`a_cuenta`,
+				`devolucion`.`nota`			
+			FROM 
+				`devolucion` 
+			INNER JOIN 
+				`presupuesto` ON(devolucion.id_presupuesto = presupuesto.id_presupuesto)
+			WHERE
+				`presupuesto`.`id_cliente` = $id_cliente
 					AND `devolucion`.`id_estado` = 1";		
 				
 		} else {
             $sql =
 			"SELECT 
-					`devolucion`.`id_devolucion`,
-					`devolucion`.`id_presupuesto`,
-					`devolucion`.`fecha`,
-					`devolucion`.`monto`,
-					`devolucion`.`a_cuenta`,
-					`devolucion`.`nota`			
-				FROM 
-					`devolucion` 
-				INNER JOIN 
-					`presupuesto` ON(devolucion.id_presupuesto = presupuesto.id_presupuesto)
-				WHERE
-					`presupuesto`.`id_cliente` = $id_cliente";		
+				`devolucion`.`id_devolucion`,
+				`devolucion`.`id_presupuesto`,
+				`devolucion`.`fecha`,
+				`devolucion`.`monto`,
+				`devolucion`.`a_cuenta`,
+				`devolucion`.`nota`			
+			FROM 
+				`devolucion` 
+			INNER JOIN 
+				`presupuesto` ON(devolucion.id_presupuesto = presupuesto.id_presupuesto)
+			WHERE
+				`presupuesto`.`id_cliente` = $id_cliente";
 		}
 
         return $this->getQuery($sql);

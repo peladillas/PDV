@@ -9,14 +9,12 @@ class Presupuestos_model extends MY_Model {
 		);
 	}
 	
-	function suma_presupuesto($inicio, $final, $id_cliente = NULL, $id_vendedor = NULL)
-	{
-		if($id_vendedor != NULL){
+	function suma_presupuesto($inicio, $final, $id_cliente = NULL, $id_vendedor = NULL) {
+		if($id_vendedor != NULL) {
             $inicio         = date('Y-m', strtotime($inicio));
             $final          = date('Y-m', strtotime($final));
-        
-            $consulta = "
-            
+
+            $sql = "
             SELECT 
                 monto,
                 fecha, 
@@ -29,10 +27,7 @@ class Presupuestos_model extends MY_Model {
                 DATE_FORMAT(fecha, '%Y-%m') >= '$inicio' AND
                 DATE_FORMAT(fecha, '%Y-%m') < '$final' AND
                 id_vendedor = '$id_vendedor'";
-
-
-		}else  if($id_cliente === NULL) {
-
+		} else if($id_cliente === NULL) {
 			$inicio			= date('Y-m', strtotime($inicio));
 			$final			= date('Y-m', strtotime($final));
 
@@ -48,7 +43,7 @@ class Presupuestos_model extends MY_Model {
             WHERE
                 DATE_FORMAT(fecha, '%Y-%m') >= '$inicio' AND
 				DATE_FORMAT(fecha, '%Y-%m') < '$final'";
-		}else if($id_cliente == '0') {
+		} else if($id_cliente == '0') {
 			$inicio			= date('Y-m-d', strtotime($inicio));
 			$final			= date('Y-m-d', strtotime($final));
 
@@ -76,7 +71,7 @@ class Presupuestos_model extends MY_Model {
             WHERE
                 DATE_FORMAT(fecha, '%Y-%m-%d') >= '$inicio' AND
 				DATE_FORMAT(fecha, '%Y-%m-%d') < '$final'";
-		}else {
+		} else {
 			$inicio			= date('Y-m-d', strtotime($inicio));
 			$final			= date('Y-m-d', strtotime($final));
 
@@ -119,21 +114,28 @@ class Presupuestos_model extends MY_Model {
 		$inicio			= date('Y-m', strtotime($inicio));
 		$final			= date('Y-m', strtotime($final));
 
-        $sql = "SELECT 
-					fecha, 
-					sum(cantidad) as cantidad, 
-					descripcion, 
-					articulo.id_articulo 
-					FROM presupuesto 
-					INNER JOIN reglon_presupuesto ON(presupuesto.id_presupuesto = reglon_presupuesto.id_presupuesto)
-					INNER JOIN articulo ON(reglon_presupuesto.id_articulo =  articulo.id_articulo)
-					WHERE
-					presupuesto.estado !=3 AND
-					DATE_FORMAT(fecha, '%Y-%m') >= '$inicio' AND
-					DATE_FORMAT(fecha, '%Y-%m') <= '$final'
-					GROUP BY articulo.id_articulo
-					ORDER BY cantidad DESC
-					LIMIT 0,$cantidad";
+        $sql = "
+		SELECT 
+			fecha, 
+			sum(cantidad) as cantidad, 
+			descripcion, 
+			articulo.id_articulo 
+		FROM 
+			presupuesto 
+		INNER JOIN 
+			reglon_presupuesto ON(presupuesto.id_presupuesto = reglon_presupuesto.id_presupuesto)
+		INNER JOIN 
+			articulo ON(reglon_presupuesto.id_articulo =  articulo.id_articulo)
+		WHERE
+			presupuesto.estado !=3 AND
+			DATE_FORMAT(fecha, '%Y-%m') >= '$inicio' AND
+			DATE_FORMAT(fecha, '%Y-%m') <= '$final'
+		GROUP BY 
+			articulo.id_articulo
+		ORDER BY 
+			cantidad DESC
+		LIMIT 
+			0, $cantidad";
 
         return $this->getQuery($sql);
 	}
@@ -141,19 +143,19 @@ class Presupuestos_model extends MY_Model {
 	
 	
 	function getCliente($id) {
-		$sql = 
-			"SELECT 
-				* 
-			FROM 
-				$this->_table
-			INNER JOIN
-				tipo ON(tipo.id_tipo = $this->_table.tipo)
-			INNER JOIN
-				estado_presupuesto ON(estado_presupuesto.id_estado = $this->_table.estado) 
-			WHERE 
-				id_cliente = $id
-			ORDER BY
-				id_presupuesto DESC";
+		$sql ="
+		SELECT 
+			* 
+		FROM 
+			$this->_table
+		INNER JOIN
+			tipo ON(tipo.id_tipo = $this->_table.tipo)
+		INNER JOIN
+			estado_presupuesto ON(estado_presupuesto.id_estado = $this->_table.estado) 
+		WHERE 
+			id_cliente = $id
+		ORDER BY
+			id_presupuesto DESC";
 
         return $this->getQuery($sql);
 	}
