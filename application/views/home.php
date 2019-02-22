@@ -58,13 +58,13 @@ if($presupuestos) {
 						<?php echo $cant_presupuestos ?>
 					</h3>
 					<p style="color:#fff;">Presupuestos</p>
-                    <div class="icon">                
-					<i class="icon icon-shopping-cart"></i>
+                    <div class="icon">
+                        <?php echo setIcon('shopping-cart')?>
 					</div>
 				</div>
 				
 				<a href="<?php echo base_url()?>index.php/presupuestos/presupuesto_abm" class="small-box-footer">
-					Ver más <i class="fa fa-arrow-circle-right"></i>
+					<?php echo lang('ver_mas').' '.setIcon('arrow-circle-right');?>
 				</a>
 			</div>
 		</div>
@@ -77,13 +77,13 @@ if($presupuestos) {
 						<?php echo $cant_articulos ?>
 					</h3>
 					<p style="color:#fff;">Artículos</p>
-                    <div class="icon">                
-					<i class="icon icon-clipboardalt"></i>
+                    <div class="icon">
+                        <?php echo setIcon('clipboard')?>
 					</div>
 				</div>
 				
 				<a href="<?php echo base_url()?>index.php/articulos/articulo_abm" class="small-box-footer">
-					Ver más <i class="fa fa-arrow-circle-right"></i>
+                    <?php echo lang('ver_mas').' '.setIcon('arrow-circle-right');?>
 				</a>
 			</div>
 		</div>
@@ -96,13 +96,13 @@ if($presupuestos) {
 						<?php echo $cant_clientes ?>
 					</h3>
 					<p style="color:#fff;">Clientes</p>
-                    <div class="icon">                
-					<i class="icon icon-user"></i>
+                    <div class="icon">
+                        <?php echo setIcon('user')?>
 					</div>
 				</div>
 				
 				<a href="<?php echo base_url()?>index.php/clientes/cliente_abm" class="small-box-footer">
-					Ver más <i class="fa fa-arrow-circle-right"></i>
+                    <?php echo lang('ver_mas').' '.setIcon('arrow-circle-right');?>
 				</a>
 			</div>
 		</div>
@@ -115,13 +115,13 @@ if($presupuestos) {
 						<?php echo $cant_remitos ?>
 					</h3>
 					<p style="color:#fff;">Remitos</p>
-                    <div class="icon">                
-					<i class="icon icon-analytics-piechart"></i>
+                    <div class="icon">
+                        <?php echo setIcon('pie-chart')?>
 					</div>
 				</div>
 				
 				<a href="<?php echo base_url()?>index.php/remitos/remitos_abm" class="small-box-footer">
-					Ver más <i class="fa fa-arrow-circle-right"></i>
+                    <?php echo lang('ver_mas').' '.setIcon('arrow-circle-right');?>
 				</a>
 			</div>
 		</div>

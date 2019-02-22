@@ -1,6 +1,6 @@
 <div class="flotante">
 <a href="#" class="scrollup btn btn-default btn-lg" >
-	<span class="icon-arrow-up"></span>
+    <?php echo setIcon('arrow-up'); ?>
 </a>
 </div>
 <?php

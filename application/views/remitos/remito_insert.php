@@ -12,13 +12,13 @@
 </script>
 <?php echo startContent(lang('remito')) ?>
     <a class="btn btn-default" href="<?php echo base_url().'index.php/remitos/remitos_abm/'?>"/>
-        <i class="fa fa-arrow-left"></i> Remitos
+        <?php echo setIcon('arrow-left').' '.lang('remitos'); ?>
     </a>
     <a class="btn btn-default" href="<?php echo base_url().'index.php/presupuestos/remito/'?>"/>
-        <i class="fa fa-plus-square"></i> Generar nuevo
+        <?php echo setIcon('plus-square').' '.lang('nuevo'); ?>
     </a>
     <button class="btn btn-default" type="button" onclick="printDiv('printableArea')"/>
-        <i class="fa fa-print"></i> Imprimir
+        <?php echo setIcon('print').' '.lang('imprimir'); ?>
     </button>
     <div id="printableArea">
 

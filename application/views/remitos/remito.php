@@ -107,9 +107,9 @@
 					foreach ($presupuestos as $presupuesto) {
 							if($presupuesto->comentario != '') {
 								if($presupuesto->com_publico == 1) {
-									$link_presupuesto = "<div class='col-sm-2'><a href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$presupuesto->id_presupuesto."/1' class='btn btn-default btn-xs' title='Ver presupuesto - Comentario Publico' target='_blank'>".$presupuesto->id_presupuesto." <i class='fa fa-comment-o'></i> </a></div>";
+									$link_presupuesto = "<div class='col-sm-2'><a href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$presupuesto->id_presupuesto."/1' class='btn btn-default btn-xs' title='Ver presupuesto - Comentario Publico' target='_blank'>".$presupuesto->id_presupuesto.' '.setIcon('comment-o')." </a></div>";
 								} else {
-									$link_presupuesto = "<div class='col-sm-2'><a href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$presupuesto->id_presupuesto."/1' class='btn btn-default btn-xs' title='Ver presupuesto - Comentario Privado' target='_blank'>".$presupuesto->id_presupuesto." <i class='fa fa-comment'></i></a></div>";
+									$link_presupuesto = "<div class='col-sm-2'><a href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$presupuesto->id_presupuesto."/1' class='btn btn-default btn-xs' title='Ver presupuesto - Comentario Privado' target='_blank'>".$presupuesto->id_presupuesto.' '.setIcon('comment-o')." </a></div>";
 								}
 							} else {
 								$link_presupuesto = "<div class='col-sm-2'><a href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$presupuesto->id_presupuesto."/1' class='btn btn-default btn-xs' title='ver presupuesto' target='_blank'>".$presupuesto->id_presupuesto."</a></div>";

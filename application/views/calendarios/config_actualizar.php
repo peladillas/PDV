@@ -35,8 +35,8 @@ $(function() {
             right: 'month,agendaWeek,agendaDay'
         },
         buttonText: {//This is to add icons to the visible buttons
-            prev: "<span class='fa fa-caret-left'></span>",
-            next: "<span class='fa fa-caret-right'></span>",
+            prev: "<?php echo setIcon('caret-left')?>",
+            next: "<?php echo setIcon('caret-right')?>",
             today: 'fecha actual',
             month: 'mes',
             week: 'semana',

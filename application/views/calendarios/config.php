@@ -43,8 +43,8 @@ $(function() {
         dayNamesMin:["D","L","M","X","J","V","S"],weekHeader:"Sm",
 
         buttonText: {
-            prev: "<span class='fa fa-caret-left'></span>",
-            next: "<span class='fa fa-caret-right'></span>",
+            prev: "<?php echo setIcon('caret-left')?>",
+            next: "<?php echo setIcon('caret-right')?>",
             today: 'fecha actual',
             month: 'mes',
             week: 'semana',
