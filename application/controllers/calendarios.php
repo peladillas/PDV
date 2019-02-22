@@ -68,7 +68,6 @@ class Calendarios extends My_Controller {
 				$backgroundColor = $fila->backgroundColor;
 			}
 		}
-		
 				
 		return '<p style="background: #'.$backgroundColor.'; color: #fff;font-size: .75em;padding: 0 1px;border-radius:3px">'.$row->title.'</p>';
 	}

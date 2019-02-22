@@ -20,18 +20,18 @@ class Home extends My_Controller {
 	
 	
 	function index() {
-		$ano	= date('Y');
-		$mes	= date('m');
+		$ano = date('Y');
+		$mes = date('m');
 
 		$inicio	= date('01-'.$mes.'-'.$ano);
 
 		if($mes == 12) {
 			$mes = 1;
-			$ano = $ano + 1;
+			$ano +=  1;
 		} else {
-			$mes = $mes + 1;
+			$mes += 1;
 		}
-		$final	= date('01-'.$mes.'-'.$ano);
+		$final = date('01-'.$mes.'-'.$ano);
 
 		$db['presupuestos']	= $this->presupuestos_model->suma_presupuesto($inicio, $final);
 		$db['mes_actual']	= $mes;
