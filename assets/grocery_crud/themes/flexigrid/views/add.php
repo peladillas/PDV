@@ -1,5 +1,4 @@
 <?php
-
 	$this->set_css($this->default_theme_path.'/flexigrid/css/flexigrid.css');
 	$this->set_js_lib($this->default_theme_path.'/flexigrid/js/jquery.form.js');
 	$this->set_js_config($this->default_theme_path.'/flexigrid/js/flexigrid-add.js');
@@ -54,7 +53,7 @@
 		<div class="row">
 		<div class="col-md-12">
 			<input id="form-button-save" class="btn btn-default" type='submit' value='<?php echo $this->l('form_save'); ?>'  class="btn btn-large"/>
-<?php 	if(!$this->unset_back_to_list) { ?>
+<?php if(!$this->unset_back_to_list) { ?>
 			<input type='button' value='<?php echo $this->l('form_save_and_go_back'); ?>' class='btn btn-default' id="save-and-go-back-button"/>
 			<input type='button' value='<?php echo $this->l('form_cancel'); ?>' class='btn btn-default' id="cancel-button" />
 <?php }else{ ?>
