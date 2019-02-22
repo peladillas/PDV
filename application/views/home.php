@@ -36,15 +36,70 @@ if($presupuestos) {
 		if($mes_fecha == '08'){ $mes_fecha = 8; }
 		if($mes_fecha == '09'){ $mes_fecha = 9; }
 		
-		$mes[$mes_fecha] = $mes[$mes_fecha] + $row->monto;
+		$mes[$mes_fecha] += $row->monto;
+
         if($row->tipo == 2) {
-            $ctacte[$mes_fecha] = $ctacte[$mes_fecha] + $row->monto;
-            $cant_ctacte = $cant_ctacte + 1;
+            $ctacte[$mes_fecha] += $row->monto;
+            $cant_ctacte ++;
         } else {
-            $contado[$mes_fecha] = $contado[$mes_fecha] + $row->monto;
-            $cant_contado = $cant_contado + 1;
+            $contado[$mes_fecha] += $row->monto;
+            $cant_contado ++;
         }
 	}	
+}
+
+if($presupuestos_detalle) {
+    $cabecera = [
+        lang('cantidad'),
+        lang('descripcion'),
+        lang('precio'),
+    ];
+
+    $tablePresupuestos = startTable($cabecera);
+
+    foreach ($presupuestos_detalle as $row) {
+        $registro = [
+            $row->cantidad,
+            $row->descripcion,
+            $row->precio,
+        ];
+
+        $tablePresupuestos .= setTableContent($registro);
+    }
+
+    $tablePresupuestos .= endTable();
+} else {
+    $tablePresupuestos = '';
+}
+
+
+if($proveedores) {
+    $cabecera = [
+        lang('cantidad'),
+        lang(''),
+        lang('porcentaje'),
+        lang('proveedor'),
+    ];
+
+    $tableProveedores = startTable($cabecera);
+
+    foreach ($proveedores as $row) {
+        $porcentaje = ($cant_articulos > 0 ? $row->suma * 100 / $cant_articulos : 0);
+
+        $registro = [
+            "<span class='badge bg-green'>".$row->suma."</span>",
+            "<span class='badge bg-blue'>".round($porcentaje,2)." %</span>",
+            '<div class="progress xs progress-striped active"> <div class="progress-bar progress-bar-primary" style="width: '.round($porcentaje).'%"></div>
+                                </div>',
+            $row->descripcion,
+        ];
+
+        $tableProveedores .= setTableContent($registro);
+    }
+
+    $tableProveedores .= endTable();
+} else {
+    $tableProveedores = '';
 }
 
 ?>
@@ -60,32 +115,7 @@ if($presupuestos) {
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<p class="pull-right">Últimos 10 artículos vendidos</p>
-					<?php
-					if($presupuestos_detalle) {
-					    $cabecera = [
-					        lang('cantidad'),
-							lang('descripcion'),
-							lang('precio'),
-                        ];
-
-					    $html = startTable($cabecera);
-
-						foreach ($presupuestos_detalle as $row) {
-							$registro = [
-							    $row->cantidad,
-							    $row->descripcion,
-							    $row->precio,
-                            ];
-
-							$html .= setTableContent($registro);
-						}
-
-						$html .= endTable();
-
-						echo $html;
-					}
-					?>
+					<p class="pull-right">Últimos 10 artículos vendidos</p> <?php echo $tablePresupuestos; ?>
 				</div>
 			</div>	
 		</div>
@@ -128,46 +158,11 @@ if($presupuestos) {
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<p class="pull-right">Cantidad de articulos por proveedor</p>
-					<?php
-					if($proveedores) {
-                        $cabecera = [
-                            lang('cantidad'),
-                            lang(''),
-                            lang('porcentaje'),
-                            lang('proveedor'),
-                        ];
-
-                        $html = startTable($cabecera);
-
-						foreach ($proveedores as $row) {
-							$porcentaje = ($cant_articulos > 0 ? $row->suma * 100 / $cant_articulos : 0);
-
-							$registro = [
-							    "<span class='badge bg-green'>".$row->suma."</span>",
-							    "<span class='badge bg-blue'>".round($porcentaje,2)." %</span>",
-							    '<div class="progress xs progress-striped active"> <div class="progress-bar progress-bar-primary" style="width: '.round($porcentaje).'%"></div>
-                                </div>',
-							    $row->descripcion,
-                            ];
-
-							$html .= setTableContent($registro);
-						}
-
-						$html .= endTable();
-
-						echo $html;
-					}
-					?>	
+					<p class="pull-right">Cantidad de articulos por proveedor</p> <?php echo $tableProveedores; ?>
 				</div>
 			</div>		
 		</div>
-		
-		<div class="col-md-6">
-					
-		</div>
 	</div>
-				
 </div>
 
 <script type="text/javascript">
@@ -251,10 +246,7 @@ $(function () {
            ]
         }]
     });
-    
-    
-    
-        
+
     $('#tipos').highcharts({
         chart: {
             plotBackgroundColor: null,
@@ -296,9 +288,7 @@ $(function () {
            ]
         }]
     });
-    
-    
-    
+
     $('#condiciones').highcharts({
         chart: {
             plotBackgroundColor: null,

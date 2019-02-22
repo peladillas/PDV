@@ -29,13 +29,11 @@ $lang['a_cuenta']			= 'A cuenta';
 
  $lang['buscar']             = "Buscar";
  $lang['backup']             = "Backup";
- $lang['banos']              = "Baños"; 
 
 /*--------------------------------------------------------------------------------  
     C
  --------------------------------------------------------------------------------*/ 
 
-$lang['camino']             = "Camino";
 $lang['cantidad']           = "Cantidad";
 $lang['carga']              = "Carga";
 $lang['categoria']          = "Categoria";
@@ -45,14 +43,13 @@ $lang['confirm_pass']       = "Confirmar Password";
 $lang['comentario']         = "Comentario";
 $lang['comentario_publico'] = "Comentario público";
 $lang['comentario_privado'] = "Comentario privado";
-$lang['cloaca']             = "Cloaca";
 $lang['cod_post']           = "Codigo Postal";
 $lang['cuit']               = "Cuit";
 $lang['cargando']           = "Cargando";
 $lang['calle']              = "Calle";
 $lang['calle_numero']       = "Calle nro";
 $lang['cliente']            = "Cliente";
-$lang['clientes']				= 'Clientes';
+$lang['clientes']			= 'Clientes';
 $lang['condicion_pago']     = "Condición pago";
 $lang['contrato']           = "Contrato";
 $lang['cuotas']             = "Cuotas";
@@ -84,7 +81,6 @@ $lang['empresas']           = "Empresas";
 $lang['email_salida']       = "Email salida";
 $lang['eliminar']           = "Eliminar";
 $lang['esquema']            = "Esquema";
-$lang['expensas']           = "Expensas";
 $lang['egreso']             = "Egreso";
 $lang['empleado']           = "Empleado";
 $lang['envio']              = "Envio";
@@ -112,35 +108,26 @@ $lang['fecha_vencimiento']  = "Fecha vencimiento";
 /*--------------------------------------------------------------------------------  
     G
  --------------------------------------------------------------------------------*/ 
- 
-$lang['garaje']             = "Garaje"; 
-$lang['gas']                = "Gas";
- 
+
  /*--------------------------------------------------------------------------------  
     H
  --------------------------------------------------------------------------------*/ 
 
 $lang['height']             = "height";
-$lang['habitaciones']       = "Habitaciones";
 
 /*--------------------------------------------------------------------------------  
     I
  --------------------------------------------------------------------------------*/ 
 
 $lang['icono']              = "Icono";
-$lang['in_out']             = "IN OUT";
-$lang['icon']               = "Icono";
 $lang['id']                 = "ID";
 $lang['ingrese']            = "Ingrese";
 $lang['ingreso']            = "Ingreso";
 $lang['inicio']             = "Inicio";
 $lang['insert_ok']          = "Registro se agrego";
 $lang['informacion']        = "Información";
-$lang['id_animal']          = "ID Animal";
 $lang['id_pedido']          = "ID Pedido";
 $lang['id_factura']         = "ID Factura";
-$lang['inmueble']         	= "Inmueble";
-$lang['inmuebles']         	= "Inmuebles";
 $lang['inicio_cuota']       = "Inicio cuota";
 $lang['imprimir']           = "Imprimir";
 
@@ -148,7 +135,6 @@ $lang['imprimir']           = "Imprimir";
     L
  --------------------------------------------------------------------------------*/ 
 
-$lang['luz']                = "Luz";
 $lang['localidad']          = "Localidad";
 $lang['log_in']             = "Log in";
 $lang['lote']               = "Lote";
@@ -190,7 +176,6 @@ $lang['numero']				= 'Número';
 $lang['olvidaste_pass']     = "Olvidaste tu pass?";
 $lang['opciones']           = "Opciones";
 $lang['orden']              = "Orden";
-$lang['ordene']             = "Ordeñe";
 $lang['origen']             = "Origen";
 
 /*--------------------------------------------------------------------------------  
@@ -213,15 +198,11 @@ $lang['proveedor']          = "Proveedor";
 $lang['perfil']             = "Perfil";
 $lang['puesto']             = "Puesto";
 $lang['pedido']             = "Pedido";
-$lang['proyecto']           = "Proyecto";
-$lang['proyectos']          = "Proyectos";
 $lang['precio']          	= "Precio";
 $lang['plantilla']          = "Plantilla";
-$lang['permuta']            = "Permuta";
 $lang['pago']				= 'Pago';
-$lang['permuta']            = "Permuta";
-$lang['presupuestos']		= 'Presupuestos';
 $lang['presupuesto']		= 'Presupuesto';
+$lang['presupuestos']		= 'Presupuestos';
 
 /*--------------------------------------------------------------------------------  
     R
@@ -229,7 +210,6 @@ $lang['presupuesto']		= 'Presupuesto';
 
 $lang['recargas']           = "Recargas";
 $lang['responsable']        = "Responsable";
-$lang['responsab']          = "Responsable";
 $lang['regs']               = "Regs";
 $lang['registro']           = "Registro";
 
@@ -253,7 +233,7 @@ $lang['select_registro']	= 'Seleccione una opción';
 $lang['tablas']             = "Tablas";
 $lang['transacciones']		= 'Transacciones';
 $lang['telefono']           = "Telefono";
-$lang['telefono_alternativo'] = "Telefono alternativo";
+$lang['telefono_alt']       = "Telefono alternativo";
 $lang['turno']              = "Turno";
 $lang['tipo']               = "Tipo";
 $lang['total']              = "Total";

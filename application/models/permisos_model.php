@@ -62,7 +62,6 @@ class Permisos_model extends CI_Model {
                         break;
                 }
 
-				
 				return $crud;
 				
 			}else{

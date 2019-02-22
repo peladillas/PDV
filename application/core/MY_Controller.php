@@ -1,6 +1,6 @@
 <?php
-class MY_Controller extends CI_Controller
-{	
+class MY_Controller extends CI_Controller {
+
 	public function __construct() {
 		parent::__construct();
 	}
@@ -14,8 +14,8 @@ class MY_Controller extends CI_Controller
  * ********************************************************************************
  **********************************************************************************/
 	
-	public function view($db, $views){
-		if($this->session->userdata('logged_in')){
+	public function view($db, $views) {
+		if($this->session->userdata('logged_in')) {
 			$this->load->view('head.php',$db);
 			$this->load->view('menu.php');
 			if (is_array($views)) {
@@ -26,7 +26,7 @@ class MY_Controller extends CI_Controller
                 $this->load->view($views);
             }
 			$this->load->view('footer.php');
-		}else{
+		} else {
 			redirect('/','refresh');
 		}
 	}
@@ -41,12 +41,12 @@ class MY_Controller extends CI_Controller
 	
 	
 	public function viewCrud($output = null){
-		if($this->session->userdata('logged_in')){
-			$this->load->view('head.php',$output);
+		if ($this->session->userdata('logged_in')) {
+			$this->load->view('head.php', $output);
 			$this->load->view('menu.php');
 			$this->load->view('body.php');
 			$this->load->view('footer.php');
-		}else{
+		} else {
 			redirect('/','refresh');
 		}
 	}
@@ -76,7 +76,7 @@ class MY_Controller extends CI_Controller
  **********************************************************************************/
 	
 
-	function insert_log($datos, $id){
+	function insert_log($datos, $id) {
 		$session_data = $this->session->userdata('logged_in');
 		
 	    $registro = array(
@@ -99,7 +99,7 @@ class MY_Controller extends CI_Controller
 	}
 	
 	
-	function update_log($datos, $id){
+	function update_log($datos, $id) {
 		$session_data = $this->session->userdata('logged_in');
 		
     	$registro = array(
@@ -116,7 +116,7 @@ class MY_Controller extends CI_Controller
 	}
 	
 	
-	public function delete_log($id){
+	public function delete_log($id) {
     	$session_data = $this->session->userdata('logged_in');
 		
 		$registro = array(
