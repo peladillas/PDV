@@ -265,7 +265,6 @@ function setIcon($icon){
 }
 
 function setEmphasis($class, $value, $title){
-
     $html = '<div class="col-xs-12 col-sm-4 emphasis">';
     $html .= '<div class="small-box bg-'.$class.'">';
     $html .= '<div class="inner"><h4>'.$value.'</h4></div>';
@@ -275,4 +274,20 @@ function setEmphasis($class, $value, $title){
     return $html;
 }
 
+function setBigEmphasis($class, $value, $title, $icon, $link){
+    $html = '<div class="col-xs-12 col-sm-3 emphasis">';
+    $html .= '<div class="small-box bg-'.$class.'">';
+    $html .= '<div class="inner"><h3>'.$value.'</h3></div>';
+    $html .= '<div class="inner">';
+    $html .= '<h3>'.$value.'</h3>';
+    $html .= '<p class="color-white">'.$title.'</p>';
+    $html .= '<div class="icon">'.$icon.'</div>';
+    $html .= '<a href="'.base_url().'index.php/'.$link.'" class="small-box-footer">';
+    $html .= lang('ver_mas').' '.setIcon('arrow-circle-right');
+    $html .= '</a>';
+    $html .= '</div>';
+    $html .= '</div>';
+
+    return $html;
+}
 ?>

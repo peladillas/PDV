@@ -6,10 +6,10 @@ $acuenta_total	= 0;
 <script>
 $(document).ready(function() {
 
-    $('#presupuestos').DataTable();
-    $('#remitos').DataTable();
-    $('#devoluciones').DataTable();
-    $('#anulaciones').DataTable();
+    $('#presupuestos').dataTable();
+    $('#remitos').dataTable();
+    $('#devoluciones').dataTable();
+    $('#anulaciones').dataTable();
 
     $("#final_fecha").datepicker({
         maxDate: '0',
@@ -206,18 +206,18 @@ if($anulaciones){
     <div class="col-md-2">
         <div class="input-group">
             <div class="input-group-addon"><?php echo setIcon('calendar')?>/div>
-            <input type="text" class="form-control" id="inicio_fecha" name="inicio" placeholder="ingrese inicio" required>
+            <input type="text" class="form-control" id="inicio_fecha" name="inicio" placeholder="<?php echo lang('inicio')?>" required>
         </div>
     </div>
     <div class="col-md-2">
         <div class="input-group">
             <div class="input-group-addon"><?php echo setIcon('calendar')?></div>
-            <input type="text" class="form-control" id="final_fecha" name="final" placeholder="ingrese final" required>
+            <input type="text" class="form-control" id="final_fecha" name="final" placeholder="<?php echo lang('final')?>" required>
         </div>
     </div>
     <div class="col-md-3">
         <button class="btn btn-default form-control" name="buscar">
-            Cambiar
+            <?php echo lang('cambiar')?>
         </button>
     </div>
     <div class="col-md-2">
@@ -236,11 +236,11 @@ if($anulaciones){
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tabTotales" data-toggle="tab">Totales</a></li>
-						<li><a href="#tabPresupuestos" data-toggle="tab">Presupuestos</a></li>
-		    			<li><a href="#tabRemitos" data-toggle="tab">Remitos</a></li>
-		    			<li><a href="#tabDevoluciones" data-toggle="tab">Devoluciones</a></li>
-		    			<li><a href="#tabAnulaciones" data-toggle="tab">Anulaciones</a></li>
+						<li class="active"><a href="#tabTotales" data-toggle="tab"><?php echo lang('totales')?></a></li>
+						<li><a href="#tabPresupuestos" data-toggle="tab"><?php echo lang('presupuestos')?></a></li>
+		    			<li><a href="#tabRemitos" data-toggle="tab"><?php echo lang('remitos')?></a></li>
+		    			<li><a href="#tabDevoluciones" data-toggle="tab"><?php echo lang('devoluciones')?></a></li>
+		    			<li><a href="#tabAnulaciones" data-toggle="tab"><?php echo lang('anulaciones')?></a></li>
 					</ul>
 				</div>
 				

@@ -51,81 +51,10 @@ if($presupuestos) {
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-sm-3 emphasis">
-			<div class="small-box bg-aqua">
-				<div class="inner">
-					<h3>
-						<?php echo $cant_presupuestos ?>
-					</h3>
-					<p style="color:#fff;">Presupuestos</p>
-                    <div class="icon">
-                        <?php echo setIcon('shopping-cart')?>
-					</div>
-				</div>
-				
-				<a href="<?php echo base_url()?>index.php/presupuestos/presupuesto_abm" class="small-box-footer">
-					<?php echo lang('ver_mas').' '.setIcon('arrow-circle-right');?>
-				</a>
-			</div>
-		</div>
-		
-		
-		<div class="col-xs-12 col-sm-3 emphasis">
-			<div class="small-box bg-green">
-				<div class="inner">
-					<h3>
-						<?php echo $cant_articulos ?>
-					</h3>
-					<p style="color:#fff;">Artículos</p>
-                    <div class="icon">
-                        <?php echo setIcon('clipboard')?>
-					</div>
-				</div>
-				
-				<a href="<?php echo base_url()?>index.php/articulos/articulo_abm" class="small-box-footer">
-                    <?php echo lang('ver_mas').' '.setIcon('arrow-circle-right');?>
-				</a>
-			</div>
-		</div>
-		
-		
-		<div class="col-xs-12 col-sm-3 emphasis">
-			<div class="small-box bg-orange">
-				<div class="inner">
-					<h3>
-						<?php echo $cant_clientes ?>
-					</h3>
-					<p style="color:#fff;">Clientes</p>
-                    <div class="icon">
-                        <?php echo setIcon('user')?>
-					</div>
-				</div>
-				
-				<a href="<?php echo base_url()?>index.php/clientes/cliente_abm" class="small-box-footer">
-                    <?php echo lang('ver_mas').' '.setIcon('arrow-circle-right');?>
-				</a>
-			</div>
-		</div>
-		
-		
-		<div class="col-xs-12 col-sm-3 emphasis">
-			<div class="small-box bg-red">
-				<div class="inner">
-					<h3>
-						<?php echo $cant_remitos ?>
-					</h3>
-					<p style="color:#fff;">Remitos</p>
-                    <div class="icon">
-                        <?php echo setIcon('pie-chart')?>
-					</div>
-				</div>
-				
-				<a href="<?php echo base_url()?>index.php/remitos/remitos_abm" class="small-box-footer">
-                    <?php echo lang('ver_mas').' '.setIcon('arrow-circle-right');?>
-				</a>
-			</div>
-		</div>
-							
+        <?php echo setBigEmphasis('aqua', $cant_presupuestos, lang('presupuestos'), setIcon('shopping-cart'), 'presupuestos/presupuesto_abm'); ?>
+        <?php echo setBigEmphasis('green', $cant_articulos, lang('articulos'), setIcon('clipboard'), 'articulos/articulo_abm'); ?>
+        <?php echo setBigEmphasis('orange', $cant_clientes, lang('clientes'), setIcon('user'), 'clientes/clientes_abm'); ?>
+        <?php echo setBigEmphasis('red', $cant_remitos, lang('remitos'), setIcon('pie-chart'), 'remitos/remitos_abm'); ?>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
@@ -174,7 +103,7 @@ if($presupuestos) {
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<div id="grafico" style="min-width: 310px; height: 400px; margin-bottom: 35px;"></div>
+					<div id="grafico" class="grafic-home"></div>
 				</div>
 			</div>		
 		</div>
@@ -185,13 +114,13 @@ if($presupuestos) {
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<div id="tipos" style="min-width: 310px; height: 405px; max-width: 600px; margin: 0 auto"></div>	
+					<div id="tipos" class="div-home"></div>
 				</div>
 			</div>
 			
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<div id="condiciones" style="min-width: 310px; height: 405px; max-width: 600px; margin: 0 auto"></div>	
+					<div id="condiciones" class="div-home"></div>
 				</div>
 			</div>		
 		</div>
@@ -217,8 +146,7 @@ if($presupuestos) {
 							$registro = [
 							    "<span class='badge bg-green'>".$row->suma."</span>",
 							    "<span class='badge bg-blue'>".round($porcentaje,2)." %</span>",
-							    '<div class="progress xs progress-striped active">
-                                    <div class="progress-bar progress-bar-primary" style="width: '.round($porcentaje).'%"></div>
+							    '<div class="progress xs progress-striped active"> <div class="progress-bar progress-bar-primary" style="width: '.round($porcentaje).'%"></div>
                                 </div>',
 							    $row->descripcion,
                             ];

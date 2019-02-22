@@ -23,6 +23,7 @@ $html .= setCss('font2/css/whhg.css');
 
 $html .= setJs('main/js/main.js');
 $html .= setCss('main/css/main.css');
+$html .= setCss('main/css/form.css');
 
 /*--------------------------------------------------------------------------------
     Jquery UI

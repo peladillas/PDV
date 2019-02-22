@@ -1,0 +1,18 @@
+.color-white{
+	color:#fff;
+}
+
+.grafic-home{
+	min-width: 310px;
+	height: 400px;
+	margin-bottom: 35px;
+}
+
+.div-home{
+	min-width: 310px;
+	height: 405px;
+	max-width: 600px;
+	margin: 0 auto
+}
+
+
