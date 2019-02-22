@@ -54,13 +54,13 @@ $acuenta_total	= 0;
     </div>
     <div class="col-md-2">
         <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            <div class="input-group-addon"><?php echo setIcon('calendar')?>/div>
             <input type="text" class="form-control" id="inicio_fecha" name="inicio" placeholder="ingrese inicio" required>
         </div>
     </div>
     <div class="col-md-2">
         <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            <div class="input-group-addon"><?php echo setIcon('calendar')?></div>
             <input type="text" class="form-control" id="final_fecha" name="final" placeholder="ingrese final" required>
         </div>
     </div>
@@ -71,7 +71,7 @@ $acuenta_total	= 0;
     </div>
     <div class="col-md-2">
         <button class="btn btn-default" type="button" onclick="printDiv('printableArea')"/>
-            <i class="fa fa-print"></i> Imprimir
+            <?php echo setIcon('print').' '.lang('imprimir')?>
         </button>
     </div>
 </form>
@@ -118,16 +118,13 @@ $acuenta_total	= 0;
                                 ];
 
                                 $html = startTable($cabecera, 'presupuestos');
+
                                 foreach ($presupuestos as $row) {
                                     $acuenta = ($row->tipo == 'Contado' ? $row->monto : $row->a_cuenta);
                                     $monto_total	= $monto_total + $row->monto;
                                     $acuenta_total	= $acuenta_total + $acuenta;
-                                    $opciones = "<a title='ver cliente' href='".base_url()."index.php/clientes/cliente_abm/read/".$row->id_cliente."' class='btn btn-info btn-xs'>
-                                            <span class='icon-user'></span>
-                                            </a> 
-                                            <a title='ver presupuesto' href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
-                                            <span class='icon-edit'></span>
-                                            </a>";
+                                    $opciones = "<a title='ver cliente' href='".base_url()."index.php/clientes/cliente_abm/read/".$row->id_cliente."' class='btn btn-info btn-xs'>".setIcon('user')."</a>";
+                                    $opciones .= "<a title='ver presupuesto' href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>".setIcon('pencil')."</a>";
 
                                     $registro = [
                                         $row->apellido." ".$row->nombre,
@@ -164,29 +161,26 @@ $acuenta_total	= 0;
                                 <tbody>
                                 <?php
                                 if($remitos){
-                                $remito_total = 0;
-                                $devolucion_total = 0;
-                                foreach ($remitos as $row)
-                                {
-                                    echo "<tr>";
-                                    echo "<td>".$row->apellido." ".$row->nombre."</td>";
-                                    echo "<td>".$row->alias."</td>";
-                                    echo "<td>".dateFormat($row->fecha)."</td>";
-                                    echo "<td>".moneyFormat($row->monto)."</td>";
-                                    echo "<td>".moneyFormat($row->devolucion)."</td>";
+                                    $remito_total = 0;
+                                    $devolucion_total = 0;
+                                    foreach ($remitos as $row) {
+                                        echo "<tr>";
+                                        echo "<td>".$row->apellido." ".$row->nombre."</td>";
+                                        echo "<td>".$row->alias."</td>";
+                                        echo "<td>".dateFormat($row->fecha)."</td>";
+                                        echo "<td>".moneyFormat($row->monto)."</td>";
+                                        echo "<td>".moneyFormat($row->devolucion)."</td>";
 
-                                    $remito_total	= $remito_total + $row->monto;
-                                    $devolucion_total	= $devolucion_total + $row->devolucion;
+                                        $remito_total	= $remito_total + $row->monto;
+                                        $devolucion_total	= $devolucion_total + $row->devolucion;
 
-                                    echo "<td><a title='ver cliente' href='".base_url()."index.php/clientes/cliente_abm/read/".$row->id_cliente."' class='btn btn-info btn-xs'>
-                                        <span class='icon-user'></span>
-                                        </a> 
-                                        <a title='ver remito' href='".base_url()."index.php/presupuestos/remito_vista/".$row->id_remito."' class='btn btn-primary btn-xs'>
-                                        <span class='icon-edit'></span>
-                                        </a> 
-                                        </td>";
-                                    echo "</tr>";
-                                }}
+                                        echo "<td>";
+                                        echo "<a title='ver cliente' href='".base_url()."index.php/clientes/cliente_abm/read/".$row->id_cliente."' class='btn btn-info btn-xs'>".setIcon('user')."</a>";
+                                        echo "<a title='ver remito' href='".base_url()."index.php/presupuestos/remito_vista/".$row->id_remito."' class='btn btn-primary btn-xs'>".setIcon('pencil')."</a>";
+                                        echo "</td>";
+                                        echo "</tr>";
+                                    }
+                                }
                             ?>
                             </tbody>
                         </table>
@@ -210,28 +204,26 @@ $acuenta_total	= 0;
                             <tbody>
                             <?php
                             if($devoluciones){
-                            $devolucion_total = 0;
-                            $devolucion_a_cuenta = 0;
-                            foreach ($devoluciones as $row)
-                            {
-                                echo "<tr>";
-                                echo "<td>".$row->id_presupuesto."</td>";
-                                echo "<td>".$row->id_devolucion."</td>";
-                                echo "<td>".$row->nota."</td>";
-                                echo "<td>".dateFormat($row->fecha)."</td>";
-                                echo "<td>".moneyFormat($row->monto)."</td>";
-                                echo "<td>".moneyFormat($row->a_cuenta)."</td>";
+                                $devolucion_total = 0;
+                                $devolucion_a_cuenta = 0;
+                                foreach ($devoluciones as $row) {
+                                    echo "<tr>";
+                                    echo "<td>".$row->id_presupuesto."</td>";
+                                    echo "<td>".$row->id_devolucion."</td>";
+                                    echo "<td>".$row->nota."</td>";
+                                    echo "<td>".dateFormat($row->fecha)."</td>";
+                                    echo "<td>".moneyFormat($row->monto)."</td>";
+                                    echo "<td>".moneyFormat($row->a_cuenta)."</td>";
 
-                                $devolucion_total	= $devolucion_total + $row->monto;
-                                $devolucion_a_cuenta= $devolucion_a_cuenta + $row->a_cuenta;
+                                    $devolucion_total	= $devolucion_total + $row->monto;
+                                    $devolucion_a_cuenta= $devolucion_a_cuenta + $row->a_cuenta;
 
-                                echo "<td>
-                                    <a title='ver devolución' href='".base_url()."index.php/devoluciones/devoluciones_abm/".$row->id_devolucion."' class='btn btn-primary btn-xs'>
-                                    <span class='icon-edit'></span>
-                                    </a> 
-                                    </td>";
-                                echo "</tr>";
-                            }}
+                                    echo "<td>";
+                                    echo "<a title='ver devolución' href='".base_url()."index.php/devoluciones/devoluciones_abm/".$row->id_devolucion."' class='btn btn-primary btn-xs'>".setIcon('pencil')."</a>";
+                                    echo '</td>';
+                                    echo '</tr>';
+                                }
+                            }
                             ?>
                             </tbody>
                         </table>
@@ -253,25 +245,20 @@ $acuenta_total	= 0;
                             <tbody>
                             <?php
                             if($anulaciones){
-                            $anulacion_total = 0;
-
-                            foreach ($anulaciones as $row)
-                            {
-                                echo "<tr>";
-                                echo "<td>".$row->id_presupuesto."</td>";
-                                echo "<td>".$row->nota."</td>";
-                                echo "<td>".dateFormat($row->fecha)."</td>";
-                                echo "<td>".moneyFormat($row->monto)."</td>";
-
-                                $anulacion_total	= $anulacion_total + $row->monto;
-
-                                echo "<td>
-                                    <a title='ver anulación' href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>
-                                    <span class='icon-edit'></span>
-                                    </a> 
-                                    </td>";
-                                echo "</tr>";
-                            }}
+                                $anulacion_total = 0;
+                                foreach ($anulaciones as $row) {
+                                    echo "<tr>";
+                                    echo "<td>".$row->id_presupuesto."</td>";
+                                    echo "<td>".$row->nota."</td>";
+                                    echo "<td>".dateFormat($row->fecha)."</td>";
+                                    echo "<td>".moneyFormat($row->monto)."</td>";
+    
+                                    $anulacion_total	= $anulacion_total + $row->monto;
+    
+                                    echo "<td><a title='ver anulación' href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>".setIcon('pencil')."</a></td>";
+                                    echo "</tr>";
+                                }
+                            }
                             ?>
                             </tbody>
                         </table>

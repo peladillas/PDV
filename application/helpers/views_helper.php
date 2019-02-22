@@ -260,4 +260,8 @@ function dropdownMenu($menu, $dropdownMenu){
     return $html;
 }
 
+function setIcon($icon){
+    return '<i class="fa fa-'.$icon.'"></i>';
+}
+
 ?>

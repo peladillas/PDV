@@ -22,9 +22,9 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <?php echo setIcon('bar')?>
+                    <?php echo setIcon('bar')?>
+                    <?php echo setIcon('bar')?>
                 </button>
                 <a title="Administración" class="navbar-brand" href='<?php echo site_url('home')?>'><?php echo lang('admin')?></a>
             </div>
@@ -83,7 +83,7 @@
                     echo dropdownMenu(lang('config'), $dropdownMenuConfig);
                     ?>
                     <li>
-                        <a href="<?php echo site_url('home/logout')?>"><span class="icon-off"></span> <?php echo lang('salir')?></a>
+                        <a href="<?php echo site_url('home/logout')?>"><?php echo setIcon('log-out').' '.lang('salir')?></a>
                     </li>
                 </ul>
 

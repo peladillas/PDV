@@ -96,7 +96,7 @@ if($presupuestos) {
     <input name="monto" value="<?php echo $monto_presupuesto?>" type="hidden"/>
     <a href='<?php echo base_url()."/index.php/presupuestos/presupuesto_abm/"?>' class='btn btn-default'>Volver a la lista</a>
     <button class="btn btn-default"/>
-        <i class="fa fa-trash-o"></i> Anular
+        <?php echo setIcon('trash-o').' '.lang('anular');?>
     </button>
 </form>
 

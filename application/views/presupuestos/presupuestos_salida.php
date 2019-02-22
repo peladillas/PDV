@@ -101,7 +101,7 @@
                 <!-- Aca esta el button que estabas necesitando -->
                 <div class="form-group col-md-1">
                     <button onclick="limpia_cli()" class="btn btn-danger form-control" id="search" name="search">
-                        <i class="glyphicon glyphicon-remove"></i>
+                        <?php echo setIcon('trash')?>
                     </button>
                 </div>
 

@@ -156,7 +156,7 @@ if(!$llamada) {
 if($row->estado != 3) {
 ?>
     <button class="btn btn-default" type="button" onclick="printDiv('printableArea')"/>
-        <i class="fa fa-print"></i> Imprimir
+        <?php echo setIcon('print').' '.lang('imprimir')?>
     </button>
     <?php
 
@@ -165,11 +165,11 @@ if($row->estado != 3) {
         if($row->tipo == 2) {
         ?>
         <a href="<?php echo base_url().'index.php/devoluciones/generar/'.$id_presupuesto?>" class="btn btn-default"/>
-            <i class="fa fa-thumbs-down"></i> Devolución
+            <?php echo setIcon('thumbs-down').' '.lang('devolucion') ?>
         </a>
 
         <a href="<?php echo base_url().'index.php/presupuestos/interes/'.$id_presupuesto?>" class="btn btn-default" data-toggle="modal" data-target="#interesModal"/>
-            <i class="fa fa-angle-up"></i> Interes
+            <?php echo setIcon('angle-up').' '.lang('interes') ?>
         </a>
         <?php
         }
@@ -178,7 +178,7 @@ if($row->estado != 3) {
         if($row->tipo == 1) {
         ?>
             <a href="<?php echo base_url().'index.php/presupuestos/anular/'.$id_presupuesto?>" class="btn btn-default"/>
-                <i class="fa fa-trash-o"></i> Anular
+                <?php echo setIcon('trash-o').' '.lang('anular') ?>
             </a>
         <?php
         }
