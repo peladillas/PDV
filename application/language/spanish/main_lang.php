@@ -254,6 +254,7 @@ $lang['turno']              = "Turno";
 $lang['tipo']               = "Tipo";
 $lang['total']              = "Total";
 $lang['totales']            = "Totales";
+$lang['total_nota_credito'] = "Total nota de credito";
 $lang['tiempo']             = "Tiempo";
 $lang['titulo']             = "Título";
 
