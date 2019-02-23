@@ -28,19 +28,21 @@ class MY_Model extends CI_Model {
 			$this->_table 
 		WHERE ";
 
-    	if (!$this->db->field_exists('id_estado', $this->_table)){
+    	if ($this->db->field_exists('id_estado', $this->_table)){
 			$sql .= $this->_table.".id_estado = 1";
 		}
 
 		if ($filtros == NULL) {
-            $sql = " 1";
+			if( substr($sql, -6) == 'WHERE ') {
+				$sql .= " 1";
+			}            
 		} else if (is_array($filtros)) {
             foreach ($filtros as $key => $value) {
                 $sql .= $this->_table.".".$key."='".$value."' AND";
             }
             $sql = substr($sql, 0, 3);
         } else {
-            $sql .= $this->_table.$this->_id."= '$filtros'";
+            $sql .= $this->_table.".".$this->_id."= '$filtros'";
         }
 
         $sql .= "
@@ -48,7 +50,7 @@ class MY_Model extends CI_Model {
 			$this->_table.$this->_order
 		LIMIT 
 			$this->_limit";
-
+		
         return $this->getQuery($sql);
     }
 

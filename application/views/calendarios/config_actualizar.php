@@ -1,6 +1,7 @@
 <?php
-    echo setCss(base_url('fullcalendar/fullcalendar.css'));
-    echo setJs(base_url('fullcalendar/fullcalendar.js'));
+    echo setCss('fullcalendar/fullcalendar.css');
+	echo setJs('fullcalendar/lib/moment.min.js');
+    echo setJs('fullcalendar/fullcalendar.js');
 ?>
 
 <script type="text/javascript">

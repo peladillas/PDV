@@ -3,6 +3,8 @@
     A
  --------------------------------------------------------------------------------*/ 
 
+$lang['admin']				= "Admin";
+$lang['actualizar_precios']	= "Actualizar Precios";
 $lang['acumulado']          = "Acumulado";
 $lang['activo']             = "Activo";
 $lang['accion']             = "Acción";
@@ -22,6 +24,7 @@ $lang['altura']             = "Altura";
 $lang['apellido']           = "Apellido";
 $lang['apellidos']          = "Apellidos";
 $lang['a_cuenta']			= 'A cuenta';
+$lang['anual']				= 'Anual';
 
 /*--------------------------------------------------------------------------------  
     B
@@ -51,8 +54,12 @@ $lang['calle_numero']       = "Calle nro";
 $lang['cliente']            = "Cliente";
 $lang['clientes']			= 'Clientes';
 $lang['condicion_pago']     = "Condición pago";
+$lang['condicion_iva']     	= "Condición IVA";
 $lang['contrato']           = "Contrato";
 $lang['cuotas']             = "Cuotas";
+$lang['config']             = "Config";
+$lang['catalogos']          = "Catalogos";
+
 
 /*--------------------------------------------------------------------------------  
     D
@@ -67,6 +74,7 @@ $lang['dia']                = "Día";
 $lang['dias']               = "Días";
 $lang['descripcion']        = "Descripción";
 $lang['direccion']          = "Dirección";
+$lang['devoluciones']       = "Devoluciones";
 
 /*--------------------------------------------------------------------------------  
     E
@@ -78,13 +86,14 @@ $lang['email']              = "Email";
 $lang['error']              = "Error";
 $lang['empresa']            = "Empresa";
 $lang['empresas']           = "Empresas";
-$lang['email_salida']       = "Email salida";
+$lang['estadisticas']       = "Estadisticas";
 $lang['eliminar']           = "Eliminar";
 $lang['esquema']            = "Esquema";
 $lang['egreso']             = "Egreso";
 $lang['empleado']           = "Empleado";
 $lang['envio']              = "Envio";
 $lang['empresa_titulo']		= 'Bulones sarmiento';
+
 
 /*--------------------------------------------------------------------------------  
     F
@@ -109,6 +118,8 @@ $lang['fecha_vencimiento']  = "Fecha vencimiento";
     G
  --------------------------------------------------------------------------------*/ 
 
+$lang['grupo']             = "Grupo";
+ 
  /*--------------------------------------------------------------------------------  
     H
  --------------------------------------------------------------------------------*/ 
@@ -130,6 +141,7 @@ $lang['id_pedido']          = "ID Pedido";
 $lang['id_factura']         = "ID Factura";
 $lang['inicio_cuota']       = "Inicio cuota";
 $lang['imprimir']           = "Imprimir";
+$lang['impresion']          = "Impresion";
 
 /*--------------------------------------------------------------------------------  
     L
@@ -151,7 +163,7 @@ $lang['monto_anticipo']     = "Monto anticipo";
 $lang['monto_interes']      = "Monto interés";
 $lang['monto_pago']         = "Monto pago";
 $lang['menu']               = "Menu";
-$lang['marcacion']          = "Marcación";
+$lang['mensual']          	= "Mensual";
 
 /*--------------------------------------------------------------------------------  
     N
@@ -191,7 +203,7 @@ $lang['peligro']            = "Peligro";
 $lang['permiso']            = "Permiso";
 $lang['permisos']           = "Permisos";
 $lang['periodo']            = "Periodo";
-$lang['pri_desc']           = "Descripción";
+$lang['proveedores']        = "Proveedores";
 $lang['programa']           = "Programa";
 $lang['peso']               = "Peso";
 $lang['proveedor']          = "Proveedor";
@@ -210,8 +222,11 @@ $lang['presupuestos']		= 'Presupuestos';
 
 $lang['recargas']           = "Recargas";
 $lang['responsable']        = "Responsable";
-$lang['regs']               = "Regs";
+$lang['remito']             = "Remito";
+$lang['remitos']            = "Remitos";
 $lang['registro']           = "Registro";
+$lang['resumen']           	= "Resumen";
+$lang['roles']           	= "Roles";
 
 /*--------------------------------------------------------------------------------  
     S
@@ -220,6 +235,7 @@ $lang['registro']           = "Registro";
 $lang['salir']              = "Salir";
 $lang['siguiente']          = "Siguiente";
 $lang['sector']             = "Sector";
+$lang['sub_categoria']		= "SubCategoria";
 $lang['seleccionar']		= 'Seleccionar';
 $lang['sumas']				= 'Sumas';
 $lang['si_devolucion']		= 'Este presupuesto tiene devoluciones asociadas';
@@ -246,6 +262,7 @@ $lang['titulo']             = "Título";
  --------------------------------------------------------------------------------*/ 
 
 $lang['usuario']            = "Usuario";
+$lang['usuarios']           = "usuarios";
 $lang['update_ok']          = "Registro modificado";
 $lang['ubicacion']          = "Ubicación";
 $lang['url']                = "URL";
@@ -260,6 +277,8 @@ $lang['version']            = "Versión";
 $lang['validez']            = "Validez";
 $lang['vencimiento_cuota']  = "Vencimiento cuota";
 $lang['vencimiento']        = "Vencimiento";
+$lang['vendedores']        	= "Vendedores";
+$lang['ventas']        		= "Ventas";
 
 /*--------------------------------------------------------------------------------  
     W

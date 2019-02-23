@@ -1,5 +1,5 @@
 <?php
-	$this->set_css($this->default_theme_path.'/flexigrid/css/flexigrid.css');
+	//$this->set_css($this->default_theme_path.'/flexigrid/css/flexigrid.css');
 	$this->set_js_lib($this->default_javascript_path.'/'.grocery_CRUD::JQUERY);
 
 	$this->set_js_lib($this->default_javascript_path.'/jquery_plugins/jquery.noty.js');
