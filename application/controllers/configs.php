@@ -7,7 +7,7 @@ class Configs extends MY_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->load->model('config_backup');
+		$this->load->model('config_backup_model');
 
 		$this->load->library('grocery_CRUD');
 	}
@@ -93,7 +93,7 @@ class Configs extends MY_Controller {
 
         $tables = $this->db->list_tables();
 
-        $config = $this->config_backup_model-select(1);
+        $config = $this->config_backup_model->select(1);
 
         foreach ($config as $row) {
             $directorio		= $row->directorio;

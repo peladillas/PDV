@@ -10,7 +10,7 @@ $(function() {
     ---------------------------------------------------------------------------------*/
 
     $("#cliente").autocomplete({
-        source: BASE_URL+"clientes/getClientes",
+        source: BASE_URL+"/clientes/getClientes",
         minLength: 2,
         select: function(event,ui){
             id_cliente	= ui.item.id;
@@ -50,7 +50,7 @@ $(function() {
     ---------------------------------------------------------------------------------*/
 
     $("#articulo").autocomplete({
-        source: BASE_URL+"articulos/getArticulos",
+        source: BASE_URL+"/articulos/getArticulos",
         minLength: 2,
         select: function(event,ui){
             id_articulo	= ui.item.id;
@@ -68,6 +68,7 @@ $(function() {
     });
 
     $("#cantidad").keypress(function( event ) {
+    	
         if ( event.which == 13 ) {
             $("#precio").focus();
         }

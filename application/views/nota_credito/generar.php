@@ -14,7 +14,7 @@
     <hr>
     <div id="form-detail" class="hide">
         <?php
-            echo setFormGroup('id_articulo', '', 'autocomplete="off"');
+            echo setFormGroup('articulo', '', 'autocomplete="off"');
             echo setFormGroup('cantidad');
             echo setFormGroup('precio');
             echo setFormGroup('total');

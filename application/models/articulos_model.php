@@ -24,8 +24,8 @@ class Articulos_model extends MY_Model {
 			id_estado = 1 
 		LIMIT 
 			20";
-				
-		$this->getQuery($sql);
+			
+		return $this->getQuery($sql);
 	}
 
     /**

@@ -2040,8 +2040,8 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 
 	protected function load_js_jqueryui()
 	{
-		$this->set_css($this->default_css_path.'/ui/simple/'.grocery_CRUD::JQUERY_UI_CSS);
-		$this->set_js_lib($this->default_javascript_path.'/jquery_plugins/ui/'.grocery_CRUD::JQUERY_UI_JS);
+		//$this->set_css($this->default_css_path.'/ui/simple/'.grocery_CRUD::JQUERY_UI_CSS);
+		//$this->set_js_lib($this->default_javascript_path.'/jquery_plugins/ui/'.grocery_CRUD::JQUERY_UI_JS);
 	}
 
 	protected function load_js_uploader()
@@ -3314,7 +3314,7 @@ class Grocery_CRUD extends grocery_CRUD_States
 	const	VERSION = "1.4.1";
 
 	const	JQUERY 			= "jquery-1.10.2.min.js";
-	const	JQUERY_UI_JS 	= "jquery-ui-1.10.3.custom.min.js";
+	//const	JQUERY_UI_JS 	= "jquery-ui-1.10.3.custom.min.js";
 	//const	JQUERY_UI_CSS 	= "jquery-ui-1.10.1.custom.min.css";
 	const	JQUERY_UI_CSS 	= "jquery-ui-1.10.3.custom.css";
 	

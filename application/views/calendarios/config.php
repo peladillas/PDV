@@ -1,6 +1,7 @@
 <?php
-    echo setCss(base_url('fullcalendar/fullcalendar.css'));
-    echo setJs(base_url('fullcalendar/fullcalendar.js'));
+    echo setCss('fullcalendar/fullcalendar.css');
+	echo setJs('fullcalendar/lib/moment.min.js');
+    echo setJs('fullcalendar/fullcalendar.js');
 ?>
 
 <script type="text/javascript">
@@ -24,8 +25,8 @@ $(function() {
     ini_events($('#external-events div.external-event'));
 
     var date = new Date();
-    var d = date.getDate(),
-    var m = date.getMonth(),
+    var d = date.getDate();
+    var m = date.getMonth();
     var y = date.getFullYear();
 
     $('#calendar').fullCalendar({
@@ -43,8 +44,8 @@ $(function() {
         dayNamesMin:["D","L","M","X","J","V","S"],weekHeader:"Sm",
 
         buttonText: {
-            prev: "<?php echo setIcon('caret-left')?>",
-            next: "<?php echo setIcon('caret-right')?>",
+            prev: '<?php echo setIcon('caret-left')?>',
+            next: '<?php echo setIcon('caret-right')?>',
             today: 'fecha actual',
             month: 'mes',
             week: 'semana',

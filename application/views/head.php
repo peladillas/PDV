@@ -30,14 +30,14 @@ $html .= setCss('main/css/form.css');
 --------------------------------------------------------------------------------*/
 
 $html .= setJs('ui/jquery-ui.js');
-$html .= setCss('main/ui/jquery-ui.css');
+$html .= setCss('ui/jquery-ui.css');
 
 /*--------------------------------------------------------------------------------
     Bootstrap-switch
 --------------------------------------------------------------------------------*/
 
 $html .= setJs('bootstrap/js/bootstrap-switch.js');
-$html .= setJs('bootstrap/bootstrap/js/index.js');
+$html .= setJs('bootstrap/js/index.js');
 $html .= setCss('bootstrap/css/bootstrap-switch.css');
 
 /*--------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ $html .= setCss('datatables/media/css/jquery.dataTables.css');
 $html .= setCss('chosen/chosen.css');
 $html .= '<style type="text/css" media="all">.chosen-rtl .chosen-drop { left: -9000px; }</style>';
 
-$html .= "<script>var BASE_URL = '".base_url()."index.php'';</script>";
+$html .= "<script>var BASE_URL = '".base_url()."index.php';</script>";
 
 echo $html;
 ?>

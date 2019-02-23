@@ -1,8 +1,3 @@
-<?php
-$monto_total	= 0;
-$acuenta_total	= 0;
-?>
-
 <script>
 $(document).ready(function() {
 
@@ -45,6 +40,14 @@ function printDiv (divName) {
 </script>
 
 <?php echo startContent(lang('resumen'));
+
+$monto_total	= 0;
+$acuenta_total	= 0;
+$remito_total = 0;
+$devolucion_total = 0;
+$devolucion_a_cuenta = 0;
+$anulacion_total = 0;
+
 
 // Tabla de presupuestos
 if($presupuestos){
@@ -99,9 +102,7 @@ if ($remitos) {
     ];
 
     $remitosTable = startTable($cabecera, 'remitos');
-
-    $remito_total = 0;
-    $devolucion_total = 0;
+	
     foreach ($remitos as $row) {
         $remito_total += $row->monto;
         $devolucion_total += $row->devolucion;
@@ -138,8 +139,6 @@ if($devoluciones){
     ];
 
     $devolucionesTable = startTable($cabecera, 'devoluciones');
-    $devolucion_total = 0;
-    $devolucion_a_cuenta = 0;
 
     foreach ($devoluciones as $row) {
         $devolucion_total += $row->monto;
@@ -175,8 +174,7 @@ if($anulaciones){
     ];
 
     $anulacionesTable = startTable($cabecera, 'devoluciones');
-    $anulacion_total = 0;
-
+    
     foreach ($anulaciones as $row) {
         $anulacion_total += $row->monto;
         $opciones = "<a title='ver anulación' href='".base_url()."index.php/presupuestos/detalle_presupuesto/".$row->id_presupuesto."' class='btn btn-primary btn-xs'>".setIcon('pencil')."</a><";

@@ -60,7 +60,7 @@ class Devoluciones_model extends MY_Model {
 		WHERE
 			DATE_FORMAT(fecha, '%Y-%m') >= '$inicio' AND
 			DATE_FORMAT(fecha, '%Y-%m') <= '$final'";
-		if($id_cliente === NULL) {
+		if($id_cliente != NULL) {
             $sql .= ' AND id_cliente = '.$id_cliente;
 		}
 

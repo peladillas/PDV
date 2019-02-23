@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <?php
-                    $dropdownMenuCatalogos = [
+                    $dropdownMenuCatalogos = array(
                         setLinkMenu('articulos/articulo_abm', lang('articulos')),
                         setLinkMenu('proveedores/proveedor_abm', lang('proveedores')),
                         dividerMenu(),
@@ -42,11 +42,11 @@
                         setLinkMenu('articulos/subcategoria_abm', lang('sub_categoria')),
                         dividerMenu(),
                         setLinkMenu('articulos/actualizar_precios_lote', lang('actualizar_precios')),
-                    ];
+                    );
 
                     $dropdownMenuVentas = [
                         setLinkMenu('presupuestos/salida', lang('presupuesto')),
-                        setLinkMenu('presupuestos/remito', lang('remito')),
+                        setLinkMenu('remito/remito', lang('remito')),
                         dividerMenu(),
                         setLinkMenu('presupuestos/presupuesto_abm', lang('presupuestos')),
                         setLinkMenu('remitos/remitos_abm', lang('remitos')),
@@ -64,7 +64,7 @@
                     $dropdownMenuEstadisticas = [
                         setLinkMenu('estadisticas/mensual', lang('mensual')),
                         setLinkMenu('estadisticas/anual', lang('anual')),
-                        etLinkMenu('estadisticas/resumen', lang('resumen')),
+                        setLinkMenu('estadisticas/resumen', lang('resumen')),
                     ];
 
                     $dropdownMenuConfig = [
