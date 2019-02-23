@@ -1,7 +1,7 @@
 <html lang="es">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="Content-Type:application/json; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type"  content="application/json; charset=UTF-8"/>
     <title>Bulones Sarmiento</title>
 
 </head>
@@ -20,12 +20,15 @@
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
-            BULONES SARMIENTO
+            MY NEGOCIO
             <button class="btn btn-default btn-xs show_hide">
                 Cabecera
             </button>
             <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">
                 Comentario
+            </button>
+            <button type="button" id="callToPrint" class="btn btn-success pull-right"" >
+                IMPRIMIR PRESUPUESTO
             </button>
         </div>
 
@@ -228,7 +231,7 @@
                     <div class="row">
                         <label for="inputEmail3" class="col-sm-3 control-label">TOTAL</label>
                         <label for="inputEmail3" class="col-sm-2 control-label">Total iva</label>
-                        <label for="inputEmail3" class="col-sm-2 control-label">%Desc.</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label">Desc. %</label>
                         <label for="inputEmail3" class="col-sm-2 control-label">Vendedor</label>
                     </div>
                     <div id="totales_de_factura" class="row">
@@ -274,7 +277,7 @@
 --------------------------------------------------------------------------------------------------->
 
 <?php
-    setJs('main/js/buscador.js');
+   echo setJs('main/js/buscador.js');
 ?>
 
 <!--------------------------------------------------------------------------------------------------

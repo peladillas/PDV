@@ -44,7 +44,7 @@
                         setLinkMenu('articulos/actualizar_precios_lote', lang('actualizar_precios')),
                     );
 
-                    $dropdownMenuVentas = [
+                    $dropdownMenuVentas = array(
                         setLinkMenu('presupuestos/salida', lang('presupuesto')),
                         setLinkMenu('remito/remito', lang('remito')),
                         dividerMenu(),
@@ -52,29 +52,29 @@
                         setLinkMenu('remitos/remitos_abm', lang('remitos')),
                         setLinkMenu('devoluciones/devoluciones_abm', lang('devoluciones')),
                         setLinkMenu('vendedores/vendedores_abm', lang('vendedores')),
-                    ];
+                    );
 
-                    $dropdownMenuClientes = [
+                    $dropdownMenuClientes = array(
                         setLinkMenu('clientes/cliente_abm', lang('clientes')),
                         dividerMenu(),
                         setLinkMenu('clientes/tipo_abm', lang('tipo')),
                         setLinkMenu('clientes/condicion_iva_abm', lang('condicion_iva')),
-                    ];
+                    );
 
-                    $dropdownMenuEstadisticas = [
+                    $dropdownMenuEstadisticas = array(
                         setLinkMenu('estadisticas/mensual', lang('mensual')),
                         setLinkMenu('estadisticas/anual', lang('anual')),
                         setLinkMenu('estadisticas/resumen', lang('resumen')),
-                    ];
+                    );
 
-                    $dropdownMenuConfig = [
+                    $dropdownMenuConfig = array(
                         setLinkMenu('usuarios/usuario_abm', lang('usuarios')),
                         setLinkMenu('usuarios/roles_abm', lang('roles')),
                         dividerMenu(),
                         setLinkMenu('configs/impresion_abm', lang('impresion')),
                         setLinkMenu('configs/backup', lang('backup')),
                         setLinkMenu('configs/config_abm/edit/1', lang('config')),
-                    ];
+                    );
 
                     echo dropdownMenu(lang('catalogos'), $dropdownMenuCatalogos);
                     echo dropdownMenu(lang('ventas'), $dropdownMenuVentas);

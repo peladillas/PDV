@@ -24,7 +24,7 @@ class Presupuestos extends MY_Controller {
  **********************************************************************************/
 
     public function salida() {
-        $db = [];
+        $db = array();
         $this->view($db, $this->path.'/presupuestos_salida.php');
     }
 
