@@ -290,4 +290,16 @@ function setBigEmphasis($class, $value, $title, $icon, $link){
 
     return $html;
 }
+
+function setButton($value, $id){
+    $html = '<button type="button" id="'.$id.'" name="'.$id.'" class="btn btn-default">'.$value.'</button>';
+
+    return $html;
+}
+
+function setHiddenInput($id, $value = NULL){
+    $html = '<input type="hidden" name="'.$id.'" id="'.$id.'" value="'.$value.'"/>';
+
+    return $html;
+}
 ?>

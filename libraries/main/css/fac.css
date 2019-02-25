@@ -89,6 +89,14 @@ width: 25px;
 height: 25px;
 cursor: pointer;
 }
+.reglon_item_comprobante{
+    width: 98%;
+    position: relative;
+    float: left;
+    margin-left: 1%;
+    background: orange;
+    padding-left: 15px;
+}
 .cont_reglon_item_presup{
 width: 98%;
 position: relative;
