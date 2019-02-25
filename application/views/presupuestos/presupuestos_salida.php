@@ -27,7 +27,7 @@
             <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">
                 Comentario
             </button>
-            <button type="button" id="callToPrint" class="btn btn-success pull-right"" >
+            <button type="button" id="callToPrint" onclick="imprimir()" class="btn btn-success pull-right"" >
                 IMPRIMIR PRESUPUESTO
             </button>
         </div>
@@ -187,7 +187,7 @@
                 <div id="cont_busca">
                     <form  action='' method='post'>
                         <div class="row">
-                            <p>
+
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">BUSCAR:</label>
@@ -208,7 +208,7 @@
                                     <p><input onclick="carga(item_elegido)" type='button' id="carga_articulo" hidden="hidden"/></p>
                                 </div>
                             </div>
-                            </p>
+
                         </div>
                     </form>
                 </div>
@@ -236,21 +236,21 @@
                     </div>
                     <div id="totales_de_factura" class="row">
                         <div id="cont_fac" class="col-sm-3">
-                            <input type='number' class='form-control' disabled value='0' id='total_presupuesto'style="background-color: #5cb85c; color: #fff;"/>
+                            <input type='text' class='form-control' disabled value='0' id='total_presupuesto' style="background-color: #5cb85c; color: #fff;"/>
                         </div>
                         <div class="col-sm-2">
-                            <input type='number'  disabled value='0' id='total_iva' class='form-control'/>
+                            <input type='text'  disabled value='0' id='total_iva' class='form-control'/>
                         </div>
                         <div class="col-sm-2">
                             <input onchange="descuento()" type='number' autocomplete="off" value='0' disabled="disabled" id='descuento' min="0" max="100" class='form-control'/>
                         </div>
 
                         <div class="col-sm-2">
-                            <select name="vendedor" id="vendedor" class="form-control" autocomplete onchange="$('#quickfind').focus()">
+                            <select name="vendedor" id="vendedor" class="form-control"  onchange="$('#quickfind').focus()">
                                 <option value=0> LUCIANO </option><option value=1> MARTIN P</option><option value=2> HUGO M</option><option value=3> SEBASTIAN</option>                            </select>
                         </div>
                         <div class="col-sm-3">
-                            <button id="cont_boton" onclick="carga_presupuesto()" hidden="true" class="btn btn-primary form-control">CARGAR PRESUPUESTO</button>
+                            <button id="cont_boton" onclick="carga_presupuesto()"  class="btn btn-primary form-control">GUARDAR</button>
                         </div>
                     </div>
                     <hr>

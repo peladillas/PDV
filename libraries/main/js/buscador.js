@@ -365,6 +365,7 @@ function calcula_total(iva)
 	var temp	= 0;
 	
 	$(".px_reglon").each(function (index) {
+
 		temp = $(this).val();
 		total=parseFloat(total)+parseFloat(temp);
 	});
@@ -374,11 +375,10 @@ function calcula_total(iva)
 	
 	$('.px_item_reglon_iva').each(function (index) {		
 		  temp1 = $(this).val();
-		  total_iva_presupuesto = total_iva_presupuesto + parseFloat(temp1);
+		  total_iva_presupuesto +=parseFloat(temp1);
 	});
 	
-	total_iva_presupuesto=total_iva_presupuesto.toFixed(2);
-	$('#total_iva').val(total_iva_presupuesto);
+	$('#total_iva').val(total_iva_presupuesto.toFixed(2));
 	
 	if(total > 0) {
 		$('#descuento').prop( "disabled", false );
@@ -386,6 +386,8 @@ function calcula_total(iva)
 	} else {
 		$('#cont_boton').hide();
 	}
+
+
 }
 
 
@@ -474,11 +476,21 @@ function descuento()
 	
 	dto = parseFloat($('#descuento').val());
 	
-	if($('#total_presupuesto').val()>0){	
-		$('#total_presupuesto').val($('#total_presupuesto').val() * ( 1 - (dto / 100)));
-		$('#total_iva').val($('#total_iva').val() * ( 1 - (dto / 100)));
-	} else {
+	if($('#total_presupuesto').val()>0){
+
+		total_con_dto=$('#total_presupuesto').val() * ( 1 - (dto / 100));
+        $('#total_presupuesto').val(total_con_dto.toFixed(2));
+		porcentaje_iva=$('#total_iva').val() * ( 1 - (dto / 100));
+		$('#total_iva').val(porcentaje_iva.toFixed(2));
+
+		} else {
+
 		$('#descuento').prop( "disabled", true);
 		$('#descuento').val(0);
+
 	}
+}
+
+function imprimir() {
+    window.print();
 }
