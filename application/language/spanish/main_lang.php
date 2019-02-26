@@ -161,10 +161,8 @@ $lang['numero']				= 'Número';
     O
  --------------------------------------------------------------------------------*/ 
 
-$lang['olvidaste_pass']     = "Olvidaste tu pass?";
 $lang['opciones']           = "Opciones";
 $lang['orden']              = "Orden";
-$lang['origen']             = "Origen";
 
 /*--------------------------------------------------------------------------------  
     P
@@ -177,17 +175,12 @@ $lang['padre']              = "Padre";
 $lang['permiso']            = "Permiso";
 $lang['permisos']           = "Permisos";
 $lang['periodo']            = "Periodo";
-$lang['peso']               = "Peso";
 $lang['provincia']          = "Provincia";
 $lang['password']           = "Password";
 $lang['proveedor']          = "Proveedor";
 $lang['proveedores']        = "Proveedores";
-$lang['programa']           = "Programa";
 $lang['perfil']             = "Perfil";
-$lang['puesto']             = "Puesto";
-$lang['pedido']             = "Pedido";
 $lang['precio']          	= "Precio";
-$lang['plantilla']          = "Plantilla";
 $lang['presupuesto']		= 'Presupuesto';
 $lang['presupuestos']		= 'Presupuestos';
 
@@ -209,7 +202,6 @@ $lang['salir']              = "Salir";
 $lang['siguiente']          = "Siguiente";
 $lang['sub_categoria']		= "SubCategoria";
 $lang['seleccionar']		= 'Seleccionar';
-$lang['sumas']				= 'Sumas';
 $lang['si_devolucion']		= 'Este presupuesto tiene devoluciones asociadas';
 $lang['si_cliente_dev']		= 'Este cliente tiene devoluciones asociadas';
 $lang['select_registro']	= 'Seleccione una opción';
@@ -220,13 +212,10 @@ $lang['select_registro']	= 'Seleccione una opción';
 
 $lang['telefono']           = "Telefono";
 $lang['telefono_alt']       = "Telefono alternativo";
-$lang['turno']              = "Turno";
 $lang['tipo']               = "Tipo";
 $lang['total']              = "Total";
 $lang['totales']            = "Totales";
 $lang['total_nota_credito'] = "Total nota de credito";
-$lang['tiempo']             = "Tiempo";
-$lang['titulo']             = "Título";
 
 /*--------------------------------------------------------------------------------  
     U
@@ -234,19 +223,12 @@ $lang['titulo']             = "Título";
 
 $lang['usuario']            = "Usuario";
 $lang['usuarios']           = "usuarios";
-$lang['update_ok']          = "Registro modificado";
-$lang['ubicacion']          = "Ubicación";
-$lang['url']                = "URL";
 
 /*--------------------------------------------------------------------------------  
     V
  --------------------------------------------------------------------------------*/ 
 
-$lang['valor']              = "Valor";
 $lang['ver']                = "Ver";
-$lang['version']            = "Versión";
-$lang['validez']            = "Validez";
-$lang['vencimiento']        = "Vencimiento";
 $lang['vendedores']        	= "Vendedores";
 $lang['ventas']        		= "Ventas";
 
