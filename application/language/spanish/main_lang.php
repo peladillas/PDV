@@ -5,22 +5,16 @@
 
 $lang['admin']				= "Admin";
 $lang['actualizar_precios']	= "Actualizar Precios";
-$lang['acumulado']          = "Acumulado";
-$lang['activo']             = "Activo";
 $lang['accion']             = "Acción";
 $lang['actualizar']         = "Actualizar";
-$lang['adicionales']        = "Adicionales";
 $lang['agregar']            = "Agregar";
-$lang['agregar_per']        = "Agregar y permanecer";
 $lang['anterior']           = "Anterior";
 $lang['advertencia']        = "Advertencia";
 $lang['asunto_warning']     = "Asunto warning";
 $lang['asunto_danger']      = "Asunto danger";
 $lang['archivo']            = "Archivo";
-$lang['alias']				= 'Alias';
 $lang['articulo']   		= "Articulo";
 $lang['articulos']   		= "Articulos";
-$lang['altura']             = "Altura";
 $lang['apellido']           = "Apellido";
 $lang['apellidos']          = "Apellidos";
 $lang['a_cuenta']			= 'A cuenta';
@@ -30,51 +24,45 @@ $lang['anual']				= 'Anual';
     B
  --------------------------------------------------------------------------------*/ 
 
- $lang['buscar']             = "Buscar";
- $lang['backup']             = "Backup";
+$lang['buscar']             = "Buscar";
+$lang['backup']             = "Backup";
 
 /*--------------------------------------------------------------------------------  
     C
- --------------------------------------------------------------------------------*/ 
+ --------------------------------------------------------------------------------*/
 
+$lang['calle']              = "Calle";
+$lang['calle_numero']       = "Calle nro";
 $lang['cantidad']           = "Cantidad";
-$lang['carga']              = "Carga";
+$lang['catalogos']          = "Catalogos";
 $lang['categoria']          = "Categoria";
+$lang['cliente']            = "Cliente";
+$lang['clientes']			= 'Clientes';
 $lang['codigo']             = "Código";
-$lang['contraseña']         = "Contraseña";
-$lang['confirm_pass']       = "Confirmar Password";
+$lang['cod_post']           = "Código Postal";
+$lang['condicion_pago']     = "Condición pago";
+$lang['condicion_iva']     	= "Condición IVA";
+$lang['config']             = "Config";
 $lang['comentario']         = "Comentario";
 $lang['comentario_publico'] = "Comentario público";
 $lang['comentario_privado'] = "Comentario privado";
-$lang['cod_post']           = "Codigo Postal";
 $lang['cuit']               = "Cuit";
-$lang['cargando']           = "Cargando";
-$lang['calle']              = "Calle";
-$lang['calle_numero']       = "Calle nro";
-$lang['cliente']            = "Cliente";
-$lang['clientes']			= 'Clientes';
-$lang['condicion_pago']     = "Condición pago";
-$lang['condicion_iva']     	= "Condición IVA";
-$lang['contrato']           = "Contrato";
 $lang['cuotas']             = "Cuotas";
-$lang['config']             = "Config";
-$lang['catalogos']          = "Catalogos";
-
 
 /*--------------------------------------------------------------------------------  
     D
  --------------------------------------------------------------------------------*/ 
 
 $lang['datos']              = "Datos";
+$lang['date_add']           = "Fecha alta";
 $lang['dni']                = "DNI";
 $lang['detalle']            = "Detalle";
+$lang['descripcion']        = "Descripción";
+$lang['devoluciones']       = "Devoluciones";
 $lang['domicilio']          = "Domicilio";
-$lang['date_add']           = "Fecha alta";
 $lang['dia']                = "Día";
 $lang['dias']               = "Días";
-$lang['descripcion']        = "Descripción";
 $lang['direccion']          = "Dirección";
-$lang['devoluciones']       = "Devoluciones";
 
 /*--------------------------------------------------------------------------------  
     E
@@ -88,31 +76,20 @@ $lang['empresa']            = "Empresa";
 $lang['empresas']           = "Empresas";
 $lang['estadisticas']       = "Estadisticas";
 $lang['eliminar']           = "Eliminar";
-$lang['esquema']            = "Esquema";
-$lang['egreso']             = "Egreso";
-$lang['empleado']           = "Empleado";
-$lang['envio']              = "Envio";
 $lang['empresa_titulo']		= 'Bulones sarmiento';
-
 
 /*--------------------------------------------------------------------------------  
     F
- --------------------------------------------------------------------------------*/ 
+ --------------------------------------------------------------------------------*/
 
-$lang['fec_alta']           = "Fecha Alta";
-$lang['fecha_ingreso']      = "Fecha ingreso";
-$lang['fecha_egreso']       = "Fecha egreso";
-$lang['fecha_nacimiento']   = "Fecha nacimiento";
-$lang['fecha_entrega']      = "Fecha entrega";
+$lang['factura']            = "Factura";
 $lang['fecha']              = "Fecha";
+$lang['fecha_inicio']       = "Fecha inicio";
+$lang['fecha_vencimiento']  = "Fecha vencimiento";
 $lang['final']              = "Final";
 $lang['formato']            = "Formato";
 $lang['forma_juridica']     = "Forma juridica";
 $lang['forma_pago']         = "Forma pago";
-$lang['factura']            = "Factura";
-$lang['fecha_pago']         = "Fecha pago";
-$lang['fecha_inicio']       = "Fecha inicio";
-$lang['fecha_vencimiento']  = "Fecha vencimiento";
 
 /*--------------------------------------------------------------------------------  
     G
@@ -133,7 +110,6 @@ $lang['height']             = "height";
 $lang['icono']              = "Icono";
 $lang['id']                 = "ID";
 $lang['ingrese']            = "Ingrese";
-$lang['ingreso']            = "Ingreso";
 $lang['inicio']             = "Inicio";
 $lang['insert_ok']          = "Registro se agrego";
 $lang['informacion']        = "Información";
@@ -192,27 +168,26 @@ $lang['origen']             = "Origen";
 
 /*--------------------------------------------------------------------------------  
     P
- --------------------------------------------------------------------------------*/ 
+ --------------------------------------------------------------------------------*/
 
 $lang['pagar']              = "Pagar";
+$lang['pago']				= 'Pago';
 $lang['pais']               = "Pais";
 $lang['padre']              = "Padre";
-$lang['provincia']          = "Provincia";
-$lang['password']           = "Password";
-$lang['peligro']            = "Peligro";
 $lang['permiso']            = "Permiso";
 $lang['permisos']           = "Permisos";
 $lang['periodo']            = "Periodo";
+$lang['peso']               = "Peso";
+$lang['provincia']          = "Provincia";
+$lang['password']           = "Password";
+$lang['proveedor']          = "Proveedor";
 $lang['proveedores']        = "Proveedores";
 $lang['programa']           = "Programa";
-$lang['peso']               = "Peso";
-$lang['proveedor']          = "Proveedor";
 $lang['perfil']             = "Perfil";
 $lang['puesto']             = "Puesto";
 $lang['pedido']             = "Pedido";
 $lang['precio']          	= "Precio";
 $lang['plantilla']          = "Plantilla";
-$lang['pago']				= 'Pago';
 $lang['presupuesto']		= 'Presupuesto';
 $lang['presupuestos']		= 'Presupuestos';
 
@@ -220,8 +195,6 @@ $lang['presupuestos']		= 'Presupuestos';
     R
  --------------------------------------------------------------------------------*/ 
 
-$lang['recargas']           = "Recargas";
-$lang['responsable']        = "Responsable";
 $lang['remito']             = "Remito";
 $lang['remitos']            = "Remitos";
 $lang['registro']           = "Registro";
@@ -234,7 +207,6 @@ $lang['roles']           	= "Roles";
 
 $lang['salir']              = "Salir";
 $lang['siguiente']          = "Siguiente";
-$lang['sector']             = "Sector";
 $lang['sub_categoria']		= "SubCategoria";
 $lang['seleccionar']		= 'Seleccionar';
 $lang['sumas']				= 'Sumas';
@@ -246,8 +218,6 @@ $lang['select_registro']	= 'Seleccione una opción';
     T
  --------------------------------------------------------------------------------*/ 
 
-$lang['tablas']             = "Tablas";
-$lang['transacciones']		= 'Transacciones';
 $lang['telefono']           = "Telefono";
 $lang['telefono_alt']       = "Telefono alternativo";
 $lang['turno']              = "Turno";
@@ -276,7 +246,6 @@ $lang['valor']              = "Valor";
 $lang['ver']                = "Ver";
 $lang['version']            = "Versión";
 $lang['validez']            = "Validez";
-$lang['vencimiento_cuota']  = "Vencimiento cuota";
 $lang['vencimiento']        = "Vencimiento";
 $lang['vendedores']        	= "Vendedores";
 $lang['ventas']        		= "Ventas";
