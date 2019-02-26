@@ -1,21 +1,23 @@
 <script>
 $(document).ready(function() {
-    $('#table_actualizacion').DataTable();
+    $('#table_actualizacion').dataTable();
 });
 </script>
 
 <?php echo startContent(lang('actualizar_precios')); ?>
 
-<!--------------------------------------------------------------------
-----------------------------------------------------------------------
-            Formulario de busqueda
-----------------------------------------------------------------------
---------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+        Formulario de busqueda
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------->
 
 <?php echo form_open('articulos/actualizar_precios_lote');?>
 
     <div class="row">
-        <div for="proveedor" class="col-sm-2 control-label">Proveedor</div>
+        <div for="proveedor" class="col-sm-2 control-label"><?php echo lang('proveedor')?></div>
         <div class="col-sm-4">
             <select class="form-control chosen-select" name="proveedor" id="proveedor">
                 <option value=""></option>
@@ -24,8 +26,7 @@ $(document).ready(function() {
                 <?php } ?>
             </select>
         </div>
-
-        <div for="grupo" class="col-sm-2 control-label">Grupo</div>
+        <div for="grupo" class="col-sm-2 control-label"><?php echo lang('grupo')?></div>
         <div class="col-sm-4">
             <select class="form-control chosen-select" name="grupo" id="grupo">
                 <option value=""></option>
@@ -37,7 +38,7 @@ $(document).ready(function() {
     </div>
 
     <div class="row">
-        <div for="categoria" class="col-sm-2 control-label">Categoria</div>
+        <div for="categoria" class="col-sm-2 control-label"><?php echo lang('categoria')?></div>
         <div class="col-sm-4">
             <select class="form-control chosen-select" name="categoria" id="categoria">
                 <option value=""></option>
@@ -47,7 +48,7 @@ $(document).ready(function() {
             </select>
         </div>
 
-        <div for="sub-categoria" class="col-sm-2 control-label">Sub-categoria</div>
+        <div for="sub-categoria" class="col-sm-2 control-label"><?php echo lang('sub_categoria')?></div>
         <div class="col-sm-4">
             <select class="form-control chosen-select" name="sub-categoria" id="sub-categoria">
                 <option value=""></option>
@@ -59,13 +60,13 @@ $(document).ready(function() {
     </div>
 
     <div class="row">
-        <div for="variacion" class="col-sm-2 control-label">Variación</div>
+        <div for="variacion" class="col-sm-2 control-label"><?php echo lang('variacion')?></div>
         <div class="col-sm-4">
             <input type="number" class="form-control" placeholder="Variación" name="variacion" min="-100" max="100" step="0.1" id="slider" onchange="Positivo(this)" required>
         </div>
         <div for="variacion" class="col-sm-2 control-label"></div>
         <div class="col-sm-2">
-            <button type="submit" class="btn btn-primary form-control" title="Buscar" name="buscar" value="1" onsubmit="debeseleccionar()">Buscar</button>
+            <button type="submit" class="btn btn-primary form-control" title="Buscar" name="buscar" value="1" onsubmit="debeseleccionar()"><?php echo lang('buscar')?></button>
         </div>
         <div class="col-sm-2">
         </div>

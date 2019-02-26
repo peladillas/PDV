@@ -115,7 +115,8 @@ if($proveedores) {
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<p class="pull-right">Últimos 10 artículos vendidos</p> <?php echo $tablePresupuestos; ?>
+					<p class="pull-right">Últimos 10 artículos vendidos</p>
+                    <?php echo $tablePresupuestos; ?>
 				</div>
 			</div>	
 		</div>
@@ -158,7 +159,8 @@ if($proveedores) {
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<p class="pull-right">Cantidad de articulos por proveedor</p> <?php echo $tableProveedores; ?>
+					<p class="pull-right">Cantidad de articulos por proveedor</p>
+                    <?php echo $tableProveedores; ?>
 				</div>
 			</div>		
 		</div>
@@ -202,8 +204,7 @@ $(function () {
             name: 'Suma de montos',
             data: [
             <?php 
-            foreach ($mes as $key => $value)
-			{
+            foreach ($mes as $key => $value) {
 				echo   $value.",";
             }
 			?>
