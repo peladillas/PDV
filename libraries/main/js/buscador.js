@@ -112,7 +112,7 @@ function fin_presupuesto()
 	}
 
 
-	base_cargapresup = base_url + "index.php/presupuestos/cargaPresupuesto";
+	base_cargapresup = BASE_URL + "/presupuestos/cargaPresupuesto";
 	$.ajax({
 		url : 	base_cargapresup ,
 		type: 'POST',
@@ -149,7 +149,7 @@ function fin_presupuesto()
 $(function() 
 	{
 
-	var source_cli= base_url+"index.php/clientes/getClientes";
+	var source_cli= BASE_URL + "/clientes/getClientes";
 
 	$("#carga_cliente").autocomplete({
         source:  source_cli,
@@ -191,7 +191,7 @@ $(function()
 
 $(function() {
 
-    var source_art= base_url+"index.php/articulos/getArticulos";
+    var source_art= BASE_URL + "/articulos/getArticulos";
 
 	$("#quickfind").autocomplete({
 	    source:  source_art,

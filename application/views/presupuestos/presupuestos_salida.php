@@ -1,14 +1,4 @@
-<html lang="es">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta http-equiv="Content-Type"  content="application/json; charset=UTF-8"/>
-    <title>Bulones Sarmiento</title>
-
-</head>
 <body onload="inicializa()">
-<script>
-    const base_url = "<?php echo base_url();?>";
-</script>
 
 <!--------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -20,15 +10,15 @@
 <div class="container-fluid">
     <div class="panel panel-default">
         <div class="panel-heading">
-            MY NEGOCIO
+            <?php echo lang('empresa_titulo')?>
             <button class="btn btn-default btn-xs show_hide">
-                Cabecera
+                <?php echo lang('cabecera')?>
             </button>
             <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">
-                Comentario
+                <?php echo lang('comentario')?>
             </button>
             <button type="button" id="callToPrint" onclick="imprimir()" class="btn btn-success pull-right"" >
-                IMPRIMIR
+                <?php echo lang('imprimir')?>
             </button>
         </div>
 

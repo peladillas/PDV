@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type"  content="application/json; charset=UTF-8"/>
+    <title><?php echo lang('empresa_titulo')?></title>
     <?php
     if(isset($css_files)){
         foreach($css_files as $file) {
