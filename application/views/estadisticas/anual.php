@@ -75,6 +75,28 @@ if($anulaciones) {
 	}		
 }
 
+$tableArticulos = '';
+
+if($articulos) {
+    $cabecera = [
+        lang('cant'),
+        lang('descripcion'),
+    ];
+
+    $tableArticulos .= startTable();
+
+    foreach ($articulos as $row) {
+        $registro = [
+            $row->cantidad,
+            "<a title='Ver detalle' href='".base_url()."index.php/articulos/articulo_abm/read/".$row->id_articulo."'>".$row->descripcion."</a>",
+        ];
+
+        $tableArticulos .= setTableContent($registro);
+    }
+
+    $tableArticulos .= endTable();
+}
+
 echo startContent('Sumas totales de los montos de los presupuestos');
 ?>
 <div id="grafico" style="min-width: 310px; height: 400px; margin-bottom: 35px;"></div>
@@ -100,29 +122,7 @@ echo startContent('Sumas totales de los montos de los presupuestos');
             </div>
 
             <div class="panel-body">
-                <?php
-                if($articulos) {
-                    $cabecera = [
-                        lang('cant'),
-                        lang('descripcion'),
-                    ];
-
-                    $html = startTable();
-
-                    foreach ($articulos as $row) {
-                        $registro = [
-                            $row->cantidad,
-                            "<a title='Ver detalle' href='".base_url()."index.php/articulos/articulo_abm/read/".$row->id_articulo."'>".$row->descripcion."</a>",
-                        ];
-
-                        $html .= setTableContent($registro);
-                    }
-
-                    $html .= endTable();
-
-                    echo $html;
-                }
-                ?>
+                <?php echo $tableArticulos; ?>
             </div>
         </div>
     </div>

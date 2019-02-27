@@ -8,13 +8,15 @@ class Stock_model extends My_Model {
 			'id_articulo'
 		);
 	}
-	
-	/*
-	 * Funcion para el moviemiento de Stock, entrante y saliente
-	 * @param $registro con los datos del movimiento
-	 * @return $id_stock, si 0 error, si > 0 ok
-	 * */
-	
+
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+		Funcion para el moviemiento de Stock, entrante y saliente
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+
 	public function movimiento ($registro) {
 		// Guardamos el registro de movimiento de stock
 		if (isset($registro['id_articulo']) && isset($registro['id_comprobante']) && isset($registro['id_comprobante_tipo'])) {

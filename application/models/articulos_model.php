@@ -8,10 +8,15 @@ class Articulos_model extends MY_Model {
 			'id_articulo'
 		);
 	}
-	
-	/**
-	 * Para buscar artiuclos por descripcion o codigo proveedor
-	 * */
+
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+        Para buscar artiuclos por descripcion o codigo proveedor
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+
 	function getArticulos($filtro) {
 		$sql = "
 		SELECT 
@@ -28,9 +33,14 @@ class Articulos_model extends MY_Model {
 		return $this->getQuery($sql);
 	}
 
-    /**
-     * Para buscar artiuclos por descripcion o codigo proveedor
-     * */
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+		Para buscar artiuclos por descripcion o codigo proveedor
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+
 	function getArticulosWhitDetail($datos){
 		$sql = "
 		SELECT 	
@@ -77,9 +87,14 @@ class Articulos_model extends MY_Model {
 		$this->getQuery($sql);
 	}
 
-    /**
-     * Actualizacion de precios de los articulos
-     * */
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+		Actualizacion de precios de los articulos
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+
 	function updatePrecios($articulos, $datos = NULL) {
 		if ($datos == NULL) {
             $variacion = 0;
@@ -116,6 +131,5 @@ class Articulos_model extends MY_Model {
 			$this->db->update('articulo', $articulo_update, array('id_articulo' => $articulo->id_articulo));
 		}
 	}
-
 } 
 ?>

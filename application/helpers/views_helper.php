@@ -13,6 +13,14 @@ INDICE
 - setTableContent       Para agregar lineas en la tabla
 - setDatatables			Carga las opciones del datatables, traduccion.
 - setFormGroup          Carga los elementos del formulario
+- setLinkMenu           Carga un item de menu
+- dividerMenu           Carga divisor para menus
+- dropdownMenu          Conjunto de itemes para el menu
+- setIcon               Para cargar html de un icon
+- setEmphasis           Block de items para estadisticas
+- setBigEmphasis        Block grande de items para estadisticas
+- setButton             Carga de button
+- setHiddenInput        Input hidden
 
   -------------------------------------------------------------------------------*/
 
