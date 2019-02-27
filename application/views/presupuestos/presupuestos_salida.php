@@ -17,7 +17,7 @@
 --------------------------------------------------------------------------------------------------->
 
 
-<div class="container">
+<div class="container-fluid">
     <div class="panel panel-default">
         <div class="panel-heading">
             MY NEGOCIO
@@ -28,7 +28,7 @@
                 Comentario
             </button>
             <button type="button" id="callToPrint" onclick="imprimir()" class="btn btn-success pull-right"" >
-                IMPRIMIR PRESUPUESTO
+                IMPRIMIR
             </button>
         </div>
 
@@ -71,14 +71,14 @@
         <div class="panel-body slidingDiv">
             <div class="row">
                 <div class="form-group col-md-6 ">
-                    <label for="email" class="control-label">Buscar</label>
+                    <label for="email" class="control-label">CLIENTE</label>
                 </div>
 
                 <div class="form-group col-md-1">
                 </div>
 
                 <div class="cont_rotulo_presupuesto form-group col-md-2">
-                    <label class="col-sm-2 control-label">Fecha</label>
+                    <label class="col-sm-2 control-label">FECHA</label>
                 </div>
 
                 <div class="cont_rotulo_presupuesto form-group col-md-3">
@@ -98,13 +98,13 @@
 
             <div class="row" id="cont_datos_buscador">
                 <div class="form-group col-md-6 ">
-                    <input class="data_cliente form-control" type="text" id="carga_cliente" placeholder="Alias o Cuil/Cuit"/>
+                    <input class="data_cliente form-control" type="text" id="carga_cliente" placeholder="NOMBRE     /CUIT/CUIL"/>
                 </div>
 
                 <!-- Aca esta el button que estabas necesitando -->
                 <div class="form-group col-md-1">
                     <button onclick="limpia_cli()" class="btn btn-danger form-control" id="search" name="search">
-                        <?php echo setIcon('trash')?>
+                        <i class="fa fa-trash-o" ></i>
                     </button>
                 </div>
 
@@ -141,14 +141,14 @@
 
                 <div class="cont_rotulo_cliente col-md-3">
                     <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Nombre</label>
+                        <label for="email" class="col-sm-2 control-label">NOMBRE</label>
                         <input class="data_cliente form-control" disabled type="text" id="nombre_cliente" value=""/>
                     </div>
                 </div>
 
                 <div class="cont_rotulo_cliente col-md-3">
                     <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Apellido</label>
+                        <label for="email" class="col-sm-2 control-label">APELLIDO</label>
                         <input class="data_cliente form-control" disabled type="text" id="apellido_cliente" value=""/>
                     </div>
                 </div>
@@ -156,14 +156,14 @@
 
                 <div class="cont_rotulo_cliente col-md-3">
                     <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Domicilio</label>
+                        <label for="email" class="col-sm-2 control-label">DOMICILIO</label>
                         <input class="data_cliente form-control" disabled type="text" id="domicilio_cliente" value=""/>
                     </div>
                 </div>
 
                 <div class="cont_rotulo_cliente col-md-3">
                     <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Cuil/Cuit</label>
+                        <label for="email" class="col-sm-2 control-label">CUIT/CUIL</label>
                         <input class="data_cliente form-control" type="text" disabled id="cuit_cliente" value=""/>
                     </div>
                 </div>
@@ -190,21 +190,21 @@
 
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">BUSCAR:</label>
-                                    <input class="form-control" type='text' placeholder="Cod o Detalle" name='country' value='' id='quickfind'/>
+                                    <label class="col-sm-2 control-label">BUSCAR</label>
+                                    <input class="form-control" type='text' placeholder="CODIGO / DESCRIPCION" name='country' value='' id='quickfind'/>
                                     <!--<input class="form-control" type='text' placeholder="Busqueda x Codigo" name='country' value='' id='quickfind_cod'/>
                                 --></div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Precio</label>
-                                    <input class="form-control" id="px_unitario_rapido" readonly="true"/>
+                                    <label class="col-sm-2 control-label">PRECIO</label>
+                                    <input class="form-control text-center" id="px_unitario_rapido" readonly="true"/>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Cantidad:</label>
-                                    <input class="form-control" type='number' name='cantidad' value='1' id='cantidad'/>
+                                    <label class="col-sm-2 control-label">CANTIDAD</label>
+                                    <input class="form-control text-center" type='number' name='cantidad' value='1' id='cantidad'/>
                                     <p><input onclick="carga(item_elegido)" type='button' id="carga_articulo" hidden="hidden"/></p>
                                 </div>
                             </div>
@@ -229,10 +229,10 @@
             <div class="panel panel-success">
                 <div class="panel-body">
                     <div class="row">
-                        <label for="inputEmail3" class="col-sm-3 control-label">TOTAL</label>
-                        <label for="inputEmail3" class="col-sm-2 control-label">Total iva</label>
-                        <label for="inputEmail3" class="col-sm-2 control-label">Desc. %</label>
-                        <label for="inputEmail3" class="col-sm-2 control-label">Vendedor</label>
+                        <label for="inputEmail3" class="col-sm-3 control-label text-center">TOTAL</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label text-center">IVA</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label text-center">DESC % </label>
+                        <label for="inputEmail3" class="col-sm-2 control-label text-center">VENDEDOR</label>
                     </div>
                     <div id="totales_de_factura" class="row">
                         <div id="cont_fac" class="col-sm-3">
@@ -242,7 +242,7 @@
                             <input type='text'  disabled value='0' id='total_iva' class='form-control'/>
                         </div>
                         <div class="col-sm-2">
-                            <input onchange="descuento()" type='number' autocomplete="off" value='0' disabled="disabled" id='descuento' min="0" max="100" class='form-control'/>
+                            <input onchange="descuento()"  onClick="this.select();" type='number' autocomplete="off" value='0' disabled="disabled" id='descuento' min="0" max="100" class='form-control'/>
                         </div>
 
                         <div class="col-sm-2">
@@ -255,13 +255,13 @@
                     </div>
                     <hr>
                     <div id="reglon_factura" class="row">
-                        <span class="titulo_item_reglon col-sm-5"><b>DETALLE</b></span>
-                        <span class="titulo_cant_item_reglon col-sm-1"><b>CANT</b></span>
-                        <span class="titulo_px_item_reglon col-sm-1"><b>P.U </b></span>
-                        <span class="titulo_px_item_reglon col-sm-1"><b>IVA</b></span>
-                        <span class="col-sm-1"><b>% IVA</b></span>
-                        <span class="titulo_px_reglon col-sm-1"><b>SUBTOTAL</b></span>
-                        <span class="col-sm-1"></span>
+                        <div class="titulo_item_reglon col-sm-5  cabecera text-center"><b>DESCRIPCION</b></div>
+                        <div class="titulo_cant_item_reglon col-sm-1  cabecera text-center "><b>CANT</b></div>
+                        <div class="titulo_px_item_reglon col-sm-1  cabecera text-center"><b>P.U </b></div>
+                        <div class="titulo_px_item_reglon col-sm-1  cabecera text-center"><b>IVA</b></div>
+                        <div class="col-sm-1  cabecera text-center"><b>% IVA</b></div>
+                        <div class="titulo_px_reglon col-sm-2  cabecera text-center"><b>SUBTOTAL</b></div>
+                        <div class="col-sm-1 cabecera text-center"><b>ELIMINAR</b></div>
                     </div>
                 </div>
             </div>

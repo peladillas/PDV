@@ -6,11 +6,13 @@ class Presupuestos extends MY_Controller {
     public function __construct(){
         parent::__construct();
 
+        $this->load->model('config_model');
         $this->load->model('presupuestos_model');
         $this->load->model('config_impresion_model');
         $this->load->model('devoluciones_model');
         $this->load->model('renglon_presupuesto_model');
         $this->load->model('anulaciones_model');
+        $this->load->model('intereses_model');
 
         $this->load->library('grocery_CRUD');
     }
@@ -219,7 +221,7 @@ class Presupuestos extends MY_Controller {
                 'id_presupuesto' => $id
             );
 
-            $db['texto']				= getTexto();
+
             $db['presupuestos']			= $this->presupuestos_model->select($id);
             $db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
             $db['interes_presupuesto']	= $this->intereses_model->select($condicion);

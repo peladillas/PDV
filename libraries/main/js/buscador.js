@@ -293,19 +293,19 @@ function agrega_a_reglon(este,texto,cantidad, bandera,px_unitario_sin_iva,porc_i
 	if(bandera){
 		largo	= $('#reglon_factura').height();
 		
-		largo	= largo + 30;
+		largo	= largo += 30;
 
 		
 		$('#reglon_factura').height(largo);
 		$('#reglon_factura').append('<div id="cont_borra'+este+'" class="cont_reglon_item_presup row" style="padding-left: 15px"></div>');
 		$('#cont_borra'+este).append('<span class="item_reglon col-md-5" id='+este+' >'+texto+'</span>');
-		$('#cont_borra'+este).append('<input  disabled class="cant_item_reglon col-md-1" id=cant_'+este+' value='+cantidad+'>');
-		$('#cont_borra'+este).append('<input disabled  class="px_item_reglon col-md-1" id=px_'+este+' value='+px_unitario+'>');
-		$('#cont_borra'+este).append('<input disabled  class="porc_iva_item_reglon col-md-1" id=porc_iva_'+este+' value=%'+porc_iva+'>');
-		$('#cont_borra'+este).append('<input disabled  class="px_item_reglon_iva col-md-1" id=px_iva'+este+' value='+iva+'>');
-		$('#cont_borra'+este).append('<input disabled  class="px_reglon col-md-2" id=px_x_cant'+este+' value='+px_reglon+'>');
-		$('#cont_borra'+este).append('<div class="col-md-1" id=cont_botones'+este+'></div>');
-		$('#cont_botones'+este).append('<button title="Borrar linea" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_reglon('+este+')" id="ico_borra'+este+'"></button>');
+		$('#cont_borra'+este).append('<input disabled class="cant_item_reglon col-sm-1" id=cant_'+este+' value='+cantidad+'>');
+		$('#cont_borra'+este).append('<input disabled  class="px_item_reglon col-sm-1" id=px_'+este+' value='+px_unitario+'>');
+		$('#cont_borra'+este).append('<input disabled  class="porc_iva_item_reglon col-sm-1" id=porc_iva_'+este+' value=%'+porc_iva+'>');
+		$('#cont_borra'+este).append('<input disabled  class="px_item_reglon_iva col-sm-1" id=px_iva'+este+' value='+iva+'>');
+		$('#cont_borra'+este).append('<input disabled  class="px_reglon col-sm-2" id=px_x_cant'+este+' value='+px_reglon+'>');
+		$('#cont_borra'+este).append('<div class="col-sm-1 cont_botones" id=cont_botones'+este+'></div>');
+		$('#cont_botones'+este).append('<button  title="Borrar linea" class="ico_borra btn btn-danger btn-xs pull-left"  onclick="borra_reglon('+este+')" id="ico_borra'+este+'"></button>');
 		$('#ico_borra'+este).append('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>');
 		
 		reset_item();
@@ -348,6 +348,12 @@ function borra_reglon(a)
 	$('#reglon_factura').height(nuevo_largo);
 	calcula_total(),descuento();
 }
+
+
+
+
+
+
 
 
 /*---------------------------------------------------------------------------------
@@ -492,5 +498,11 @@ function descuento()
 }
 
 function imprimir() {
-    window.print();
+    if($('#total_presupuesto').val()>0) {
+        window.print();
+	} else {
+
+		alert("Presupuesto Vacio!");
+	}
+
 }

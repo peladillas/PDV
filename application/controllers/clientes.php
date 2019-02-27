@@ -146,6 +146,20 @@ class Clientes extends MY_Controller {
 
         $this->viewCrud($output);
 	}
+
+    function select($id_cliente) {
+        $datos = array(
+            'id_cliente'=> $id_cliente,
+        );
+
+        $db['clientes']			= $this->clientes_model->select($id_cliente);
+        $db['presupuestos']		= $this->presupuestos_model->getCliente($id_cliente);
+        $db['remitos']			= $this->remitos_model->select($datos);
+        $db['devoluciones']		= $this->devoluciones_model->getCliente($id_cliente, 'all');// Arreglar esta chamchada
+
+        $this->view($db, $this->path.'resumen');
+
+    }
 	
 	
 /**********************************************************************************
@@ -195,7 +209,7 @@ class Clientes extends MY_Controller {
             $row['cuil'] = stripslashes(utf8_encode($cliente->cuil));
             $row['celular'] = stripslashes(utf8_encode($cliente->celular));
 			$row['value'] = stripslashes(utf8_encode($value));
-            $row['id'] = (int)$cliente->id_cliente;
+            $row['id_cliente'] = (int)$cliente->id_cliente;
             $row_set[] = $row;
 		}
 
