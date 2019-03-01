@@ -23,7 +23,7 @@ $('#cancela_presupuesto').hide();
 ---------------------------------------------------------------------------------*/
 
 
-function limpia_cli()
+function limpia_cli() /Limpiar cliente
 {
 	$("#carga_cliente").prop( "disabled", false);
 	$('#apellido_cliente').val('');

@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PDV.iml" filepath="$PROJECT_DIR$/.idea/PDV.iml" />
-      <module fileurl="file://$USER_HOME$/git/sitrack-framework/.idea/sitrack-framework.iml" filepath="$USER_HOME$/git/sitrack-framework/.idea/sitrack-framework.iml" />
-      <module fileurl="file://$USER_HOME$/git/sitrack-site5/.idea/sitrack-site5.iml" filepath="$USER_HOME$/git/sitrack-site5/.idea/sitrack-site5.iml" />
     </modules>
   </component>
 </project>
