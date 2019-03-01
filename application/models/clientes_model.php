@@ -17,7 +17,7 @@ class Clientes_model extends My_Model {
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
 
-	function getClientes($filtro) {
+	function getFilters($filtro) {
 		$sql = "
 		SELECT 
 				*
@@ -31,7 +31,27 @@ class Clientes_model extends My_Model {
 		LIMIT 
 			20 ";
 
-        return $this->getQuery($sql);
+        $registros = $this->getQuery($sql);
+
+        $row_set = [];
+
+        foreach ($registros as $cliente) {
+
+            $value = ($cliente->apellido != '' ? $cliente->apellido.' ' : '');
+            $value .= ($cliente->nombre != '' ? $cliente->nombre.' ' : '');
+            $value .= ($cliente->alias != '' ? ','.$cliente->alias : '');
+
+            $row['apellido'] = stripslashes(utf8_encode($cliente->apellido));
+            $row['nombre'] = stripslashes(utf8_encode($cliente->nombre));
+            $row['direccion'] = stripslashes(utf8_encode($cliente->direccion));
+            $row['cuil'] = stripslashes(utf8_encode($cliente->cuil));
+            $row['celular'] = stripslashes(utf8_encode($cliente->celular));
+            $row['value'] = stripslashes(utf8_encode($value));
+            $row['id_cliente'] = (int)$cliente->id_cliente;
+            $row_set[] = $row;
+        }
+
+       return $row_set;
 	}
 
 

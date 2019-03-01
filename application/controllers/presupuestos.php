@@ -4,7 +4,7 @@ class Presupuestos extends MY_Controller {
     protected $path = 'presupuestos/';
 
     public function __construct(){
-        parent::__construct();
+        parent::__construct($this->path);
 
         $this->load->model('config_model');
         $this->load->model('presupuestos_model');

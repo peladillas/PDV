@@ -5,7 +5,7 @@ class Estadisticas extends My_Controller {
     protected $path = 'estadisticas/';
 
 	function __construct() {
-		parent::__construct();
+		parent::__construct($this->path);
 	   	
         $this->load->model('presupuestos_model');  
 		$this->load->model('remitos_model');  

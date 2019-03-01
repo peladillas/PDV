@@ -5,7 +5,7 @@ class Home extends My_Controller {
     protected $path = 'home/';
 
 	function __construct() {
-		parent::__construct();
+		parent::__construct($this->path);
 	   	
 		$this->load->model('remitos_model');
 		$this->load->model('articulos_model');

@@ -17,7 +17,7 @@ class Articulos_model extends MY_Model {
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
 
-	function getArticulos($filtro) {
+	function getFilters($filtro) {
 		$sql = "
 		SELECT 
 			*

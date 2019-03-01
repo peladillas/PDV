@@ -5,7 +5,7 @@ class Vendedores extends My_Controller {
     protected $path = 'vendedores/';
 
 	public function __construct() {
-		parent::__construct();
+		parent::__construct($this->path);
 
         $this->load->model('vendedores_model');
 

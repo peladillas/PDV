@@ -5,7 +5,7 @@ class Usuarios extends MY_Controller {
     protected $path = 'usuarios/';
 
 	public function __construct() {
-		parent::__construct();
+		parent::__construct($this->path);
 
         $this->load->model('usuarios_model');
 

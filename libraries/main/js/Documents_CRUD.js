@@ -1,22 +1,22 @@
 $(function () {
 
-    inputCliente.focus();
+    inputHeadEntity.focus();
 
     /*---------------------------------------------------------------------------------
     -----------------------------------------------------------------------------------
 
-            Busqueda de cliente
+            Busqueda de Entity
 
     -----------------------------------------------------------------------------------
     ---------------------------------------------------------------------------------*/
 
-    inputCliente.autocomplete({
-        source: BASE_URL + "/clientes/getClientes",
+    inputHeadEntity.autocomplete({
+        source: BASE_URL + "/"+Entity+"/getFilters",
         minLength: 2,
         select: function (event, ui) {
-            var id_cliente = ui.item.id;
-            inputIdCliente.val(id_cliente);
-            btnSeleccionar.click();
+            var id_entity = ui.item.id;
+            inputHeadIdEntity.val(id_entity);
+            btnSelect.click();
         },
 
         close: function (event, ui) {
@@ -26,18 +26,18 @@ $(function () {
     /*---------------------------------------------------------------------------------
     -----------------------------------------------------------------------------------
 
-            Cargar cliente
+            Cargar Entity
 
     -----------------------------------------------------------------------------------
     ---------------------------------------------------------------------------------*/
 
-    btnSeleccionar.click(function () {
-        if (inputIdCliente.val() == '') {
-            alert("Seleccione cliente");
-            inputCliente.val("").focus();
+    btnSelect.click(function () {
+        if (inputHeadIdEntity.val() == '') {
+            alert("Seleccione "+Entity);
+            inputHeadEntity.val("").focus();
         } else {
             $("#form-detail").toggleClass('hide');
-            inputArticulo.focus();
+            inputDetailItem.focus();
         }
 
     });
@@ -45,32 +45,32 @@ $(function () {
     /*---------------------------------------------------------------------------------
     -----------------------------------------------------------------------------------
 
-            Busqueda de articulo y cambio de foco cantidad
+            Busqueda de Detail y cambio de foco cantidad
 
     -----------------------------------------------------------------------------------
     ---------------------------------------------------------------------------------*/
 
-    inputArticulo.autocomplete({
-        source: BASE_URL + "/articulos/getArticulos",
+    inputDetailItem.autocomplete({
+        source: BASE_URL + "/"+Detail+"/getFilters",
         minLength: 2,
         select: function (event, ui) {
-            id_articulo = ui.item.id;
+            id_detail = ui.item.id;
             porc_iva_art = ui.item.iva;
             item_elegido = ui.item;
             px_unitario = ui.item.precio;
 
-            inputPrecio.val((px_unitario * ((porc_iva_art / 100) + 1)).toFixed(2));
-            inputIdArticulo.val(id_articulo);
-            inputCantidad.focus();
+            inputPrice.val((px_unitario * ((porc_iva_art / 100) + 1)).toFixed(2));
+            inputIdDetail.val(id_detail);
+            inputDetailQuantity.focus();
         },
 
         close: function (event, ui) {
         }
     });
 
-    inputCantidad.keypress(function (event) {
+    inputDetailQuantity.keypress(function (event) {
         if (event.which == 13) {
-            inputPrecio.focus();
+            inputPrice.focus();
         }
     });
 
@@ -82,15 +82,15 @@ $(function () {
     -----------------------------------------------------------------------------------
     ---------------------------------------------------------------------------------*/
 
-    inputPrecio.focus(function (event) {
-        inputTotalLine.val(inputCantidad.val() * inputPrecio.val());
+    inputPrice.focus(function (event) {
+        inputTotalLine.val(inputDetailQuantity.val() * inputPrice.val());
     });
 
-    inputPrecio.keypress(function (event) {
+    inputPrice.keypress(function (event) {
         if (event.which == 13) {
-            btnSeleccionarLine.click();
+            btnSelecctLine.click();
         } else {
-            inputTotalLine.val(inputCantidad.val() * inputPrecio.val());
+            inputTotalLine.val(inputDetailQuantity.val() * inputPrice.val());
         }
     });
 
@@ -102,48 +102,48 @@ $(function () {
     -----------------------------------------------------------------------------------
     ---------------------------------------------------------------------------------*/
 
-    btnSeleccionarLine.click(function () {
-        if (inputIdArticulo.val() == '') {
-            alert("Seleccione articulo");
-            inputArticulo.val("").focus();
-        } else if (inputCantidad.val() == '') {
+    btnSelecctLine.click(function () {
+        if (inputIdDetail.val() == '') {
+            alert("Seleccione "+Detail);
+            inputDetailItem.val("").focus();
+        } else if (inputDetailQuantity.val() == '') {
             alert("Seleccione cantidad");
-            inputCantidad.val("").focus();
+            inputDetailQuantity.val("").focus();
         } else {
             divDetail.removeClass('hide');
-            var id_articulo = inputIdArticulo.val();
-            if ($('#cont_borra' + id_articulo).length) {
-                borra_reglon(id_articulo);
+            var id_detail = inputIdDetail.val();
+            if ($('#cont_borra' + id_detail).length) {
+                borra_reglon(id_detail);
             } else {
                 var largo = divDetail.height();
                 largo = largo + 30;
             }
 
-            var texto = inputArticulo.val();
-            var cantidad = inputCantidad.val();
-            var precio = inputPrecio.val();
+            var texto = inputDetailItem.val();
+            var cantidad = inputDetailQuantity.val();
+            var precio = inputPrice.val();
             var total = inputTotalLine.val();
-            var div_id = '#cont_borra' + id_articulo;
+            var div_id = '#cont_borra' + id_detail;
 
             divDetail.height(largo);
-            divDetail.append('<div class="reglon_item_comprobante row" id="cont_borra' + id_articulo + '"></div>');
+            divDetail.append('<div class="reglon_item_comprobante row" id="cont_borra' + id_detail + '"></div>');
 
-            $(div_id).append('<span class="col-md-5" id=' + id_articulo + ' >' + texto + '</span>');
-            $(div_id).append('<input disabled class="col-md-1" id="detail_cantidad_' + id_articulo + '" value=' + cantidad + '>');
-            $(div_id).append('<input disabled class="col-md-1" id="detail_precio_' + id_articulo + '" value=' + precio + '>');
-            $(div_id).append('<input disabled class="col-md-1 detail_total" id="detail_total_' + id_articulo + '" value=' + total + '>');
-            $(div_id).append('<div class="col-md-1" id=cont_botones' + id_articulo + '>');
+            $(div_id).append('<span class="col-md-5" id=' + id_detail + ' >' + texto + '</span>');
+            $(div_id).append('<input disabled class="col-md-1" id="detail_cantidad_' + id_detail + '" value=' + cantidad + '>');
+            $(div_id).append('<input disabled class="col-md-1" id="detail_precio_' + id_detail + '" value=' + precio + '>');
+            $(div_id).append('<input disabled class="col-md-1 detail_total" id="detail_total_' + id_detail + '" value=' + total + '>');
+            $(div_id).append('<div class="col-md-1" id=cont_botones' + id_detail + '>');
 
-            $('#cont_botones' + id_articulo).append('<button title="Borrar linea" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_reglon(' + div_id + ')" id="ico_borra' + id_articulo + '"></button>');
-            $('#ico_borra' + id_articulo).append('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>');
+            $('#cont_botones' + id_detail).append('<button title="Borrar linea" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_reglon(' + div_id + ')" id="ico_borra' + id_detail + '"></button>');
+            $('#ico_borra' + id_detail).append('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>');
             $(div_id).append('</div></div>');
 
-            inputIdArticulo.val("");
-            inputArticulo.val("");
-            inputCantidad.val("");
-            inputPrecio.val("");
+            inputIdDetail.val("");
+            inputDetailItem.val("");
+            inputDetailQuantity.val("");
+            inputPrice.val("");
             inputTotalLine.val("");
-            inputArticulo.focus();
+            inputDetailItem.focus();
             calcula_total();
         }
     });
@@ -173,9 +173,9 @@ $(function () {
             items.push(detail);
         });
 
-        head.client = inputCliente.val();
-        head.date = inputFecha.val();
-        head.total = inputTotal.val();
+        head.client = inputHeadEntity.val();
+        head.date = inputHeadDate.val();
+        head.total = inputHeadTotal.val();
 
         console.log(head);
         console.log(items);
@@ -232,5 +232,5 @@ function calcula_total() {
         total = parseFloat(total) + parseFloat(temp);
     });
 
-    inputTotal.val(total.toFixed(2));
+    inputHeadTotal.val(total.toFixed(2));
 }

@@ -5,7 +5,7 @@ class Proveedores extends MY_Controller {
     protected $path = 'proveedores/';
 
 	public function __construct(){
-		parent::__construct();
+		parent::__construct($this->path);
 
 		$this->load->model('proveedores_model');
 		$this->load->model('articulos_model');

@@ -1,7 +1,11 @@
 <?php
 class MY_Controller extends CI_Controller {
 
-	public function __construct() {
+    private $controller;
+
+	public function __construct($_controller) {
+	    $this->controller = $_controller;
+
 		parent::__construct();
 	}
 
@@ -131,5 +135,24 @@ class MY_Controller extends CI_Controller {
 			
     	return $this->db->update($_COOKIE['tabla'], array('id_estado' => 2), array($_COOKIE['id'] => $id));
 	}
+
+/**********************************************************************************
+ **********************************************************************************
+ *
+ * 				Funciones logs
+ *
+ * ********************************************************************************
+ **********************************************************************************/
+
+    public function getFilters() {
+        $filtro = $this->input->get('term', TRUE);
+
+        $controller = $this->controller;
+        $controller = substr($controller, 0, -1);
+
+        $registros = $this->model_{$controller}->getFilters($filtro);
+
+        echo json_encode($registros);
+    }
 
 }
