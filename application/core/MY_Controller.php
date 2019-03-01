@@ -147,10 +147,16 @@ class MY_Controller extends CI_Controller {
     public function getFilters() {
         $filtro = $this->input->get('term', TRUE);
 
-        $controller = $this->controller;
-        $controller = substr($controller, 0, -1);
 
-        $registros = $this->model_{$controller}->getFilters($filtro);
+       ;
+
+        $this->load->model('documents_CRUD_Model');
+        if( $this->controller == 'Articulos') {
+            $registros = $this->documents_CRUD_Model->getArticulos($filtro);
+        } else {
+            $registros = $this->documents_CRUD_Model->getClientes($filtro);
+        }
+
 
         echo json_encode($registros);
     }

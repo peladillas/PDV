@@ -5,7 +5,7 @@ class Documents_CRUD {
     private $headDate = 'fecha';
     private $headEntity = 'cliente';
     private $headIdEntity = 'id_cliente';
-    private $headTitleEntity = 'id_cliente';
+
 
     private $headTotal = 'monto';
     private $headDiscount = 'descuento';
@@ -35,16 +35,19 @@ class Documents_CRUD {
 
     private $html;
 
+    function __construct() {
+        $this->set_default_Model();
+    }
+
 
     public function set_table_head($tableName, $headIdTable){
         $this->headTable = $tableName;
         $this->headIdTable = $headIdTable;
     }
 
-    public function set_entity($fieldName, $relatedTable, $relatedTitleField){
+    public function set_entity($fieldName, $relatedTable){
         $this->headIdEntity = $fieldName;
         $this->headEntity = $relatedTable;
-        $this->headTitleEntity = $relatedTitleField;
 
         if($this->headEntity == 'cliente') {
             $this->headEntityController = 'Clientes';
@@ -127,7 +130,6 @@ class Documents_CRUD {
         $this->html->head .= 'var functionInsert = "'.$this->headTable.'/insert";';
 
         /* Detail */
-
         $this->html->head .= 'var inputDetailItem =$("#'.$this->detailItem.'");';
         $this->html->head .= 'var inputIdDetailItem =$("#'.$this->detailIdItem.'");';
         $this->html->head .= 'var inputPrice =$("#'.$this->detailPrice.'");';
@@ -143,5 +145,12 @@ class Documents_CRUD {
         $this->html->head .= '</script>';
 
         $this->html->head = $this->setJs('main/js/Documents_CRUD.js');
+    }
+
+    protected function set_default_Model() {
+        $ci = &get_instance();
+        $ci->load->model('documents_CRUD_Model');
+
+        $this->basic_model = new documents_CRUD_Model();
     }
 }
