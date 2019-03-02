@@ -1,13 +1,12 @@
 <?php
 class Documents_CRUD {
-    private $headTable = 'presupuesto';
-    private $headIdTable = 'id_presupuesto';
-    private $headDate = 'fecha';
-    private $headEntity = 'cliente';
-    private $headIdEntity = 'id_cliente';
-
-
-    private $headTotal = 'monto';
+    private $headTable;
+    private $headIdTable;
+    private $headEntity;
+    private $headIdEntity;
+	
+	private $headDate = 'fecha';
+   	private $headTotal = 'monto';
     private $headDiscount = 'descuento';
     private $headInteres = 'interes';
     private $headMethodPayment = 'id_tipo';
@@ -17,7 +16,7 @@ class Documents_CRUD {
 
     private $headResponsable = 'id_vendedor';
 
-    private $detailTable = 'reglon_presupuesto';
+    private $detailTable;
     private $detailItem = 'articulo';
     private $detailIdItem = 'id_articulo';
     private $detailQuantity = 'cantidad';
@@ -41,11 +40,27 @@ class Documents_CRUD {
         $this->set_default_Model();
     }
 
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+        Cargas iniciales. Obligatorias
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
 
     public function set_table_head($tableName, $headIdTable){
         $this->headTable = $tableName;
         $this->headIdTable = $headIdTable;
     }
+	
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+        Edentidad que esta relacionada con el documento, 
+ * puede ser cliente, proveedor o nulo (caso de moviemientos de stock)
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
 
     public function set_entity($fieldName, $relatedTable){
         $this->headIdEntity = $fieldName;
@@ -55,6 +70,15 @@ class Documents_CRUD {
             $this->headEntityController = 'Clientes';
         }
     }
+	
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+        Estos campos si se nombran de otra manera, 
+ * 	con estos metodos permite cambiar los que vienen por default
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
 
     public function set_date($date){
         $this->headDate = $date;
@@ -63,6 +87,26 @@ class Documents_CRUD {
     public function set_total($total){
         $this->headTotal = $total;
     }
+	
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+       Carga del detalle del comprobante, esto es obligatorio
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+	
+	public function set_table_detail($tableName){
+		$this->detailTable = $tableName;
+	}
+	
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+       Carga el form gruop de un imput
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
 
     public function setFormGroup($name, $value = NULL, $tags = NULL){
         $value = ($value == NULL ? '' : $value);
@@ -136,7 +180,6 @@ class Documents_CRUD {
 
 
     public function defineDivs(){
-
         $this->html .= '<script>';
 
         /* Head */
@@ -180,8 +223,6 @@ class Documents_CRUD {
 		$this->html_detail .= $this->setFormGroup($this->detailTotal);
 		$this->html_detail .= $this->setButton($this->btnSelectDetail, $this->btnSelectDetail);
 		$this->html_detail .= $this->setHiddenInput($this->detailIdItem);
-		
-		
 	}
 
     protected function set_default_Model() {
