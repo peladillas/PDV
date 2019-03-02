@@ -52,8 +52,21 @@ class documents_CRUD_Model  extends CI_Model  {
 			id_estado = 1 
 		LIMIT 
 			20";
-
-        return $this->getQuery($sql);
+			
+		$registros = $this->getQuery($sql);
+			
+		$row_set = array();
+		if($registros){
+			foreach ($registros as $articulo) {
+				$row['value']	= stripslashes(utf8_encode($articulo->descripcion));
+				$row['id']		= (int)$articulo->id_articulo;
+				$row['iva']		= (float)$articulo->iva;
+				$row['precio']	= (float)$articulo->precio_venta_sin_iva_con_imp;
+				$row_set[]		= $row;
+			}
+		}
+		
+		return $row_set;
     }
 
 /*---------------------------------------------------------------------------------
@@ -80,7 +93,7 @@ class documents_CRUD_Model  extends CI_Model  {
 
         $registros = $this->getQuery($sql);
 
-        $row_set = [];
+        $row_set = array();
 
         foreach ($registros as $cliente) {
 
@@ -94,7 +107,7 @@ class documents_CRUD_Model  extends CI_Model  {
             $row['cuil'] = stripslashes(utf8_encode($cliente->cuil));
             $row['celular'] = stripslashes(utf8_encode($cliente->celular));
             $row['value'] = stripslashes(utf8_encode($value));
-            $row['id_cliente'] = (int)$cliente->id_cliente;
+            $row['id'] = (int)$cliente->id_cliente;
             $row_set[] = $row;
         }
 

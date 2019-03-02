@@ -283,4 +283,22 @@ class Presupuestos extends MY_Controller {
 
         $this->view($db, $this->path.'anular_presupuestos');
     }
+
+
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+		Para probar las nuevas librerias
+ 
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+
+    function prueba_crud() {
+    	$this->load->library('documents_CRUD');
+		
+		$documents = new documents_CRUD();
+		
+		$db['documents'] = $documents;
+		$this->view($db, $this->path.'prueba_crud');
+    }
 }

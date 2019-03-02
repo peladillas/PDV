@@ -32,8 +32,10 @@ class Documents_CRUD {
 
     private $headEntityController = 'Clientes';
     private $headDetailController = 'Articulos';
-
+	
+	private $divDetail = 'presupuesto_detalle';
     private $html;
+	private $html_detail;
 
     function __construct() {
         $this->set_default_Model();
@@ -100,52 +102,87 @@ class Documents_CRUD {
         return '<script src="'.$src.'" charset="utf-8" type="text/javascript"></script>';
     }
 
+	public function get_head(){
+		$this->set_html_heat();
+		return $this->html;
+	}
+
 
     public function set_html_heat(){
-        $this->html->head = $this->setFormGroup($this->headEntity, '', 'autocomplete="off"');
-        $this->html->head .= $this->setFormGroup($this->headDate,  date('d-m-Y'), 'disabled');
-        $this->html->head .= $this->setButton($this->btnSelect, $this->btnSelect);
-        $this->html->head .= $this->setFormGroup($this->headTotal, 0, 'disabled');
-        $this->html->head .= $this->setButton($this->btnSafe, $this->headTotal);
-        $this->html->head .= $this->setHiddenInput($this->headIdEntity);
+    	$this->html .= $this->setJs('main/js/Documents_CRUD.js');
+    	
+		$this->html .= '<div id="form-heading">';
+        $this->html .= $this->setFormGroup($this->headEntity, '', 'autocomplete="off"');
+        $this->html .= $this->setFormGroup($this->headDate,  date('d-m-Y'), 'disabled');
+        $this->html .= $this->setButton($this->btnSelect, $this->btnSelect);
+        $this->html .= $this->setFormGroup($this->headTotal, 0, 'disabled');
+        //$this->html .= $this->setButton($this->btnSafe, $this->headTotal);
+        $this->html .= $this->setHiddenInput($this->headIdEntity);
+		$this->html .= '</div><hr>';
+		
+		$this->html .= '<div id="form-detail" class="hide">';
+		$this->html .= $this->setFormGroup($this->detailItem, '', 'autocomplete="off"');
+		$this->html .= $this->setFormGroup($this->detailQuantity);
+		$this->html .= $this->setFormGroup($this->detailPrice);
+		$this->html .= $this->setFormGroup($this->detailTotal);
+		$this->html .= $this->setButton($this->btnSelectDetail, $this->btnSelectDetail);
+		$this->html .= $this->setHiddenInput($this->detailIdItem);
+		$this->html .= '</div>';
+		
+		$this->html .= '<div id="'.$this->divDetail.'" ></div>';
 
-        $this->defineDivs();
-
-        return $this->html->head;
+        $this->defineDivs();	
     }
 
 
     public function defineDivs(){
 
-        $this->html->head .= '<script>';
+        $this->html .= '<script>';
 
         /* Head */
-        $this->html->head .= 'var inputHeadEntity = $("#'.$this->headEntity.'");';
-        $this->html->head .= 'var inputHeadIdEntity = $("#'.$this->headIdEntity.'");';
-        $this->html->head .= 'var inputHeadDate = $("#'.$this->headDate.'");';
-        $this->html->head .= 'var inputHeadTotal = $("#'.$this->headTotal.'");';
+        $this->html .= 'var inputHeadEntity = $("#'.$this->headEntity.'");';
+        $this->html .= 'var inputHeadIdEntity = $("#'.$this->headIdEntity.'");';
+        $this->html .= 'var inputHeadDate = $("#'.$this->headDate.'");';
+        $this->html .= 'var inputHeadTotal = $("#'.$this->headTotal.'");';
 
-        $this->html->head .= 'var btnSelect = $("#'.$this->btnSelect.'");';
-        $this->html->head .= 'var btnSave = $("#'.$this->btnSafe.'");';
-        $this->html->head .= 'var functionInsert = "'.$this->headTable.'/insert";';
+        $this->html .= 'var btnSelect = $("#'.$this->btnSelect.'");';
+        $this->html .= 'var btnSave = $("#'.$this->btnSafe.'");';
+       
 
         /* Detail */
-        $this->html->head .= 'var inputDetailItem =$("#'.$this->detailItem.'");';
-        $this->html->head .= 'var inputIdDetailItem =$("#'.$this->detailIdItem.'");';
-        $this->html->head .= 'var inputPrice =$("#'.$this->detailPrice.'");';
-        $this->html->head .= 'var inputDetailQuantity =$("#'.$this->detailQuantity.'");';
-        $this->html->head .= 'var inputTotalLine =$("#'.$this->detailTotal.'");';
+        $this->html .= 'var inputDetailItem =$("#'.$this->detailItem.'");';
+        $this->html .= 'var inputIdDetail =$("#'.$this->detailIdItem.'");';
+        $this->html .= 'var inputPrice =$("#'.$this->detailPrice.'");';
+        $this->html .= 'var inputDetailQuantity =$("#'.$this->detailQuantity.'");';
+        $this->html .= 'var inputTotalLine =$("#'.$this->detailTotal.'");';
 
-        $this->html->head .= 'var btnSelecctLine =$("#'.$this->btnSelectDetail.'");';
+        $this->html .= 'var btnSelecctLine =$("#'.$this->btnSelectDetail.'");';
 
-        $this->html->head .= 'var divDetail = $("#note-detail");';
-        $this->html->head .= 'var Entity = "'.$this->headEntityController.'"; ';
-        $this->html->head .= 'var Detail = "'.$this->headDetailController.'"; ';
+        $this->html .= 'var divDetail = $("#'.$this->divDetail.'");';
+        $this->html .= 'var Entity = "'.$this->headEntityController.'"; ';
+        $this->html .= 'var Detail = "'.$this->headDetailController.'"; ';
+		
+		$this->html .= 'var functionInsert = "'.$this->headTable.'/insert";';
 
-        $this->html->head .= '</script>';
-
-        $this->html->head = $this->setJs('main/js/Documents_CRUD.js');
+        $this->html .= '</script>';
     }
+
+	public function get_html_detail(){
+		$this->set_html_detail();
+		return $this->html_detail;
+	}
+
+
+	public function set_html_detail(){
+		$this->html_detail = $this->setFormGroup($this->detailItem, '', 'autocomplete="off"');
+		$this->html_detail .= $this->setFormGroup($this->detailQuantity);
+		$this->html_detail .= $this->setFormGroup($this->detailPrice);
+		$this->html_detail .= $this->setFormGroup($this->detailTotal);
+		$this->html_detail .= $this->setButton($this->btnSelectDetail, $this->btnSelectDetail);
+		$this->html_detail .= $this->setHiddenInput($this->detailIdItem);
+		
+		
+	}
 
     protected function set_default_Model() {
         $ci = &get_instance();

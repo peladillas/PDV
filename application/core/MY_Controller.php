@@ -151,7 +151,7 @@ class MY_Controller extends CI_Controller {
        ;
 
         $this->load->model('documents_CRUD_Model');
-        if( $this->controller == 'Articulos') {
+        if( $this->controller == 'articulos/') {
             $registros = $this->documents_CRUD_Model->getArticulos($filtro);
         } else {
             $registros = $this->documents_CRUD_Model->getClientes($filtro);
