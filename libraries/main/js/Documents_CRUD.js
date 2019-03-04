@@ -103,6 +103,7 @@ $(function () {
     ---------------------------------------------------------------------------------*/
 
     btnSelecctLine.click(function () {
+    	
         if (inputIdDetail.val() == '') {
             alert("Seleccione "+Detail);
             inputDetailItem.val("").focus();
@@ -134,7 +135,7 @@ $(function () {
             $(div_id).append('<input disabled class="col-md-1 detail_total" id="detail_total_' + id_detail + '" value=' + total + '>');
             $(div_id).append('<div class="col-md-1" id=cont_botones' + id_detail + '>');
 
-            $('#cont_botones' + id_detail).append('<button title="Borrar linea" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_reglon(' + div_id + ')" id="ico_borra' + id_detail + '"></button>');
+          	$('#cont_botones' + id_detail).append('<button type="button" id="ico_borra' + id_detail + '" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_reglon(' + id_detail + ')" ></button>');
             $('#ico_borra' + id_detail).append('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>');
             $(div_id).append('</div></div>');
 
@@ -146,6 +147,7 @@ $(function () {
             inputDetailItem.focus();
             calcula_total();
         }
+        
     });
 
     /*---------------------------------------------------------------------------------
@@ -207,12 +209,13 @@ $(function () {
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
 
-function borra_reglon(div_id) {
-    $(div_id).empty();
-    $(div_id).remove();
+function borra_reglon(id) {
+    $('#cont_borra'+id).empty();
+    $('#cont_borra'+id).remove();
     var nuevo_largo = divDetail.height();
     nuevo_largo = nuevo_largo - 30;
     divDetail.height(nuevo_largo);
+    inputDetailItem.focus();
     calcula_total();
 };
 
