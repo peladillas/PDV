@@ -7,12 +7,23 @@ class documents_CRUD_Model  extends CI_Model  {
 	
 	
 	function insert($postData){
-		$datos[$postData['IdEntityField']] = $postData['IdEntityValue'];
-		$datos[$postData['TotalField']] = $postData['TotalValue'];
-		$datePost = split('-', $postData['DateValue']);
-		$datos[$postData['DateField']] = $datePost[2].'/'.$datePost[1].'/'.$datePost[0].' '.date('H:i:s');
-
-		$this->db->insert($postData['HeadTable'] , $datos);
+		
+		if($postData['type'] == 'head'){
+			$table = $postData['HeadTable'];
+			$datos[$postData['IdEntityField']] = $postData['IdEntityValue'];
+			$datos[$postData['TotalField']] = $postData['TotalValue'];
+			$datePost = explode('-', $postData['DateValue']);
+			$datos[$postData['DateField']] = $datePost[2].'/'.$datePost[1].'/'.$datePost[0].' '.date('H:i:s');
+		} else {
+			$table = $postData['detailTable'];
+			$datos[$postData['detailIdHeadField']] = $postData['detailIdHeadValue'];
+			$datos[$postData['detailIdItemField']] = $postData['detailIdItemValue'];
+			$datos[$postData['detailQuantityField']] = $postData['detailQuantityValue'];
+			$datos[$postData['detailPriceField']] = $postData['detailPriceValue'];
+		}
+		
+		
+		$this->db->insert( $table, $datos);
 		$id	=	$this->db->insert_id();	
 		
 		return $id;

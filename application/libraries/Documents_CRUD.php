@@ -191,7 +191,6 @@ class Documents_CRUD {
         $this->html .= 'var btnSelect = $("#'.$this->btnSelect.'");';
         $this->html .= 'var btnSave = $("#'.$this->btnSafe.'");';
        
-
         /* Detail */
         $this->html .= 'var inputDetailItem =$("#'.$this->detailItem.'");';
         $this->html .= 'var inputIdDetail =$("#'.$this->detailIdItem.'");';
@@ -211,6 +210,13 @@ class Documents_CRUD {
 		$this->html .= 'var HeadDate = "'.$this->headDate.'";';
 		$this->html .= 'var HeadTotal = "'.$this->headTotal.'";';
 		
+		$this->html .= 'var functionInsertDetail = "/'.$this->detailTable.'s/insert";';
+		$this->html .= 'var detailTable = "'.$this->detailTable.'";';
+		$this->html .= 'var headIdTable = "'.$this->headIdTable.'";';
+		$this->html .= 'var detailIdItem = "'.$this->detailIdItem.'";';
+		$this->html .= 'var detailQuantity = "'.$this->detailQuantity.'";';
+		$this->html .= 'var detailPrice = "'.$this->detailPrice.'";';
+		$this->html .= 'var detailTotal = "'.$this->detailTotal.'";';
 		
         $this->html .= '</script>';
     }
