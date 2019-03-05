@@ -160,7 +160,7 @@ class Documents_CRUD {
         $this->html .= $this->setFormGroup($this->headDate,  date('d-m-Y'), 'disabled');
         $this->html .= $this->setButton($this->btnSelect, $this->btnSelect);
         $this->html .= $this->setFormGroup($this->headTotal, 0, 'disabled');
-        //$this->html .= $this->setButton($this->btnSafe, $this->headTotal);
+        $this->html .= $this->setButton($this->btnSafe, $this->btnSafe);
         $this->html .= $this->setHiddenInput($this->headIdEntity);
 		$this->html .= '</div><hr>';
 		
@@ -205,8 +205,13 @@ class Documents_CRUD {
         $this->html .= 'var Entity = "'.$this->headEntityController.'"; ';
         $this->html .= 'var Detail = "'.$this->headDetailController.'"; ';
 		
-		$this->html .= 'var functionInsert = "'.$this->headTable.'/insert";';
-
+		$this->html .= 'var functionInsert = "/'.$this->headTable.'s/insert";';
+		$this->html .= 'var HeadTable = "'.$this->headTable.'";';
+		$this->html .= 'var HeadIdEntity = "'.$this->headIdEntity.'";';
+		$this->html .= 'var HeadDate = "'.$this->headDate.'";';
+		$this->html .= 'var HeadTotal = "'.$this->headTotal.'";';
+		
+		
         $this->html .= '</script>';
     }
 

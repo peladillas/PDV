@@ -4,6 +4,30 @@ class documents_CRUD_Model  extends CI_Model  {
 	function __construct() {
         parent::__construct();
     }
+	
+	
+	function insert($postData){
+		$datos[$postData['IdEntityField']] = $postData['IdEntityValue'];
+		$datos[$postData['TotalField']] = $postData['TotalValue'];
+		$datePost = split('-', $postData['DateValue']);
+		$datos[$postData['DateField']] = $datePost[2].'/'.$datePost[1].'/'.$datePost[0].' '.date('H:i:s');
+
+		$this->db->insert($postData['HeadTable'] , $datos);
+		$id	=	$this->db->insert_id();	
+		
+		return $id;
+	}
+	
+	function getFilters($controller, $filtro){
+		switch ($controller) {
+		    case 'articulos/':
+		        return $this->getArticulos($filtro);
+		        break;
+		    case 'clientes/':
+		        return $this->getClientes($filtro);
+		        break;
+		}
+	}
 
 /*---------------------------------------------------------------------------------
  -----------------------------------------------------------------------------------

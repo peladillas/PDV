@@ -159,12 +159,13 @@ $(function () {
     ---------------------------------------------------------------------------------*/
 
     btnSave.click(function () {
-        var head;
+        var head = [];
         var items = [];
         var url = BASE_URL + functionInsert;
 
-        $(".reglon_item_comprobante").each(function (index) {
-            console.log(index);
+        $(".reglon_item_comprobante").each(function (div) {
+            console.log(div);
+           /*
             var id = index.attr('id');
             var detail;
 
@@ -173,20 +174,31 @@ $(function () {
             detail.precio = $("#detail_precio_" + id).val();
 
             items.push(detail);
+            */
         });
 
-        head.client = inputHeadEntity.val();
-        head.date = inputHeadDate.val();
-        head.total = inputHeadTotal.val();
+		head.IdEntityField = HeadIdEntity;
+        head.IdEntityValue = inputHeadIdEntity.val();
+        head.DateField = HeadDate;
+        head.DateValue = inputHeadDate.val();
+        head.TotalField = HeadTotal;
+        head.TotalValue = inputHeadTotal.val();
+        head.headTable = HeadTable;
 
         console.log(head);
         console.log(items);
 
         $.ajax({
             "url": url,
-            "data": [
-                {"head": head, "items": items}
-            ],
+            data: {
+            	IdEntityField: head.IdEntityField, 
+				IdEntityValue: head.IdEntityValue, 
+				DateField: head.DateField, 
+				DateValue: head.DateValue, 
+				TotalField: head.TotalField, 
+				TotalValue: head.TotalValue, 
+				HeadTable: head.headTable, 
+			},
             "type": "POST",
             "dataType": "json",
             "success": function (result) {

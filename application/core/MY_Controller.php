@@ -136,29 +136,38 @@ class MY_Controller extends CI_Controller {
     	return $this->db->update($_COOKIE['tabla'], array('id_estado' => 2), array($_COOKIE['id'] => $id));
 	}
 
-/**********************************************************************************
- **********************************************************************************
- *
- * 				Funciones logs
- *
- * ********************************************************************************
- **********************************************************************************/
+/*---------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------
+ 
+  				Funciones para filtros 
+ 
+ ----------------------------------------------------------------------------------
+ ---------------------------------------------------------------------------------*/
 
     public function getFilters() {
         $filtro = $this->input->get('term', TRUE);
 
-
-       ;
-
         $this->load->model('documents_CRUD_Model');
-        if( $this->controller == 'articulos/') {
-            $registros = $this->documents_CRUD_Model->getArticulos($filtro);
-        } else {
-            $registros = $this->documents_CRUD_Model->getClientes($filtro);
-        }
-
-
+		$registros = $this->documents_CRUD_Model->getFilters($this->controller, $filtro);
+        
         echo json_encode($registros);
+    }
+	
+/*---------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------
+ 
+  				Funciones para filtros 
+ 
+ ----------------------------------------------------------------------------------
+ ---------------------------------------------------------------------------------*/
+
+    public function insert() {
+        $postData = $this->input->post();
+		
+		$this->load->model('documents_CRUD_Model');
+		$registros = $this->documents_CRUD_Model->insert($postData);
+		
+		echo json_encode($registros);
     }
 
 }
