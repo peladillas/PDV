@@ -169,13 +169,12 @@ $(function () {
             "type": "POST",
             "dataType": "json",
             "success": function (result) {
-
-            	if(result > 0){
+                if(result > 0){
             		$.each( detailArray, function( key, value ) {
 			        	if(key > 0){
-			        		
-			        		 $.ajax({
-            					"url": url,
+			        	    // Guardamos detalle
+                            $.ajax({
+                                "url": url,
 					            data: {
 					            	detailTable: detailTable,
 					            	detailIdHeadField: headIdTable,
@@ -185,8 +184,9 @@ $(function () {
 									detailQuantityField: detailQuantity,
 									detailQuantityValue: value.quantity,
 									detailPriceField: detailPrice,
-									detailPriceValue: value.price, 
-									type: 'detail', 
+									detailPriceValue: value.price,
+                                    stockInOut: stockInOut,
+                                    type: 'detail',
 								},
 					            "type": "POST",
 					            "dataType": "json",
@@ -196,7 +196,7 @@ $(function () {
 					            "error": function (xhr) {
 					                alert("Error: " + xhr.status + " " + xhr.statusText);
 					            }
-							});
+                            });
             			}
             		});
             	}

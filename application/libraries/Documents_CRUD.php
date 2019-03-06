@@ -1,9 +1,9 @@
 <?php
 class Documents_CRUD {
-    private $headTable;
-    private $headIdTable;
-    private $headEntity;
-    private $headIdEntity;
+    private $headTable = '';
+    private $headIdTable = '';
+    private $headEntity = '';
+    private $headIdEntity = '';
 	
 	private $headDate = 'fecha';
    	private $headTotal = 'monto';
@@ -16,7 +16,7 @@ class Documents_CRUD {
 
     private $headResponsable = 'id_vendedor';
 
-    private $detailTable;
+    private $detailTable = '';
     private $detailItem = 'articulo';
     private $detailIdItem = 'id_articulo';
     private $detailQuantity = 'cantidad';
@@ -32,6 +32,8 @@ class Documents_CRUD {
     private $headDetailController = 'Articulos';
 	
 	private $divDetail = 'presupuesto_detalle';
+
+    private $stockInOut = 'in';
     private $html;
 
     function __construct() {
@@ -79,7 +81,7 @@ class Documents_CRUD {
         $this->headIdEntity = $fieldName;
         $this->headEntity = $relatedTable;
 
-        if($this->headEntity == 'cliente') {
+        if($this->headEntity != 'cliente') {
             $this->headEntityController = 'Clientes';
         }
     }
@@ -93,14 +95,46 @@ class Documents_CRUD {
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
 
-    public function set_date($date){
+    public function set_head_date($date){
         $this->headDate = $date;
     }
 
-    public function set_total($total){
+    public function set_head_total($total){
         $this->headTotal = $total;
     }
-	
+
+    public function set_detail_item($item){
+        $this->detailItem = $item;
+    }
+
+    public function set_detail_id_item($idItem){
+        $this->detailIdItem = $idItem;
+    }
+
+    public function set_detail_quantity($quantity){
+        $this->detailQuantity = $quantity;
+    }
+
+    public function set_detail_price($price){
+        $this->detailPrice = $price;
+    }
+
+    public function set_detail_total($total){
+        $this->detailTotal = $total;
+    }
+
+    public function set_btn_select($btn){
+        $this->btnSelect = $btn;
+    }
+
+    public function set_btn_select_detail($btn){
+        $this->btnSelectDetail = $btn;
+    }
+
+    public function set_btn_safe($btn){
+        $this->btnSafe = $btn;
+    }
+
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
 
@@ -122,7 +156,37 @@ class Documents_CRUD {
 ---------------------------------------------------------------------------------*/
 
 	public function get_form(){
-		$this->set_html_heat();
+	    $requiredFields = TRUE;
+
+	    if($this->headTable == ''){
+            $this->html = 'Se debe cargar la variable headTable';
+            $requiredFields = FALSE;
+        }
+
+        if($this->headIdTable == ''){
+            $this->html = 'Se debe cargar la variable headIdTable';
+            $requiredFields = FALSE;
+        }
+
+        if($this->headEntity == ''){
+            $this->html = 'Se debe cargar la variable headEntity';
+            $requiredFields = FALSE;
+        }
+
+        if($this->headIdEntity == ''){
+            $this->html = 'Se debe cargar la variable headIdEntity';
+            $requiredFields = FALSE;
+        }
+
+        if($this->detailTable == ''){
+            $this->html = 'Se debe cargar la variable detailTable';
+            $requiredFields = FALSE;
+        }
+
+        if($requiredFields){
+            $this->set_html_heat();
+        }
+
 		return $this->html;
 	}
 
@@ -212,6 +276,7 @@ class Documents_CRUD {
         $this->html .= 'var entity = "'.$this->headEntityController.'"; ';
         $this->html .= 'var detail = "'.$this->headDetailController.'"; ';
         $this->html .= 'var functionInsert = "/'.$this->headTable.'s/insert";';
+        $this->html .= 'var stockInOut = "'.$this->stockInOut.'"; ';
 		
         $this->html .= '</script>';
     }

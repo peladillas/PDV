@@ -1,9 +1,9 @@
 <?php 
-class Stock_model extends My_Model {
+class Stock_detail_model extends My_Model {
 		
 	public function __construct(){
 		parent::construct(
-			'stock',
+			'stock_detail',
 			'id_stock',
 			'id_articulo'
 		);

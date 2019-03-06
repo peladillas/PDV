@@ -4,6 +4,14 @@ class documents_CRUD_Model  extends CI_Model  {
 	function __construct() {
         parent::__construct();
     }
+
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+                Función para armar la query
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
 	
 	
 	function insert($postData){
@@ -20,14 +28,45 @@ class documents_CRUD_Model  extends CI_Model  {
 			$datos[$postData['detailIdItemField']] = $postData['detailIdItemValue'];
 			$datos[$postData['detailQuantityField']] = $postData['detailQuantityValue'];
 			$datos[$postData['detailPriceField']] = $postData['detailPriceValue'];
+
+			$this->setStockMove($postData);
 		}
-		
-		
+
 		$this->db->insert( $table, $datos);
-		$id	=	$this->db->insert_id();	
-		
+		$id	= $this->db->insert_id();
+
 		return $id;
 	}
+
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+        Movimiento de stock
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+
+    function setStockMove($postData){
+        $movimiento = ($postData['stockInOut'] == 'in' ? 'cantidad_entrante' : 'cantidad_saliente');
+
+        $registro = array(
+            'id_articulo' => $postData['detailIdItemValue'],
+            'id_comprobante' => $postData['detailIdHeadValue'],
+            'id_comprobante_tipo' => 1,
+            $movimiento => $postData['detailQuantityValue'],
+        );
+
+        $this->load->model('stock_detail_model');
+        $this->stock_detail_model->movimiento($registro);
+    }
+
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+        Funcion para aplicar el filtro
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
 	
 	function getFilters($controller, $filtro){
 		switch ($controller) {
@@ -41,12 +80,12 @@ class documents_CRUD_Model  extends CI_Model  {
 	}
 
 /*---------------------------------------------------------------------------------
- -----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 
                 Función para armar la query
 
- -----------------------------------------------------------------------------------
-  ---------------------------------------------------------------------------------*/
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
 
     function getQuery($sql, $type = NULL) {
         $query = $this->db->query($sql);
