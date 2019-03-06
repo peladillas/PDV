@@ -5,7 +5,7 @@ class Calendarios extends My_Controller {
     protected $path = 'calendarios/';
 
 	public function __construct() {
-		parent::__construct();
+		parent::__construct($this->path);
 
 		$this->load->model('calendarios_model');
         $this->load->model('colores_model');

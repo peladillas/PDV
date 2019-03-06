@@ -9,12 +9,7 @@ $html .= '<form class="form-inline">';
 // Head de la nota de credito
 $html .= '<div id="form-heading">';
 
-$html .= setFormGroup('cliente', '', 'autocomplete="off"');
-$html .= setFormGroup('fecha', dateFormat(), 'disabled');
-$html .= setButton(lang('seleccionar'), 'seleccionar');
-$html .= setFormGroup('total_nota_credito', 0, 'disabled');
-$html .= setButton(lang('guardar'), 'guardar');
-$html .= setHiddenInput('id_cliente');
+
 
 $html .= '</div><hr>';
 

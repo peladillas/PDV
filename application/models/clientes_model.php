@@ -9,32 +9,6 @@ class Clientes_model extends My_Model {
 		);
 	}
 
-/*---------------------------------------------------------------------------------
------------------------------------------------------------------------------------
-
-        Para buscar clients por nombre o alias
-
------------------------------------------------------------------------------------
----------------------------------------------------------------------------------*/
-
-	function getClientes($filtro) {
-		$sql = "
-		SELECT 
-				*
-		FROM 
-				cliente 
-		WHERE 
-			(nombre LIKE '%".$filtro."%' OR 
-			apellido LIKE '%".$filtro."%' OR
-			alias LIKE '%".$filtro."%') AND
-			id_estado = 1 
-		LIMIT 
-			20 ";
-
-        return $this->getQuery($sql);
-	}
-
-
 	function getSumas($tipo) {
 		if($tipo == 'tipos') {
 			$sql = 

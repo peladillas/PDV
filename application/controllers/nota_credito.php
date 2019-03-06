@@ -5,7 +5,7 @@ class Nota_credito extends MY_Controller {
     protected $path = 'nota_credito/';
 
 	public function __construct() {
-		parent::__construct();
+		parent::__construct($this->path);
 
 		$this->load->model('nota_credito_model');
 	}

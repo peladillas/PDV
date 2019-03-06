@@ -1,7 +1,11 @@
 <?php
 class MY_Controller extends CI_Controller {
 
-	public function __construct() {
+    private $controller;
+
+	public function __construct($_controller) {
+	    $this->controller = $_controller;
+
 		parent::__construct();
 	}
 
@@ -131,5 +135,39 @@ class MY_Controller extends CI_Controller {
 			
     	return $this->db->update($_COOKIE['tabla'], array('id_estado' => 2), array($_COOKIE['id'] => $id));
 	}
+
+/*---------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------
+ 
+  				Funciones para filtros 
+ 
+ ----------------------------------------------------------------------------------
+ ---------------------------------------------------------------------------------*/
+
+    public function getFilters() {
+        $filtro = $this->input->get('term', TRUE);
+
+        $this->load->model('documents_CRUD_Model');
+		$registros = $this->documents_CRUD_Model->getFilters($this->controller, $filtro);
+        
+        echo json_encode($registros);
+    }
+	
+/*---------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------
+ 
+  				Funciones para filtros 
+ 
+ ----------------------------------------------------------------------------------
+ ---------------------------------------------------------------------------------*/
+
+    public function insert() {
+        $postData = $this->input->post();
+		
+		$this->load->model('documents_CRUD_Model');
+		$registros = $this->documents_CRUD_Model->insert($postData);
+		
+		echo json_encode($registros);
+    }
 
 }

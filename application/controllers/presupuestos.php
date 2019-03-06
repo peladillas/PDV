@@ -4,7 +4,7 @@ class Presupuestos extends MY_Controller {
     protected $path = 'presupuestos/';
 
     public function __construct(){
-        parent::__construct();
+        parent::__construct($this->path);
 
         $this->load->model('config_model');
         $this->load->model('presupuestos_model');
@@ -282,5 +282,28 @@ class Presupuestos extends MY_Controller {
         $db['devoluciones']			= $this->devoluciones_model->getBusqueda($condicion);
 
         $this->view($db, $this->path.'anular_presupuestos');
+    }
+
+
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+		Para probar las nuevas librerias
+ 
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+
+    function prueba_crud() {
+    	$this->load->library('documents_CRUD');
+		
+		$documents = new documents_CRUD();
+		$documents->set_table_head('presupuesto', 'id_presupuesto');
+		$documents->set_entity('id_cliente', 'cliente');
+		
+		$documents->set_table_detail('reglon_presupuesto');
+		
+		
+		$db['documents'] = $documents;
+		$this->view($db, $this->path.'prueba_crud');
     }
 }

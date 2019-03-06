@@ -5,7 +5,7 @@ class Clientes extends MY_Controller {
     protected $path = 'clientes/';
 
 	public function __construct() {
-		parent::__construct();
+		parent::__construct($this->path);
 
 		$this->load->model('clientes_model');
 		$this->load->model('presupuestos_model');
@@ -182,38 +182,4 @@ class Clientes extends MY_Controller {
 
         $this->viewCrud($output);
 	}	
-
-/**********************************************************************************
- **********************************************************************************
- * 
- * 				Trae todos los clientes y los formatea en json
- * 
- * ********************************************************************************
- **********************************************************************************/
-
-	public function getClientes() {
-		$filtro = $this->input->get('term', TRUE);
-		
-		$db['clientes'] = $this->clientes_model->getClientes($filtro);
-		
-		$row_set = array();
-		foreach ($db['clientes'] as $cliente) {
-			
-			$value = ($cliente->apellido != '' ? $cliente->apellido.' ' : '');
-			$value .= ($cliente->nombre != '' ? $cliente->nombre.' ' : '');
-			$value .= ($cliente->alias != '' ? ','.$cliente->alias : '');
-
-            $row['apellido'] = stripslashes(utf8_encode($cliente->apellido));
-            $row['nombre'] = stripslashes(utf8_encode($cliente->nombre));
-            $row['direccion'] = stripslashes(utf8_encode($cliente->direccion));
-            $row['cuil'] = stripslashes(utf8_encode($cliente->cuil));
-            $row['celular'] = stripslashes(utf8_encode($cliente->celular));
-			$row['value'] = stripslashes(utf8_encode($value));
-            $row['id_cliente'] = (int)$cliente->id_cliente;
-            $row_set[] = $row;
-		}
-
-		echo json_encode($row_set);
-	}
-
 }

@@ -5,7 +5,7 @@ class Devoluciones extends My_Controller {
     protected $path = 'devoluciones/';
 
 	public function __construct() {
-		parent::__construct();
+		parent::__construct($this->path);
 
 		$this->load->model('articulos_model');
 		$this->load->model('devoluciones_model');

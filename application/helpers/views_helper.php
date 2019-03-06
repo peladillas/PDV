@@ -27,13 +27,13 @@ INDICE
 function setJs($js) {
     $src = base_url().'libraries/'.$js;
 
-    return '<script src="'.$src.'" charset="utf-8" type="text/javascript"></script>';
+    return '<script src="'.$src.'" charset="utf-8" type="text/javascript"></script> ';
 }
 
 function setCss($css){
     $href = base_url().'libraries/'.$css;
 
-    return '<link href="'.$href.'" rel="stylesheet">';
+    return '<link href="'.$href.'" rel="stylesheet"> ';
 }
 
 function setMensaje($mensaje, $tipo=NULL) {
