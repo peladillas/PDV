@@ -295,15 +295,13 @@ class Presupuestos extends MY_Controller {
 
     function prueba_crud() {
     	$this->load->library('documents_CRUD');
-		
-		$documents = new documents_CRUD();
-		$documents->set_table_head('presupuesto', 'id_presupuesto');
-		$documents->set_entity('id_cliente', 'cliente');
-		
-		$documents->set_table_detail('reglon_presupuesto');
-		
-		
-		$db['documents'] = $documents;
+
+        $db['documents'] = new documents_CRUD();
+        $db['documents']->set_table_head('presupuesto', 'id_presupuesto');
+        $db['documents']->set_entity('id_cliente', 'cliente');
+
+        $db['documents']->set_table_detail('reglon_presupuesto');
+
 		$this->view($db, $this->path.'prueba_crud');
     }
 }

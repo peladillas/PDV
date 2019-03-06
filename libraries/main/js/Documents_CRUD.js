@@ -1,4 +1,4 @@
-var DetailArray = [];
+var detailArray = [];
 
 $(function () {
 
@@ -13,11 +13,11 @@ $(function () {
     ---------------------------------------------------------------------------------*/
 
     inputHeadEntity.autocomplete({
-        source: BASE_URL + "/"+Entity+"/getFilters",
+        source: BASE_URL + "/"+entity+"/getFilters",
         minLength: 2,
         select: function (event, ui) {
-            var id_entity = ui.item.id;
-            inputHeadIdEntity.val(id_entity);
+            var idEntity = ui.item.id;
+            inputHeadIdEntity.val(idEntity);
             btnSelect.click();
         },
 
@@ -35,7 +35,7 @@ $(function () {
 
     btnSelect.click(function () {
         if (inputHeadIdEntity.val() == '') {
-            alert("Seleccione "+Entity);
+            alert("Seleccione "+entity);
             inputHeadEntity.val("").focus();
         } else {
             $("#form-detail").toggleClass('hide');
@@ -53,16 +53,16 @@ $(function () {
     ---------------------------------------------------------------------------------*/
 
     inputDetailItem.autocomplete({
-        source: BASE_URL + "/"+Detail+"/getFilters",
+        source: BASE_URL + "/"+detail+"/getFilters",
         minLength: 2,
         select: function (event, ui) {
-            id_detail = ui.item.id;
+            idDetail = ui.item.id;
             porc_iva_art = ui.item.iva;
-            item_elegido = ui.item;
             px_unitario = ui.item.precio;
+            price = (px_unitario * ((porc_iva_art / 100) + 1)).toFixed(2);
 
-            inputPrice.val((px_unitario * ((porc_iva_art / 100) + 1)).toFixed(2));
-            inputIdDetail.val(id_detail);
+            inputDetailPrice.val(price);
+            inputIdDetail.val(idDetail);
             inputDetailQuantity.focus();
         },
 
@@ -72,7 +72,7 @@ $(function () {
 
     inputDetailQuantity.keypress(function (event) {
         if (event.which == 13) {
-            inputPrice.focus();
+            inputDetailPrice.focus();
         }
     });
 
@@ -84,15 +84,15 @@ $(function () {
     -----------------------------------------------------------------------------------
     ---------------------------------------------------------------------------------*/
 
-    inputPrice.focus(function (event) {
-        inputTotalLine.val(inputDetailQuantity.val() * inputPrice.val());
+    inputDetailPrice.focus(function (event) {
+        inputDetailTotal.val(inputDetailQuantity.val() * inputDetailPrice.val());
     });
 
-    inputPrice.keypress(function (event) {
+    inputDetailPrice.keypress(function (event) {
         if (event.which == 13) {
-            btnSelecctLine.click();
+            btnSelecctDetail.click();
         } else {
-            inputTotalLine.val(inputDetailQuantity.val() * inputPrice.val());
+            inputDetailTotal.val(inputDetailQuantity.val() * inputDetailPrice.val());
         }
     });
 
@@ -104,50 +104,43 @@ $(function () {
     -----------------------------------------------------------------------------------
     ---------------------------------------------------------------------------------*/
 
-    btnSelecctLine.click(function () {
-    	
+    btnSelecctDetail.click(function () {
         if (inputIdDetail.val() == '') {
-            alert("Seleccione "+Detail);
+            alert("Seleccione "+detail);
             inputDetailItem.val("").focus();
         } else if (inputDetailQuantity.val() == '') {
             alert("Seleccione cantidad");
             inputDetailQuantity.val("").focus();
         } else {
             divDetail.removeClass('hide');
-            var id_detail = inputIdDetail.val();
-            if ($('#cont_borra' + id_detail).length) {
-                borra_reglon(id_detail);
+            var idDetail = inputIdDetail.val();
+            if ($('#cont_borra' + idDetail).length) {
+                borra_reglon(idDetail);
             } else {
                 var largo = divDetail.height();
                 largo = largo + 30;
             }
 
-            var texto = inputDetailItem.val();
-            var cantidad = inputDetailQuantity.val();
-            var precio = inputPrice.val();
-            var total = inputTotalLine.val();
-            var div_id = '#cont_borra' + id_detail;
-            
-           
+            var divId = '#cont_borra' + idDetail;
+
             divDetail.height(largo);
-            divDetail.append('<div class="reglon_item_comprobante row" id="cont_borra' + id_detail + '"></div>');
+            divDetail.append('<div class="reglon_item_comprobante row" id="cont_borra' + idDetail + '"></div>');
 
-            $(div_id).append('<span class="col-md-5" id=' + id_detail + ' >' + texto + '</span>');
-            $(div_id).append('<input disabled class="col-md-1" id="detail_cantidad_' + id_detail + '" value=' + cantidad + '>');
-            $(div_id).append('<input disabled class="col-md-1" id="detail_precio_' + id_detail + '" value=' + precio + '>');
-            $(div_id).append('<input disabled class="col-md-1 detail_total" id="detail_total_' + id_detail + '" value=' + total + '>');
-            $(div_id).append('<div class="col-md-1" id=cont_botones' + id_detail + '>');
+            $(divId).append('<span class="col-md-5" id=' + idDetail + ' >' + inputDetailItem.val() + '</span>');
+            $(divId).append('<input disabled class="col-md-1" id="detailQuantity' + idDetail + '" value=' + inputDetailQuantity.val() + '>');
+            $(divId).append('<input disabled class="col-md-1" id="detailPrice' + idDetail + '" value=' + inputDetailPrice.val() + '>');
+            $(divId).append('<input disabled class="col-md-1 detailTotal" id="detailTotal' + idDetail + '" value=' + inputDetailTotal.val() + '>');
+            $(divId).append('<div class="col-md-1" id=cont_botones' + idDetail + '>');
 
-          	$('#cont_botones' + id_detail).append('<button type="button" id="ico_borra' + id_detail + '" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_reglon(' + id_detail + ')" ></button>');
-            $('#ico_borra' + id_detail).append('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>');
-            $(div_id).append('</div></div>');
+          	$('#cont_botones' + idDetail).append('<button type="button" id="ico_borra' + idDetail + '" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_reglon(' + idDetail + ')" ></button>');
+            $('#ico_borra' + idDetail).append('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>');
+            $(divId).append('</div></div>');
 
  			
             calcula_total();
             clearDetailForm();
-            setElement(id_detail, precio, cantidad);
+            setElement(idDetail, inputDetailPrice.val(), inputDetailQuantity.val());
         }
-        
     });
 
     /*---------------------------------------------------------------------------------
@@ -159,55 +152,39 @@ $(function () {
     ---------------------------------------------------------------------------------*/
 
     btnSave.click(function () {
-        var head = [];
-        var items = [];
         var url = BASE_URL + functionInsert;
-        var urlDetail = BASE_URL + functionInsertDetail;
-        
-		head.IdEntityField = HeadIdEntity;
-        head.IdEntityValue = inputHeadIdEntity.val();
-        head.DateField = HeadDate;
-        head.DateValue = inputHeadDate.val();
-        head.TotalField = HeadTotal;
-        head.TotalValue = inputHeadTotal.val();
-        head.headTable = HeadTable;
-        
-        items.detailTable = detailTable;
-        items.detailIdItem = detailIdItem;
-        items.detailQuantity = detailQuantity;
-        items.detailPrice = detailPrice;
-  
+
         $.ajax({
             "url": url,
             data: {
-            	IdEntityField: head.IdEntityField, 
-				IdEntityValue: head.IdEntityValue, 
-				DateField: head.DateField, 
-				DateValue: head.DateValue, 
-				TotalField: head.TotalField, 
-				TotalValue: head.TotalValue, 
-				HeadTable: head.headTable, 
+            	IdEntityField: headIdEntity,
+				IdEntityValue: inputHeadIdEntity.val(),
+				DateField: headDate,
+				DateValue: inputHeadDate.val(),
+				TotalField: headTotal,
+				TotalValue: inputHeadTotal.val(),
+				HeadTable: headTable,
 				type: 'head', 
 			},
             "type": "POST",
             "dataType": "json",
             "success": function (result) {
-            	
+
             	if(result > 0){
-            		$.each( DetailArray, function( key, value ) {
+            		$.each( detailArray, function( key, value ) {
 			        	if(key > 0){
 			        		
 			        		 $.ajax({
             					"url": url,
 					            data: {
-					            	detailTable: items.detailTable, 
+					            	detailTable: detailTable,
 					            	detailIdHeadField: headIdTable,
 					            	detailIdHeadValue: result,
-					            	detailIdItemField: items.detailIdItem, 
+					            	detailIdItemField: detailIdItem,
 									detailIdItemValue: key,
-									detailQuantityField: items.detailQuantity, 
+									detailQuantityField: detailQuantity,
 									detailQuantityValue: value.quantity,
-									detailPriceField: items.detailPrice, 
+									detailPriceField: detailPrice,
 									detailPriceValue: value.price, 
 									type: 'detail', 
 								},
@@ -223,15 +200,17 @@ $(function () {
             			}
             		});
             	}
+
+                clearHeadForm();
+                clearDetailForm();
+                clearDetailArray();
+                divDetail.addClass('hide');
             },
             "error": function (xhr) {
                 alert("Error: " + xhr.status + " " + xhr.statusText);
             }
         });
-
-
     });
-    
 });
 
 /*---------------------------------------------------------------------------------
@@ -249,7 +228,7 @@ function borra_reglon(id) {
     nuevo_largo = nuevo_largo - 30;
     divDetail.height(nuevo_largo);
     inputDetailItem.focus();
-    DetailArray.splice(id, 1);
+    detailArray.splice(id, 1);
 	calcula_total();
 };
 
@@ -265,7 +244,7 @@ function calcula_total() {
     var total	= 0;
     var temp	= 0;
 
-    $(".detail_total").each(function (index) {
+    $(".detailTotal").each(function (index) {
         temp = $(this).val();
         total = parseFloat(total) + parseFloat(temp);
     });
@@ -273,6 +252,13 @@ function calcula_total() {
     inputHeadTotal.val(total.toFixed(2));
 };
 
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+		Agrega un elemtento al array
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
 
 function setElement(id, price, quantity){
 	var ITEMDetail = [];
@@ -280,18 +266,51 @@ function setElement(id, price, quantity){
     ITEMDetail.price = price;
     ITEMDetail.quantity = quantity;
     
-    DetailArray[id] = ITEMDetail;
+    detailArray[id] = ITEMDetail;
 }
 
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+		Limpia el formulario para cargar el detalle
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
 
 function clearDetailForm(){
     inputIdDetail.val("");
     inputDetailItem.val("");
     inputDetailQuantity.val("");
-    inputPrice.val("");
-    inputTotalLine.val("");
+    inputDetailPrice.val("");
+    inputDetailTotal.val("");
     inputDetailItem.focus();
 }
 
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 
+		Limpia el formulario para cargar el head
 
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+
+function clearHeadForm(){
+    inputHeadEntity.val("");
+    inputHeadIdEntity.val("");
+    inputHeadDate.val("");
+    inputHeadTotal.val("");
+}
+
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+		Limpia el elemento del array
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+
+function clearDetailArray(){
+    $.each( detailArray, function( key, value ) {
+        borra_reglon(key);
+    });
+}
