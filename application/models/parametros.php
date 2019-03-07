@@ -1,4 +1,9 @@
 <?php 
+class PARAMETROS {
+
+}
+
+
 abstract class TIPO_COMPROBANTE {
     const PRESUPUESTO = 1;
     const NOTA_CREDITO = 2;

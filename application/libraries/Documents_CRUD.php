@@ -208,7 +208,7 @@ class Documents_CRUD {
 		$this->html .= '<hr>';
 
 
-        $this->html .= $this->getFormasPago();
+       // $this->html .= $this->getFormasPago();
         $this->html .= '</div>';
 		
 		$this->html .= '<div id="form-detail" class="hide">';
