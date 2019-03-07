@@ -16,4 +16,18 @@ abstract class FUNCTION_LOG {
     const DELETE = 'delete_log';
 }
 
+abstract class FORMAS_PAGOS {
+    const EFECTIVO = '1';
+    const CHEQUE = '2';
+    const TARJETA = '3';
+    const CTA_CTE = '4';
+}
+
+abstract class CUOTAS_ESTADOS{
+    const IMPAGA = '1';
+    const PAGA = '2';
+    const VENCIDA = '3';
+    const EMITIDA = '4';
+}
+
 ?>

@@ -25,7 +25,7 @@ class Devoluciones_model extends MY_Model {
 				`presupuesto` ON(devolucion.id_presupuesto = presupuesto.id_presupuesto)
 			WHERE
 				`presupuesto`.`id_cliente` = $id_cliente
-					AND `devolucion`.`id_estado` = 1";		
+					AND `devolucion`.`id_estado` = ".ESTADOS::ALTA;
 				
 		} else {
             $sql =

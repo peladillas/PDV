@@ -223,7 +223,6 @@ $(function () {
 
 function borra_reglon(id) {
     $('#cont_borra'+id).empty();
-    $('#cont_borra'+id)	
     var nuevo_largo = divDetail.height();
     nuevo_largo = nuevo_largo - 30;
     divDetail.height(nuevo_largo);
@@ -235,7 +234,7 @@ function borra_reglon(id) {
 /*---------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------- 
 
-		Calcula el total del comprobante
+		Calcula el total dasdfel comprobante
 
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/

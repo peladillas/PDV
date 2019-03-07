@@ -18,6 +18,8 @@ class Stock_detail_model extends My_Model {
 ---------------------------------------------------------------------------------*/
 
 	public function movimiento ($registro) {
+        $id_stock = 0;
+
 		// Guardamos el registro de movimiento de stock
 		if (isset($registro['id_articulo']) && isset($registro['id_comprobante']) && isset($registro['id_comprobante_tipo'])) {
 			if(!isset($registro['id_almacen'])) {
@@ -30,17 +32,17 @@ class Stock_detail_model extends My_Model {
 			// Actualizamos el stock en la tabla articulos
 			$stock = (isset($registro['cantidad_entrante']) ? $registro['cantidad_entrante'] : 0);
 			$stock = (isset($registro['cantidad_saliente']) ? $stock - $registro['cantidad_saliente']: $stock);
-			
-			$query	= $this->db->query("
+
+			$sql = "
 			UPDATE 
 				articulo 
 			SET 
 				stock=stock+$stock 
 			WHERE 
-				id_articulo=$registro[id_articulo];");	
-		} else {
-			$id_stock = 0;
+				id_articulo = ".$registro[id_articulo];
 			
+			$query	= $this->db->query($sql);
+		} else {
 			if (!isset($registro['id_articulo'])) {
 				log_message('ERROR', 'Movimiento de stock sin id_articulo datos =>'.print_r($registro, TRUE));
 			} else if (!isset($registro['id_comprobante'])) {

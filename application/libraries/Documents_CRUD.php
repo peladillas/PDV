@@ -10,10 +10,8 @@ class Documents_CRUD {
     private $headDiscount = 'descuento';
     private $headInteres = 'interes';
     private $headMethodPayment = 'id_tipo';
-
     private $headComPrivate = 'com_privado';
     private $headComPublic = 'com_publico';
-
     private $headResponsable = 'id_vendedor';
 
     private $detailTable = '';
@@ -22,7 +20,6 @@ class Documents_CRUD {
     private $detailQuantity = 'cantidad';
     private $detailPrice = 'precio';
     private $detailTotal = 'total';
-    private $detailState = 'estado';
 
     private $btnSelect = 'seleccionar';
     private $btnSelectDetail = 'cargar';
@@ -207,7 +204,7 @@ class Documents_CRUD {
         $this->html .= $this->setButton($this->btnSelect, $this->btnSelect);
         $this->html .= $this->setFormGroup($this->headTotal, 0, 'disabled');
         $this->html .= $this->setButton($this->btnSafe, $this->btnSafe);
-        $this->html .= $this->setHiddenInput($this->headIdEntity);
+        $this->html .= setHiddenInput($this->headIdEntity);
 		$this->html .= '</div><hr>';
 		
 		$this->html .= '<div id="form-detail" class="hide">';
@@ -216,7 +213,7 @@ class Documents_CRUD {
 		$this->html .= $this->setFormGroup($this->detailPrice);
 		$this->html .= $this->setFormGroup($this->detailTotal);
 		$this->html .= $this->setButton($this->btnSelectDetail, $this->btnSelectDetail);
-		$this->html .= $this->setHiddenInput($this->detailIdItem);
+		$this->html .= setHiddenInput($this->detailIdItem);
 		$this->html .= '</div>';
 		
 		$this->html .= '<div id="'.$this->divDetail.'" ></div>';
@@ -315,15 +312,29 @@ class Documents_CRUD {
         return $html;
     }
 
-    function setHiddenInput($id, $value = NULL){
-        $html = '<input type="hidden" name="'.$id.'" id="'.$id.'" value="'.$value.'"/>';
-
-        return $html;
-    }
-
     public function setJs($js){
         $src = base_url().'libraries/'.$js;
 
         return '<script src="'.$src.'" charset="utf-8" type="text/javascript"></script>';
+    }
+
+    public function getFormasPago($formaPago = NULL){
+        $options = array(
+            lang('efectivo') => FORMAS_PAGOS::EFECTIVO,
+            lang('cheque') => FORMAS_PAGOS::CHEQUE,
+            lang('tarjeta') => FORMAS_PAGOS::TARJETA,
+            lang('cta_cte') => FORMAS_PAGOS::CTA_CTE
+        );
+
+        $html = '<div class="form-group">';
+        $html .= '<label for="'.$this->headMethodPayment.'">'.lang('pago').'</label>';
+        $html .= '<select class="form-control" name="'.$this->headMethodPayment.'" id="'.$this->headMethodPayment.'" >';
+        foreach ($options as $key => $value) {
+            $html .= '<option value="'.$value.'" '.($formaPago == $key ? 'selected' : '' ).' >'.$key.'</option>';
+        }
+        $html .= '</select>';
+        $html .= '</div>';
+
+        return $html;
     }
 }

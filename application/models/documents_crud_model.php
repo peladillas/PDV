@@ -145,7 +145,7 @@ class documents_CRUD_Model  extends CI_Model  {
 		WHERE 
 			(descripcion LIKE '%".$filtro."%' OR 
 			cod_proveedor LIKE '%".$filtro."%') AND
-			id_estado = 1 
+			id_estado = ".ESTADOS::ALTA." 
 		LIMIT 
 			20";
 			
@@ -183,7 +183,7 @@ class documents_CRUD_Model  extends CI_Model  {
 			(nombre LIKE '%".$filtro."%' OR 
 			apellido LIKE '%".$filtro."%' OR
 			alias LIKE '%".$filtro."%') AND
-			id_estado = 1 
+			id_estado = ".ESTADOS::ALTA."  
 		LIMIT 
 			20 ";
 
