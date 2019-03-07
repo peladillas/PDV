@@ -196,23 +196,27 @@ class Documents_CRUD {
 ---------------------------------------------------------------------------------*/
 
     public function set_html_heat(){
-    	$this->html .= $this->setJs('main/js/Documents_CRUD.js');
+    	$this->html .= setJs('main/js/Documents_CRUD.js');
     	
 		$this->html .= '<div id="form-heading">';
-        $this->html .= $this->setFormGroup($this->headEntity, '', 'autocomplete="off"');
-        $this->html .= $this->setFormGroup($this->headDate,  date('d-m-Y'), 'disabled');
-        $this->html .= $this->setButton($this->btnSelect, $this->btnSelect);
-        $this->html .= $this->setFormGroup($this->headTotal, 0, 'disabled');
-        $this->html .= $this->setButton($this->btnSafe, $this->btnSafe);
+        $this->html .= setFormGroup($this->headEntity, '', 'autocomplete="off"');
+        $this->html .= setFormGroup($this->headDate,  date('d-m-Y'), 'disabled');
+        $this->html .= setButton(lang($this->btnSelect), $this->btnSelect);
+        $this->html .= setFormGroup($this->headTotal, 0, 'disabled');
+        $this->html .= setButton(lang($this->btnSafe), $this->btnSafe);
         $this->html .= setHiddenInput($this->headIdEntity);
-		$this->html .= '</div><hr>';
+		$this->html .= '<hr>';
+
+
+        $this->html .= $this->getFormasPago();
+        $this->html .= '</div>';
 		
 		$this->html .= '<div id="form-detail" class="hide">';
-		$this->html .= $this->setFormGroup($this->detailItem, '', 'autocomplete="off"');
-		$this->html .= $this->setFormGroup($this->detailQuantity);
-		$this->html .= $this->setFormGroup($this->detailPrice);
-		$this->html .= $this->setFormGroup($this->detailTotal);
-		$this->html .= $this->setButton($this->btnSelectDetail, $this->btnSelectDetail);
+		$this->html .= setFormGroup($this->detailItem, '', 'autocomplete="off"');
+		$this->html .= setFormGroup($this->detailQuantity);
+		$this->html .= setFormGroup($this->detailPrice);
+		$this->html .= setFormGroup($this->detailTotal);
+		$this->html .= setButton(lang($this->btnSelectDetail), $this->btnSelectDetail);
 		$this->html .= setHiddenInput($this->detailIdItem);
 		$this->html .= '</div>';
 		
@@ -286,37 +290,6 @@ class Documents_CRUD {
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
 
-    public function setFormGroup($name, $value = NULL, $tags = NULL){
-        $value = ($value == NULL ? '' : $value);
-
-        if(is_array($tags)) {
-            $htmlTags = '';
-            foreach ($tags as $tag) {
-                $htmlTags .= ' '.$tag;
-            }
-        } else {
-            $htmlTags = $tags;
-        }
-
-        $html = '<div class="form-group">';
-        $html .= '<label for="'.$name.'">'.lang($name).'</label>';
-        $html .= '<input type="text" class="form-control" name="'.$name.'" id="'.$name.'" value="'.$value.'" '.$htmlTags.'>';
-        $html .= '</div>';
-
-        return $html;
-    }
-
-    function setButton($value, $id){
-        $html = '<button type="button" id="'.$id.'" name="'.$id.'" class="btn btn-default">'.$value.'</button>';
-
-        return $html;
-    }
-
-    public function setJs($js){
-        $src = base_url().'libraries/'.$js;
-
-        return '<script src="'.$src.'" charset="utf-8" type="text/javascript"></script>';
-    }
 
     public function getFormasPago($formaPago = NULL){
         $options = array(
