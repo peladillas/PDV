@@ -96,7 +96,7 @@ class Usuarios extends MY_Controller {
 	public function usuario_abm() {
 		$crud = new grocery_CRUD();
 
-		$crud->where('usuario.id_estado = 1');
+		$crud->where('usuario.id_estado = '.ESTADOS::ALTA);
 		$crud->set_table('usuario');
 		$crud->columns('descripcion','id_rol');
 		$crud->display_as('descripcion','Descripción')
@@ -111,11 +111,11 @@ class Usuarios extends MY_Controller {
 		$_COOKIE['tabla']= 'usuario';
 		$_COOKIE['id']='id_usuario';	
 			
-		$crud->callback_after_insert(array($this, 'insert_log'));
+		$crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
 		$crud->callback_before_insert(array($this,'encrypt_password_insert'));
 		$crud->callback_before_update(array($this,'encrypt_password_update'));
-		$crud->callback_after_update(array($this, 'update_log'));
-		$crud->callback_delete(array($this,'delete_log'));	
+		$crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
+		$crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
 		$crud->callback_edit_field('pass',array($this,'edit_field_callback_1'));
 			
 		$output = $crud->render();
@@ -150,7 +150,7 @@ class Usuarios extends MY_Controller {
 	public function roles_abm() {
 		$crud = new grocery_CRUD();
 			
-		$crud->where('rol.id_estado = 1');
+		$crud->where('rol.id_estado = '.ESTADOS::ALTA);
 		$crud->set_table('rol');
 		$crud->columns('descripcion');
 		$crud->display_as('descripcion','Descripción')
@@ -168,9 +168,9 @@ class Usuarios extends MY_Controller {
 		$_COOKIE['tabla']='rol';
 		$_COOKIE['id']='id_rol';	
 			
-		$crud->callback_after_insert(array($this, 'insert_log'));
-		$crud->callback_after_update(array($this, 'update_log'));
-		$crud->callback_delete(array($this,'delete_log'));	
+		$crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
+		$crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
+		$crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
 						
 		$output = $crud->render();
 

@@ -131,9 +131,9 @@ class Presupuestos extends MY_Controller {
         $crud->unset_edit();
         $crud->unset_delete();
 
-        $crud->callback_after_insert(array($this, 'insert_log'));
-        $crud->callback_after_update(array($this, 'update_log'));
-        $crud->callback_delete(array($this,'delete_log'));
+        $crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
+        $crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
+        $crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
         $crud->callback_column('fecha',array($this,'_calcularatraso'));
         $crud->add_action('Detalle', '', '','icon-exit', array($this, 'buscar_presupuestos'));
 

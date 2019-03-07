@@ -24,7 +24,7 @@ class Proveedores extends MY_Controller {
 	public function proveedor_abm() {
         $crud = new grocery_CRUD();
 
-        $crud->where('proveedor	.id_estado = 1');
+        $crud->where('proveedor	.id_estado = '.ESTADOS::ALTA);
         $crud->set_table('proveedor');
         $crud->columns('descripcion','margen','impuesto', 'descuento');
         $crud->display_as('descripcion','Descripción')
@@ -38,9 +38,9 @@ class Proveedores extends MY_Controller {
         $_COOKIE['tabla'] ='proveedor';
         $_COOKIE['id'] ='id_proveedor';
 
-        $crud->callback_after_insert(array($this, 'insert_log'));
+        $crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
         $crud->callback_after_update(array($this, 'actualizar_precios'));
-        $crud->callback_delete(array($this,'delete_log'));
+        $crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
 
         $this->permisos_model->getPermisosCRUD('permiso_proveedor', $crud);
 

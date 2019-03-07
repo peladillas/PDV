@@ -110,7 +110,7 @@ $autoload['language'] = array('main');
 |
 */
 
-$autoload['model'] = array('permisos_model');
+$autoload['model'] = array('permisos_model', 'parametros');
 
 
 /* End of file autoload.php */

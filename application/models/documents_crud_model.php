@@ -52,12 +52,34 @@ class documents_CRUD_Model  extends CI_Model  {
         $registro = array(
             'id_articulo' => $postData['detailIdItemValue'],
             'id_comprobante' => $postData['detailIdHeadValue'],
-            'id_comprobante_tipo' => 1,
+            'id_comprobante_tipo' => $this->getComprobanteTipo($postData['detailTable']),
             $movimiento => $postData['detailQuantityValue'],
         );
 
         $this->load->model('stock_detail_model');
         $this->stock_detail_model->movimiento($registro);
+    }
+
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+        Movimiento de stock
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+
+    function getComprobanteTipo($detailTable){
+        switch ($detailTable) {
+		    case 'presupuesto_detalle':
+		        return TIPO_COMPROBANTE::PRESUPUESTO;
+		        break;
+		    case 'nota_credito_renglon':
+                return TIPO_COMPROBANTE::NOTA_CREDITO;
+		        break;
+            case 'stock':
+                return TIPO_COMPROBANTE::STOCK;
+                break;
+		}
     }
 
 /*---------------------------------------------------------------------------------

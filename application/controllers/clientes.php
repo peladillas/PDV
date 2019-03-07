@@ -26,7 +26,7 @@ class Clientes extends MY_Controller {
 	public function cliente_abm() {
 		$crud = new grocery_CRUD();
 
-		$crud->where('cliente.id_estado = 1');
+		$crud->where('cliente.id_estado = '.ESTADOS::ALTA);
 		$crud->set_table('cliente');
 		$crud->columns('alias','nombre', 'apellido', 'telefono', 'celular');
 		$crud->display_as('direccion','Dirección')
@@ -65,9 +65,9 @@ class Clientes extends MY_Controller {
 		$_COOKIE['id']='id_cliente';	
 			
 		$crud->callback_before_insert(array($this, 'control_insert_cliente'));
-		$crud->callback_after_insert(array($this, 'insert_log'));
-		$crud->callback_after_update(array($this, 'update_log'));
-		$crud->callback_delete(array($this,'delete_log'));	
+		$crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
+		$crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
+		$crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
 
 		$this->permisos_model->getPermisosCRUD('permiso_cliente', $crud);
 			
@@ -136,9 +136,9 @@ class Clientes extends MY_Controller {
         $_COOKIE['tabla']='condicion_iva_abm';
         $_COOKIE['id']='id_condicion_iva_abm';
 
-        $crud->callback_after_insert(array($this, 'insert_log'));
-        $crud->callback_after_update(array($this, 'update_log'));
-        $crud->callback_delete(array($this,'delete_log'));
+        $crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
+        $crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
+        $crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
 
         $this->permisos_model->getPermisosCRUD('permiso_cliente', $crud);
 

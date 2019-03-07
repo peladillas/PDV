@@ -24,7 +24,7 @@ class Calendarios extends My_Controller {
 	public function index() {
         $crud = new grocery_CRUD();
 
-        $crud->where('calendario.id_estado = 1');
+        $crud->where('calendario.id_estado = '.ESTADOS::ALTA);
         $crud->set_table('calendario');
         $crud->columns('title', 'start', 'end');
 

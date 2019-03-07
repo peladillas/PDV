@@ -28,7 +28,7 @@ class Articulos extends My_Controller {
     public function categoria_abm() {
         $crud = new grocery_CRUD();
 
-        $crud->where('categoria.id_estado = 1');
+        $crud->where('categoria.id_estado = '.ESTADOS::ALTA);
         $crud->set_table('categoria');
 
         $crud->columns('descripcion');
@@ -46,9 +46,9 @@ class Articulos extends My_Controller {
         $_COOKIE['tabla']='categoria';
         $_COOKIE['id']='id_categoria';
 
-        $crud->callback_after_insert(array($this, 'insert_log'));
-        $crud->callback_after_update(array($this, 'update_log'));
-        $crud->callback_delete(array($this,'delete_log'));
+        $crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
+        $crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
+        $crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
 
         $this->permisos_model->getPermisosCRUD('permiso_articulo', $crud);
 
@@ -68,7 +68,7 @@ class Articulos extends My_Controller {
 	public function subcategoria_abm() {
         $crud = new grocery_CRUD();
 
-        $crud->where('subcategoria.id_estado = 1');
+        $crud->where('subcategoria.id_estado = '.ESTADOS::ALTA);
         $crud->set_table('subcategoria');
         $crud->columns('descripcion', 'id_categoria_padre');
         $crud->display_as('descripcion','Descripción')
@@ -83,9 +83,9 @@ class Articulos extends My_Controller {
         $_COOKIE['tabla']='subcategoria';
         $_COOKIE['id']='id_subcategoria';
 
-        $crud->callback_after_insert(array($this, 'insert_log'));
-        $crud->callback_after_update(array($this, 'update_log'));
-        $crud->callback_delete(array($this,'delete_log'));
+        $crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
+        $crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
+        $crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
 
         $this->permisos_model->getPermisosCRUD('permiso_articulo', $crud);
 
@@ -105,7 +105,7 @@ class Articulos extends My_Controller {
 	public function grupo_abm() {
         $crud = new grocery_CRUD();
 
-        $crud->where('grupo.id_estado = 1');
+        $crud->where('grupo.id_estado = '.ESTADOS::ALTA);
         $crud->set_table('grupo');
         $crud->columns('descripcion');
         $crud->display_as('descripcion','Descripción')
@@ -119,9 +119,9 @@ class Articulos extends My_Controller {
         $_COOKIE['tabla']='grupo';
         $_COOKIE['id']='id_grupo';
 
-        $crud->callback_after_insert(array($this, 'insert_log'));
-        $crud->callback_after_update(array($this, 'update_log'));
-        $crud->callback_delete(array($this,'delete_log'));
+        $crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
+        $crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
+        $crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
 
         $this->permisos_model->getPermisosCRUD('permiso_articulo', $crud);
 
@@ -141,7 +141,7 @@ class Articulos extends My_Controller {
 	public function articulo_abm() {
         $crud = new grocery_CRUD();
 
-        $crud->where('articulo.id_estado = 1');
+        $crud->where('articulo.id_estado = '.ESTADOS::ALTA);
 
         $crud->set_table('articulo');
         $crud->columns('cod_proveedor','descripcion','precio_costo','precio_venta_iva');
@@ -152,26 +152,28 @@ class Articulos extends My_Controller {
              ->display_as('id_categoria','Categoria')
              ->display_as('id_subcategoria','Subcategoria')
              ->display_as('id_estado','Estado');
-        $crud->fields(	'cod_proveedor',
-                        'descripcion',
-                        'precio_costo',
-                        'margen',
-                        'iva',
-                        'impuesto',
-                        'id_proveedor',
-                        'id_grupo',
-                        'id_categoria',
-                        'id_subcategoria');
-        $crud->required_fields(	'cod_proveedor',
-                        'descripcion',
-                        'precio_costo',
-                        'margen',
-                        'iva',
-                        'impuesto',
-                        'id_proveedor',
-                        'id_grupo',
-                        'id_categoria',
-                        'id_subcategoria');
+        $crud->fields(
+            'cod_proveedor',
+            'descripcion',
+            'precio_costo',
+            'margen',
+            'iva',
+            'impuesto',
+            'id_proveedor',
+            'id_grupo',
+            'id_categoria',
+            'id_subcategoria');
+        $crud->required_fields(
+            'cod_proveedor',
+            'descripcion',
+            'precio_costo',
+            'margen',
+            'iva',
+            'impuesto',
+            'id_proveedor',
+            'id_grupo',
+            'id_categoria',
+            'id_subcategoria');
 
         $crud->set_subject('articulo');
         $crud->set_relation('id_proveedor','proveedor','{descripcion}', 'proveedor.id_estado = 1');
@@ -183,11 +185,11 @@ class Articulos extends My_Controller {
         $_COOKIE['tabla']='articulo';
         $_COOKIE['id']='id_articulo';
 
-        $crud->callback_after_insert(array($this, 'insert_log'));
+        $crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
         $crud->callback_after_insert(array($this, 'actualizar_precios'));
-        $crud->callback_after_update(array($this, 'update_log'));
+        $crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
         $crud->callback_after_update(array($this, 'actualizar_precios'));
-        $crud->callback_delete(array($this,'delete_log'));
+        $crud->callback_delete(array($this,FUNCTION_LOG::DELETE));
 
         $this->permisos_model->getPermisosCRUD('permiso_articulo', $crud);
 

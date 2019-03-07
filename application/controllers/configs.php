@@ -35,9 +35,9 @@ class Configs extends MY_Controller {
         $_COOKIE['tabla']='config';
         $_COOKIE['id']='id_config';
 
-        $crud->callback_after_insert(array($this, 'insert_log'));
-        $crud->callback_after_update(array($this, 'update_log'));
-        $crud->callback_delete(array($this,'delete_log'));
+        $crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
+        $crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
+        $crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
 
         $crud->unset_add();
         $crud->unset_delete();
@@ -68,9 +68,9 @@ class Configs extends MY_Controller {
         $_COOKIE['tabla']='config_impresion';
         $_COOKIE['id']='id_config';
 
-        $crud->callback_after_insert(array($this, 'insert_log'));
-        $crud->callback_after_update(array($this, 'update_log'));
-        $crud->callback_delete(array($this,'delete_log'));
+        $crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
+        $crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
+        $crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
 
         $crud->unset_add();
         $crud->unset_delete();

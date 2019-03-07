@@ -52,9 +52,9 @@ class Remitos extends MY_Controller{
         $crud->unset_read();
         $crud->unset_delete();
 
-        $crud->callback_after_insert(array($this, 'insert_log'));
-        $crud->callback_after_update(array($this, 'update_log'));
-        $crud->callback_delete(array($this,'delete_log'));
+        $crud->callback_after_insert(array($this, FUNCTION_LOG::INSERT));
+        $crud->callback_after_update(array($this, FUNCTION_LOG::UPDATE));
+        $crud->callback_delete(array($this, FUNCTION_LOG::DELETE));
         $crud->add_action('Detalle', '', '','icon-exit', array($this, 'buscar_articulos'));
 
         $output = $crud->render();
@@ -78,7 +78,7 @@ class Remitos extends MY_Controller{
         $db['texto']		= getTexto();
         $db['clientes']		= $this->clientes_model->select();
 
-        if($this->input->post('buscar')==1) {
+        if($this->input->post('buscar') == 1) {
             $id_cliente = 0;
 
             if($this->input->post('cliente_alias') != 0) {
@@ -119,7 +119,7 @@ class Remitos extends MY_Controller{
         $datos = array(
             'id_cliente'	=> $id_cliente,
             'tipo'			=> 2,
-            'estado'		=> 1
+            'estado'		=> ESTADOS::ALTA
         );
 
         $db['presupuestos']	= $this->presupuestos_model->select($datos);
@@ -170,7 +170,7 @@ class Remitos extends MY_Controller{
                 "fecha"			=> date('Y-m-d H:i:s'),
                 "monto"			=> $total,
                 "id_cliente"	=> $id_cliente,
-                "estado"		=> 1
+                "estado"		=> ESTADOS::ALTA
             );
             $id_remito = $this->remitos_model->insert($remito);
 
@@ -194,7 +194,7 @@ class Remitos extends MY_Controller{
                         'id_remito'			=> $id_remito,
                         'id_presupuesto'	=> $row->id_presupuesto,
                         'monto'				=> $pago,
-                        'estado'			=> 1
+                        'estado'			=> ESTADOS::ALTA
                     );
 
                     $this->remitos_detalle_model->insert($remito_detalle);//Insert detalle remito
@@ -242,7 +242,7 @@ class Remitos extends MY_Controller{
 		$datos = array(
 			'id_cliente'=> $id_cliente,
 			'tipo'		=> 2,
-			'estado'	=> 1
+			'estado'	=> ESTADOS::ALTA
 		);
 			
 		$db['presupuestos']		= $this->presupuestos_model->select($datos);
@@ -281,14 +281,14 @@ class Remitos extends MY_Controller{
                     $pago		= $total;
                     $a_cuenta	= $row->a_cuenta + $total;
                     $total		= 0;
-                    $estado		= 1;
+                    $estado		= ESTADOS::ALTA;
                 }
 
                 $remito_detalle = array(
                     'id_remito'			=> $id_remito,
                     'id_devolucion'		=> $row->id_devolucion,
                     'monto'				=> -$pago,
-                    'estado'			=> 1
+                    'estado'			=> ESTADOS::ALTA
                 );
 
                 $this->remitos_detalle_model->insert($remito_detalle);//Insert detalle remito
