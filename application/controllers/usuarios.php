@@ -105,7 +105,7 @@ class Usuarios extends MY_Controller {
 		$crud->set_subject('usuario');
 		$crud->required_fields('descripcion','pass', 'id_rol');
 		$crud->fields('descripcion','pass', 'id_rol');
-		$crud->set_relation('id_rol','rol','descripcion', 'rol.id_estado = 1');
+		$crud->set_relation('id_rol','rol','descripcion', 'rol.id_estado = '.ESTADOS::ALTA);
 		$crud->set_relation('id_estado','estado','estado');
 			
 		$_COOKIE['tabla']= 'usuario';

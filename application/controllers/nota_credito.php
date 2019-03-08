@@ -24,7 +24,7 @@ class Nota_credito extends MY_Controller {
         $db['documents']->set_entity('id_cliente', 'cliente');
 
         $db['documents']->set_table_detail('nota_credito_renglon');
-        $db['documents']->set_stock('out');
+        $db['documents']->set_stock('in');
 
         $this->view($db, $this->path.'add');
     }

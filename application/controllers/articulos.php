@@ -77,7 +77,7 @@ class Articulos extends My_Controller {
         $crud->set_subject('subcategoria');
         $crud->required_fields('descripcion','id_estado','id_categoria_padre');
         $crud->set_relation('id_estado','estado','estado');
-        $crud->set_relation('id_categoria_padre','categoria','descripcion', 'categoria.id_estado = 1');
+        $crud->set_relation('id_categoria_padre','categoria','descripcion', 'categoria.id_estado = '.ESTADOS::ALTA);
         $crud->fields('descripcion');
 
         $_COOKIE['tabla']='subcategoria';
@@ -176,10 +176,10 @@ class Articulos extends My_Controller {
             'id_subcategoria');
 
         $crud->set_subject('articulo');
-        $crud->set_relation('id_proveedor','proveedor','{descripcion}', 'proveedor.id_estado = 1');
-        $crud->set_relation('id_grupo','grupo','descripcion', 'grupo.id_estado = 1');
-        $crud->set_relation('id_categoria','categoria','descripcion', 'categoria.id_estado = 1');
-        $crud->set_relation('id_subcategoria','subcategoria','descripcion', 'subcategoria.id_estado = 1');
+        $crud->set_relation('id_proveedor','proveedor','{descripcion}', 'proveedor.id_estado = '.ESTADOS::ALTA);
+        $crud->set_relation('id_grupo','grupo','descripcion', 'grupo.id_estado = '.ESTADOS::ALTA);
+        $crud->set_relation('id_categoria','categoria','descripcion', 'categoria.id_estado = '.ESTADOS::ALTA);
+        $crud->set_relation('id_subcategoria','subcategoria','descripcion', 'subcategoria.id_estado = '.ESTADOS::ALTA);
         $crud->set_relation('id_estado','estado','estado');
 
         $_COOKIE['tabla']='articulo';
@@ -235,7 +235,7 @@ class Articulos extends My_Controller {
                 'categoria'		=> $this->input->post('categoria'),
                 'subcategoria'	=> $this->input->post('subcategoria'),
                 'variacion'		=> $this->input->post('variacion'),
-                'id_estado'		=> 1,
+                'id_estado'		=> ESTADOS::ALTA,
                 'date_upd'		=> date('Y:m:d H:i:s')
             );
 

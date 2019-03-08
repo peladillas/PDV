@@ -76,7 +76,7 @@ class Devoluciones extends My_Controller {
 			
 		$condicion = array(
 		    'id_presupuesto'	=> $id,
-			'estado'			=> 1
+			'estado'			=> ESTADOS::ALTA,
         );
 
 		$db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($condicion);
@@ -105,7 +105,7 @@ class Devoluciones extends My_Controller {
 			'a_cuenta'			=> 0,
 			'nota'				=> $this->input->post('nota'), 
 			'id_usuario'		=> $session_data['id_usuario'],
-			'id_estado'			=> 1
+			'id_estado'			=> ESTADOS::ALTA,
 		);
 		
 		$id_devolucion = $this->devoluciones_model->insert($registro);
