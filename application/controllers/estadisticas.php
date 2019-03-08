@@ -26,7 +26,7 @@ class Estadisticas extends My_Controller {
 ---------------------------------------------------------------------------------*/
 
 	function verMas() {
-		$config = $this->config_model->select(1);
+		$config = $this->config_model->select(CONFIGURACIONES::DEFAULT);
 
     	if($config) {
     		foreach ($config as $fila) {

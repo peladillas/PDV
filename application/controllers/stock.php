@@ -40,8 +40,8 @@ class Stock extends MY_Controller {
 	public function movimiento(){
 		$registro = array(
 			'id_articulo' => 9,
-			'id_comprobante' => 1,
-			'id_comprobante_tipo' => 1,
+			'id_comprobante' => 5,
+			'id_comprobante_tipo' => TIPOS_COMPROBANTES::PRESUPUESTO,
 			'cantidad_saliente' => 5,
 		);
 		$this->stock_detail_model->movimiento($registro);

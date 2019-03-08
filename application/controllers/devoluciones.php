@@ -128,7 +128,7 @@ class Devoluciones extends My_Controller {
 				$this->devoluciones_detalle_model->insert($registro);
 				
 				$registro = array(
-					'estado'	=> 2
+					'estado'	=> ESTADOS_COMPROBANTES::PAGA
 				);
 				
 				$this->renglon_presupuesto_model->update($registro, $row->id_renglon);

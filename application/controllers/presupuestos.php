@@ -144,7 +144,7 @@ class Presupuestos extends MY_Controller {
 
     function _calcularatraso($value, $row) {
 
-        $config = $this->config_model->select(1);
+        $config = $this->config_model->select(CONFIGURACIONES::DEFAULT);
         if($config > 0) {
             foreach ($config as $fila) {
                 $dias_pago = $fila->dias_pago;
@@ -201,7 +201,7 @@ class Presupuestos extends MY_Controller {
 
                 $interes = array(
                     'id_presupuesto'	=> $id,
-                    'id_tipo'			=> 1,
+                    'id_tipo'			=> ESTADOS_COMPROBANTES::IMPAGA,
                     'monto'				=> $interes_monto,
                     'descripcion'		=> $descripcion,
                     'fecha'				=> date('Y-m-d H:i:s'),
@@ -225,7 +225,7 @@ class Presupuestos extends MY_Controller {
             $db['presupuestos']			= $this->presupuestos_model->select($id);
             $db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
             $db['interes_presupuesto']	= $this->intereses_model->select($condicion);
-            $db['impresiones']			= $this->config_impresion_model->select(2);
+            $db['impresiones']			= $this->config_impresion_model->select(TIPOS_COMPROBANTES::NOTA_CREDITO);
             $db['devoluciones']			= $this->devoluciones_model->select($condicion);
             $db['anulaciones']			= $this->anulaciones_model->select($condicion);
 
@@ -263,7 +263,7 @@ class Presupuestos extends MY_Controller {
             $this->anulaciones_model->insert($registro);
 
             $presupuesto = array(
-                'estado' => 3
+                'estado' => ESTADOS_COMPROBANTES::ANULADA,
             );
 
             $this->presupuestos_model->update($presupuesto, $registro['id_presupuesto']);
@@ -278,7 +278,7 @@ class Presupuestos extends MY_Controller {
         $db['texto']				= getTexto();
         $db['presupuestos']			= $this->presupuestos_model->getRegistro($id);
         $db['detalle_presupuesto']	= $this->renglon_presupuesto_model->getDetalle($id);
-        $db['impresiones']			= $this->config_impresion_model->getRegistro(2);
+        $db['impresiones']			= $this->config_impresion_model->getRegistro(TIPOS_COMPROBANTES::NOTA_CREDITO);
         $db['devoluciones']			= $this->devoluciones_model->getBusqueda($condicion);
 
         $this->view($db, $this->path.'anular_presupuestos');

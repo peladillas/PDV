@@ -14,6 +14,14 @@ abstract class ESTADOS {
     const BAJA = 2;
 }
 
+abstract class ESTADOS_COMPROBANTES{
+    const IMPAGA = 1;
+    const PAGA = 2;
+    const VENCIDA = 3;
+    const ANULADA = 4;
+    const EMITIDA = 5;
+}
+
 abstract class FORMAS_PAGOS {
     const EFECTIVO = 1;
     const CHEQUE = 2;
@@ -21,17 +29,14 @@ abstract class FORMAS_PAGOS {
     const CTA_CTE = 4;
 }
 
-abstract class CUOTAS_ESTADOS{
-    const IMPAGA = 1;
-    const PAGA = 2;
-    const VENCIDA = 3;
-    const EMITIDA = 4;
-}
-
 abstract class ACCIONES{
     const INSERT = 1;
     const UPDATE = 2;
     const DELETE = 3;
+}
+
+abstract class CONFIGURACIONES {
+    const DEFAULT = 1;
 }
 
 

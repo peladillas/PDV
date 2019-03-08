@@ -90,8 +90,8 @@ class Remitos extends MY_Controller{
             if($id_cliente != 0) {
                 $datos = array(
                     'id_cliente'=> $id_cliente,
-                    'tipo'		=> 2,	//Cuenta corriente
-                    'estado'	=> 1	//Falta de pago
+                    'tipo'		=> FORMAS_PAGOS::CTA_CTE,	//Cuenta corriente
+                    'estado'	=> ESTADOS_COMPROBANTES::IMPAGA	//Falta de pago
                 );
                 $db['id_cliente']		= $id_cliente;
                 $db['presupuestos']		= $this->presupuestos_model->select($datos);
@@ -118,7 +118,7 @@ class Remitos extends MY_Controller{
 
         $datos = array(
             'id_cliente'	=> $id_cliente,
-            'tipo'			=> 2,
+            'tipo'			=> ESTADOS_COMPROBANTES::PAGA,
             'estado'		=> ESTADOS::ALTA
         );
 
@@ -130,7 +130,7 @@ class Remitos extends MY_Controller{
                 "fecha"			=> date('Y-m-d H:i:s'),
                 "monto"			=> $total,
                 "id_cliente"	=> $id_cliente,
-                "estado"		=> 1
+                "estado"		=> ESTADOS_COMPROBANTES::IMPAGA
             );
 
             $id_remito = $this->remitos_model->insert($remito);
@@ -141,7 +141,7 @@ class Remitos extends MY_Controller{
                         'id_remito'			=> $id_remito,
                         'id_presupuesto'	=> $row->id_presupuesto,
                         'monto'				=> $this->input->post($row->id_presupuesto),
-                        'estado'			=> 1
+                        'estado'			=> ESTADOS_COMPROBANTES::IMPAGA
                     );
 
                     $this->remitos_detalle_model->insert($remito_detalle);//Insert detalle remito
@@ -152,7 +152,7 @@ class Remitos extends MY_Controller{
                     if($a_cuenta == $row->monto) {//se completo el pago del presupuesto
                         $update_pres = array(
                                 'a_cuenta'	=> $a_cuenta,
-                                'estado'	=> 2
+                                'estado'	=> ESTADOS_COMPROBANTES::PAGA
                         );
 
                         $this->presupuestos_model->update($update_pres, $row->id_presupuesto);
@@ -182,12 +182,12 @@ class Remitos extends MY_Controller{
                         $pago		= $resto_apagar;
                         $total		= $total - $resto_apagar;
                         $a_cuenta	= $row->monto;
-                        $estado		= 2;
+                        $estado		= ESTADOS_COMPROBANTES::PAGA;
                     } else {//Si lo supera
                         $pago		= $total;
                         $a_cuenta	= $row->a_cuenta + $total;
                         $total		= 0;
-                        $estado		= 1;
+                        $estado		= ESTADOS_COMPROBANTES::IMPAGA;
                     }
 
                     $remito_detalle = array(
@@ -229,7 +229,7 @@ class Remitos extends MY_Controller{
 		$db['remitos']			= $this->remitos_model->getRemito($id);
 		$db['remitos_detalle']	= $this->remitos_detalle_model->getRemitos($id);
 		$db['remitos_dev']		= $this->remitos_detalle_model->getRemitos($id, 'dev');
-		$db['impresiones']		= $this->config_impresion_model->select(1);
+		$db['impresiones']		= $this->config_impresion_model->select(TIPOS_COMPROBANTES::PRESUPUESTO);
 		
 		if($id_cliente === NULL) {
 			$remitos = $db['remitos'];
@@ -241,7 +241,7 @@ class Remitos extends MY_Controller{
 		
 		$datos = array(
 			'id_cliente'=> $id_cliente,
-			'tipo'		=> 2,
+			'tipo'		=> FORMAS_PAGOS::EFECTIVO,
 			'estado'	=> ESTADOS::ALTA
 		);
 			
@@ -276,7 +276,7 @@ class Remitos extends MY_Controller{
                     $pago		= $resto_apagar;
                     $total		= $total - $resto_apagar;
                     $a_cuenta	= $row->monto;
-                    $estado		= 2;
+                    $estado		= ESTADOS_COMPROBANTES::PAGA;
                 } else {//Si lo supera
                     $pago		= $total;
                     $a_cuenta	= $row->a_cuenta + $total;

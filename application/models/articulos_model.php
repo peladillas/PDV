@@ -52,7 +52,7 @@ class Articulos_model extends MY_Model {
 			grupo.descripcion like '%$datos[grupo]%' AND
 			categoria.descripcion like '%$datos[categoria]%' AND
 			subcategoria.descripcion like '%$datos[subcategoria]%' AND
-			articulo.id_estado=1";
+			articulo.id_estado = ".ESTADOS::ALTA;
 		} else {
             $sql .= " articulo.id_articulo = $datos";
 		}
