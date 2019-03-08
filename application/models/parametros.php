@@ -28,6 +28,12 @@ abstract class CUOTAS_ESTADOS{
     const EMITIDA = 4;
 }
 
+abstract class ACCIONES{
+    const INSERT = 1;
+    const UPDATE = 2;
+    const DELETE = 3;
+}
+
 
 
 abstract class FUNCTION_LOG {

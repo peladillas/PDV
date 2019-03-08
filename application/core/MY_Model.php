@@ -28,8 +28,8 @@ class MY_Model extends CI_Model {
 			$this->_table 
 		WHERE ";
 
-    	if ($this->db->field_exists('id_estado', $this->_table)){
-			$sql .= $this->_table.".id_estado = 1";
+    	if ($this->db->field_exists('id_estado', $this->_table)) {
+			$sql .= $this->_table.".id_estado = ".ESTADOS::ALTA;
 		}
 
 		if ($filtros == NULL) {
@@ -63,7 +63,11 @@ class MY_Model extends CI_Model {
  **********************************************************************************/	
 	
 	public function insert($datos) {
-		if(is_array($datos)) {
+		if (is_array($datos)) {
+            if ($this->db->field_exists('id_estado', $this->_table)) {
+                $datos['id_estado'] = ESTADOS::ALTA;
+            }
+
 			$this->db->insert($this->_table , $datos);
 			$id	=	$this->db->insert_id();	
 		}

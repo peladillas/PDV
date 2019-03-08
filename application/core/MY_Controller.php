@@ -86,7 +86,7 @@ class MY_Controller extends CI_Controller {
 	    $registro = array(
 	        "tabla"		=> $_COOKIE['tabla'],
 	        "id_tabla"	=> $id,
-	        "id_accion"	=> 1,
+	        "id_accion"	=> ACCIONES::INSERT,
 	        "fecha"		=> date('Y-m-d H:i:s'),
 	        "id_usuario"=> $session_data['id_usuario']
 	    );
@@ -94,7 +94,7 @@ class MY_Controller extends CI_Controller {
 	    $this->db->insert('logs',$registro);
 		
 		$registro =  array(
-			"id_estado"=>1
+			"id_estado"=> ESTADOS::ALTA
 		);
 		
 		$this->db->update($_COOKIE['tabla'], $registro, array($_COOKIE['id'] => $id));
@@ -109,7 +109,7 @@ class MY_Controller extends CI_Controller {
     	$registro = array(
 	        "tabla"		=> $_COOKIE['tabla'],
 	        "id_tabla"	=> $id,
-	        "id_accion"	=> 2,
+	        "id_accion"	=> ACCIONES::UPDATE,
 	        "fecha"		=> date('Y-m-d H:i:s'),
 	        "id_usuario"=> $session_data['id_usuario']
 	    );
@@ -126,14 +126,14 @@ class MY_Controller extends CI_Controller {
 		$registro = array(
 	        "tabla"		=> $_COOKIE['tabla'],
 	        "id_tabla"	=> $id,
-	        "id_accion"	=> 3,
+	        "id_accion"	=> ACCIONES::DELETE,
 	        "fecha"		=> date('Y-m-d H:i:s'),
 	        "id_usuario"=> $session_data['id_usuario']
 	    );
  
     	$this->db->insert('logs',$registro);
 			
-    	return $this->db->update($_COOKIE['tabla'], array('id_estado' => 2), array($_COOKIE['id'] => $id));
+    	return $this->db->update($_COOKIE['tabla'], array('id_estado' => ESTADOS::BAJA), array($_COOKIE['id'] => $id));
 	}
 
 /*---------------------------------------------------------------------------------
