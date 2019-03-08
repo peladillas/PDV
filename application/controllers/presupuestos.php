@@ -301,7 +301,7 @@ class Presupuestos extends MY_Controller {
         $db['documents']->set_entity('id_cliente', 'cliente');
 
         $db['documents']->set_table_detail('reglon_presupuesto');
-        //$db['documents']->set_stock('out');
+        $db['documents']->set_stock('out');
 
 		$this->view($db, $this->path.'add');
     }

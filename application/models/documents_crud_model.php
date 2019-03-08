@@ -71,13 +71,13 @@ class documents_CRUD_Model  extends CI_Model  {
     function getComprobanteTipo($detailTable){
         switch ($detailTable) {
 		    case 'presupuesto_detalle':
-		        return TIPO_COMPROBANTE::PRESUPUESTO;
+		        return TIPOS_COMPROBANTES::PRESUPUESTO;
 		        break;
 		    case 'nota_credito_renglon':
-                return TIPO_COMPROBANTE::NOTA_CREDITO;
+                return TIPOS_COMPROBANTES::NOTA_CREDITO;
 		        break;
             case 'stock':
-                return TIPO_COMPROBANTE::STOCK;
+                return TIPOS_COMPROBANTES::STOCK;
                 break;
 		}
     }
