@@ -33,7 +33,6 @@ class Proveedores extends MY_Controller {
         $crud->set_subject('proveedor');
         $crud->required_fields('descripcion','impuesto', 'margen','id_estado');
         $crud->fields('descripcion','margen', 'impuesto', 'descuento', 'descuento2');
-        $crud->set_relation('id_estado','estado','estado');
 
         $_COOKIE['tabla'] ='proveedor';
         $_COOKIE['id'] ='id_proveedor';

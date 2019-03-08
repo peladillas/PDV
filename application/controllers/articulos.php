@@ -41,7 +41,6 @@ class Articulos extends My_Controller {
         $crud->fields('descripcion');
 
         $crud->required_fields('descripcion','id_estado');
-        $crud->set_relation('id_estado','estado','estado');
 
         $_COOKIE['tabla']='categoria';
         $_COOKIE['id']='id_categoria';
@@ -76,7 +75,6 @@ class Articulos extends My_Controller {
              ->display_as('id_categoria_padre','Categoria padre');
         $crud->set_subject('subcategoria');
         $crud->required_fields('descripcion','id_estado','id_categoria_padre');
-        $crud->set_relation('id_estado','estado','estado');
         $crud->set_relation('id_categoria_padre','categoria','descripcion', 'categoria.id_estado = '.ESTADOS::ALTA);
         $crud->fields('descripcion');
 
@@ -112,7 +110,6 @@ class Articulos extends My_Controller {
              ->display_as('id_estado','Estado');
         $crud->set_subject('grupo');
         $crud->required_fields('descripcion','id_estado');
-        $crud->set_relation('id_estado','estado','estado');
 
         $crud->fields('descripcion');
 
@@ -180,8 +177,7 @@ class Articulos extends My_Controller {
         $crud->set_relation('id_grupo','grupo','descripcion', 'grupo.id_estado = '.ESTADOS::ALTA);
         $crud->set_relation('id_categoria','categoria','descripcion', 'categoria.id_estado = '.ESTADOS::ALTA);
         $crud->set_relation('id_subcategoria','subcategoria','descripcion', 'subcategoria.id_estado = '.ESTADOS::ALTA);
-        $crud->set_relation('id_estado','estado','estado');
-
+ 
         $_COOKIE['tabla']='articulo';
         $_COOKIE['id']='id_articulo';
 

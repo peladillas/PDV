@@ -56,7 +56,7 @@ class Presupuestos extends MY_Controller {
         $query = $this->db->query($consulta);
         //$result		= mysql_query($qstring) or die(mysql_error());//query the database for entries containing the term
         //CARGO PRESUPUESTO
-        //CARGO REGLON PRESUPUESTO //
+        //CARGO RENGLON PRESUPUESTO //
         //$id_presupuesto = mysql_insert_id();
         $id_presupuesto = $this->db->insert_id();
         $codigos_cargados = array();
@@ -72,7 +72,7 @@ class Presupuestos extends MY_Controller {
             {
                 $qstring = "
 		INSERT INTO 
-			reglon_presupuesto (
+			renglon_presupuesto (
 				id_presupuesto,
 				id_articulo,
 				cantidad,
@@ -91,7 +91,7 @@ class Presupuestos extends MY_Controller {
                 //$result = mysql_query($qstring) or die(mysql_error());//query the database for entries containing the term
             }
         }
-        //CARGO REGLON PRESUPUESTO //
+        //CARGO RENGLON PRESUPUESTO //
     }
 
 /**********************************************************************************
@@ -300,7 +300,7 @@ class Presupuestos extends MY_Controller {
         $db['documents']->set_table_head('presupuesto', 'id_presupuesto');
         $db['documents']->set_entity('id_cliente', 'cliente');
 
-        $db['documents']->set_table_detail('reglon_presupuesto');
+        $db['documents']->set_table_detail('renglon_presupuesto');
         $db['documents']->set_stock('out');
 
 		$this->view($db, $this->path.'add');

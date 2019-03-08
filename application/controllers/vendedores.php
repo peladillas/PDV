@@ -25,19 +25,17 @@ class Vendedores extends My_Controller {
 
         $crud->set_table('vendedor');
 
-        $crud->columns('id_vendedor','vendedor', 'id_estado');
+        $crud->columns('id_vendedor','vendedor');
 
         $crud->display_as('id_vendedor','ID')
-            ->display_as('vendedor','Vendedor')
-            ->display_as('id_estado','Estado');
+            ->display_as('vendedor','Vendedor');
 
         $crud->set_subject('vendedor');
 
         $crud->fields('vendedor');
 
         $crud->required_fields('vendedor','vendedor');
-
-        $crud->set_relation('id_estado','estado','estado');
+		
         $crud->add_action('Estadistica', '', '','icon-awstats', array($this, 'detalle_vendedor'));
 
         $_COOKIE['tabla']='vendedor';

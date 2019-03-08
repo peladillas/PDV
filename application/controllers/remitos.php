@@ -42,7 +42,6 @@ class Remitos extends MY_Controller{
 
         $crud->set_subject('remiro');
         $crud->set_relation('id_cliente','cliente','{alias} - {nombre} {apellido}');
-        $crud->set_relation('id_estado','estado','estado');
 
         $_COOKIE['tabla']='remito';
         $_COOKIE['id']='id_remito';

@@ -89,7 +89,7 @@ width: 25px;
 height: 25px;
 cursor: pointer;
 }
-.reglon_item_comprobante{
+.renglon_item_comprobante{
     width: 98%;
     position: relative;
     float: left;
@@ -97,7 +97,7 @@ cursor: pointer;
     background: orange;
     padding-left: 15px;
 }
-.cont_reglon_item_presup{
+.cont_renglon_item_presup{
 width: 98%;
 position: relative;
 float: left;
@@ -130,7 +130,7 @@ font-size: 25px;
 bottom:-1px;
 right:-1px;
 }
-#reglon_factura{
+#renglon_factura{
 position: absolute;
 margin-top: 50px;
 width: 90%;
@@ -147,7 +147,7 @@ height: 20px;
 border: 1px solid black;
 background: lightgrey;
 }
-.item_reglon,.titulo_item_reglon{
+.item_renglon,.titulo_item_renglon{
 position: relative;
 float: left;
 width: 50%;
@@ -156,7 +156,7 @@ height: auto;
 border: 1px solid black;
 background: lightgrey;
 }
-.titulo_cant_item_reglon,.cant_item_reglon{
+.titulo_cant_item_renglon,.cant_item_renglon{
 position: relative;
 float: left;
 width: 10%;
@@ -165,7 +165,7 @@ height: auto;
 border: 1px solid black;
 background: lightgrey;
 }
-.px_item_reglon, .titulo_px_item_reglon{
+.px_item_renglon, .titulo_px_item_renglon{
 position: relative;
 float: left;
 width: 10%;
@@ -174,7 +174,7 @@ height: auto;
 border: 1px solid black;
 background: lightgrey;
 }
-.px_reglon, .titulo_px_reglon{
+.px_renglon, .titulo_px_renglon{
 position: relative;
 float: left;
 width: 15%;

@@ -2,7 +2,7 @@ var codigo_r		= [];
 var cantidad_r		= [];
 var precio_r		= [];
 var item_elegido;
-var items_reglon	= [];
+var items_renglon	= [];
 var px_unitario;
 var porc_iva_art;
 var nuevo			= true;
@@ -203,7 +203,7 @@ $(function() {
 			px_unitario		= ui.item.precio;
 			
 			$('#px_unitario_rapido').val((px_unitario * ((porc_iva_art/100) + 1 )).toFixed(2));	
-			pos				= items_reglon.indexOf(este);
+			pos				= items_renglon.indexOf(este);
 	    	
 			$("#cantidad").removeAttr('disabled');
 			$('#cantidad').focus();
@@ -262,9 +262,9 @@ function carga(elem)
 			este = elem.id;
 	 
 			if(nuevo){
-				items_reglon.push(este);
+				items_renglon.push(este);
 			}
-			agrega_a_reglon(este,elem.value,cantidad, nuevo,px_unitario,porc_iva_art);
+			agrega_a_renglon(este,elem.value,cantidad, nuevo,px_unitario,porc_iva_art);
 			reset_item();
 		} else {
 			reset_item(); 
@@ -284,35 +284,35 @@ function carga(elem)
 ---------------------------------------------------------------------------------*/	
 
 
-function agrega_a_reglon(este,texto,cantidad, bandera,px_unitario_sin_iva,porc_iva)
+function agrega_a_renglon(este,texto,cantidad, bandera,px_unitario_sin_iva,porc_iva)
 {
 	px_unitario	= (px_unitario_sin_iva * ((porc_iva / 100) + 1)).toFixed(2);
-	px_reglon	= cantidad * px_unitario;
+	px_renglon	= cantidad * px_unitario;
     iva			= ((px_unitario_sin_iva * (porc_iva / 100)) * cantidad).toFixed(2);
 		
 	if(bandera){
-		largo	= $('#reglon_factura').height();
+		largo	= $('#renglon_factura').height();
 		
 		largo	= largo += 30;
 
 		
-		$('#reglon_factura').height(largo);
-		$('#reglon_factura').append('<div id="cont_borra'+este+'" class="cont_reglon_item_presup row" style="padding-left: 15px"></div>');
-		$('#cont_borra'+este).append('<span class="item_reglon col-md-5" id='+este+' >'+texto+'</span>');
-		$('#cont_borra'+este).append('<input disabled class="cant_item_reglon col-sm-1" id=cant_'+este+' value='+cantidad+'>');
-		$('#cont_borra'+este).append('<input disabled  class="px_item_reglon col-sm-1" id=px_'+este+' value='+px_unitario+'>');
-		$('#cont_borra'+este).append('<input disabled  class="porc_iva_item_reglon col-sm-1" id=porc_iva_'+este+' value=%'+porc_iva+'>');
-		$('#cont_borra'+este).append('<input disabled  class="px_item_reglon_iva col-sm-1" id=px_iva'+este+' value='+iva+'>');
-		$('#cont_borra'+este).append('<input disabled  class="px_reglon col-sm-2" id=px_x_cant'+este+' value='+px_reglon+'>');
+		$('#renglon_factura').height(largo);
+		$('#renglon_factura').append('<div id="cont_borra'+este+'" class="cont_renglon_item_presup row" style="padding-left: 15px"></div>');
+		$('#cont_borra'+este).append('<span class="item_renglon col-md-5" id='+este+' >'+texto+'</span>');
+		$('#cont_borra'+este).append('<input disabled class="cant_item_renglon col-sm-1" id=cant_'+este+' value='+cantidad+'>');
+		$('#cont_borra'+este).append('<input disabled  class="px_item_renglon col-sm-1" id=px_'+este+' value='+px_unitario+'>');
+		$('#cont_borra'+este).append('<input disabled  class="porc_iva_item_renglon col-sm-1" id=porc_iva_'+este+' value=%'+porc_iva+'>');
+		$('#cont_borra'+este).append('<input disabled  class="px_item_renglon_iva col-sm-1" id=px_iva'+este+' value='+iva+'>');
+		$('#cont_borra'+este).append('<input disabled  class="px_renglon col-sm-2" id=px_x_cant'+este+' value='+px_renglon+'>');
 		$('#cont_borra'+este).append('<div class="col-sm-1 cont_botones" id=cont_botones'+este+'></div>');
-		$('#cont_botones'+este).append('<button  title="Borrar linea" class="ico_borra btn btn-danger btn-xs pull-left"  onclick="borra_reglon('+este+')" id="ico_borra'+este+'"></button>');
+		$('#cont_botones'+este).append('<button  title="Borrar linea" class="ico_borra btn btn-danger btn-xs pull-left"  onclick="borra_renglon('+este+')" id="ico_borra'+este+'"></button>');
 		$('#ico_borra'+este).append('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>');
 		
 		reset_item();
     } else {
 		$('#px_iva'+este).val(iva);		
 		$('#cant_'+este).val(cantidad);
-		$('#px_x_cant'+este).val(px_reglon);    	
+		$('#px_x_cant'+este).val(px_renglon);    	
 		
 		nuevo = true; 
 		reset_item();   
@@ -331,21 +331,21 @@ function agrega_a_reglon(este,texto,cantidad, bandera,px_unitario_sin_iva,porc_i
 ---------------------------------------------------------------------------------*/	
 
 
-function borra_reglon(a)
+function borra_renglon(a)
 {	
-	pos = items_reglon.indexOf(a);
+	pos = items_renglon.indexOf(a);
 
-	items_reglon.splice( pos, 1 );
-	$.each(items_reglon, function(index, val) {
+	items_renglon.splice( pos, 1 );
+	$.each(items_renglon, function(index, val) {
 
 	});
 	
 	
 	$('#cont_borra'+a).empty();
 	$('#cont_borra'+a).remove();
-	var nuevo_largo=$('#reglon_factura').height();
+	var nuevo_largo=$('#renglon_factura').height();
 	nuevo_largo=nuevo_largo-30;
-	$('#reglon_factura').height(nuevo_largo);
+	$('#renglon_factura').height(nuevo_largo);
 	calcula_total(),descuento();
 }
 
@@ -370,7 +370,7 @@ function calcula_total(iva)
 	var total	= 0;
 	var temp	= 0;
 	
-	$(".px_reglon").each(function (index) {
+	$(".px_renglon").each(function (index) {
 
 		temp = $(this).val();
 		total=parseFloat(total)+parseFloat(temp);
@@ -379,7 +379,7 @@ function calcula_total(iva)
 	$('#total_presupuesto').val(total.toFixed(2));
 	total_iva_presupuesto = 0;
 	
-	$('.px_item_reglon_iva').each(function (index) {		
+	$('.px_item_renglon_iva').each(function (index) {		
 		  temp1 = $(this).val();
 		  total_iva_presupuesto +=parseFloat(temp1);
 	});
@@ -412,17 +412,17 @@ function guarda_detalle()
 	var temp = 0;
 	
 	if(dto_final > 0) {
-		$('.px_reglon').each(function (index) {
+		$('.px_renglon').each(function (index) {
 			precio_r.push($(this).val()*(1-(dto_final/100)));
 		});
 	} else {
-		$('.px_reglon').each(function (index) {
+		$('.px_renglon').each(function (index) {
 			precio_r.push($(this).val());
 		});
 	}
 	
 	
-	$('.cant_item_reglon').each(function (index) {
+	$('.cant_item_renglon').each(function (index) {
 		cantidad_r.push($(this).val());
 		temp_id		= this.id;
 		cod_prod	= parseInt(temp_id.slice(5));

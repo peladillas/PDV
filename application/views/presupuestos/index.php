@@ -122,15 +122,15 @@
 	<div class="col-md-12">
 	<div class="panel panel-success">
 		<div class="panel-body">
-			<div id="reglon_factura" class="row">
+			<div id="renglon_factura" class="row">
 				<div id="cont_fac" class="col-md-4 col-md-offset-4">
 					<input type='text'  value='0' id='total_presupuesto' class="form-control"/>
 					<hr>
 				</div>
-				<span class="titulo_item_reglon col-sm-7"><b>DETALLE</b></span>
-				<span class="titulo_cant_item_reglon col-sm-1"><b>CANT</b></span>
-				<span class="titulo_px_item_reglon col-sm-1"><b>P.U</b></span>
-				<span class="titulo_px_reglon col-sm-2"><b>SUBTOTAL</b></span>
+				<span class="titulo_item_renglon col-sm-7"><b>DETALLE</b></span>
+				<span class="titulo_cant_item_renglon col-sm-1"><b>CANT</b></span>
+				<span class="titulo_px_item_renglon col-sm-1"><b>P.U</b></span>
+				<span class="titulo_px_renglon col-sm-2"><b>SUBTOTAL</b></span>
 				<span class="col-sm1"></span>
 			</div>
 		</div>

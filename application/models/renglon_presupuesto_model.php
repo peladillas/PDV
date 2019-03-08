@@ -3,7 +3,7 @@ class Renglon_presupuesto_model extends MY_Model {
 	
 	public function __construct(){
 		parent::construct(
-            'reglon_presupuesto',
+            'renglon_presupuesto',
             'id_renglon',
             'id_renglon'
 		);
@@ -16,7 +16,7 @@ class Renglon_presupuesto_model extends MY_Model {
 		FROM 
 		  $this->_table
 		INNER JOIN 
-		  articulo ON(reglon_presupuesto.id_articulo =  articulo.id_articulo)
+		  articulo ON(renglon_presupuesto.id_articulo =  articulo.id_articulo)
 		ORDER BY
 		  $this->_table.$this->_id LIMIT 0 , $cantidad";
 
@@ -29,9 +29,9 @@ class Renglon_presupuesto_model extends MY_Model {
         SELECT 
 		  * 
 		FROM 
-		  `reglon_presupuesto`
+		  `renglon_presupuesto`
 		INNER JOIN 
-		  articulo ON(reglon_presupuesto.id_articulo =  articulo.id_articulo) 
+		  articulo ON(renglon_presupuesto.id_articulo =  articulo.id_articulo) 
 		WHERE ";
 		
 		if(is_array($datos)) {

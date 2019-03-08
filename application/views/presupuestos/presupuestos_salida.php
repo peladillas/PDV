@@ -244,13 +244,13 @@
                         </div>
                     </div>
                     <hr>
-                    <div id="reglon_factura" class="row">
-                        <div class="titulo_item_reglon col-sm-5  cabecera text-center"><b>DESCRIPCION</b></div>
-                        <div class="titulo_cant_item_reglon col-sm-1  cabecera text-center "><b>CANT</b></div>
-                        <div class="titulo_px_item_reglon col-sm-1  cabecera text-center"><b>P.U </b></div>
-                        <div class="titulo_px_item_reglon col-sm-1  cabecera text-center"><b>IVA</b></div>
+                    <div id="renglon_factura" class="row">
+                        <div class="titulo_item_renglon col-sm-5  cabecera text-center"><b>DESCRIPCION</b></div>
+                        <div class="titulo_cant_item_renglon col-sm-1  cabecera text-center "><b>CANT</b></div>
+                        <div class="titulo_px_item_renglon col-sm-1  cabecera text-center"><b>P.U </b></div>
+                        <div class="titulo_px_item_renglon col-sm-1  cabecera text-center"><b>IVA</b></div>
                         <div class="col-sm-1  cabecera text-center"><b>% IVA</b></div>
-                        <div class="titulo_px_reglon col-sm-2  cabecera text-center"><b>SUBTOTAL</b></div>
+                        <div class="titulo_px_renglon col-sm-2  cabecera text-center"><b>SUBTOTAL</b></div>
                         <div class="col-sm-1 cabecera text-center"><b>ELIMINAR</b></div>
                     </div>
                 </div>
@@ -287,7 +287,7 @@
             <span class="col-xs-4">Nota</span>
             <span class="col-xs-3">Accion</span>
         </div>
-        <div id="reglon_devoluciones" class="col-xs-12">
+        <div id="renglon_devoluciones" class="col-xs-12">
         </div>
     </div>
 </div>

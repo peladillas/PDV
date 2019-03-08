@@ -115,7 +115,7 @@ $(function () {
             divDetail.removeClass('hide');
             var idDetail = inputIdDetail.val();
             if ($('#cont_borra' + idDetail).length) {
-                borra_reglon(idDetail);
+                borra_renglon(idDetail);
             } else {
                 var largo = divDetail.height();
                 largo = largo + 30;
@@ -124,7 +124,7 @@ $(function () {
             var divId = '#cont_borra' + idDetail;
 
             divDetail.height(largo);
-            divDetail.append('<div class="reglon_item_comprobante row" id="cont_borra' + idDetail + '"></div>');
+            divDetail.append('<div class="renglon_item_comprobante row" id="cont_borra' + idDetail + '"></div>');
 
             $(divId).append('<span class="col-md-5" id=' + idDetail + ' >' + inputDetailItem.val() + '</span>');
             $(divId).append('<input disabled class="col-md-1" id="detailQuantity' + idDetail + '" value=' + inputDetailQuantity.val() + '>');
@@ -132,7 +132,7 @@ $(function () {
             $(divId).append('<input disabled class="col-md-1 detailTotal" id="detailTotal' + idDetail + '" value=' + inputDetailTotal.val() + '>');
             $(divId).append('<div class="col-md-1" id=cont_botones' + idDetail + '>');
 
-          	$('#cont_botones' + idDetail).append('<button type="button" id="ico_borra' + idDetail + '" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_reglon(' + idDetail + ')" ></button>');
+          	$('#cont_botones' + idDetail).append('<button type="button" id="ico_borra' + idDetail + '" class="ico_borra btn btn-danger btn-xs pull-left" onclick="borra_renglon(' + idDetail + ')" ></button>');
             $('#ico_borra' + idDetail).append('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>');
             $(divId).append('</div></div>');
 
@@ -152,6 +152,8 @@ $(function () {
     ---------------------------------------------------------------------------------*/
 
     btnSave.click(function () {
+    	
+    	console.log(detailArray);
         var url = BASE_URL + functionInsert;
 
         $.ajax({
@@ -170,8 +172,10 @@ $(function () {
             "dataType": "json",
             "success": function (result) {
                 if(result > 0){
-            		$.each( detailArray, function( key, value ) {
-            			console.log(value);
+            		$.each(detailArray, function( key, value ) {
+            			
+            			console.log(key);
+            			console.log(detailArray);
             			
 			        	if(key > 0){
 			        	    // Guardamos detalle
@@ -201,6 +205,8 @@ $(function () {
                             });
             			}
             		});
+            		
+            		clearDetailArray();
             	}
 
                 
@@ -211,8 +217,7 @@ $(function () {
         });
         
         clearHeadForm();
-        clearDetailForm();
-        clearDetailArray();
+        clearDetailForm();	
         $("#form-detail").addClass('hide');
         alert("Presupuesto generado con exito");
         inputHeadEntity.focus();
@@ -227,7 +232,7 @@ $(function () {
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
 
-function borra_reglon(id) {
+function borra_renglon(id) {
     $('#cont_borra'+id).empty();
     var nuevo_largo = divDetail.height();
     nuevo_largo = nuevo_largo - 30;
@@ -266,8 +271,7 @@ function calcula_total() {
 ---------------------------------------------------------------------------------*/
 
 function setElement(id, price, quantity){
-	console.log(price);
-	console.log(quantity);
+	console.log(id);
 	
 	var ITEMDetail = [];
             
@@ -275,6 +279,8 @@ function setElement(id, price, quantity){
     ITEMDetail.quantity = quantity;
     
     detailArray[id] = ITEMDetail;
+    
+    console.log(detailArray);
 }
 
 /*---------------------------------------------------------------------------------
@@ -318,6 +324,6 @@ function clearHeadForm(){
 
 function clearDetailArray(){
     $.each( detailArray, function( key, value ) {
-        borra_reglon(key);
+        borra_renglon(key);
     });
 }

@@ -123,9 +123,9 @@ class Presupuestos_model extends MY_Model {
 		FROM 
 			presupuesto 
 		INNER JOIN 
-			reglon_presupuesto ON(presupuesto.id_presupuesto = reglon_presupuesto.id_presupuesto)
+			renglon_presupuesto ON(presupuesto.id_presupuesto = renglon_presupuesto.id_presupuesto)
 		INNER JOIN 
-			articulo ON(reglon_presupuesto.id_articulo =  articulo.id_articulo)
+			articulo ON(renglon_presupuesto.id_articulo =  articulo.id_articulo)
 		WHERE
 			presupuesto.estado != ".ESTADOS_COMPROBANTES::ANULADA." AND
 			DATE_FORMAT(fecha, '%Y-%m') >= '$inicio' AND

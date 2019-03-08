@@ -1,9 +1,9 @@
 <?php 
-class Stock_detail_model extends My_Model {
+class Renglon_stock_model extends My_Model {
 		
 	public function __construct(){
 		parent::construct(
-			'stock_detail',
+			'renglon_stock',
 			'id_stock',
 			'id_articulo'
 		);
@@ -39,7 +39,7 @@ class Stock_detail_model extends My_Model {
 			SET 
 				stock=stock+$stock 
 			WHERE 
-				id_articulo = ".$registro[id_articulo];
+				id_articulo = ".$registro['id_articulo'];
 			
 			$query	= $this->db->query($sql);
 		} else {

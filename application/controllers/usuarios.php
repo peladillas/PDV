@@ -106,7 +106,6 @@ class Usuarios extends MY_Controller {
 		$crud->required_fields('descripcion','pass', 'id_rol');
 		$crud->fields('descripcion','pass', 'id_rol');
 		$crud->set_relation('id_rol','rol','descripcion', 'rol.id_estado = '.ESTADOS::ALTA);
-		$crud->set_relation('id_estado','estado','estado');
 			
 		$_COOKIE['tabla']= 'usuario';
 		$_COOKIE['id']='id_usuario';	
@@ -163,7 +162,6 @@ class Usuarios extends MY_Controller {
 		$crud->set_relation('permiso_cliente','permiso','descripcion');
 		$crud->set_relation('permiso_presupuesto','permiso','descripcion');
 		$crud->set_relation('permiso_ctacte','permiso','descripcion');
-		$crud->set_relation('id_estado','estado','estado');
 			
 		$_COOKIE['tabla']='rol';
 		$_COOKIE['id']='id_rol';	

@@ -41,7 +41,6 @@ class Clientes extends MY_Controller {
             'cuil'
         );
 		
-		$crud->set_relation('id_estado','estado','estado');
 		$crud->set_relation('id_condicion_iva','condicion_iva','descripcion');
 		$crud->set_relation('id_tipo','tipo_cliente','tipo');
 		

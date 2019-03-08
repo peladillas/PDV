@@ -7,7 +7,7 @@ class Stock extends MY_Controller {
 	public function __construct() {
 		parent::__construct($this->path);
 
-		$this->load->model('stock_detail_model');
+		$this->load->model('renglon_stock_model');
 	}
 
 /*---------------------------------------------------------------------------------
@@ -24,7 +24,7 @@ class Stock extends MY_Controller {
         $db['documents'] = new documents_CRUD();
         $db['documents']->set_table_head('stock', 'id_stock');
         $db['documents']->set_not_entity();
-        $db['documents']->set_table_detail('stock_detail');
+        $db['documents']->set_table_detail('renglon_stock');
 
         $this->view($db, $this->path.'add');
     }
@@ -44,6 +44,6 @@ class Stock extends MY_Controller {
 			'id_comprobante_tipo' => TIPOS_COMPROBANTES::PRESUPUESTO,
 			'cantidad_saliente' => 5,
 		);
-		$this->stock_detail_model->movimiento($registro);
+		$this->renglon_stock_model->movimiento($registro);
 	}
 }

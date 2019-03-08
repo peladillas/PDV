@@ -44,7 +44,6 @@ class Devoluciones extends My_Controller {
 			 ->display_as('id_estado','Estado');
 			 
 		$crud->set_subject('devolución');
-		$crud->set_relation('id_estado','estado_devolucion','estado');
 
 		$_COOKIE['tabla']='devolucion';
 		$_COOKIE['id']='id_devolucion';	

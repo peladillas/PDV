@@ -1,15 +1,11 @@
 <?php
-
 class documents_CRUD_Model  extends CI_Model  {
 	function __construct() {
         parent::__construct();
     }
-
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
-
                 Función para armar la query
-
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
 	
@@ -28,27 +24,20 @@ class documents_CRUD_Model  extends CI_Model  {
 			$datos[$postData['detailIdItemField']] = $postData['detailIdItemValue'];
 			$datos[$postData['detailQuantityField']] = $postData['detailQuantityValue'];
 			$datos[$postData['detailPriceField']] = $postData['detailPriceValue'];
-
 			$this->setStockMove($postData);
 		}
 		
 		$this->db->insert($table, $datos);
 		$id	= $this->db->insert_id();
-
 		return $id;
 	}
-
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
-
         Movimiento de stock
-
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
-
     function setStockMove($postData){
         $movimiento = ($postData['stockInOut'] == 'in' ? 'cantidad_entrante' : 'cantidad_saliente');
-
         $registro = array(
             'id_articulo' => $postData['detailIdItemValue'],
             'id_comprobante' => $postData['detailIdHeadValue'],
@@ -57,25 +46,20 @@ class documents_CRUD_Model  extends CI_Model  {
         );
 		
 		
-
-        $this->load->model('stock_detail_model');
-        $this->stock_detail_model->movimiento($registro);
+        $this->load->model('renglon_stock_model');
+        $this->renglon_stock_model->movimiento($registro);
     }
-
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
-
         Movimiento de stock
-
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
-
     function getComprobanteTipo($detailTable){
         switch ($detailTable) {
-		    case 'reglon_presupuesto':
+		    case 'renglon_presupuesto':
 		        return TIPOS_COMPROBANTES::PRESUPUESTO;
 		        break;
-		    case 'nota_credito_renglon':
+		    case 'renglon_nota_credito':
                 return TIPOS_COMPROBANTES::NOTA_CREDITO;
 		        break;
             case 'stock':
@@ -83,12 +67,9 @@ class documents_CRUD_Model  extends CI_Model  {
                 break;
 		}
     }
-
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
-
         Funcion para aplicar el filtro
-
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
 	
@@ -102,18 +83,13 @@ class documents_CRUD_Model  extends CI_Model  {
 		        break;
 		}
 	}
-
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
-
                 Función para armar la query
-
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
-
     function getQuery($sql, $type = NULL) {
         $query = $this->db->query($sql);
-
         if ($query->num_rows() > 0) {
             if($type === NULL || $type == 'objet') {
                 foreach ($query->result() as $fila) {
@@ -129,15 +105,11 @@ class documents_CRUD_Model  extends CI_Model  {
             return FALSE;
         }
     }
-
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
-
         Para buscar artiuclos por descripcion o codigo proveedor
-
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
-
     function getArticulos($filtro) {
         $sql = "
 		SELECT 
@@ -166,15 +138,11 @@ class documents_CRUD_Model  extends CI_Model  {
 		
 		return $row_set;
     }
-
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
-
         Para buscar clients por nombre o alias
-
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
-
     function getClientes($filtro) {
         $sql = "
 		SELECT 
@@ -188,17 +156,12 @@ class documents_CRUD_Model  extends CI_Model  {
 			id_estado = ".ESTADOS::ALTA."  
 		LIMIT 
 			20 ";
-
         $registros = $this->getQuery($sql);
-
         $row_set = array();
-
         foreach ($registros as $cliente) {
-
             $value = ($cliente->apellido != '' ? $cliente->apellido.' ' : '');
             $value .= ($cliente->nombre != '' ? $cliente->nombre.' ' : '');
             $value .= ($cliente->alias != '' ? ','.$cliente->alias : '');
-
             $row['apellido'] = stripslashes(utf8_encode($cliente->apellido));
             $row['nombre'] = stripslashes(utf8_encode($cliente->nombre));
             $row['direccion'] = stripslashes(utf8_encode($cliente->direccion));
@@ -208,7 +171,6 @@ class documents_CRUD_Model  extends CI_Model  {
             $row['id'] = (int)$cliente->id_cliente;
             $row_set[] = $row;
         }
-
         return $row_set;
     }
 }
