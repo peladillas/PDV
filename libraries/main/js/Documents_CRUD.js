@@ -138,8 +138,8 @@ $(function () {
 
  			
             calcula_total();
-            clearDetailForm();
             setElement(idDetail, inputDetailPrice.val(), inputDetailQuantity.val());
+            clearDetailForm();
         }
     });
 
@@ -171,6 +171,8 @@ $(function () {
             "success": function (result) {
                 if(result > 0){
             		$.each( detailArray, function( key, value ) {
+            			console.log(value);
+            			
 			        	if(key > 0){
 			        	    // Guardamos detalle
                             $.ajax({
@@ -201,15 +203,19 @@ $(function () {
             		});
             	}
 
-                clearHeadForm();
-                clearDetailForm();
-                clearDetailArray();
-                divDetail.addClass('hide');
+                
             },
             "error": function (xhr) {
                 alert("Error: " + xhr.status + " " + xhr.statusText);
             }
         });
+        
+        clearHeadForm();
+        clearDetailForm();
+        clearDetailArray();
+        $("#form-detail").addClass('hide');
+        alert("Presupuesto generado con exito");
+        inputHeadEntity.focus();
     });
 });
 
@@ -260,6 +266,9 @@ function calcula_total() {
 ---------------------------------------------------------------------------------*/
 
 function setElement(id, price, quantity){
+	console.log(price);
+	console.log(quantity);
+	
 	var ITEMDetail = [];
             
     ITEMDetail.price = price;
@@ -296,7 +305,6 @@ function clearDetailForm(){
 function clearHeadForm(){
     inputHeadEntity.val("");
     inputHeadIdEntity.val("");
-    inputHeadDate.val("");
     inputHeadTotal.val("");
 }
 

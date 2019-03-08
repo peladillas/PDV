@@ -11,99 +11,110 @@ $html .= endContent();
 echo $html;
 ?>
 
+<!--
 <div>
-    <select class="form-control" id="testSelect">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
+	<div class="form-group">
+		<label for="paymentOptions">Forma de pago</label>
+		<select class="form-control" id="paymentOptions">
+	        <option value="1">1</option>
+	        <option value="2">2</option>
+	        <option value="3">3</option>
+	        <option value="4">4</option>
+    	</select>
+	</div>
+    
 
-    <div class="testInput hide" id="input_1">
-        <input class="form-control" name="cheque_data">
+    <div class="paymentData hide" id="divCheck">
+    	<div class="form-group">
+			<label for="inputCheck">Datos cheque</label>
+			<input class="form-control" name="inputCheck" id="inputCheck">
+		</div>
     </div>
-    <div class="testInput hide" id="input_2">
-        <select class="form-control" id="testSelect" name="cuota_cantidad">
-            <option value="1">1</option>
-            <option value="2">3</option>
-            <option value="3">6</option>
-            <option value="9">9</option>
-            <option value="12">12</option>
-        </select>
-        <select class="form-control" name="cuota_inicio" id="cuota_inicio">
-        <?php
-        for ($i = 1; $i <= 31; $i++) {
-            echo '<option value="'.$i.'">'.$i.'</option>';
-        }
-        ?>
-        </select>
-        <select class="form-control" name="cuota_vencimiento" id="cuota_vencimiento"></select>
-        <input class="form-control" name="cuota_interes" value="">
-        <input class="form-control" name="cuota_monto" disabled>
+    <div class="paymentData hide" id="divQuota">
+    	<div class="form-group">
+			<label for="inputCheck">Datos cheque</label>
+	        <select class="form-control" id="quotaQuantity" name="quotaQuantity">
+	            <option value="1">1</option>
+	            <option value="2">3</option>
+	            <option value="3">6</option>
+	            <option value="9">9</option>
+	            <option value="12">12</option>
+	        </select>
+	    </div>
+	    <div class="form-group">
+	    	<label for="quotaStart">Día comienzo</label>
+	        <select class="form-control" name="quotaStart" id="quotaStart">
+	        <?php
+	        for ($i = 1; $i <= 31; $i++) {
+	            echo '<option value="'.$i.'">'.$i.'</option>';
+	        }
+	        ?>
+	        </select>
+	    </div>
+	    <div class="form-group">
+	    	<label for="quotaEnd">Día final</label>
+	        <select class="form-control" name="quotaEnd" id="quotaEnd">
+	        	<?php
+		        for ($i = 2; $i <= 31; $i++) {
+		            echo '<option value="'.$i.'">'.$i.'</option>';
+		        }
+		        ?>
+	        </select>
+	    </div>
+	    <div class="form-group">
+	    	<label for="quotaInterest">Interes %</label>
+	        <input class="form-control" name="quotaInterest" value="">
+	    </div>
+	    <div class="form-group">
+	    	<label for="quotaAmount">Monto cuota</label>
+	        <input class="form-control" name="quotaAmount" disabled>
+	   	</div>
     </div>
 </div>
 
 <script>
-    $('#testSelect').on("change", function(e) {
-        a = $("#testSelect option:selected" ).val();
+    $('#paymentOptions').on("change", function(e) {
+        a = $("#paymentOptions option:selected" ).val();
 
-        $('.testInput').addClass('hide');
+        $('.paymentData').addClass('hide');
         if(a == 2){
-            $('#input_1').removeClass('hide');
+            $('#divCheck').removeClass('hide');
         }else if(a > 2) {
-            $('#input_2').removeClass('hide');
+            $('#divQuota').removeClass('hide');
         }
     });
 
-    $('#cuota_inicio').on("change", function(e) {
-        inicio = $("#cuota_inicio option:selected" ).val();
-        vencimiento = $("#cuota_vencimiento option:selected" ).val();
+    $('#quotaStart').on("change", function(e) {
+        start = $("#quotaStart option:selected" ).val();
+        end = $("#quotaEnd option:selected" ).val();
 
-        if(inicio > vencimiento){
-            $('#cuota_vencimiento').val('')
+        $('#quotaEnd').children('option').remove();
+
+        for (i = start; i < 31; i++) {
+            $('#quotaEnd').append($('<option>', {
+                value: i,
+                text : i
+            }));
         }
-
-        $('#cuota_vencimiento').children('option:not(:first)').remove();
-
-        for (i = 0; i < 31; i++) {
-            if(vencimiento == i){
-                $('#cuota_vencimiento').append($('<option>', {
-                    value: i,
-                    text : i,
-                    selected: selected
-                }));
-            }else if( i > inicio){
-                $('#cuota_vencimiento').append($('<option>', {
-                    value: i,
-                    text : i
-                }));
-            }
-        }
+        
+		$('#quotaEnd').val(end)
     });
 
-    $('#cuota_vencimiento').on("change", function(e) {
-        inicio = $("#cuota_inicio option:selected" ).val();
-        vencimiento = $("#cuota_vencimiento option:selected" ).val();
+    $('#quotaEnd').on("change", function(e) {
+        start = $("#quotaStart option:selected" ).val();
+        end = $("#quotaEnd option:selected" ).val();
 
-        if(inicio > vencimiento){
-            $('#cuota_inicio').val('')
+        $('#quotaStart').children('option').remove();
+
+        for (i = end; i > 0; i--) {
+            $('#quotaStart').append($('<option>', {
+                value: i,
+                text : i
+            }));
         }
-
-        $('#cuota_inicio').children('option:not(:first)').remove();
-
-        for (i = 0; i < 31; i++) {
-            if(inicio == i){
-                $('#cuota_inicio').append($('<option>', {
-                    value: i,
-                    text : i,
-                    selected: selected
-                }));
-            }else if( i < vencimiento){
-                $('#cuota_inicio').append($('<option>', {
-                    value: i,
-                    text : i
-                }));
-            }
-        }
+    
+        $('#quotaStart').val(start);
+     
     });
 </script>
+-->

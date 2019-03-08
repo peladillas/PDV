@@ -31,8 +31,8 @@ class documents_CRUD_Model  extends CI_Model  {
 
 			$this->setStockMove($postData);
 		}
-
-		$this->db->insert( $table, $datos);
+		
+		$this->db->insert($table, $datos);
 		$id	= $this->db->insert_id();
 
 		return $id;
@@ -55,6 +55,8 @@ class documents_CRUD_Model  extends CI_Model  {
             'id_comprobante_tipo' => $this->getComprobanteTipo($postData['detailTable']),
             $movimiento => $postData['detailQuantityValue'],
         );
+		
+		
 
         $this->load->model('stock_detail_model');
         $this->stock_detail_model->movimiento($registro);
@@ -70,7 +72,7 @@ class documents_CRUD_Model  extends CI_Model  {
 
     function getComprobanteTipo($detailTable){
         switch ($detailTable) {
-		    case 'presupuesto_detalle':
+		    case 'reglon_presupuesto':
 		        return TIPOS_COMPROBANTES::PRESUPUESTO;
 		        break;
 		    case 'nota_credito_renglon':

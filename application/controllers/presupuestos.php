@@ -144,7 +144,7 @@ class Presupuestos extends MY_Controller {
 
     function _calcularatraso($value, $row) {
 
-        $config = $this->config_model->select(CONFIGURACIONES::DEFAULT);
+        $config = $this->config_model->select(CONFIGURACIONES::CDEFAULT);
         if($config > 0) {
             foreach ($config as $fila) {
                 $dias_pago = $fila->dias_pago;

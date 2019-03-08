@@ -36,7 +36,7 @@ abstract class ACCIONES{
 }
 
 abstract class CONFIGURACIONES {
-    const DEFAULT = 1;
+    const CDEFAULT = 1;
 }
 
 
