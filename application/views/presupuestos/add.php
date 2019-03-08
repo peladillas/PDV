@@ -37,13 +37,7 @@ echo $html;
         }
         ?>
         </select>
-        <select class="form-control" name="cuota_vencimiento" id="cuota_vencimiento">
-        <?php
-        for ($i = 1; $i <= 31; $i++) {
-            echo '<option value="'.$i.'">'.$i.'</option>';
-        }
-        ?>
-        </select>
+        <select class="form-control" name="cuota_vencimiento" id="cuota_vencimiento"></select>
         <input class="form-control" name="cuota_interes" value="">
         <input class="form-control" name="cuota_monto" disabled>
     </div>
@@ -69,11 +63,22 @@ echo $html;
             $('#cuota_vencimiento').val('')
         }
 
-        $('#cuota_vencimiento').each(function() {
-            if ( $(this).val() < inicio ) {
-                $(this).remove();
+        $('#cuota_vencimiento').children('option:not(:first)').remove();
+
+        for (i = 0; i < 31; i++) {
+            if(vencimiento == i){
+                $('#cuota_vencimiento').append($('<option>', {
+                    value: i,
+                    text : i,
+                    selected: selected
+                }));
+            }else if( i > inicio){
+                $('#cuota_vencimiento').append($('<option>', {
+                    value: i,
+                    text : i
+                }));
             }
-        });
+        }
     });
 
     $('#cuota_vencimiento').on("change", function(e) {
@@ -84,10 +89,21 @@ echo $html;
             $('#cuota_inicio').val('')
         }
 
-        $('#cuota_inicio').each(function() {
-            if ( $(this).val() > vencimiento ) {
-                $(this).remove();
+        $('#cuota_inicio').children('option:not(:first)').remove();
+
+        for (i = 0; i < 31; i++) {
+            if(inicio == i){
+                $('#cuota_inicio').append($('<option>', {
+                    value: i,
+                    text : i,
+                    selected: selected
+                }));
+            }else if( i < vencimiento){
+                $('#cuota_inicio').append($('<option>', {
+                    value: i,
+                    text : i
+                }));
             }
-        });
+        }
     });
 </script>
