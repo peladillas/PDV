@@ -8,7 +8,7 @@ class Presupuestos_model extends MY_Model {
 			'monto'
 		);
 	}
-	
+
 	function suma_presupuesto($inicio, $final, $id_cliente = NULL, $id_vendedor = NULL) {
 		if($id_vendedor != NULL) {
             $inicio         = date('Y-m', strtotime($inicio));
@@ -159,7 +159,5 @@ class Presupuestos_model extends MY_Model {
 
         return $this->getQuery($sql);
 	}
-
-		
 } 
 ?>
