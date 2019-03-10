@@ -40,7 +40,6 @@ abstract class CONFIGURACIONES {
 }
 
 
-
 abstract class FUNCTION_LOG {
     const INSERT = 'insert_log';
     const UPDATE = 'update_log';
