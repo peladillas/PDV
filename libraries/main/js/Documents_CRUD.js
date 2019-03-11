@@ -222,6 +222,53 @@ $(function () {
         alert("Presupuesto generado con exito");
         inputHeadEntity.focus();
     });
+
+
+
+
+    $('#paymentOptions').on("change", function(e) {
+        a = $("#paymentOptions option:selected" ).val();
+
+        $('.paymentData').addClass('hide');
+        if(a == 2){
+            $('#divCheck').removeClass('hide');
+        }else if(a > 2) {
+            $('#divQuota').removeClass('hide');
+        }
+    });
+
+    $('#quotaStart').on("change", function(e) {
+        start = $("#quotaStart option:selected" ).val();
+        end = $("#quotaEnd option:selected" ).val();
+
+        $('#quotaEnd').children('option').remove();
+
+        for (i = start; i < 31; i++) {
+            $('#quotaEnd').append($('<option>', {
+                value: i,
+                text : i
+            }));
+        }
+
+        $('#quotaEnd').val(end)
+    });
+
+    $('#quotaEnd').on("change", function(e) {
+        start = $("#quotaStart option:selected" ).val();
+        end = $("#quotaEnd option:selected" ).val();
+
+        $('#quotaStart').children('option').remove();
+
+        for (i = end; i > 0; i--) {
+            $('#quotaStart').append($('<option>', {
+                value: i,
+                text : i
+            }));
+        }
+
+        $('#quotaStart').val(start);
+    });
+
 });
 
 /*---------------------------------------------------------------------------------

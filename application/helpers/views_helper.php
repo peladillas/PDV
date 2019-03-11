@@ -247,6 +247,20 @@ function setFormGroup($name, $value = NULL, $tags = NULL){
     return $html;
 }
 
+
+function setSelectGroup($name, $values, $selected = NULL){
+    $html = '<div class="form-group">';
+    $html .= '<label for="'.$name.'">'.lang($name).'</label>';
+    $html .= '<select class="form-control" name="'.$name.'" id="'.$name.'">';
+    foreach ($values as $key => $value){
+        $html .= '<option value="'.$key.'"  '.($selected == $key ? 'selected' : '').'>'.$value.'</option>';
+    }
+    $html .= '</select>';
+    $html .= '</div>';
+
+    return $html;
+}
+
 function setLinkMenu($link, $menu){
     return '<li><a  href="'.site_url($link).'" >'.$menu.'</a></li>';
 }

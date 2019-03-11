@@ -24,28 +24,32 @@ class Documents_CRUD {
     private $btnSafe = 'guardar';
     private $headEntityController = 'Clientes';
     private $headDetailController = 'Articulos';
-	
+
 	private $divDetail = 'presupuesto_detalle';
     private $stockInOut = 'in';
     private $html;
     function __construct() {
         $this->set_default_Model();
     }
+
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
         Declaracion del modelo de la libreria
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
+
     protected function set_default_Model() {
         $ci = &get_instance();
         $ci->load->model('documents_CRUD_Model');
         $this->basic_model = new documents_CRUD_Model();
     }
+
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
         Cargas iniciales. Obligatorias
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
+
     public function set_table_head($tableName, $headIdTable){
         $this->headTable = $tableName;
         $this->headIdTable = $headIdTable;
@@ -71,6 +75,7 @@ class Documents_CRUD {
  * 	con estos metodos permite cambiar los que vienen por default
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
+
     public function set_head_date($date){
         $this->headDate = $date;
     }
@@ -104,6 +109,7 @@ class Documents_CRUD {
     public function set_stock($stock){
         $this->stockInOut = $stock;
     }
+
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
        Carga del detalle del comprobante, esto es obligatorio
@@ -113,11 +119,13 @@ class Documents_CRUD {
 	public function set_table_detail($tableName){
 		$this->detailTable = $tableName;
 	}
+
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
        Function para devolver el html con el formulario
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
+
 	public function get_form(){
 	    $requiredFields = TRUE;
 	    if($this->headTable == ''){
@@ -145,11 +153,13 @@ class Documents_CRUD {
         }
 		return $this->html;
 	}
+
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
        Function para devolver el html con el formulario
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
+
     public function set_html_heat(){
     	$this->html .= setJs('main/js/Documents_CRUD.js');
     	
@@ -161,9 +171,14 @@ class Documents_CRUD {
         $this->html .= setButton(lang($this->btnSafe), $this->btnSafe);
         $this->html .= setHiddenInput($this->headIdEntity);
 		$this->html .= '<hr>';
-       // $this->html .= $this->getFormasPago();
+
         $this->html .= '</div>';
-		
+		if(TRUE){
+            $this->html .= '<div id="form-payment">';
+            $this->html .= $this->getFormasPago();
+            $this->html .= '</div>';
+        }
+
 		$this->html .= '<div id="form-detail" class="hide">';
 		$this->html .= setFormGroup($this->detailItem, '', 'autocomplete="off"');
 		$this->html .= setFormGroup($this->detailQuantity);
@@ -176,11 +191,13 @@ class Documents_CRUD {
 		$this->html .= '<div id="'.$this->divDetail.'" ></div>';
         $this->defineDivs();	
     }
+
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
        Function variables para el js
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
+
     public function defineDivs(){
         $this->html .= '<script>';
         // HEAD //
@@ -222,26 +239,47 @@ class Documents_CRUD {
 		
         $this->html .= '</script>';
     }
+
 /*---------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
        Funciones para armar los html de los formularios
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
+
     public function getFormasPago($formaPago = NULL){
-        $options = array(
-            lang('efectivo') => FORMAS_PAGOS::EFECTIVO,
-            lang('cheque') => FORMAS_PAGOS::CHEQUE,
-            lang('tarjeta') => FORMAS_PAGOS::TARJETA,
-            lang('cta_cte') => FORMAS_PAGOS::CTA_CTE
+
+        $paymentMethod = array(
+            FORMAS_PAGOS::EFECTIVO => lang('efectivo'),
+            FORMAS_PAGOS::CHEQUE => lang('cheque'),
+            FORMAS_PAGOS::TARJETA => lang('tarjeta'),
+            FORMAS_PAGOS::CTA_CTE => lang('cta_cte'),
         );
-        $html = '<div class="form-group">';
-        $html .= '<label for="'.$this->headMethodPayment.'">'.lang('pago').'</label>';
-        $html .= '<select class="form-control" name="'.$this->headMethodPayment.'" id="'.$this->headMethodPayment.'" >';
-        foreach ($options as $key => $value) {
-            $html .= '<option value="'.$value.'" '.($formaPago == $key ? 'selected' : '' ).' >'.$key.'</option>';
+
+        $quotaQuantity = array(
+            1 => 1,
+            3 => 3,
+            6 => 6,
+            9 => 9,
+            12 => 12,
+        );
+
+        $quotas = array();
+        for ($i = 1; $i <= 31; $i++) {
+            $quotas[$i] = $i;
         }
-        $html .= '</select>';
+
+        $html = setSelectGroup('forma_pago', $paymentMethod, FORMAS_PAGOS::EFECTIVO);
+        $html .= '<div class="paymentData hide" id="divCheck">';
+        $html .= setFormGroup('inputCheck');
         $html .= '</div>';
-        return $html;
+        $html .= '<div class="paymentData hide" id="divQuota">';
+        $html .= setSelectGroup('quotaQuantity', $quotaQuantity, 1);
+        $html .= setSelectGroup('quotaStart', $quotas, 1);
+        $html .= setSelectGroup('quotaEnd', $quotas, 2);
+        $html .= setFormGroup('quotaInterest');
+        $html .= setFormGroup('quotaAmount');
+        $html .= '</div>';
+
+        return  $html;
     }
 }
