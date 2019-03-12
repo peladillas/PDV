@@ -224,10 +224,8 @@ $(function () {
     });
 
 
-
-
-    $('#paymentOptions').on("change", function(e) {
-        a = $("#paymentOptions option:selected" ).val();
+    $('#forma_pago').on("change", function(e) {
+        a = $("#forma_pago option:selected" ).val();
 
         $('.paymentData').addClass('hide');
         if(a == 2){
@@ -268,6 +266,14 @@ $(function () {
 
         $('#quotaStart').val(start);
     });
+    
+    $("#quotaInterest").keypress(function (event) {
+        calcula_total();
+    });
+
+	$("#quotaQuantity").on("change", function(e) {
+        calcula_total();
+    });
 
 });
 
@@ -305,8 +311,16 @@ function calcula_total() {
         temp = $(this).val();
         total = parseFloat(total) + parseFloat(temp);
     });
+    
+    total = total.toFixed(2);
+    
+    var quotaInterest = $("#quotaInterest").val();
 
-    inputHeadTotal.val(total.toFixed(2));
+    inputHeadTotal.val(total);
+    var total_cuota = parseFloat(total) + parseFloat(total * quotaInterest / 100);
+    var total_cuota = parseFloat(total_cuota)  / parseFloat($("#quotaQuantity").val());
+    $("#quotaAmount").val(total_cuota.toFixed(2));
+    
 };
 
 /*---------------------------------------------------------------------------------
@@ -318,16 +332,13 @@ function calcula_total() {
 ---------------------------------------------------------------------------------*/
 
 function setElement(id, price, quantity){
-	console.log(id);
-	
+
 	var ITEMDetail = [];
             
     ITEMDetail.price = price;
     ITEMDetail.quantity = quantity;
     
     detailArray[id] = ITEMDetail;
-    
-    console.log(detailArray);
 }
 
 /*---------------------------------------------------------------------------------

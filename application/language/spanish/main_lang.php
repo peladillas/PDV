@@ -49,6 +49,8 @@ $lang['comentario_publico'] = "Comentario público";
 $lang['comentario_privado'] = "Comentario privado";
 $lang['cuit']               = "Cuit";
 $lang['cuotas']             = "Cuotas";
+$lang['cheque']             = "Cheque";
+$lang['cta_cte']            = "Cuenta Corriente";
 
 /*--------------------------------------------------------------------------------  
     D
@@ -78,6 +80,7 @@ $lang['empresas']           = "Empresas";
 $lang['estadisticas']       = "Estadisticas";
 $lang['eliminar']           = "Eliminar";
 $lang['empresa_titulo']		= 'Bulones sarmiento';
+$lang['efectivo']			= 'Efectivo';
 
 /*--------------------------------------------------------------------------------  
     F
@@ -120,6 +123,7 @@ $lang['id_factura']         = "ID Factura";
 $lang['inicio_cuota']       = "Inicio cuota";
 $lang['imprimir']           = "Imprimir";
 $lang['impresion']          = "Impresion";
+$lang['inputCheck']         = "Cheque data";
 
 /*--------------------------------------------------------------------------------  
     L
@@ -187,6 +191,16 @@ $lang['presupuesto']		= 'Presupuesto';
 $lang['presupuestos']		= 'Presupuestos';
 
 /*--------------------------------------------------------------------------------  
+    Q
+ --------------------------------------------------------------------------------*/
+ 
+$lang['quotaQuantity']		= 'Cantidad cuotas';
+$lang['quotaStart']			= 'Comienzo cuota';
+$lang['quotaEnd']			= 'Final cuota';
+$lang['quotaInterest']		= 'Interes cuota';
+$lang['quotaAmount']		= 'Cuota monto';
+
+/*--------------------------------------------------------------------------------  
     R
  --------------------------------------------------------------------------------*/ 
 
@@ -218,6 +232,7 @@ $lang['tipo']               = "Tipo";
 $lang['total']              = "Total";
 $lang['totales']            = "Totales";
 $lang['total_nota_credito'] = "Total nota de credito";
+$lang['tarjeta']            = "Tarjeta";
 
 /*--------------------------------------------------------------------------------  
     U
