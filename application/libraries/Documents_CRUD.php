@@ -22,8 +22,8 @@ class Documents_CRUD {
     private $btnSelect = 'seleccionar';
     private $btnSelectDetail = 'cargar';
     private $btnSafe = 'guardar';
-    private $headEntityController = 'Clientes';
-    private $headDetailController = 'Articulos';
+    private $headEntityController = 'clientes';
+    private $headDetailController = 'articulos';
 
 	private $divDetail = 'presupuesto_detalle';
     private $stockInOut = 'in';

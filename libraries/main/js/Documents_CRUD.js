@@ -156,71 +156,80 @@ $(function () {
     	console.log(detailArray);
         var url = BASE_URL + functionInsert;
 
-        $.ajax({
-            "url": url,
-            data: {
-            	IdEntityField: headIdEntity,
-				IdEntityValue: inputHeadIdEntity.val(),
-				DateField: headDate,
-				DateValue: inputHeadDate.val(),
-				TotalField: headTotal,
-				TotalValue: inputHeadTotal.val(),
-				HeadTable: headTable,
-				type: 'head', 
-			},
-            "type": "POST",
-            "dataType": "json",
-            "success": function (result) {
-                if(result > 0){
-            		$.each(detailArray, function( key, value ) {
-            			
-            			console.log(key);
-            			console.log(detailArray);
-            			
-			        	if(key > 0){
-			        	    // Guardamos detalle
-                            $.ajax({
-                                "url": url,
-					            data: {
-					            	detailTable: detailTable,
-					            	detailIdHeadField: headIdTable,
-					            	detailIdHeadValue: result,
-					            	detailIdItemField: detailIdItem,
-									detailIdItemValue: key,
-									detailQuantityField: detailQuantity,
-									detailQuantityValue: value.quantity,
-									detailPriceField: detailPrice,
-									detailPriceValue: value.price,
-                                    stockInOut: stockInOut,
-                                    type: 'detail',
-								},
-					            "type": "POST",
-					            "dataType": "json",
-					            "success": function (result) {
-			        				alert( key + ": " + value.price+ " "+ value.quantity );
-			        			}	,
-					            "error": function (xhr) {
-					                alert("Error: " + xhr.status + " " + xhr.statusText);
-					            }
-                            });
-            			}
-            		});
-            		
-            		clearDetailArray();
-            	}
+        if (inputHeadIdEntity.val() == '') {
+            alert("Seleccione " + entity);
+            inputHeadEntity.val("").focus();
+        }else if (inputHeadTotal.val() == '') {
+            alert("Seleccione "+detail);
+            inputDetailItem.val("").focus();
+        } else {
 
-                
-            },
-            "error": function (xhr) {
-                alert("Error: " + xhr.status + " " + xhr.statusText);
-            }
-        });
-        
-        clearHeadForm();
-        clearDetailForm();	
-        $("#form-detail").addClass('hide');
-        alert("Presupuesto generado con exito");
-        inputHeadEntity.focus();
+            $.ajax({
+                "url": url,
+                data: {
+                    IdEntityField: headIdEntity,
+                    IdEntityValue: inputHeadIdEntity.val(),
+                    DateField: headDate,
+                    DateValue: inputHeadDate.val(),
+                    TotalField: headTotal,
+                    TotalValue: inputHeadTotal.val(),
+                    HeadTable: headTable,
+                    type: 'head',
+                },
+                "type": "POST",
+                "dataType": "json",
+                "success": function (result) {
+                    if(result > 0){
+                        $.each(detailArray, function( key, value ) {
+
+                            console.log(key);
+                            console.log(detailArray);
+
+                            if(key > 0){
+                                // Guardamos detalle
+                                $.ajax({
+                                    "url": url,
+                                    data: {
+                                        detailTable: detailTable,
+                                        detailIdHeadField: headIdTable,
+                                        detailIdHeadValue: result,
+                                        detailIdItemField: detailIdItem,
+                                        detailIdItemValue: key,
+                                        detailQuantityField: detailQuantity,
+                                        detailQuantityValue: value.quantity,
+                                        detailPriceField: detailPrice,
+                                        detailPriceValue: value.price,
+                                        stockInOut: stockInOut,
+                                        type: 'detail',
+                                    },
+                                    "type": "POST",
+                                    "dataType": "json",
+                                    "success": function (result) {
+                                        alert( key + ": " + value.price+ " "+ value.quantity );
+                                    }	,
+                                    "error": function (xhr) {
+                                        alert("Error: " + xhr.status + " " + xhr.statusText);
+                                    }
+                                });
+                            }
+                        });
+
+                        clearDetailArray();
+                    }
+
+
+                },
+                "error": function (xhr) {
+                    alert("Error: " + xhr.status + " " + xhr.statusText);
+                }
+            });
+
+            clearHeadForm();
+            clearDetailForm();
+            $("#form-detail").addClass('hide');
+            alert("Presupuesto generado con exito");
+            inputHeadEntity.focus();
+        }
     });
 
 
@@ -267,11 +276,15 @@ $(function () {
         $('#quotaStart').val(start);
     });
     
-    $("#quotaInterest").keypress(function (event) {
+    $("#quotaInterest").keyup(function (event) {
         calcula_total();
     });
 
 	$("#quotaQuantity").on("change", function(e) {
+        calcula_total();
+    });
+
+    $("#forma_pago").on("change", function(e) {
         calcula_total();
     });
 
@@ -311,15 +324,25 @@ function calcula_total() {
         temp = $(this).val();
         total = parseFloat(total) + parseFloat(temp);
     });
+
+    var forma_pago = $('#forma_pago').val();
+
     
     total = total.toFixed(2);
     
     var quotaInterest = $("#quotaInterest").val();
 
-    inputHeadTotal.val(total);
+
     var total_cuota = parseFloat(total) + parseFloat(total * quotaInterest / 100);
-    var total_cuota = parseFloat(total_cuota)  / parseFloat($("#quotaQuantity").val());
+    total_cuota = parseFloat(total_cuota)  / parseFloat($("#quotaQuantity").val());
+    var total_head = parseFloat(total_cuota)  * parseFloat($("#quotaQuantity").val());
     $("#quotaAmount").val(total_cuota.toFixed(2));
+
+    if(forma_pago == 3 || forma_pago == 4){
+        inputHeadTotal.val(total_head.toFixed(2));
+    } else {
+        inputHeadTotal.val(total);
+    }
     
 };
 
