@@ -119,8 +119,6 @@ class Presupuestos extends MY_Controller {
         $crud->set_subject('remiro');
 
         $crud->set_relation('id_cliente','cliente','{alias} - {nombre} {apellido}');
-        $crud->set_relation('estado','estado_presupuesto','estado');
-        $crud->set_relation('tipo','tipo','tipo');
         $crud->set_relation('id_vendedor','vendedor','vendedor');
 
         $_COOKIE['tabla']='remito';
