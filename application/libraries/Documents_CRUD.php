@@ -9,7 +9,7 @@ class Documents_CRUD {
    	private $headTotal = 'monto';
     private $headDiscount = 'descuento';
     private $headInteres = 'interes';
-    private $headMethodPayment = 'id_tipo';
+    private $headMethodPayment = 'tipo';
     private $headComPrivate = 'com_privado';
     private $headComPublic = 'com_publico';
     private $headResponsable = 'id_vendedor';
@@ -81,6 +81,9 @@ class Documents_CRUD {
     }
     public function set_head_total($total){
         $this->headTotal = $total;
+    }
+    public function set_head_method_payment($methodPayment){
+        $this->headMethodPayment = $methodPayment;
     }
     public function set_detail_item($item){
         $this->detailItem = $item;
@@ -216,6 +219,7 @@ class Documents_CRUD {
         $this->html .= 'var headIdEntity = "'.$this->headIdEntity.'";';
         $this->html .= 'var headDate = "'.$this->headDate.'";';
         $this->html .= 'var headTotal = "'.$this->headTotal.'";';
+        $this->html .= 'var headMethodPayment = "'.$this->headMethodPayment.'";';
         // DETAIL //
         /* Inputs */
         $this->html .= 'var inputDetailItem =$("#'.$this->detailItem.'");';

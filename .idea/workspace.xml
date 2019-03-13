@@ -3,13 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="33ecf8e6-cf11-4265-90fe-0c1b33afd13c" name="Default Changelist" comment="presupuestos lista y bases de datos conexion">
       <change afterPath="$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sitrack-site5/resources/views/rankings/icm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sitrack-site5/resources/views/rankings/icm.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PDV.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/libraries/Documents_CRUD.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/libraries/Documents_CRUD.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/documents_crud_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/documents_crud_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,35 +22,40 @@
           <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="php" value="4" />
-          <entry key="sql" value="1" />
+          <entry key="js" value="2" />
+          <entry key="php" value="8" />
+          <entry key="sql" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="4" />
+          <entry key="JavaScript" value="2" />
+          <entry key="PHP" value="8" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="SQL" value="1" />
+          <entry key="SQL" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="9" />
-          <entry key="php" value="43" />
-          <entry key="txt" value="50" />
+          <entry key="js" value="232" />
+          <entry key="php" value="73" />
+          <entry key="txt" value="68" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="43" />
-          <entry key="PLAIN_TEXT" value="59" />
+          <entry key="JavaScript" value="232" />
+          <entry key="PHP" value="73" />
+          <entry key="PLAIN_TEXT" value="77" />
         </counts>
       </usages-collector>
     </session>
@@ -60,53 +63,51 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/config/database.php">
+        <entry file="file://$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="846">
-              <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+            <state relative-caret-position="2700">
+              <caret line="154" column="21" selection-start-line="154" selection-start-column="21" selection-end-line="154" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/intereses_model.php">
+        <entry file="file://$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <state relative-caret-position="567">
+              <caret line="178" column="63" lean-forward="true" selection-start-line="177" selection-start-column="20" selection-end-line="178" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/bd/sarmiento-nuevo.sql">
+        <entry file="file://$PROJECT_DIR$/application/models/documents_crud_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5544">
-              <caret line="308" column="13" selection-start-line="308" selection-start-column="3" selection-end-line="308" selection-end-column="13" />
+            <state relative-caret-position="378">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/presupuestos.php">
+        <entry file="file://$PROJECT_DIR$/assets/bd/stock.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="138" selection-start-line="138" selection-end-line="138" />
+            <state relative-caret-position="493">
+              <caret line="351" column="7" selection-start-line="351" selection-start-column="3" selection-end-line="351" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/application/libraries/Documents_CRUD.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+            <state relative-caret-position="540">
+              <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -115,6 +116,11 @@
     <findStrings>
       <find>estado_presupuesto</find>
       <find>interes</find>
+      <find>inputHeadIdEntity</find>
+      <find>&quot;Seleccione &quot; + entity</find>
+      <find>keypress</find>
+      <find>presupuesto</find>
+      <find>quotaStart</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -127,6 +133,10 @@
         <option value="$PROJECT_DIR$/application/models/intereses_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/presupuestos.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php" />
+        <option value="$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js" />
+        <option value="$PROJECT_DIR$/application/models/documents_crud_model.php" />
+        <option value="$PROJECT_DIR$/application/libraries/Documents_CRUD.php" />
       </list>
     </option>
   </component>
@@ -168,7 +178,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -178,12 +187,41 @@
             </path>
             <path>
               <item name="test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sitrack-site5" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="bd" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="libraries" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -217,6 +255,7 @@
       <workItem from="1552487992830" duration="256000" />
       <workItem from="1552488268997" duration="1167000" />
       <workItem from="1552489454304" duration="157000" />
+      <workItem from="1552489632971" duration="3473000" />
     </task>
     <task id="LOCAL-00001" summary="presupuestos lista y bases de datos conexion">
       <created>1552488968021</created>
@@ -225,16 +264,31 @@
       <option name="project" value="LOCAL" />
       <updated>1552488968021</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="presupuestos lista y bases de datos conexion">
+      <created>1552489657973</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1552489657973</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Interes en cuota">
+      <created>1552491203763</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1552491203763</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1580000" />
+    <option name="totallyTimeSpent" value="5053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="25" width="1920" height="996" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25506938" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25773746" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -263,13 +317,28 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="presupuestos lista y bases de datos conexion" />
-    <option name="LAST_COMMIT_MESSAGE" value="presupuestos lista y bases de datos conexion" />
+    <MESSAGE value="Interes en cuota" />
+    <option name="LAST_COMMIT_MESSAGE" value="Interes en cuota" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+        <state relative-caret-position="18">
+          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/presupuestos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="138" selection-start-line="138" selection-end-line="138" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/bd/sarmiento-nuevo.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="803">
+          <caret line="308" column="13" selection-start-line="308" selection-start-column="3" selection-end-line="308" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -280,27 +349,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/bd/sarmiento-nuevo.sql">
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5544">
-          <caret line="308" column="13" selection-start-line="308" selection-start-column="3" selection-end-line="308" selection-end-column="13" />
+        <state relative-caret-position="778">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/SimpleXML/SimpleXML.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/presupuestos.php">
+    <entry file="file://$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="138" selection-start-line="138" selection-end-line="138" />
+        <state relative-caret-position="2700">
+          <caret line="154" column="21" selection-start-line="154" selection-start-column="21" selection-end-line="154" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/assets/bd/stock.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+        <state relative-caret-position="493">
+          <caret line="351" column="7" selection-start-line="351" selection-start-column="3" selection-end-line="351" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/documents_crud_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="178" column="63" lean-forward="true" selection-start-line="177" selection-start-column="20" selection-end-line="178" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/Documents_CRUD.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

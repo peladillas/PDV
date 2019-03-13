@@ -175,6 +175,8 @@ $(function () {
                     TotalValue: inputHeadTotal.val(),
                     HeadTable: headTable,
                     type: 'head',
+                    methodPaymentField: headMethodPayment,
+                    methodPaymentValue: $("#forma_pago").val(),
                 },
                 "type": "POST",
                 "dataType": "json",
@@ -229,6 +231,8 @@ $(function () {
             $("#form-detail").addClass('hide');
             alert("Presupuesto generado con exito");
             inputHeadEntity.focus();
+            $("#forma_pago").val(1);
+            $('.paymentData').addClass('hide');
         }
     });
 

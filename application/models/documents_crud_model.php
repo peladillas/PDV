@@ -18,6 +18,7 @@ class documents_CRUD_Model  extends CI_Model  {
 			$datos[$postData['TotalField']] = $postData['TotalValue'];
 			$datePost = explode('-', $postData['DateValue']);
 			$datos[$postData['DateField']] = $datePost[2].'/'.$datePost[1].'/'.$datePost[0].' '.date('H:i:s');
+            $datos[$postData['methodPaymentField']] = $postData['methodPaymentValue'];
 		} else {
 			$table = $postData['detailTable'];
 			$datos[$postData['detailIdHeadField']] = $postData['detailIdHeadValue'];
