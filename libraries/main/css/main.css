@@ -1,5 +1,21 @@
 @font-face {font-family:"Cinzel-Regular";src:url("Cinzel-Regular.eot?") format("eot"),url("Cinzel-Regular.woff") format("woff"),url("Cinzel-Regular.ttf") format("truetype"),url("Cinzel-Regular.svg#Cinzel-Regular") format("svg");font-weight:normal;font-style:normal;}
 
+#quotaQuantity{
+	width: 60px;
+}
+#quotaStart{
+	width: 60px;
+}
+#quotaEnd{
+	width: 60px;
+}
+#quotaInterest{
+	width: 60px;
+}
+
+#quotaAmount{
+	width: 100px;
+}
 
 .total_apagar
 {

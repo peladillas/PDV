@@ -174,9 +174,10 @@ class Documents_CRUD {
 
         $this->html .= '</div>';
 		if(TRUE){
-            $this->html .= '<div id="form-payment">';
+            $this->html .= '<div id="form-payment" style="	display: inline-flex;">';
             $this->html .= $this->getFormasPago();
             $this->html .= '</div>';
+			$this->html .= '<hr>';
         }
 
 		$this->html .= '<div id="form-detail" class="hide">';
