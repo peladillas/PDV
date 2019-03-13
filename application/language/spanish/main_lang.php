@@ -48,9 +48,6 @@ $lang['comentario']         = "Comentario";
 $lang['comentario_publico'] = "Comentario público";
 $lang['comentario_privado'] = "Comentario privado";
 $lang['cuit']               = "Cuit";
-$lang['cuotas']             = "Cuotas";
-$lang['cheque']             = "Cheque";
-$lang['cta_cte']            = "Cuenta Corriente";
 
 /*--------------------------------------------------------------------------------  
     D
@@ -123,7 +120,6 @@ $lang['id_factura']         = "ID Factura";
 $lang['inicio_cuota']       = "Inicio cuota";
 $lang['imprimir']           = "Imprimir";
 $lang['impresion']          = "Impresion";
-$lang['inputCheck']         = "Cheque data";
 
 /*--------------------------------------------------------------------------------  
     L
@@ -193,12 +189,6 @@ $lang['presupuestos']		= 'Presupuestos';
 /*--------------------------------------------------------------------------------  
     Q
  --------------------------------------------------------------------------------*/
- 
-$lang['quotaQuantity']		= 'Cantidad cuotas';
-$lang['quotaStart']			= 'Comienzo cuota';
-$lang['quotaEnd']			= 'Final cuota';
-$lang['quotaInterest']		= 'Interes cuota';
-$lang['quotaAmount']		= 'Cuota monto';
 
 /*--------------------------------------------------------------------------------  
     R
@@ -232,7 +222,6 @@ $lang['tipo']               = "Tipo";
 $lang['total']              = "Total";
 $lang['totales']            = "Totales";
 $lang['total_nota_credito'] = "Total nota de credito";
-$lang['tarjeta']            = "Tarjeta";
 
 /*--------------------------------------------------------------------------------  
     U

@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="33ecf8e6-cf11-4265-90fe-0c1b33afd13c" name="Default Changelist" comment="presupuestos lista y bases de datos conexion">
       <change afterPath="$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/language/spanish/documents_crud_lang.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sitrack-site5/resources/views/rankings/icm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../sitrack-site5/resources/views/rankings/icm.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/helpers/views_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/helpers/views_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/language/spanish/main_lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/language/spanish/main_lang.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/libraries/Documents_CRUD.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/libraries/Documents_CRUD.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/documents_crud_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/documents_crud_model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,15 +32,15 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="js" value="2" />
-          <entry key="php" value="8" />
+          <entry key="js" value="3" />
+          <entry key="php" value="13" />
           <entry key="sql" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JavaScript" value="2" />
-          <entry key="PHP" value="8" />
+          <entry key="JavaScript" value="3" />
+          <entry key="PHP" value="13" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SQL" value="2" />
         </counts>
@@ -46,16 +48,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="9" />
-          <entry key="js" value="232" />
-          <entry key="php" value="73" />
-          <entry key="txt" value="68" />
+          <entry key="js" value="451" />
+          <entry key="php" value="470" />
+          <entry key="txt" value="73" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="232" />
-          <entry key="PHP" value="73" />
-          <entry key="PLAIN_TEXT" value="77" />
+          <entry key="JavaScript" value="451" />
+          <entry key="PHP" value="470" />
+          <entry key="PLAIN_TEXT" value="82" />
         </counts>
       </usages-collector>
     </session>
@@ -65,46 +67,58 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2700">
-              <caret line="154" column="21" selection-start-line="154" selection-start-column="21" selection-end-line="154" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="178" column="63" lean-forward="true" selection-start-line="177" selection-start-column="20" selection-end-line="178" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/documents_crud_model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/bd/stock.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="351" column="7" selection-start-line="351" selection-start-column="3" selection-end-line="351" selection-end-column="7" />
+            <state relative-caret-position="400">
+              <caret line="162" lean-forward="true" selection-start-line="162" selection-end-line="162" />
+              <folding>
+                <element signature="e#36#54#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="186" column="40" lean-forward="true" selection-start-line="186" selection-start-column="40" selection-end-line="186" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/libraries/Documents_CRUD.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+            <state relative-caret-position="190">
+              <caret line="215" column="35" selection-start-line="215" selection-start-column="28" selection-end-line="215" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/language/spanish/main_lang.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="223" column="54" selection-start-line="223" selection-start-column="54" selection-end-line="223" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/language/spanish/documents_crud_lang.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="670">
+              <caret line="74" column="46" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/helpers/views_helper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="584">
+              <caret line="320" column="86" selection-start-line="320" selection-start-column="86" selection-end-line="320" selection-end-column="86" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#25#32#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,6 +135,10 @@
       <find>keypress</find>
       <find>presupuesto</find>
       <find>quotaStart</find>
+      <find>forma</find>
+      <find>startForm</find>
+      <find>forma_pago</find>
+      <find>consol</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,10 +151,13 @@
         <option value="$PROJECT_DIR$/application/models/intereses_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/presupuestos.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php" />
-        <option value="$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js" />
         <option value="$PROJECT_DIR$/application/models/documents_crud_model.php" />
+        <option value="$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php" />
+        <option value="$PROJECT_DIR$/application/language/spanish/main_lang.php" />
+        <option value="$PROJECT_DIR$/application/language/spanish/documents_crud_lang.php" />
+        <option value="$PROJECT_DIR$/application/helpers/views_helper.php" />
         <option value="$PROJECT_DIR$/application/libraries/Documents_CRUD.php" />
+        <option value="$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js" />
       </list>
     </option>
   </component>
@@ -194,28 +215,25 @@
               <item name="test" type="b2602c69:ProjectViewProjectNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="language" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="test" type="b2602c69:ProjectViewProjectNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="language" type="462c0819:PsiDirectoryNode" />
+              <item name="spanish" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="test" type="b2602c69:ProjectViewProjectNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="bd" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="logs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="test" type="b2602c69:ProjectViewProjectNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="libraries" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -229,6 +247,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../sitrack-framework" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application/language/spanish" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -255,7 +278,7 @@
       <workItem from="1552487992830" duration="256000" />
       <workItem from="1552488268997" duration="1167000" />
       <workItem from="1552489454304" duration="157000" />
-      <workItem from="1552489632971" duration="3473000" />
+      <workItem from="1552489632971" duration="8712000" />
     </task>
     <task id="LOCAL-00001" summary="presupuestos lista y bases de datos conexion">
       <created>1552488968021</created>
@@ -278,11 +301,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552491203763</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="set MethodPayment">
+      <created>1552499913267</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1552499913267</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5053000" />
+    <option name="totallyTimeSpent" value="10292000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="25" width="1920" height="996" extended-state="6" />
@@ -318,7 +348,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="presupuestos lista y bases de datos conexion" />
     <MESSAGE value="Interes en cuota" />
-    <option name="LAST_COMMIT_MESSAGE" value="Interes en cuota" />
+    <MESSAGE value="set MethodPayment" />
+    <option name="LAST_COMMIT_MESSAGE" value="set MethodPayment" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -359,13 +390,6 @@
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/SimpleXML/SimpleXML.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2700">
-          <caret line="154" column="21" selection-start-line="154" selection-start-column="21" selection-end-line="154" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/bd/stock.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -380,20 +404,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js">
+    <entry file="file://$PROJECT_DIR$/application/language/spanish/form_validation_lang.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../sitrack-site5/src/Sitrack/Commands/LoadPolicyCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="178" column="63" lean-forward="true" selection-start-line="177" selection-start-column="20" selection-end-line="178" selection-end-column="63" />
+        <state relative-caret-position="400">
+          <caret line="162" lean-forward="true" selection-start-line="162" selection-end-line="162" />
+          <folding>
+            <element signature="e#36#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/helpers/views_helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="584">
+          <caret line="320" column="86" selection-start-line="320" selection-start-column="86" selection-end-line="320" selection-end-column="86" />
+          <folding>
+            <element signature="e#25#32#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/language/spanish/documents_crud_lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="670">
+          <caret line="74" column="46" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/language/spanish/main_lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="223" column="54" selection-start-line="223" selection-start-column="54" selection-end-line="223" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/libraries/Documents_CRUD.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="190">
+          <caret line="215" column="35" selection-start-line="215" selection-start-column="28" selection-end-line="215" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/main/js/Documents_CRUD.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="186" column="40" lean-forward="true" selection-start-line="186" selection-start-column="40" selection-end-line="186" selection-end-column="40" />
         </state>
       </provider>
     </entry>

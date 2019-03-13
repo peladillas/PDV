@@ -313,8 +313,12 @@ function setBigEmphasis($class, $value, $title, $icon, $link){
     return $html;
 }
 
-function setButton($value, $id){
-    $html = '<button type="button" id="'.$id.'" name="'.$id.'" class="btn btn-default">'.$value.'</button>';
+function setButton($value, $id, $class = NULL){
+    if($class == NULL){
+        $class = 'default';
+    }
+
+    $html = '<button type="button" id="'.$id.'" name="'.$id.'" class="btn btn-'.$class.'">'.$value.'</button>';
 
     return $html;
 }

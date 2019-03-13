@@ -2,7 +2,7 @@ var detailArray = [];
 
 $(function () {
 
-    inputHeadEntity.focus();
+    startForm();
 
     /*---------------------------------------------------------------------------------
     -----------------------------------------------------------------------------------
@@ -18,6 +18,9 @@ $(function () {
         select: function (event, ui) {
             var idEntity = ui.item.id;
             inputHeadIdEntity.val(idEntity);
+            btnSave.removeClass('hide');
+            $('#form-payment').removeClass('hide');
+            inputHeadTotal.removeClass('hide').parent().removeClass('hide');
             btnSelect.click();
         },
 
@@ -152,9 +155,7 @@ $(function () {
     ---------------------------------------------------------------------------------*/
 
     btnSave.click(function () {
-    	
-    	console.log(detailArray);
-        var url = BASE_URL + functionInsert;
+    	var url = BASE_URL + functionInsert;
 
         if (inputHeadIdEntity.val() == '') {
             alert("Seleccione " + entity);
@@ -176,17 +177,13 @@ $(function () {
                     HeadTable: headTable,
                     type: 'head',
                     methodPaymentField: headMethodPayment,
-                    methodPaymentValue: $("#forma_pago").val(),
+                    methodPaymentValue: $("#headMethodPayment").val(),
                 },
                 "type": "POST",
                 "dataType": "json",
                 "success": function (result) {
                     if(result > 0){
                         $.each(detailArray, function( key, value ) {
-
-                            console.log(key);
-                            console.log(detailArray);
-
                             if(key > 0){
                                 // Guardamos detalle
                                 $.ajax({
@@ -228,17 +225,14 @@ $(function () {
 
             clearHeadForm();
             clearDetailForm();
-            $("#form-detail").addClass('hide');
             alert("Presupuesto generado con exito");
-            inputHeadEntity.focus();
-            $("#forma_pago").val(1);
-            $('.paymentData').addClass('hide');
+            startForm();
         }
     });
 
 
-    $('#forma_pago').on("change", function(e) {
-        a = $("#forma_pago option:selected" ).val();
+    $('#headMethodPayment').on("change", function(e) {
+        a = $("#headMethodPayment option:selected" ).val();
 
         $('.paymentData').addClass('hide');
         if(a == 2){
@@ -288,7 +282,7 @@ $(function () {
         calcula_total();
     });
 
-    $("#forma_pago").on("change", function(e) {
+    $("#headMethodPayment").on("change", function(e) {
         calcula_total();
     });
 
@@ -329,20 +323,18 @@ function calcula_total() {
         total = parseFloat(total) + parseFloat(temp);
     });
 
-    var forma_pago = $('#forma_pago').val();
+    var headMethodPayment = $('#headMethodPayment').val();
 
     
     total = total.toFixed(2);
     
     var quotaInterest = $("#quotaInterest").val();
-
-
     var total_cuota = parseFloat(total) + parseFloat(total * quotaInterest / 100);
     total_cuota = parseFloat(total_cuota)  / parseFloat($("#quotaQuantity").val());
     var total_head = parseFloat(total_cuota)  * parseFloat($("#quotaQuantity").val());
     $("#quotaAmount").val(total_cuota.toFixed(2));
 
-    if(forma_pago == 3 || forma_pago == 4){
+    if(headMethodPayment == 3 || headMethodPayment == 4){
         inputHeadTotal.val(total_head.toFixed(2));
     } else {
         inputHeadTotal.val(total);
@@ -411,4 +403,15 @@ function clearDetailArray(){
     $.each( detailArray, function( key, value ) {
         borra_renglon(key);
     });
+}
+
+
+function startForm(){
+    inputHeadEntity.focus();
+    inputHeadTotal.addClass('hide').parent().addClass('hide');
+    btnSave.addClass('hide');
+    $("#form-detail").addClass('hide');
+    $("#form-payment").addClass('hide');
+    $("#headMethodPayment").val(1);
+    $('.paymentData').addClass('hide');
 }

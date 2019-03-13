@@ -41,6 +41,7 @@ class Documents_CRUD {
     protected function set_default_Model() {
         $ci = &get_instance();
         $ci->load->model('documents_CRUD_Model');
+        $ci->lang->load('documents_crud');
         $this->basic_model = new documents_CRUD_Model();
     }
 
@@ -171,7 +172,7 @@ class Documents_CRUD {
         $this->html .= setFormGroup($this->headDate,  date('d-m-Y'), 'disabled');
         $this->html .= setButton(lang($this->btnSelect), $this->btnSelect);
         $this->html .= setFormGroup($this->headTotal, 0, 'disabled');
-        $this->html .= setButton(lang($this->btnSafe), $this->btnSafe);
+        $this->html .= setButton(lang($this->btnSafe), $this->btnSafe, 'primary');
         $this->html .= setHiddenInput($this->headIdEntity);
 		$this->html .= '<hr>';
 
@@ -273,7 +274,7 @@ class Documents_CRUD {
             $quotas[$i] = $i;
         }
 
-        $html = setSelectGroup('forma_pago', $paymentMethod, FORMAS_PAGOS::EFECTIVO);
+        $html = setSelectGroup('headMethodPayment', $paymentMethod, FORMAS_PAGOS::EFECTIVO);
         $html .= '<div class="paymentData hide" id="divCheck">';
         $html .= setFormGroup('inputCheck');
         $html .= '</div>';
