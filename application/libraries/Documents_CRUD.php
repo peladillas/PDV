@@ -65,8 +65,10 @@ class Documents_CRUD {
     public function set_entity($fieldName, $relatedTable){
         $this->headIdEntity = $fieldName;
         $this->headEntity = $relatedTable;
-        if($this->headEntity != 'cliente') {
+        if($this->headEntity == 'cliente') {
             $this->headEntityController = 'Clientes';
+        } else if($this->headEntity == 'proveedor') {
+            $this->headEntityController = 'proveedores';
         }
     }
 	

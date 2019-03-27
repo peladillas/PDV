@@ -7,6 +7,7 @@ abstract class TIPOS_COMPROBANTES {
     const PRESUPUESTO = 1;
     const NOTA_CREDITO = 2;
     const STOCK = 3;
+    const FACTURA_COMPRA = 4;
 }
 
 abstract class ESTADOS {

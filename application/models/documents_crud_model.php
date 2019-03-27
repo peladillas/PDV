@@ -8,8 +8,7 @@ class documents_CRUD_Model  extends CI_Model  {
                 Función para armar la query
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
-	
-	
+
 	function insert($postData){
 		
 		if($postData['type'] == 'head'){
@@ -66,6 +65,9 @@ class documents_CRUD_Model  extends CI_Model  {
             case 'stock':
                 return TIPOS_COMPROBANTES::STOCK;
                 break;
+            case 'renglon_factura_compra':
+                return TIPOS_COMPROBANTES::FACTURA_COMPRA;
+                break;
 		}
     }
 /*---------------------------------------------------------------------------------
@@ -82,6 +84,10 @@ class documents_CRUD_Model  extends CI_Model  {
 		    case 'clientes/':
 		        return $this->getClientes($filtro);
 		        break;
+            case 'proveedores/':
+                return $this->getProveedores($filtro);
+                break;
+
 		}
 	}
 /*---------------------------------------------------------------------------------
@@ -172,6 +178,40 @@ class documents_CRUD_Model  extends CI_Model  {
             $row['id'] = (int)$cliente->id_cliente;
             $row_set[] = $row;
         }
+        return $row_set;
+    }
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+        Para buscar proveedores por descripcion o codigo proveedor
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+    function getProveedores($filtro) {
+        $sql = "
+		SELECT 
+			*
+		FROM 
+			proveedor 
+		WHERE 
+			descripcion LIKE '%".$filtro."%' AND
+			id_estado = ".ESTADOS::ALTA." 
+		LIMIT 
+			20";
+
+        $registros = $this->getQuery($sql);
+
+        $row_set = array();
+        if($registros){
+            foreach ($registros as $proveedor) {
+                $row['value']	    = stripslashes(utf8_encode($proveedor->descripcion));
+                $row['id']		    = (int)$proveedor->id_proveedor;
+                $row['margen']	    = (float)$proveedor->margen;
+                $row['impuesto']	= (float)$proveedor->impuesto;
+                $row['descuento']	= (float)$proveedor->descuento;
+                $row['descuento2']	= (float)$proveedor->descuento2;
+                $row_set[]		= $row;
+            }
+        }
+
         return $row_set;
     }
 }
