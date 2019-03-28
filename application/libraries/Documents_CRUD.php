@@ -10,6 +10,7 @@ class Documents_CRUD {
     private $headDiscount = 'descuento';
     private $headInteres = 'interes';
     private $headMethodPayment = 'tipo';
+    private $setMethodPayment = TRUE;
     private $headComPrivate = 'com_privado';
     private $headComPublic = 'com_publico';
     private $headResponsable = 'id_vendedor';
@@ -121,9 +122,19 @@ class Documents_CRUD {
        Carga del detalle del comprobante, esto es obligatorio
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
+
+    public function set_table_detail($tableName){
+        $this->detailTable = $tableName;
+    }
+
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+       No usar forma de pago
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
 	
-	public function set_table_detail($tableName){
-		$this->detailTable = $tableName;
+	public function notMethodPayment(){
+		$this->setMethodPayment = FALSE;
 	}
 
 /*---------------------------------------------------------------------------------
@@ -179,7 +190,8 @@ class Documents_CRUD {
 		$this->html .= '<hr>';
 
         $this->html .= '</div>';
-		if(TRUE){
+
+		if($this->setMethodPayment){
             $this->html .= '<div id="form-payment" style="	display: inline-flex;">';
             $this->html .= $this->getFormasPago();
             $this->html .= '</div>';
@@ -244,6 +256,8 @@ class Documents_CRUD {
         $this->html .= 'var detail = "'.$this->headDetailController.'"; ';
         $this->html .= 'var functionInsert = "/'.$this->headTable.'s/insert";';
         $this->html .= 'var stockInOut = "'.$this->stockInOut.'"; ';
+        $this->html .= 'var setMethodPayment = "'.$this->setMethodPayment.'"; ';
+
 		
         $this->html .= '</script>';
     }

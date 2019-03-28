@@ -46,4 +46,29 @@ class Stock extends MY_Controller {
 		);
 		$this->renglon_stock_model->movimiento($registro);
 	}
+
+/*---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+        Para probar las nuevas librerias
+
+-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
+
+
+    function add() {
+
+        $this->load->library('documents_CRUD');
+
+        $db['documents'] = new documents_CRUD();
+        $db['documents']->set_table_head('stock', 'id_stock');
+        $db['documents']->set_entity('id_proveedor', 'proveedor');
+
+        $db['documents']->notMethodPayment();
+
+        $db['documents']->set_table_detail('renglon_stock');
+        $db['documents']->set_stock('in');
+
+        $this->view($db, $this->path.'add');
+    }
 }
