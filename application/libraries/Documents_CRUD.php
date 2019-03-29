@@ -4,7 +4,6 @@ class Documents_CRUD {
     private $headIdTable = '';
     private $headEntity = '';
     private $headIdEntity = '';
-	
 	private $headDate = 'fecha';
    	private $headTotal = 'monto';
     private $headDiscount = 'descuento';
@@ -132,7 +131,7 @@ class Documents_CRUD {
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
 
-	public function get_form(){
+	public function get_form($view){
 	    $requiredFields = TRUE;
 	    if($this->headTable == ''){
             $this->html = 'Se debe cargar la variable headTable';
@@ -155,7 +154,7 @@ class Documents_CRUD {
             $requiredFields = FALSE;
         }
         if($requiredFields){
-            $this->set_html_heat();
+            $this->set_html_head($view);
         }
 		return $this->html;
 	}
@@ -166,20 +165,24 @@ class Documents_CRUD {
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
 
-    public function set_html_heat(){
-    	$this->html .= setJs('main/js/Documents_CRUD.js');
-    	
-		$this->html .= '<div id="form-heading">';
-        $this->html .= setFormGroup($this->headEntity, '', 'autocomplete="off"');
+    public function set_html_head($view){
+
+        $this->html .= setJs('main/js/Documents_CRUD.js');
+    	$this->html .= '<div id="form-heading">';
+    	$this->html .= setFormGroup($this->headEntity, '', 'autocomplete="off"');
         $this->html .= setFormGroup($this->headDate,  date('d-m-Y'), 'disabled');
         $this->html .= setButton(lang($this->btnSelect), $this->btnSelect);
         $this->html .= setFormGroup($this->headTotal, 0, 'disabled');
         $this->html .= setButton(lang($this->btnSafe), $this->btnSafe, 'primary');
         $this->html .= setHiddenInput($this->headIdEntity);
-		$this->html .= '<hr>';
-
+        $this->html .= '<hr>';
         $this->html .= '</div>';
+
 		if(TRUE){
+
+		    if ($view=="factura_compra") {      // simulando selector desde la vista
+                $this->html .= '<h1>titulo factura de compra</h1>';
+            }
             $this->html .= '<div id="form-payment" style="	display: inline-flex;">';
             $this->html .= $this->getFormasPago();
             $this->html .= '</div>';

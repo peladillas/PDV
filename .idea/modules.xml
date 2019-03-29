@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/PDV.iml" filepath="$PROJECT_DIR$/.idea/PDV.iml" />
       <module fileurl="file://$PROJECT_DIR$/../sitrack-framework/.idea/sitrack-framework.iml" filepath="$PROJECT_DIR$/../sitrack-framework/.idea/sitrack-framework.iml" />
       <module fileurl="file://$PROJECT_DIR$/../sitrack-site5/.idea/sitrack-site5.iml" filepath="$PROJECT_DIR$/../sitrack-site5/.idea/sitrack-site5.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/test.iml" filepath="$PROJECT_DIR$/.idea/test.iml" />
