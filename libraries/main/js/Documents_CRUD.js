@@ -176,6 +176,7 @@ $(function () {
                     TotalValue: inputHeadTotal.val(),
                     HeadTable: headTable,
                     type: 'head',
+                    setMethodPayment: setMethodPayment,
                     methodPaymentField: headMethodPayment,
                     methodPaymentValue: $("#headMethodPayment").val(),
                 },
