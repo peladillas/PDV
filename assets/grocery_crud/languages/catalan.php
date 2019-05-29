@@ -29,14 +29,14 @@
 	$lang['update_success_message']	= 'Els canvis han estat aplicats correctament.';
 	$lang['form_go_back_to_list']	= 'Tornar a la llista';
 
-	$lang['form_add']				= 'Agregar';
+	$lang['form_add']				= 'Afegir';
 	$lang['insert_success_message']	= 'Les dades han estat inserides correctament a la base de dades.';
 	$lang['form_or']				= 'o';
 	$lang['form_save']				= 'Guardar';
 	$lang['form_insert_loading']	= 'Carregant, guardant...';
 
 	$lang['form_upload_a_file']		= 'Pujar un arxiu';
-	$lang['form_upload_delete']		= 'esborrar';
+	$lang['form_upload_delete']		= 'Esborrar';
 	$lang['form_button_clear']		= 'Netejar';
 
 	$lang['delete_success_message']	= 'Les dades han estat esborrades correctament de la base de dades.';
@@ -51,7 +51,7 @@
 	$lang['update_error']			= 'Error al guardar.';
 
 	/* Added in version 1.2.1 */
-	$lang['set_relation_title']		= 'Select {field_display_as}';
+	$lang['set_relation_title']		= 'Seleccionar {field_display_as}';
 	$lang['list_record']			= 'Registe';
 	$lang['form_inactive']			= 'Inactiu';
 	$lang['form_active']			= 'Actiu';
@@ -65,7 +65,7 @@
 	$lang['string_delete_file'] 	= "Esborrant arxiu";
 	$lang['string_progress'] 		= "Progrés: ";
 	$lang['error_on_uploading'] 	= "Error de pujada";
-	$lang['message_prompt_delete_file'] 	= "Esteu segur que desitjeu esborrar l'arxiu?";
+	$lang['message_prompt_delete_file'] 	= "Esteu segur que desitgeu esborrar l'arxiu?";
 
 	$lang['error_max_number_of_files'] 	= "Solament pot pujar un arxiu alhora.";
 	$lang['error_accept_file_types'] 	= "No està permès pujar arxius amb aquesta extensió.";
@@ -78,4 +78,26 @@
 	$lang['minimize_maximize'] = 'Minimitzar / Maximitzar';
 
 	/* Added in version 1.4 */
-	$lang['list_view'] = 'View';
+	$lang['list_view'] = 'Veure';
+
+	/* Added in version 1.5.1 */
+	$lang['ui_day'] = 'dd';
+	$lang['ui_month'] = 'mm';
+	$lang['ui_year'] = 'yyyy';
+
+	/* Added in version 1.5.2 */
+	$lang['list_more'] = 'Més';
+
+	/* Added in version 1.5.6 */
+	$lang['list_search_column'] = 'Cercar {column_name}';
+
+	/* Added in version 1.5.8 */
+	$lang['alert_delete_multiple'] = 'Estas segur que vols esborrar aquests {items_amount} items?';
+
+	$lang['alert_delete_multiple_one'] = 'Estas segur que vols esborrar aquest item?';
+
+
+
+	/* Added in version 1.6.1 */
+	$lang['list_clone'] = 'Clone';
+
