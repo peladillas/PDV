@@ -55,5 +55,14 @@ class Home extends My_Controller {
 
 		$this->view($db, 'calendarios/config');
 	}
+  function logout() {
+    $this->session->sess_destroy();
+    $this->load->helper(array('form'));
+    $this->load->view('head');
+    $this->load->view('usuarios/login');
+
+
+
+	}
 }
 ?>

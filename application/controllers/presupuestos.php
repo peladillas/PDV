@@ -1,4 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class Presupuestos extends MY_Controller {
 
     protected $path = 'presupuestos/';
@@ -71,15 +72,15 @@ class Presupuestos extends MY_Controller {
             else
             {
                 $qstring = "
-		INSERT INTO 
+		INSERT INTO
 			renglon_presupuesto (
 				id_presupuesto,
 				id_articulo,
 				cantidad,
 				precio,
 				estado
-			) 
-			
+			)
+
 		VALUES(
 			$id_presupuesto,
 			$codigos_a_cargar[$i],
@@ -287,7 +288,7 @@ class Presupuestos extends MY_Controller {
 -----------------------------------------------------------------------------------
 
 		Para probar las nuevas librerias
- 
+
 -----------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------*/
 
