@@ -24,11 +24,11 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
-                    <?php echo setIcon('bar')?>
+                    <?php echo setIcon('bars')?>
                     <?php echo setIcon('bar')?>
                     <?php echo setIcon('bar')?>
                 </button>
-                <a title="Administración" class="navbar-brand" href='<?php echo site_url('home')?>'><?php echo lang('admin')?></a>
+                <!--<a title="Administración" class="navbar-brand" href='<?php //echo site_url('home')?>'><?php //echo lang('admin')?></a>-->
             </div>
 
 
@@ -65,8 +65,8 @@
 
                     $dropdownMenuEstadisticas = array(
                         setLinkMenu('estadisticas/mensual', lang('mensual')),
-                        setLinkMenu('estadisticas/anual', lang('anual')),
-                        setLinkMenu('estadisticas/resumen', lang('resumen')),
+                        //setLinkMenu('estadisticas/anual', lang('anual')),
+                        //setLinkMenu('estadisticas/resumen', lang('resumen')),
                     );
 
                     $dropdownMenuConfig = array(
@@ -78,20 +78,53 @@
                         setLinkMenu('configs/config_abm/edit/1', lang('config')),
                     );
 
-                    echo dropdownMenu(lang('catalogos'), $dropdownMenuCatalogos);
-                    echo dropdownMenu(lang('ventas'), $dropdownMenuVentas);
-                    echo dropdownMenu(lang('clientes'), $dropdownMenuClientes);
-                    echo dropdownMenu(lang('estadisticas'), $dropdownMenuEstadisticas);
-                    echo dropdownMenu(lang('config'), $dropdownMenuConfig);
+
+                    $dropdownMenuSalir = array(
+                        setLinkMenu('home/logout', lang('log_out')),
+                    );
+
+
+
+
+                    echo dropdownMenu(lang('catalogos'), $dropdownMenuCatalogos,'database');
+                    echo dropdownMenu(lang('ventas'), $dropdownMenuVentas,'shopping-cart');
+                    echo dropdownMenu(lang('clientes'), $dropdownMenuClientes,'address-book');
+                    echo dropdownMenu(lang('estadisticas'), $dropdownMenuEstadisticas,'chart-pie');
+                    echo dropdownMenu(lang('config'), $dropdownMenuConfig,'cogs');
+                    echo dropdownMenu(lang('salir'), $dropdownMenuSalir,'sign-out-alt');
+
                     ?>
-                    <li>
-                        <a href="<?php echo site_url('home/logout')?>"><?php echo setIcon('log-out').' '.lang('salir')?></a>
-                    </li>
+
                 </ul>
 
-                <li style="color:#b3b3b3;" class="pull-right">
-                    <?php echo 'SERVER: '.date('d-m-y H:i:s'); ?>
-                </li>
+                <ul style="color:#b3b3b3;" class="pull-right nav navbar-nav">
+                  <!--<li><i class="far fa-clock"></i> <span class"server-clock" id="server-clock"></a></li>-->
+                  <?php  echo serverClock( date("d-m-y, H:i"), $dropdownMenuSalir,'clock');?>
+
+                  <script charset="utf-8" type="text/javascript">
+
+
+                      $(document).ready(function() {
+
+                          function updateTime() {
+                            $.ajax({
+                             type: 'POST',
+                             url: 'server/datetime',
+                             timeout: 30000,
+                             success: function(data) {
+                                $("#serverClock").html(data);
+                                window.setTimeout(updateTime(),30000);
+
+                             }
+                            });
+                           }
+                           updateTime();
+
+                      });
+
+                  </script>
+
+                </ul>
             </div>
         </div>
     </nav>

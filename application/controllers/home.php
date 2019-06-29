@@ -6,7 +6,7 @@ class Home extends My_Controller {
 
 	function __construct() {
 		parent::__construct($this->path);
-	   	
+
 		$this->load->model('remitos_model');
 		$this->load->model('articulos_model');
 		$this->load->model('calendarios_model');
@@ -14,7 +14,7 @@ class Home extends My_Controller {
 		$this->load->model('clientes_model');
 		$this->load->model('renglon_presupuesto_model');
 		$this->load->model('proveedores_model');
-		
+
 		$this->load->library('grocery_CRUD');
 	}
 

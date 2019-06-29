@@ -155,7 +155,7 @@ function setDatatables($id_table = NULL, $order = NULL, $url = NULL) {
         '<script>
 		$(function () {
 			'.$filtro.'
-			 
+
         	var table = $("#'.$id_table.'").DataTable({';
 
     if($url != NULL){ // Carga de datos en ajax
@@ -166,7 +166,7 @@ function setDatatables($id_table = NULL, $order = NULL, $url = NULL) {
 	        }, ';
     }
 
-    $data .= '	
+    $data .= '
 		"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
         	"language": {
 		        "sProcessing":    "Procesando...",
@@ -211,7 +211,7 @@ function setDatatables($id_table = NULL, $order = NULL, $url = NULL) {
 
     $data .=  "table.columns().every( function () {
 	        var that = this;
-	 
+
 	        $( 'input.search-column', this.footer() ).on( 'keyup change', function () {
 	            if ( that.search() !== this.value ) {
 	                that
@@ -269,9 +269,9 @@ function dividerMenu(){
     return '<li class="divider"></li>';
 }
 
-function dropdownMenu($menu, $dropdownMenu){
+function dropdownMenu($menu, $dropdownMenu, $icon){
     $html = '<li class="dropdown">';
-    $html .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-clipboardalt"></i> '.$menu.'<b class="caret"></b></a>';
+    $html .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"> '.setIcon($icon).' '.strtoupper($menu).'</a>';
     $html .= '<ul class="dropdown-menu">';
     foreach ($dropdownMenu as $linkMenu){
         $html .= $linkMenu;
@@ -281,7 +281,18 @@ function dropdownMenu($menu, $dropdownMenu){
 
     return $html;
 }
+function serverClock($menu, $dropdownMenu, $icon){
+    $html = '<li class="dropdown">';
+    $html .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'.setIcon($icon."  ").' <span id="serverClock"> '.strtoupper($menu).'</span></a>';
+    $html .= '<ul class="dropdown-menu">';
+    foreach ($dropdownMenu as $linkMenu){
+        $html .= strtoupper($linkMenu);
+    }
+    $html .= '</ul>';
+    $html .= '</li>';
 
+    return $html;
+}
 function setIcon($icon){
     return '<i class="fa fa-'.$icon.'"></i>';
 }

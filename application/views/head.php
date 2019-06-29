@@ -14,8 +14,9 @@ $html .= setCss('bootstrap/css/bootstrap_back.css');
     Icons
 --------------------------------------------------------------------------------*/
 
-$html .= setCss('font/css/font-awesome.css');
+//$html .= setCss('font/css/font-awesome.css');
 $html .= setCss('font2/css/whhg.css');
+$html .= setCss('font5/css/all.css');
 
 /*--------------------------------------------------------------------------------
     Main
